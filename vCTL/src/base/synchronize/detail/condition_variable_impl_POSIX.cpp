@@ -11,7 +11,6 @@
 #include "base/synchronize/detail/condition_variable_impl.h"
 #include "base/logging/log.h"
 
-
 namespace vbase
 {
 namespace detail

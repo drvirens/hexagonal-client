@@ -34,7 +34,7 @@ namespace vbase
   
   MMyThreadMainEntry t;
   TPlatformThreadHandle h;
-  TEST(UT_TPlatformThread, CreatePlatformThread)
+  TEST(UT_TPlatformThread, DISABLED_CreatePlatformThread)
   {
 //    MMyThreadMainEntry t;
 //    TPlatformThreadHandle h;

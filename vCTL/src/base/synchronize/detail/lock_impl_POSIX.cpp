@@ -10,6 +10,8 @@
 #include "base/synchronize/detail/lock_impl.h"
 #include "base/logging/log.h"
 #include "build/build_utils.h"
+#include "base/error_handler.h"
+
 
 namespace vbase
 {
@@ -18,53 +20,24 @@ namespace detail
   
   TLockImpl::TLockImpl()
   {
-    int e = 0;
 #if !defined(NDEBUG)
     pthread_mutexattr_t m;
-    e = pthread_mutexattr_init(&m);
-    if( 0 != e )
-    {
-      LOG_ERROR << "TLockImpl: pthread_mutexattr_init error: "  << strerror(e);
-      //ha constructors cant return so use 2-phase construction later
-    }
-    e = pthread_mutexattr_settype(&m, PTHREAD_MUTEX_ERRORCHECK);
-    if( 0 != e )
-    {
-      LOG_ERROR << "TLockImpl: pthread_mutexattr_settype error: "  << strerror(e);
-    }
-    e = pthread_mutex_init(&mNativeLock, &m);
-    if( 0 != e )
-    {
-      LOG_ERROR << "TLockImpl: pthread_mutex_init error: " << strerror(e);
-    }
-    e = pthread_mutexattr_destroy(&m);
-    if( 0 != e )
-    {
-      LOG_ERROR << "TLockImpl: pthread_mutexattr_destroy error: " << strerror(e);
-    }
+    V_PTHREAD_CALL( pthread_mutexattr_init(&m) );
+    V_PTHREAD_CALL( pthread_mutexattr_settype(&m, PTHREAD_MUTEX_ERRORCHECK) );
+    V_PTHREAD_CALL( pthread_mutex_init(&mNativeLock, &m) );
+    V_PTHREAD_CALL( pthread_mutexattr_destroy(&m) );
 #else
-    e = pthread_mutex_init(&mNativeLock, 0);
-    if( 0 != e )
-    {
-      LOG_ERROR << "TLockImpl: pthread_mutex_init error: "  << strerror(e);
-    }
+    V_PTHREAD_CALL( pthread_mutex_init(&mNativeLock, 0) );
 #endif
   }
   TLockImpl::~TLockImpl()
   {
-    int e = pthread_mutex_destroy(&mNativeLock);
-    if( 0 != e )
-    {
-      LOG_ERROR << "TLockImpl: pthread_mutex_destroy error: "  << strerror(e);
-    }
+    V_PTHREAD_CALL( pthread_mutex_destroy(&mNativeLock) );
   }
   bool TLockImpl::DoTry()
   {
-    int e = pthread_mutex_trylock(&mNativeLock);
-    if( 0 != e && EBUSY != e )
-    {
-      LOG_ERROR << "TLockImpl: pthread_mutex_trylock error: "  << strerror(e);
-    }
+    int e = 0;
+    V_PTHREAD_CALL_RET_ERROR( pthread_mutex_trylock(&mNativeLock), e );
     return (0 == e);
   }
   void TLockImpl::DoLock()

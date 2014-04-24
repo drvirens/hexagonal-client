@@ -45,7 +45,7 @@ namespace detail
 #endif
 
 #if defined(V_PLATFORM_POSIX)
-    friend class MConditionVariablePosixImpl;
+    friend class detail::MConditionVariablePosixImpl;
 #endif
 
   };
