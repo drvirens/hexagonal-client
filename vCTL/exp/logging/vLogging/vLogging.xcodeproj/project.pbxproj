@@ -1,0 +1,536 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DB67F27B1908978F007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F27A1908978F007567A9 /* Foundation.framework */; };
+		DB67F27D1908978F007567A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F27C1908978F007567A9 /* CoreGraphics.framework */; };
+		DB67F27F1908978F007567A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F27E1908978F007567A9 /* UIKit.framework */; };
+		DB67F2851908978F007567A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB67F2831908978F007567A9 /* InfoPlist.strings */; };
+		DB67F2871908978F007567A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2861908978F007567A9 /* main.m */; };
+		DB67F28B1908978F007567A9 /* CAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F28A1908978F007567A9 /* CAppDelegate.mm */; };
+		DB67F28E1908978F007567A9 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB67F28C1908978F007567A9 /* Main_iPhone.storyboard */; };
+		DB67F2911908978F007567A9 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB67F28F1908978F007567A9 /* Main_iPad.storyboard */; };
+		DB67F2941908978F007567A9 /* CMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2931908978F007567A9 /* CMasterViewController.m */; };
+		DB67F2971908978F007567A9 /* CDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2961908978F007567A9 /* CDetailViewController.m */; };
+		DB67F2991908978F007567A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB67F2981908978F007567A9 /* Images.xcassets */; };
+		DB67F2A019089790007567A9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F29F19089790007567A9 /* XCTest.framework */; };
+		DB67F2A119089790007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F27A1908978F007567A9 /* Foundation.framework */; };
+		DB67F2A219089790007567A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F27E1908978F007567A9 /* UIKit.framework */; };
+		DB67F2AA19089790007567A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB67F2A819089790007567A9 /* InfoPlist.strings */; };
+		DB67F2AC19089790007567A9 /* vLoggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2AB19089790007567A9 /* vLoggingTests.m */; };
+		DB67F2C31908980D007567A9 /* log.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2C01908980D007567A9 /* log.cc */; };
+		DB67F2D019089CC0007567A9 /* common.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2CE19089CC0007567A9 /* common.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB67F2A319089790007567A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB67F26F1908978F007567A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB67F2761908978F007567A9;
+			remoteInfo = vLogging;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DB67F2771908978F007567A9 /* vLogging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vLogging.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB67F27A1908978F007567A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DB67F27C1908978F007567A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DB67F27E1908978F007567A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DB67F2821908978F007567A9 /* vLogging-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vLogging-Info.plist"; sourceTree = "<group>"; };
+		DB67F2841908978F007567A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DB67F2861908978F007567A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DB67F2881908978F007567A9 /* vLogging-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vLogging-Prefix.pch"; sourceTree = "<group>"; };
+		DB67F2891908978F007567A9 /* CAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAppDelegate.h; sourceTree = "<group>"; };
+		DB67F28A1908978F007567A9 /* CAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CAppDelegate.mm; sourceTree = "<group>"; };
+		DB67F28D1908978F007567A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		DB67F2901908978F007567A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		DB67F2921908978F007567A9 /* CMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
+		DB67F2931908978F007567A9 /* CMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMasterViewController.m; sourceTree = "<group>"; };
+		DB67F2951908978F007567A9 /* CDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
+		DB67F2961908978F007567A9 /* CDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDetailViewController.m; sourceTree = "<group>"; };
+		DB67F2981908978F007567A9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DB67F29E19089790007567A9 /* vLoggingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vLoggingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB67F29F19089790007567A9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DB67F2A719089790007567A9 /* vLoggingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vLoggingTests-Info.plist"; sourceTree = "<group>"; };
+		DB67F2A919089790007567A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DB67F2AB19089790007567A9 /* vLoggingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vLoggingTests.m; sourceTree = "<group>"; };
+		DB67F2BE1908980D007567A9 /* core_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_config.h; sourceTree = "<group>"; };
+		DB67F2BF1908980D007567A9 /* gflags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gflags.h; sourceTree = "<group>"; };
+		DB67F2C01908980D007567A9 /* log.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log.cc; sourceTree = "<group>"; };
+		DB67F2C11908980D007567A9 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+		DB67F2C21908980D007567A9 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		DB67F2CE19089CC0007567A9 /* common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cc; sourceTree = "<group>"; };
+		DB67F2CF19089CC0007567A9 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DB67F2741908978F007567A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB67F27D1908978F007567A9 /* CoreGraphics.framework in Frameworks */,
+				DB67F27F1908978F007567A9 /* UIKit.framework in Frameworks */,
+				DB67F27B1908978F007567A9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB67F29B19089790007567A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB67F2A019089790007567A9 /* XCTest.framework in Frameworks */,
+				DB67F2A219089790007567A9 /* UIKit.framework in Frameworks */,
+				DB67F2A119089790007567A9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DB67F26E1908978F007567A9 = {
+			isa = PBXGroup;
+			children = (
+				DB67F2801908978F007567A9 /* vLogging */,
+				DB67F2A519089790007567A9 /* vLoggingTests */,
+				DB67F2791908978F007567A9 /* Frameworks */,
+				DB67F2781908978F007567A9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DB67F2781908978F007567A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F2771908978F007567A9 /* vLogging.app */,
+				DB67F29E19089790007567A9 /* vLoggingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB67F2791908978F007567A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F27A1908978F007567A9 /* Foundation.framework */,
+				DB67F27C1908978F007567A9 /* CoreGraphics.framework */,
+				DB67F27E1908978F007567A9 /* UIKit.framework */,
+				DB67F29F19089790007567A9 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB67F2801908978F007567A9 /* vLogging */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F2BC1908980D007567A9 /* base */,
+				DB67F2891908978F007567A9 /* CAppDelegate.h */,
+				DB67F28A1908978F007567A9 /* CAppDelegate.mm */,
+				DB67F28C1908978F007567A9 /* Main_iPhone.storyboard */,
+				DB67F28F1908978F007567A9 /* Main_iPad.storyboard */,
+				DB67F2921908978F007567A9 /* CMasterViewController.h */,
+				DB67F2931908978F007567A9 /* CMasterViewController.m */,
+				DB67F2951908978F007567A9 /* CDetailViewController.h */,
+				DB67F2961908978F007567A9 /* CDetailViewController.m */,
+				DB67F2981908978F007567A9 /* Images.xcassets */,
+				DB67F2811908978F007567A9 /* Supporting Files */,
+			);
+			path = vLogging;
+			sourceTree = "<group>";
+		};
+		DB67F2811908978F007567A9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F2821908978F007567A9 /* vLogging-Info.plist */,
+				DB67F2831908978F007567A9 /* InfoPlist.strings */,
+				DB67F2861908978F007567A9 /* main.m */,
+				DB67F2881908978F007567A9 /* vLogging-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB67F2A519089790007567A9 /* vLoggingTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F2AB19089790007567A9 /* vLoggingTests.m */,
+				DB67F2A619089790007567A9 /* Supporting Files */,
+			);
+			path = vLoggingTests;
+			sourceTree = "<group>";
+		};
+		DB67F2A619089790007567A9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F2A719089790007567A9 /* vLoggingTests-Info.plist */,
+				DB67F2A819089790007567A9 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB67F2BC1908980D007567A9 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F2CE19089CC0007567A9 /* common.cc */,
+				DB67F2CF19089CC0007567A9 /* common.h */,
+				DB67F2BD1908980D007567A9 /* logging */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		DB67F2BD1908980D007567A9 /* logging */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F2BE1908980D007567A9 /* core_config.h */,
+				DB67F2BF1908980D007567A9 /* gflags.h */,
+				DB67F2C01908980D007567A9 /* log.cc */,
+				DB67F2C11908980D007567A9 /* log.h */,
+				DB67F2C21908980D007567A9 /* types.h */,
+			);
+			path = logging;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DB67F2761908978F007567A9 /* vLogging */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB67F2AF19089790007567A9 /* Build configuration list for PBXNativeTarget "vLogging" */;
+			buildPhases = (
+				DB67F2731908978F007567A9 /* Sources */,
+				DB67F2741908978F007567A9 /* Frameworks */,
+				DB67F2751908978F007567A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = vLogging;
+			productName = vLogging;
+			productReference = DB67F2771908978F007567A9 /* vLogging.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DB67F29D19089790007567A9 /* vLoggingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB67F2B219089790007567A9 /* Build configuration list for PBXNativeTarget "vLoggingTests" */;
+			buildPhases = (
+				DB67F29A19089790007567A9 /* Sources */,
+				DB67F29B19089790007567A9 /* Frameworks */,
+				DB67F29C19089790007567A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB67F2A419089790007567A9 /* PBXTargetDependency */,
+			);
+			name = vLoggingTests;
+			productName = vLoggingTests;
+			productReference = DB67F29E19089790007567A9 /* vLoggingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DB67F26F1908978F007567A9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = C;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Virendra Shakya";
+				TargetAttributes = {
+					DB67F29D19089790007567A9 = {
+						TestTargetID = DB67F2761908978F007567A9;
+					};
+				};
+			};
+			buildConfigurationList = DB67F2721908978F007567A9 /* Build configuration list for PBXProject "vLogging" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DB67F26E1908978F007567A9;
+			productRefGroup = DB67F2781908978F007567A9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB67F2761908978F007567A9 /* vLogging */,
+				DB67F29D19089790007567A9 /* vLoggingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB67F2751908978F007567A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB67F2911908978F007567A9 /* Main_iPad.storyboard in Resources */,
+				DB67F2991908978F007567A9 /* Images.xcassets in Resources */,
+				DB67F28E1908978F007567A9 /* Main_iPhone.storyboard in Resources */,
+				DB67F2851908978F007567A9 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB67F29C19089790007567A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB67F2AA19089790007567A9 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DB67F2731908978F007567A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB67F2D019089CC0007567A9 /* common.cc in Sources */,
+				DB67F2C31908980D007567A9 /* log.cc in Sources */,
+				DB67F28B1908978F007567A9 /* CAppDelegate.mm in Sources */,
+				DB67F2871908978F007567A9 /* main.m in Sources */,
+				DB67F2941908978F007567A9 /* CMasterViewController.m in Sources */,
+				DB67F2971908978F007567A9 /* CDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB67F29A19089790007567A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB67F2AC19089790007567A9 /* vLoggingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB67F2A419089790007567A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB67F2761908978F007567A9 /* vLogging */;
+			targetProxy = DB67F2A319089790007567A9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DB67F2831908978F007567A9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB67F2841908978F007567A9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DB67F28C1908978F007567A9 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB67F28D1908978F007567A9 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		DB67F28F1908978F007567A9 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB67F2901908978F007567A9 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		DB67F2A819089790007567A9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB67F2A919089790007567A9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DB67F2AD19089790007567A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DB67F2AE19089790007567A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB67F2B019089790007567A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "vLogging/vLogging-Prefix.pch";
+				INFOPLIST_FILE = "vLogging/vLogging-Info.plist";
+				OTHER_CFLAGS = (
+					"-DRUN_UNIT_TESTS_ONLY",
+					"-DENABLE_DEBUG",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/vLogging\"";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DB67F2B119089790007567A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "vLogging/vLogging-Prefix.pch";
+				INFOPLIST_FILE = "vLogging/vLogging-Info.plist";
+				OTHER_CFLAGS = (
+					"-DRUN_UNIT_TESTS_ONLY",
+					"-DENABLE_DEBUG",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/vLogging\"";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DB67F2B319089790007567A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/vLogging.app/vLogging";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "vLogging/vLogging-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "vLoggingTests/vLoggingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DB67F2B419089790007567A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/vLogging.app/vLogging";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "vLogging/vLogging-Prefix.pch";
+				INFOPLIST_FILE = "vLoggingTests/vLoggingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DB67F2721908978F007567A9 /* Build configuration list for PBXProject "vLogging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB67F2AD19089790007567A9 /* Debug */,
+				DB67F2AE19089790007567A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB67F2AF19089790007567A9 /* Build configuration list for PBXNativeTarget "vLogging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB67F2B019089790007567A9 /* Debug */,
+				DB67F2B119089790007567A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DB67F2B219089790007567A9 /* Build configuration list for PBXNativeTarget "vLoggingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB67F2B319089790007567A9 /* Debug */,
+				DB67F2B419089790007567A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DB67F26F1908978F007567A9 /* Project object */;
+}
