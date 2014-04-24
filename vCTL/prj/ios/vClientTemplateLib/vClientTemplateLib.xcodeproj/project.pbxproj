@@ -38,6 +38,9 @@
 		DB67F2CA19089BBC007567A9 /* log.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2C719089BBC007567A9 /* log.cc */; };
 		DB67F2D319089E50007567A9 /* build_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2D119089E50007567A9 /* build_utils.cc */; };
 		DB67F2D51908CCD9007567A9 /* lock_impl_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2D41908CCD9007567A9 /* lock_impl_POSIX.cpp */; };
+		DB67F2D71908D2A5007567A9 /* lock_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2D61908D2A5007567A9 /* lock_UNIT_TEST.cpp */; };
+		DB67F2DC1908F26D007567A9 /* condition_variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2DB1908F26D007567A9 /* condition_variable.cpp */; };
+		DB67F2E01908F9D6007567A9 /* condition_variable_impl_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2DE1908F9D6007567A9 /* condition_variable_impl_POSIX.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,7 +182,6 @@
 		DB67F26319084B43007567A9 /* thread_platform_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_platform_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB67F26919084CCB007567A9 /* lock_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock_impl.h; sourceTree = "<group>"; };
 		DB67F26B19084EF1007567A9 /* lock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock.cpp; sourceTree = "<group>"; };
-		DB67F26D19085AFF007567A9 /* build_debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = build_debug.h; sourceTree = "<group>"; };
 		DB67F2C519089BBC007567A9 /* core_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_config.h; sourceTree = "<group>"; };
 		DB67F2C619089BBC007567A9 /* gflags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gflags.h; sourceTree = "<group>"; };
 		DB67F2C719089BBC007567A9 /* log.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log.cc; sourceTree = "<group>"; };
@@ -188,6 +190,11 @@
 		DB67F2D119089E50007567A9 /* build_utils.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = build_utils.cc; sourceTree = "<group>"; };
 		DB67F2D219089E50007567A9 /* build_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_utils.h; sourceTree = "<group>"; };
 		DB67F2D41908CCD9007567A9 /* lock_impl_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock_impl_POSIX.cpp; sourceTree = "<group>"; };
+		DB67F2D61908D2A5007567A9 /* lock_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB67F2D91908F164007567A9 /* condition_variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = condition_variable.h; sourceTree = "<group>"; };
+		DB67F2DB1908F26D007567A9 /* condition_variable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = condition_variable.cpp; sourceTree = "<group>"; };
+		DB67F2DD1908F394007567A9 /* condition_variable_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = condition_variable_impl.h; sourceTree = "<group>"; };
+		DB67F2DE1908F9D6007567A9 /* condition_variable_impl_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = condition_variable_impl_POSIX.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,6 +531,7 @@
 			children = (
 				DB67F26719084B7D007567A9 /* detail */,
 				DB67F25D1908467A007567A9 /* lock.h */,
+				DB67F2D91908F164007567A9 /* condition_variable.h */,
 			);
 			path = synchronize;
 			sourceTree = "<group>";
@@ -543,7 +551,6 @@
 				DB67F2D119089E50007567A9 /* build_utils.cc */,
 				DB67F2D219089E50007567A9 /* build_utils.h */,
 				DB67F24C190644C6007567A9 /* build_config.h */,
-				DB67F26D19085AFF007567A9 /* build_debug.h */,
 			);
 			path = build;
 			sourceTree = "<group>";
@@ -571,9 +578,13 @@
 		DB67F26719084B7D007567A9 /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				DB67F2DB1908F26D007567A9 /* condition_variable.cpp */,
 				DB67F26B19084EF1007567A9 /* lock.cpp */,
 				DB67F26919084CCB007567A9 /* lock_impl.h */,
 				DB67F2D41908CCD9007567A9 /* lock_impl_POSIX.cpp */,
+				DB67F2D61908D2A5007567A9 /* lock_UNIT_TEST.cpp */,
+				DB67F2DD1908F394007567A9 /* condition_variable_impl.h */,
+				DB67F2DE1908F9D6007567A9 /* condition_variable_impl_POSIX.cpp */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -695,6 +706,7 @@
 				DB67F26519084B43007567A9 /* thread_platform_POSIX.cpp in Sources */,
 				DB67F2D319089E50007567A9 /* build_utils.cc in Sources */,
 				DB67F24019062FFA007567A9 /* gtest-filepath.cc in Sources */,
+				DB67F2D71908D2A5007567A9 /* lock_UNIT_TEST.cpp in Sources */,
 				DB67F24319062FFA007567A9 /* gtest-test-part.cc in Sources */,
 				DB67F24119062FFA007567A9 /* gtest-port.cc in Sources */,
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
@@ -704,10 +716,12 @@
 				DB67F18219062BC3007567A9 /* main.m in Sources */,
 				DB67F18F19062BC3007567A9 /* CMasterViewController.m in Sources */,
 				DB67F23F19062FFA007567A9 /* gtest-death-test.cc in Sources */,
+				DB67F2DC1908F26D007567A9 /* condition_variable.cpp in Sources */,
 				DB67F19219062BC3007567A9 /* CDetailViewController.mm in Sources */,
 				DB67F26419084B43007567A9 /* thread_platform_optional_IOS.mm in Sources */,
 				DB67F2CA19089BBC007567A9 /* log.cc in Sources */,
 				DB67F24519062FFA007567A9 /* gtest.cc in Sources */,
+				DB67F2E01908F9D6007567A9 /* condition_variable_impl_POSIX.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,7 +859,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vClientTemplateLib/vClientTemplateLib-Prefix.pch";
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
-				OTHER_CFLAGS = "-DDEBUG=1";
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";
 				WRAPPER_EXTENSION = app;
