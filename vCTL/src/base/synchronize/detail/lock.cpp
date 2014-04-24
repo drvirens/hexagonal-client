@@ -62,20 +62,23 @@ const TPlatformThreadID kNoThreadId = static_cast<TPlatformThreadID>(0);
   void TLock::AssertAcquired() const
   {
 #if defined(DEBUG)
-#else
-//do nothing
+    ASSERT( mOwnedByThread == true );
+    ASSERT( mOwningThreadId == TPlatformThread::CurrentID() );
 #endif
   }
   
 #if defined(DEBUG)
   void TLock::CheckHeldAndUnMark()
   {
+    ASSERT( mOwnedByThread == true );
+    ASSERT( mOwningThreadId == TPlatformThread::CurrentID() );
     mOwnedByThread = false;
     mOwningThreadId = kNoThreadId;
   }
   
   void TLock::CheckUnHeldAndMark()
   {
+    ASSERT( mOwnedByThread == false );
     mOwnedByThread = true;
     mOwningThreadId = TPlatformThread::CurrentID();
   }

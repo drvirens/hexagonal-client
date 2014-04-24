@@ -9,6 +9,7 @@
 #include <errno.h>
 #include "base/thread/thread_platform.h"
 #include "base/logging/log.h"
+#include "build/build_utils.h"
 
 #if defined(V_PLATFORM_ANDROID)
 #elif defined(V_PLATFORM_IOS)
@@ -63,8 +64,16 @@ void* TThreadParams::ThreadEntryFunction(void* aTThreadParamsPtr)
 {
   IThreadOptionalInterface<PosixOptionalImpl>::OnThreadMainEnter();
   
+  ASSERT( aTThreadParamsPtr != 0 );
   TThreadParams* tThis = static_cast<TThreadParams*>(aTThreadParamsPtr);
   IThreadMainEntryPoint* mainEntry = tThis->mMainEntry;
+  ASSERT( mainEntry != 0 );
+  
+  if( !aTThreadParamsPtr || !mainEntry )
+  {
+    LOG_ERROR << "";
+    return 0;
+  }
   
   if(EThreadPriority_Normal != tThis->mThreadPriority)
   {
@@ -88,7 +97,7 @@ TPlatformThreadHandle TPlatformThread::CurrentHandle()
 
 TPlatformThreadID TPlatformThread::CurrentID()
 {
-  //pthreads don't have concept of id so we need to cross over to kernel space
+  //pthreads don't have concept of id, unlike windows, so we need to cross over to kernel space
 #if defined(V_PLATFORM_DARWIN)
   return pthread_mach_thread_np(pthread_self());
 #elif defined(V_PLATFORM_ANDROID)
@@ -155,7 +164,7 @@ bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntry
   {
     params.Wait();
   }
-  
+  ASSERT( pthreadHandle == aThreadHandle->RawHandle() );
   if(pthreadHandle != aThreadHandle->RawHandle())
   {
     LOG_ERROR << "pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading";

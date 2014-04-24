@@ -31,10 +31,13 @@ namespace vbase
     bool mTagDidRun;
   };
   
-  TEST(UT_TPlatformThread, Trivial)
+  
+  MMyThreadMainEntry t;
+  TPlatformThreadHandle h;
+  TEST(UT_TPlatformThread, CreatePlatformThread)
   {
-    MMyThreadMainEntry t;
-    TPlatformThreadHandle h;
+//    MMyThreadMainEntry t;
+//    TPlatformThreadHandle h;
     ASSERT_FALSE( t.TagDidRun() );
     size_t aStackSize = 0;
     bool aJoinable = true;
