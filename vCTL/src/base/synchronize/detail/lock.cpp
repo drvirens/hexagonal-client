@@ -17,7 +17,7 @@ const TPlatformThreadID kNoThreadId = static_cast<TPlatformThreadID>(0);
   TLock::TLock()
     : mImpl()
   {
-#if defined(DEBUG)
+#if !defined(NDEBUG)
     mOwnedByThread = false;
     mOwningThreadId = kNoThreadId;
 #endif
@@ -25,7 +25,7 @@ const TPlatformThreadID kNoThreadId = static_cast<TPlatformThreadID>(0);
   
   TLock::~TLock()
   {
-#if defined(DEBUG)
+#if !defined(NDEBUG)
     ASSERT( !mOwnedByThread ); //should not be owned by any thread when exitting
     ASSERT( kNoThreadId == mOwningThreadId );
 #endif
@@ -34,14 +34,14 @@ const TPlatformThreadID kNoThreadId = static_cast<TPlatformThreadID>(0);
   void TLock::Acquire()
   {
     mImpl.DoLock();
-#if defined(DEBUG)
+#if !defined(NDEBUG)
     CheckUnHeldAndMark();
 #endif
   }
   
   void TLock::Release()
   {
-#if defined(DEBUG)
+#if !defined(NDEBUG)
     CheckHeldAndUnMark();
 #endif
     mImpl.DoUnLock();
@@ -50,7 +50,7 @@ const TPlatformThreadID kNoThreadId = static_cast<TPlatformThreadID>(0);
   bool TLock::Try()
   {
     bool r = mImpl.DoTry();
-#if defined(DEBUG)
+#if !defined(NDEBUG)
     if( r )
     {
       CheckUnHeldAndMark();
@@ -61,13 +61,13 @@ const TPlatformThreadID kNoThreadId = static_cast<TPlatformThreadID>(0);
   
   void TLock::AssertAcquired() const
   {
-#if defined(DEBUG)
+#if !defined(NDEBUG)
     ASSERT( mOwnedByThread == true );
     ASSERT( mOwningThreadId == TPlatformThread::CurrentID() );
 #endif
   }
   
-#if defined(DEBUG)
+#if !defined(NDEBUG)
   void TLock::CheckHeldAndUnMark()
   {
     ASSERT( mOwnedByThread == true );

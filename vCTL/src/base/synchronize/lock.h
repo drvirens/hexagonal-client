@@ -17,6 +17,11 @@
 namespace vbase
 {
 
+namespace detail
+{
+  class MConditionVariablePosixImpl;
+}
+  
 // ------------------------------------------------- TLock
   class TLock : private TNonCopyable<TLock>
   {
@@ -31,13 +36,18 @@ namespace vbase
   private:
     detail::TLockImpl mImpl;
     
-#if defined(DEBUG)
+#if !defined(NDEBUG)
     void CheckHeldAndUnMark();
     void CheckUnHeldAndMark();
   
     bool mOwnedByThread;               //am I owned by any thread?
     TPlatformThreadID mOwningThreadId; //if yes, who owes me?
 #endif
+
+#if defined(V_PLATFORM_POSIX)
+    friend class MConditionVariablePosixImpl;
+#endif
+
   };
   
 // ------------------------------------------------- TAutoLock

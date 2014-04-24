@@ -55,6 +55,10 @@ namespace detail
     void DoLock();
     void DoUnLock();
     
+#if defined(V_PLATFORM_POSIX)
+    TNativeLock* GetHandle() { return &mNativeLock; }
+#endif
+    
   private:
     TNativeLock mNativeLock;
   };
