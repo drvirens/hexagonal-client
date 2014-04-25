@@ -8,6 +8,7 @@
 
 #include <errno.h>
 #include <time.h> //for sleep::nanoseconds
+#include <sched.h> //for yield
 
 #include "base/time/time.h" //for sleep
 #include "base/thread/thread_platform.h"
@@ -20,7 +21,7 @@
 #if defined(V_PLATFORM_ANDROID)
 #elif defined(V_PLATFORM_IOS)
 
-  #include "base/thread/detail/thread_platform_optional_IOS.h"
+  #include "base/thread/detail/ios/thread_platform_optional_IOS.h"
 
   typedef IOSThreadOptionalImpl PosixOptionalImpl;
 
@@ -203,7 +204,11 @@ void TPlatformThread::SetPriority(TPlatformThreadHandle aThreadHandle, EThreadPr
 
 void TPlatformThread::Yield()
 {
-  
+  /**
+  TODO: Look into this later: In the Linux implementation, sched_yield() always succeeds.
+  http://man7.org/linux/man-pages/man2/sched_yield.2.html
+  */
+  V_PTHREAD_CALL( sched_yield() );
 }
 
 void TPlatformThread::Sleep(int64_t aSeconds)
@@ -229,14 +234,5 @@ void TPlatformThread::Sleep(int64_t aSeconds)
 #endif
 }
 
-void TPlatformThread::SetName(const char* Name)
-{
-  //TODO:
-}
+} //namespace vbase
 
-const char* TPlatformThread::Name()
-{
-  return 0; //TODO:
-}
-
-}

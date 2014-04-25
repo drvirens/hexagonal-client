@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#include "base/thread/detail/thread_platform_optional_IOS.h"
+#include "base/thread/detail/ios/thread_platform_optional_IOS.h"
 
 /**
  For multithreaded applications, Cocoa frameworks use locks and other forms of internal synchronization to ensure they behave correctly. To prevent these locks from degrading performance in the single-threaded case, however, Cocoa does not create them until the application spawns its first new thread using the NSThread class. If you spawn threads using only POSIX thread routines, Cocoa does not receive the notifications it needs to know that your application is now multithreaded. When that happens, operations involving the Cocoa frameworks may destabilize or crash your application.

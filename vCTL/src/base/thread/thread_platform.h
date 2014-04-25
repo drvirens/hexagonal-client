@@ -141,7 +141,7 @@ class TPlatformThread : private TNonCopyable<TPlatformThread>
     static void Sleep(int64_t aSeconds);
     
     //debug aid
-    static void SetName(const char* Name); //not copied
+    static void SetName(const char* aName); //not copied
     static const char* Name();
   };
   
