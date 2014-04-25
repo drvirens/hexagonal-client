@@ -9,44 +9,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../src/base/thread/detail/thread_platform_POSIX.cpp"
-            timestampString = "420076718.569222"
+            filePath = "../../../src/base/thread/detail/thread_platform_UNIT_TEST.cpp"
+            timestampString = "420096170.77569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "TPlatformThread::Join(TPlatformThreadHandle* aThreadHandle)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "vbase::TPlatformThread::Join(vbase::TPlatformThreadHandle*)"
-                  moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/detail/thread_platform_POSIX.cpp"
-                  timestampString = "420076741.973768"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "193"
-                  endingLineNumber = "193"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "vbase::TPlatformThread::Join(vbase::TPlatformThreadHandle*)"
-                  moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/detail/thread_platform_POSIX.cpp"
-                  timestampString = "420076741.97438"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "193"
-                  endingLineNumber = "193"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "TEST(UT_TPlatformThread, SleepForNSeconds)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -196,6 +196,7 @@
 		DB67F2DD1908F394007567A9 /* condition_variable_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = condition_variable_impl.h; sourceTree = "<group>"; };
 		DB67F2DE1908F9D6007567A9 /* condition_variable_impl_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = condition_variable_impl_POSIX.cpp; sourceTree = "<group>"; };
 		DB67F35F1909A028007567A9 /* error_handler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = error_handler.h; sourceTree = "<group>"; };
+		DB67F361190A115D007567A9 /* time.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = time.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +504,7 @@
 		DB67F23519062FFA007567A9 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				DB67F360190A114E007567A9 /* time */,
 				DB67F2C419089BBC007567A9 /* logging */,
 				DB67F23619062FFA007567A9 /* file */,
 				DB67F23719062FFA007567A9 /* memory */,
@@ -601,6 +603,14 @@
 				DB67F2C919089BBC007567A9 /* types.h */,
 			);
 			path = logging;
+			sourceTree = "<group>";
+		};
+		DB67F360190A114E007567A9 /* time */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F361190A115D007567A9 /* time.h */,
+			);
+			path = time;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

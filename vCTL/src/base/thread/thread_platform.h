@@ -130,10 +130,15 @@ class TPlatformThread : private TNonCopyable<TPlatformThread>
   public:
     static TPlatformThreadHandle CurrentHandle();
     static TPlatformThreadID CurrentID();
-    static bool Create(size_t aStackSize, bool aJoinable, IThreadMainEntryPoint* aMainENtry, TPlatformThreadHandle* aThreadHandle, EThreadPriority aPriority);
+    static bool Create(size_t aStackSize,
+                       bool aJoinable,
+                       IThreadMainEntryPoint* aMainENtry,
+                       TPlatformThreadHandle* aThreadHandle,
+                       EThreadPriority aPriority);
     static void Join(TPlatformThreadHandle* aThreadHandle);
     static void SetPriority(TPlatformThreadHandle aThreadHandle, EThreadPriority aPriority);
     static void Yield();
+    static void Sleep(int64_t aSeconds);
     
     //debug aid
     static void SetName(const char* Name); //not copied

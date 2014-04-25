@@ -29,11 +29,11 @@ DEFINE_int32(v, 0, "Show all VLOG(m) messages for m <= this.");
 DEFINE_int32(log_level, LogLevel_DEBUG, "The level at which we allow logging.");
 
 //viren+
-#if defined(RUN_UNIT_TESTS_ONLY)
-static const bool kDisableNonUnitTestLogging = true;
-#else
+//#if defined(RUN_UNIT_TESTS_ONLY)
 static const bool kDisableNonUnitTestLogging = false;
-#endif
+//#else
+//static const bool kDisableNonUnitTestLogging = false;
+//#endif
 DEFINE_bool(disable_log_if_running_unit_tests, kDisableNonUnitTestLogging, "If running gtests, dont print logs from the codebase");
 //viren-
 

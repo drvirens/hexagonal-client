@@ -23,6 +23,11 @@ namespace vbase
     virtual void MainEntry()
     {
       mTagDidRun = true;
+      for(int i = 0; i < 10; i++) //infinite
+      {
+        TPlatformThread::Sleep(5);
+      }
+      
     }
     
     bool TagDidRun() const { return mTagDidRun; }
@@ -32,17 +37,35 @@ namespace vbase
   };
   
   
-  TEST(UT_TPlatformThread, CreatePlatformThread)
+  static const size_t kStackSize = 0;
+  static const bool kJoinable = true;
+// ------------------------------------------------------------ CreatePlatformThread
+  TEST(UT_TPlatformThread, DISABLED_CreatePlatformThread)
   {
-    MMyThreadMainEntry t; // = new MMyThreadMainEntry();
-    TPlatformThreadHandle h; // = new TPlatformThreadHandle();
+    MMyThreadMainEntry t;
+    TPlatformThreadHandle h;
     ASSERT_FALSE( t.TagDidRun() );
-    size_t aStackSize = 0;
-    bool aJoinable = true;
+    
     EThreadPriority aPriority = EThreadPriority_Normal;
-    ASSERT_TRUE( TPlatformThread::Create(aStackSize, aJoinable, &t, &h, aPriority) );
+    ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, &t, &h, aPriority) );
     TPlatformThread::Join(&h);
     ASSERT_TRUE( t.TagDidRun() );
+  }
+
+// ------------------------------------------------------------ SleepForNSeconds
+  TEST(UT_TPlatformThread, SleepForNSeconds)
+  {
+    MMyThreadMainEntry thread;
+    TPlatformThreadHandle handle;
+    ASSERT_FALSE( thread.TagDidRun() );
+    
+    EThreadPriority aPriority = EThreadPriority_Normal;
+    ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, &thread, &handle, aPriority) );
+    
+//    TPlatformThread::Sleep(5);
+    
+    TPlatformThread::Join(&handle);
+    ASSERT_TRUE( thread.TagDidRun() );
   }
 } //vbase
 

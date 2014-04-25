@@ -7,6 +7,9 @@
 //
 
 #include <errno.h>
+#include <time.h> //for sleep::nanoseconds
+
+#include "base/time/time.h" //for sleep
 #include "base/thread/thread_platform.h"
 #include "base/logging/log.h"
 #include "build/build_utils.h"
@@ -201,6 +204,29 @@ void TPlatformThread::SetPriority(TPlatformThreadHandle aThreadHandle, EThreadPr
 void TPlatformThread::Yield()
 {
   
+}
+
+void TPlatformThread::Sleep(int64_t aSeconds)
+{
+  struct timespec requested;
+  struct timespec remaining;
+  requested.tv_sec = 0;
+  int64_t nanoSeconds = aSeconds * TTime::kNanoSecondsPerSecond;
+  requested.tv_nsec = (long)nanoSeconds;
+#if !defined(NDEBUG)
+  //LOG_INFO << "Sleep started";
+  //TODO: CHeck if thread has permissions to sleep. needs TLS to be implemented so do in phase2
+#endif
+  int e = nanosleep(&requested, &remaining);
+  
+  while( -1 == e && EINTR == errno ) //-1 == e interuppted by signal handler
+  {
+    requested = remaining;
+    nanosleep(&requested, &remaining);
+  }
+#if !defined(NDEBUG)
+  //LOG_INFO << "Sleep done";
+#endif
 }
 
 void TPlatformThread::SetName(const char* Name)
