@@ -30,7 +30,7 @@ DEFINE_int32(log_level, LogLevel_DEBUG, "The level at which we allow logging.");
 
 //viren+
 #if defined(RUN_UNIT_TESTS_ONLY)
-static const bool kDisableNonUnitTestLogging = false; // todo: //while running unit-tests, dont print logs
+static const bool kDisableNonUnitTestLogging = true;
 #else
 static const bool kDisableNonUnitTestLogging = false;
 #endif

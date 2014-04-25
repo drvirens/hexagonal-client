@@ -27,7 +27,8 @@ namespace vbase
 
 // -------------------------------------------------------------- typedefs
 #if defined(V_PLATFORM_POSIX)
-  typedef pid_t TPlatformThreadID;
+  //typedef pid_t TPlatformThreadID;
+  typedef unsigned int TPlatformThreadID;
   typedef pthread_t TThreadHandle;
 #elif defined(V_PLATFORM_WIN)
   typedef DWORD TPlatformThreadID;

@@ -32,17 +32,16 @@ namespace vbase
   };
   
   
-  MMyThreadMainEntry t;
-  TPlatformThreadHandle h;
-  TEST(UT_TPlatformThread, DISABLED_CreatePlatformThread)
+  TEST(UT_TPlatformThread, CreatePlatformThread)
   {
-//    MMyThreadMainEntry t;
-//    TPlatformThreadHandle h;
+    MMyThreadMainEntry t; // = new MMyThreadMainEntry();
+    TPlatformThreadHandle h; // = new TPlatformThreadHandle();
     ASSERT_FALSE( t.TagDidRun() );
     size_t aStackSize = 0;
     bool aJoinable = true;
     EThreadPriority aPriority = EThreadPriority_Normal;
     ASSERT_TRUE( TPlatformThread::Create(aStackSize, aJoinable, &t, &h, aPriority) );
+    TPlatformThread::Join(&h);
     ASSERT_TRUE( t.TagDidRun() );
   }
 } //vbase

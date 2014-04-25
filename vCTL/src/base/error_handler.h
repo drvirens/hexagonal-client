@@ -13,7 +13,7 @@
                               do \
                                 { \
                                   int thePThreadCallError = ( expr ); \
-                                  if ( 0 == thePThreadCallError ) \
+                                  if ( 0 != thePThreadCallError ) \
                                   { \
                                     LOG_ERROR << #expr << " : " << strerror(thePThreadCallError); \
                                   } \
@@ -23,7 +23,7 @@
                               do \
                               { \
                                 ( err ) = ( expr ); \
-                                if ( 0 == ( err ) ) \
+                                if ( 0 != ( err ) ) \
                                 { \
                                   LOG_ERROR << #expr << " : " << strerror( ( err ) ); \
                                 } \

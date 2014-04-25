@@ -195,6 +195,7 @@
 		DB67F2DB1908F26D007567A9 /* condition_variable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = condition_variable.cpp; sourceTree = "<group>"; };
 		DB67F2DD1908F394007567A9 /* condition_variable_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = condition_variable_impl.h; sourceTree = "<group>"; };
 		DB67F2DE1908F9D6007567A9 /* condition_variable_impl_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = condition_variable_impl_POSIX.cpp; sourceTree = "<group>"; };
+		DB67F35F1909A028007567A9 /* error_handler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = error_handler.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -508,6 +509,7 @@
 				DB67F23819062FFA007567A9 /* synchronize */,
 				DB67F23919062FFA007567A9 /* thread */,
 				DB67F24D19065186007567A9 /* non_copyable.h */,
+				DB67F35F1909A028007567A9 /* error_handler.h */,
 			);
 			path = base;
 			sourceTree = "<group>";

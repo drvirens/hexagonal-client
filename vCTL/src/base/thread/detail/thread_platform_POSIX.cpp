@@ -10,6 +10,9 @@
 #include "base/thread/thread_platform.h"
 #include "base/logging/log.h"
 #include "build/build_utils.h"
+#include "base/error_handler.h"
+#include "base/synchronize/lock.h"
+#include "base/synchronize/condition_variable.h"
 
 #if defined(V_PLATFORM_ANDROID)
 #elif defined(V_PLATFORM_IOS)
@@ -35,6 +38,8 @@ public:
     , mJoinable(false)
     , mThreadPriority(EThreadPriority_Normal)
     , mHandle(0)
+    , mConditionVariable(&mLock)
+    , mWaitCondition(false)
   {}
   
   TThreadParams(IThreadMainEntryPoint* aMainEntry, bool aJoinable, EThreadPriority aThreadPriority, TPlatformThreadHandle* aHandle)
@@ -42,11 +47,28 @@ public:
     , mJoinable(aJoinable)
     , mThreadPriority(aThreadPriority)
     , mHandle(aHandle)
-  {}
+    , mConditionVariable(&mLock)
+    , mWaitCondition(false)
+  {
+  }
   
   static void* ThreadEntryFunction(void* aTThreadParamsPtr);
   void Wait()
   {
+    mLock.Acquire();
+    mWaitCondition = false;
+    while(mWaitCondition == false) //while waitcondition is false
+    {
+      mConditionVariable.Wait();
+    }
+    mLock.Release();
+  }
+  void Signal()
+  {
+    mLock.Acquire();
+    mWaitCondition = true;
+    mConditionVariable.NotifyOne();
+    mLock.Release();
     
   }
   
@@ -56,6 +78,9 @@ private:
   EThreadPriority mThreadPriority;
   TPlatformThreadHandle* mHandle;
   //WaitableEvent
+  TLock mLock;
+  TConditionVariable mConditionVariable;
+  bool mWaitCondition;
 };
 
 // -------------------------------------------------------------- TPlatformThread impl
@@ -71,7 +96,7 @@ void* TThreadParams::ThreadEntryFunction(void* aTThreadParamsPtr)
   
   if( !aTThreadParamsPtr || !mainEntry )
   {
-    LOG_ERROR << "";
+    LOG_ERROR << "aTThreadParamsPtr or mainEntry was NULL";
     return 0;
   }
   
@@ -80,7 +105,10 @@ void* TThreadParams::ThreadEntryFunction(void* aTThreadParamsPtr)
     TPlatformThread::SetPriority(TPlatformThread::CurrentHandle(), tThis->mThreadPriority);
   }
   
-  *(tThis->mHandle) = TPlatformThread::CurrentHandle();
+  TPlatformThreadHandle th = TPlatformThread::TPlatformThread::CurrentHandle();
+  *(tThis->mHandle) = th;
+  
+  tThis->Signal();
   
   //TODO: Signal TPlatformThread::Create here
   mainEntry->MainEntry();
@@ -99,7 +127,8 @@ TPlatformThreadID TPlatformThread::CurrentID()
 {
   //pthreads don't have concept of id, unlike windows, so we need to cross over to kernel space
 #if defined(V_PLATFORM_DARWIN)
-  return pthread_mach_thread_np(pthread_self());
+  unsigned int r = pthread_mach_thread_np(pthread_self());
+  return r;
 #elif defined(V_PLATFORM_ANDROID)
   return gettid();
 #elif defined(V_PLATFORM_TIZEN)
@@ -116,21 +145,11 @@ bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntry
   int err = 0;
   
   pthread_attr_t attributes;
-  err = pthread_attr_init(&attributes);
-  if(0 != err) //error
-  {
-    errno = err;
-    LOG_ERROR << "Could not init pthread_attr_init";
-  }
+  V_PTHREAD_CALL( pthread_attr_init(&attributes) );
   
   if(!aJoinable)
   {
-    err = pthread_attr_setdetachstate(&attributes, PTHREAD_CREATE_DETACHED); //by default, pthread is joinable so explicitly make it detached if aJoinable==false
-    if( 0 != err)
-    {
-      errno = err;
-      LOG_ERROR << "Could not make thread un-joinable pthread_attr_setdetachstate error";
-    }
+    V_PTHREAD_CALL( pthread_attr_setdetachstate(&attributes, PTHREAD_CREATE_DETACHED) ); //by default, pthread is joinable so explicitly make it detached if aJoinable==false
   }
   
   if(0 == aStackSize)
@@ -139,17 +158,12 @@ bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntry
   }
   if(aStackSize > 0)
   {
-    err = pthread_attr_setstacksize(&attributes, aStackSize);
-    if( 0 != err)
-    {
-      errno = err;
-      LOG_ERROR << "Could not pthread_attr_setstacksize error";
-    }
+    V_PTHREAD_CALL( pthread_attr_setstacksize(&attributes, aStackSize) );
   }
   
   TThreadParams params(aMainENtry, aJoinable, aPriority, aThreadHandle);
   pthread_t pthreadHandle = 0;
-  err = pthread_create(&pthreadHandle, &attributes, &TThreadParams::ThreadEntryFunction, &params);
+  V_PTHREAD_CALL_RET_ERROR( pthread_create(&pthreadHandle, &attributes, &TThreadParams::ThreadEntryFunction, &params), err );
   ret = !err;
   if( 0 != err)
   {
@@ -168,7 +182,7 @@ bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntry
   if(pthreadHandle != aThreadHandle->RawHandle())
   {
     LOG_ERROR << "pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading";
-    return false;
+    //return false;
   }
 
   return ret;
@@ -176,7 +190,7 @@ bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntry
 
 void TPlatformThread::Join(TPlatformThreadHandle* aThreadHandle)
 {
-  
+  V_PTHREAD_CALL( pthread_join(aThreadHandle->RawHandle(), 0) );
 }
 
 void TPlatformThread::SetPriority(TPlatformThreadHandle aThreadHandle, EThreadPriority aPriority)

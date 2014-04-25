@@ -10,6 +10,7 @@
 #include "base/synchronize/lock.h"
 #include "base/synchronize/detail/condition_variable_impl.h"
 #include "base/logging/log.h"
+#include "base/error_handler.h"
 
 namespace vbase
 {
@@ -20,47 +21,27 @@ MConditionVariablePosixImpl::MConditionVariablePosixImpl(TLock* aLock)
   : mMutex(aLock->mImpl.GetHandle())
 {
   //Research Android support for support for this
-  int e = pthread_cond_init(&mCondition, 0);
-  if( 0 != e )
-  {
-    LOG_ERROR << "pthread_cond_init error: " << strerror(e);
-  }
+  V_PTHREAD_CALL( pthread_cond_init(&mCondition, 0) );
 }
 
 MConditionVariablePosixImpl::~MConditionVariablePosixImpl()
 {
-  int e = pthread_cond_destroy(&mCondition);
-  if( 0 != e )
-  {
-    LOG_ERROR << "pthread_cond_destroy error: " << strerror(e);
-  }
+  V_PTHREAD_CALL( pthread_cond_destroy(&mCondition) );
 }
 
 void MConditionVariablePosixImpl::DoWait()
 {
-  int e = pthread_cond_wait(&mCondition, mMutex);
-  if( 0 != e )
-  {
-    LOG_ERROR << "pthread_cond_wait error: " << strerror(e);
-  }
+  V_PTHREAD_CALL( pthread_cond_wait(&mCondition, mMutex) );
 }
 
 void MConditionVariablePosixImpl::DoNotifyOne()
 {
-  int e = pthread_cond_signal(&mCondition);
-  if( 0 != e )
-  {
-    LOG_ERROR << "pthread_cond_signal error: " << strerror(e);
-  }
+  V_PTHREAD_CALL( pthread_cond_signal(&mCondition) );
 }
 
 void MConditionVariablePosixImpl::DoNotifyAll()
 {
-  int e = pthread_cond_broadcast(&mCondition);
-  if( 0 != e )
-  {
-    LOG_ERROR << "pthread_cond_brodcast error: " << strerror(e);
-  }
+  V_PTHREAD_CALL( pthread_cond_broadcast(&mCondition) );
 }
 
 

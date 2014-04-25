@@ -30,6 +30,7 @@ namespace vbase
     }
     
     int Counter() const { return mCounter; }
+    void SetCounter(int aCounter) { mCounter = aCounter; }
     
   private:
     TLock& mLock; // protects mCOunter
@@ -40,16 +41,19 @@ namespace vbase
   TEST(UT_TLock, AcquireAndRelease)
   {
     TLock myLock;
-    MLockTestThread* t = new MLockTestThread(myLock);
-    TPlatformThreadHandle h;
+    MLockTestThread t(myLock); // = new MLockTestThread(myLock);
+    TPlatformThreadHandle h; // = new TPlatformThreadHandle();
+    t.SetCounter(0);
     
-    ASSERT_EQ(0, t->Counter());
+    ASSERT_EQ(0, t.Counter());
     
     size_t aStackSize = 0;
     bool aJoinable = true;
     EThreadPriority aPriority = EThreadPriority_Normal;
-    ASSERT_TRUE( TPlatformThread::Create(aStackSize, aJoinable, t, &h, aPriority) );
+    ASSERT_TRUE( TPlatformThread::Create(aStackSize, aJoinable, &t, &h, aPriority) );
+    TPlatformThread::Join(&h);
     
+    ASSERT_GT(t.Counter(), 0);
   }
 } //vbase
 

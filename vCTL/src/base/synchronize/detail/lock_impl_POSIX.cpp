@@ -42,19 +42,11 @@ namespace detail
   }
   void TLockImpl::DoLock()
   {
-    int e = pthread_mutex_lock(&mNativeLock);
-    if( 0 != e )
-    {
-      LOG_ERROR << "TLockImpl: pthread_mutex_lock error: "  << strerror(e);
-    }
+    V_PTHREAD_CALL( pthread_mutex_lock(&mNativeLock) );
   }
   void TLockImpl::DoUnLock()
   {
-    int e = pthread_mutex_unlock(&mNativeLock);
-    if( 0 != e )
-    {
-      LOG_ERROR << "TLockImpl: pthread_mutex_unlock error: "  << strerror(e);
-    }
+    V_PTHREAD_CALL( pthread_mutex_unlock(&mNativeLock) );
   }
   
 } //vbase
