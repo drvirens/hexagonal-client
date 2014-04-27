@@ -35,6 +35,7 @@ void TLooplessThread::MainEntry()
     mConditionVariable.NotifyOne(); //Wait in TLooplessThread::Start()
     mLock.Release();
   }
+  Run();
 }
 
 void TLooplessThread::Start()
@@ -70,7 +71,6 @@ void TLooplessThread::Start()
     mLock.Release();
   }
   
-  Run();
 }
 
 void TLooplessThread::Join()

@@ -11,6 +11,8 @@
 #include "base/thread/thread_un_safe.h"
 #include "base/thread/detail/thread_un_safe_debug.h"
 #include "base/thread/detail/thread_un_safe_production.h"
+#include "base/thread/thread_loopless.h"
+#include "base/non_copyable.h"
 #include "3p/google/gtest/include/gtest/gtest.h"
 
 namespace vbase
@@ -44,5 +46,43 @@ namespace vbase
     MyThreadUnSafeClass t;
     t.Foo();
   }
+  
+// ---------------------
+  class FooCallerThread
+  : public TLooplessThread
+  , private TNonCopyable<FooCallerThread>
+  {
+  public:
+    explicit FooCallerThread(std::string& aThreadName, MyThreadUnSafeClass* aMyThreadUnSafeClass)
+    : TLooplessThread(aThreadName)
+    , mDidRun(false)
+    , mMyThreadUnSafeClass(aMyThreadUnSafeClass)
+    {}
+    
+    virtual void Run()
+    {
+      mDidRun = true;
+      mMyThreadUnSafeClass->Foo(); //should assert for IsNotThreadSafe-test
+    }
+    
+    bool GetDidRunTag() const { return mDidRun; }
+  private:
+    bool mDidRun;
+    MyThreadUnSafeClass* mMyThreadUnSafeClass;
+  };
+
+  TEST(UT_TThreadUnSafe, IsNotThreadSafe)
+  {
+    //constructor allocated on this thread, so should not call Foo() on other thread
+    MyThreadUnSafeClass* ctorThread = new MyThreadUnSafeClass();
+    
+    std::string threadName = "viren-loopless-thread";
+    FooCallerThread looplessThread(threadName, ctorThread);
+    EXPECT_TRUE(looplessThread.GetDidRunTag() == false);
+    looplessThread.Start();
+    looplessThread.Join();
+    EXPECT_TRUE(looplessThread.GetDidRunTag() == true);
+  }
+
   
 } // namespace vbase

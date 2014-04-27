@@ -15,6 +15,9 @@
 #include "base/thread/detail/thread_un_safe_production.h"
 #endif
 
+#include "build/build_utils.h"
+#include "base/logging/log.h"
+
 
 //find out if a given class is calling the methods on valid thread
 //DESIGN: this framework supports message-passing as a way of communicating between multiple threads.
@@ -46,7 +49,12 @@ namespace vbase
     //assert that c++ object is calling the method on same thread on which its' constructor ran
     void AssertValidThreadCall()
     {
-      mThreadSafe.AssertValidThreadCall();
+      bool r = mThreadSafe.AssertValidThreadCall();
+      ASSERT(r == true);
+      if( r == false )
+      {
+        LOG_FATAL << "AssertValidThreadCall failed indicating : you can call methods on the thread that created it unless you disown the thread";
+      }
     }
     
   protected:
