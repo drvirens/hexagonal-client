@@ -70,10 +70,11 @@ namespace vbase
     bool mDidRun;
     MyThreadUnSafeClass* mMyThreadUnSafeClass;
   };
-
-  TEST(UT_TThreadUnSafe, IsNotThreadSafe)
+  
+  //since it calls Foo in other thread, program should abort
+  void CanNotCallMethodOnOtherThreadTest()
   {
-    //constructor allocated on this thread, so should not call Foo() on other thread
+      //constructor allocated on this thread, so should not call Foo() on other thread
     MyThreadUnSafeClass* ctorThread = new MyThreadUnSafeClass();
     
     std::string threadName = "viren-loopless-thread";
@@ -83,6 +84,20 @@ namespace vbase
     looplessThread.Join();
     EXPECT_TRUE(looplessThread.GetDidRunTag() == true);
   }
+
+#if !defined(NDEBUG)
+  TEST(UT_TThreadUnSafe, CanNotCallMethodOnOtherThreadInDebug)
+  {
+    ASSERT_DEATH({ CanNotCallMethodOnOtherThreadTest(); }, "");
+  }
+#else
+  TEST(UT_TThreadUnSafe, CanCallMethodOnOtherThreadInProduction)
+  {
+    CanNotCallMethodOnOtherThreadTest();
+  }
+#endif
+
+  
 
   
 } // namespace vbase

@@ -30,7 +30,7 @@
 //        if you want to talk with other threads to do some work, then you do that by using
 //        the messages. (link here to message class later when it is designed)
 //        the messages are generally POSTED to other threads, alongiwth callbacks, if any.
-//        the other thread will do the job and call your callback (on your own thread).
+//        the other thread will do the job and call your callback (on your own thread???).
 
 namespace vbase
 {
