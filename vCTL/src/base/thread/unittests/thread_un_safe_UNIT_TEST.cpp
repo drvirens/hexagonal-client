@@ -25,20 +25,24 @@ namespace vbase
     }
     void Foo()
     {
-      TNotThreadSafe::AssertValidThreadCall();
+      AssertValidThreadCall();
+    }
+    void DiwOwnThread()
+    {
+      DisOwnThread();
     }
   };
   
   TEST(UT_TThreadUnSafe, ThreadUnSafeTrivial)
   {
     TNotThreadSafe tud;
-    //TThreadUnSafe<TThreadUnSafe_Debug> tud;
     tud.AssertValidThreadCall();
   }
   
   TEST(UT_TThreadUnSafe, DeriveFromThreadUnSafe)
   {
     MyThreadUnSafeClass t;
+    t.Foo();
   }
   
 } // namespace vbase

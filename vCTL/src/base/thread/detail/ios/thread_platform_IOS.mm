@@ -28,7 +28,7 @@ const char* TPlatformThread::Name()
 {
   char* name = new char[kMaxThreadNameLength + 1];
   V_PTHREAD_CALL( pthread_getname_np(TPlatformThread::CurrentHandle().RawHandle(), name, kMaxThreadNameLength) );
-  LOG_INFO << "ThreadName: " << name;
+  //LOG_INFO << "ThreadName: " << name;
   return name;
 }
 

@@ -32,20 +32,21 @@
 		DB67F24519062FFA007567A9 /* gtest.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB67F1E619062FFA007567A9 /* gtest.cc */; };
 		DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F25319074530007567A9 /* unitest_run_all.cpp */; };
 		DB67F26519084B43007567A9 /* thread_platform_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F26219084B43007567A9 /* thread_platform_POSIX.cpp */; };
-		DB67F26619084B43007567A9 /* thread_platform_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F26319084B43007567A9 /* thread_platform_UNIT_TEST.cpp */; };
 		DB67F26C19084EF1007567A9 /* lock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F26B19084EF1007567A9 /* lock.cpp */; };
 		DB67F2CA19089BBC007567A9 /* log.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2C719089BBC007567A9 /* log.cc */; };
 		DB67F2D319089E50007567A9 /* build_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2D119089E50007567A9 /* build_utils.cc */; };
 		DB67F2D51908CCD9007567A9 /* lock_impl_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2D41908CCD9007567A9 /* lock_impl_POSIX.cpp */; };
-		DB67F2D71908D2A5007567A9 /* lock_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2D61908D2A5007567A9 /* lock_UNIT_TEST.cpp */; };
 		DB67F2DC1908F26D007567A9 /* condition_variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2DB1908F26D007567A9 /* condition_variable.cpp */; };
 		DB67F2E01908F9D6007567A9 /* condition_variable_impl_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2DE1908F9D6007567A9 /* condition_variable_impl_POSIX.cpp */; };
 		DB67F365190A3BDA007567A9 /* thread_platform_IOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F364190A3BDA007567A9 /* thread_platform_IOS.mm */; };
 		DB67F368190A3CA5007567A9 /* thread_platform_optional_IOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F367190A3CA5007567A9 /* thread_platform_optional_IOS.mm */; };
 		DB67F38A190C9166007567A9 /* run_loop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F388190C9166007567A9 /* run_loop.cpp */; };
-		DB67F38D190C9200007567A9 /* thread_un_safe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F38B190C9200007567A9 /* thread_un_safe.cpp */; };
-		DB67F38F190C990E007567A9 /* thread_un_safe_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F38E190C990E007567A9 /* thread_un_safe_UNIT_TEST.cpp */; };
 		DB67F392190C9934007567A9 /* thread_un_safe_debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F390190C9934007567A9 /* thread_un_safe_debug.cpp */; };
+		DB67F39A190CE7F6007567A9 /* thread_loopless.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F399190CE7F6007567A9 /* thread_loopless.cpp */; };
+		DB67F39E190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F39C190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp */; };
+		DB67F39F190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F39D190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp */; };
+		DB67F3A2190CE878007567A9 /* lock_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F3A1190CE878007567A9 /* lock_UNIT_TEST.cpp */; };
+		DB67F3A4190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F3A3190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,7 +183,6 @@
 		DB67F25419074530007567A9 /* unitest_run_all.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unitest_run_all.h; sourceTree = "<group>"; };
 		DB67F25D1908467A007567A9 /* lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock.h; sourceTree = "<group>"; };
 		DB67F26219084B43007567A9 /* thread_platform_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_platform_POSIX.cpp; sourceTree = "<group>"; };
-		DB67F26319084B43007567A9 /* thread_platform_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_platform_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB67F26919084CCB007567A9 /* lock_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock_impl.h; sourceTree = "<group>"; };
 		DB67F26B19084EF1007567A9 /* lock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock.cpp; sourceTree = "<group>"; };
 		DB67F2C519089BBC007567A9 /* core_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_config.h; sourceTree = "<group>"; };
@@ -193,7 +193,6 @@
 		DB67F2D119089E50007567A9 /* build_utils.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = build_utils.cc; sourceTree = "<group>"; };
 		DB67F2D219089E50007567A9 /* build_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_utils.h; sourceTree = "<group>"; };
 		DB67F2D41908CCD9007567A9 /* lock_impl_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock_impl_POSIX.cpp; sourceTree = "<group>"; };
-		DB67F2D61908D2A5007567A9 /* lock_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB67F2D91908F164007567A9 /* condition_variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = condition_variable.h; sourceTree = "<group>"; };
 		DB67F2DB1908F26D007567A9 /* condition_variable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = condition_variable.cpp; sourceTree = "<group>"; };
 		DB67F2DD1908F394007567A9 /* condition_variable_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = condition_variable_impl.h; sourceTree = "<group>"; };
@@ -205,12 +204,16 @@
 		DB67F367190A3CA5007567A9 /* thread_platform_optional_IOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = thread_platform_optional_IOS.mm; sourceTree = "<group>"; };
 		DB67F388190C9166007567A9 /* run_loop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = run_loop.cpp; sourceTree = "<group>"; };
 		DB67F389190C9166007567A9 /* run_loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_loop.h; sourceTree = "<group>"; };
-		DB67F38B190C9200007567A9 /* thread_un_safe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_un_safe.cpp; sourceTree = "<group>"; };
 		DB67F38C190C9200007567A9 /* thread_un_safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_un_safe.h; sourceTree = "<group>"; };
-		DB67F38E190C990E007567A9 /* thread_un_safe_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_un_safe_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB67F390190C9934007567A9 /* thread_un_safe_debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_un_safe_debug.cpp; sourceTree = "<group>"; };
 		DB67F391190C9934007567A9 /* thread_un_safe_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_un_safe_debug.h; sourceTree = "<group>"; };
 		DB67F394190C9C2F007567A9 /* thread_un_safe_production.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_un_safe_production.h; sourceTree = "<group>"; };
+		DB67F397190CE7DF007567A9 /* thread_loopless.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_loopless.h; sourceTree = "<group>"; };
+		DB67F399190CE7F6007567A9 /* thread_loopless.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopless.cpp; sourceTree = "<group>"; };
+		DB67F39C190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_platform_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB67F39D190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_un_safe_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB67F3A1190CE878007567A9 /* lock_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB67F3A3190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopless_UNIT_TEST.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -548,6 +551,7 @@
 		DB67F23819062FFA007567A9 /* synchronize */ = {
 			isa = PBXGroup;
 			children = (
+				DB67F3A0190CE878007567A9 /* unittests */,
 				DB67F26719084B7D007567A9 /* detail */,
 				DB67F25D1908467A007567A9 /* lock.h */,
 				DB67F2D91908F164007567A9 /* condition_variable.h */,
@@ -558,10 +562,11 @@
 		DB67F23919062FFA007567A9 /* thread */ = {
 			isa = PBXGroup;
 			children = (
+				DB67F39B190CE85A007567A9 /* unittests */,
 				DB67F25F19084B43007567A9 /* detail */,
 				DB67F24919064421007567A9 /* thread_platform.h */,
-				DB67F38B190C9200007567A9 /* thread_un_safe.cpp */,
 				DB67F38C190C9200007567A9 /* thread_un_safe.h */,
+				DB67F397190CE7DF007567A9 /* thread_loopless.h */,
 			);
 			path = thread;
 			sourceTree = "<group>";
@@ -588,11 +593,10 @@
 		DB67F25F19084B43007567A9 /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				DB67F399190CE7F6007567A9 /* thread_loopless.cpp */,
 				DB67F362190A3BB0007567A9 /* android */,
 				DB67F363190A3BB0007567A9 /* ios */,
 				DB67F26219084B43007567A9 /* thread_platform_POSIX.cpp */,
-				DB67F26319084B43007567A9 /* thread_platform_UNIT_TEST.cpp */,
-				DB67F38E190C990E007567A9 /* thread_un_safe_UNIT_TEST.cpp */,
 				DB67F390190C9934007567A9 /* thread_un_safe_debug.cpp */,
 				DB67F391190C9934007567A9 /* thread_un_safe_debug.h */,
 				DB67F394190C9C2F007567A9 /* thread_un_safe_production.h */,
@@ -607,7 +611,6 @@
 				DB67F26B19084EF1007567A9 /* lock.cpp */,
 				DB67F26919084CCB007567A9 /* lock_impl.h */,
 				DB67F2D41908CCD9007567A9 /* lock_impl_POSIX.cpp */,
-				DB67F2D61908D2A5007567A9 /* lock_UNIT_TEST.cpp */,
 				DB67F2DD1908F394007567A9 /* condition_variable_impl.h */,
 				DB67F2DE1908F9D6007567A9 /* condition_variable_impl_POSIX.cpp */,
 			);
@@ -658,6 +661,24 @@
 				DB67F389190C9166007567A9 /* run_loop.h */,
 			);
 			path = runloop;
+			sourceTree = "<group>";
+		};
+		DB67F39B190CE85A007567A9 /* unittests */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F39C190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp */,
+				DB67F39D190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp */,
+				DB67F3A3190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp */,
+			);
+			path = unittests;
+			sourceTree = "<group>";
+		};
+		DB67F3A0190CE878007567A9 /* unittests */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F3A1190CE878007567A9 /* lock_UNIT_TEST.cpp */,
+			);
+			path = unittests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -759,30 +780,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB67F38D190C9200007567A9 /* thread_un_safe.cpp in Sources */,
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
 				DB67F24419062FFA007567A9 /* gtest-typed-test.cc in Sources */,
 				DB67F26C19084EF1007567A9 /* lock.cpp in Sources */,
 				DB67F38A190C9166007567A9 /* run_loop.cpp in Sources */,
 				DB67F26519084B43007567A9 /* thread_platform_POSIX.cpp in Sources */,
 				DB67F365190A3BDA007567A9 /* thread_platform_IOS.mm in Sources */,
+				DB67F3A4190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp in Sources */,
+				DB67F39F190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp in Sources */,
 				DB67F2D319089E50007567A9 /* build_utils.cc in Sources */,
 				DB67F24019062FFA007567A9 /* gtest-filepath.cc in Sources */,
-				DB67F2D71908D2A5007567A9 /* lock_UNIT_TEST.cpp in Sources */,
 				DB67F24319062FFA007567A9 /* gtest-test-part.cc in Sources */,
 				DB67F24119062FFA007567A9 /* gtest-port.cc in Sources */,
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
+				DB67F39A190CE7F6007567A9 /* thread_loopless.cpp in Sources */,
 				DB67F2D51908CCD9007567A9 /* lock_impl_POSIX.cpp in Sources */,
-				DB67F26619084B43007567A9 /* thread_platform_UNIT_TEST.cpp in Sources */,
 				DB67F24219062FFA007567A9 /* gtest-printers.cc in Sources */,
 				DB67F18219062BC3007567A9 /* main.m in Sources */,
-				DB67F38F190C990E007567A9 /* thread_un_safe_UNIT_TEST.cpp in Sources */,
 				DB67F18F19062BC3007567A9 /* CMasterViewController.m in Sources */,
 				DB67F368190A3CA5007567A9 /* thread_platform_optional_IOS.mm in Sources */,
 				DB67F23F19062FFA007567A9 /* gtest-death-test.cc in Sources */,
 				DB67F2DC1908F26D007567A9 /* condition_variable.cpp in Sources */,
+				DB67F3A2190CE878007567A9 /* lock_UNIT_TEST.cpp in Sources */,
 				DB67F392190C9934007567A9 /* thread_un_safe_debug.cpp in Sources */,
 				DB67F19219062BC3007567A9 /* CDetailViewController.mm in Sources */,
+				DB67F39E190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp in Sources */,
 				DB67F2CA19089BBC007567A9 /* log.cc in Sources */,
 				DB67F24519062FFA007567A9 /* gtest.cc in Sources */,
 				DB67F2E01908F9D6007567A9 /* condition_variable_impl_POSIX.cpp in Sources */,

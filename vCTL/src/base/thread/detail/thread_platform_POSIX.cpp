@@ -57,6 +57,7 @@ public:
   }
   
   static void* ThreadEntryFunction(void* aTThreadParamsPtr);
+  
   void Wait()
   {
     mLock.Acquire();
@@ -67,6 +68,7 @@ public:
     }
     mLock.Release();
   }
+  
   void Signal()
   {
     mLock.Acquire();
@@ -112,7 +114,7 @@ void* TThreadParams::ThreadEntryFunction(void* aTThreadParamsPtr)
   TPlatformThreadHandle th = TPlatformThread::TPlatformThread::CurrentHandle();
   *(tThis->mHandle) = th;
   
-  tThis->Signal();
+  tThis->Signal(); //Signal for Wait in TPlatformThread::Create
   
   //TODO: Signal TPlatformThread::Create here
   mainEntry->MainEntry();
@@ -180,7 +182,7 @@ bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntry
   //wait until thread id is set in the handle (which happens in ThreadEntryPoint)
   if(ret)
   {
-    params.Wait();
+    params.Wait(); //Wait to be signalled in TThreadParams::ThreadEntryFunction
   }
   ASSERT( pthreadHandle == aThreadHandle->RawHandle() );
   if(pthreadHandle != aThreadHandle->RawHandle())
@@ -218,10 +220,7 @@ void TPlatformThread::Sleep(int64_t aSeconds)
   requested.tv_sec = 0;
   int64_t nanoSeconds = aSeconds * TTime::kNanoSecondsPerSecond;
   requested.tv_nsec = (long)nanoSeconds;
-#if !defined(NDEBUG)
-  //LOG_INFO << "Sleep started";
   //TODO: CHeck if thread has permissions to sleep. needs TLS to be implemented so do in phase2
-#endif
   int e = nanosleep(&requested, &remaining);
   
   while( -1 == e && EINTR == errno ) //-1 == e interuppted by signal handler
@@ -229,9 +228,6 @@ void TPlatformThread::Sleep(int64_t aSeconds)
     requested = remaining;
     nanosleep(&requested, &remaining);
   }
-#if !defined(NDEBUG)
-  //LOG_INFO << "Sleep done";
-#endif
 }
 
 } //namespace vbase
