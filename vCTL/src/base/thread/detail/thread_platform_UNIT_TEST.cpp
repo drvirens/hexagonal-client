@@ -155,5 +155,6 @@ namespace vbase
     ASSERT_TRUE( threadEntry.TagDidRun() );
   }
 
-} //vbase
+} //namespace vbase
+
 
