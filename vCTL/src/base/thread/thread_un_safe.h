@@ -9,7 +9,7 @@
 #ifndef __vClientTemplateLib__thread_un_safe__
 #define __vClientTemplateLib__thread_un_safe__
 
-#if defined(NDEBUG)
+#if !defined(NDEBUG)
 #include "base/thread/detail/thread_un_safe_debug.h"
 #else
 #include "base/thread/detail/thread_un_safe_production.h"
@@ -41,23 +41,34 @@ namespace vbase
     }
     ~TThreadUnSafe()
     {
-      THREAD_UNSAFE::AssertValidThreadCall();
+      mThreadSafe.AssertValidThreadCall();
     }
     //assert that c++ object is calling the method on same thread on which its' constructor ran
     void AssertValidThreadCall()
     {
-      THREAD_UNSAFE::AssertValidThreadCall();
+      mThreadSafe.AssertValidThreadCall();
     }
-  private:
-    //disown this thread.
+    
+  protected:
+    //disown the thread on which the object was created. this is
+    //more like what Siddhartha did lol disowned his family
+    //after this call, the c++ object will be able to call its methods
+    //on different thread.
+    //this method is protected and the derivers of this class
+    //should prolly always keep this method private and not expose
+    //to outside world. but the flexibility is given here to do
+    //whatever the fuck you wanna do with your derived class object.
     void DisOwnThread()
     {
-      THREAD_UNSAFE::DisOwnThread();
+      mThreadSafe.DisOwnThread();
     }
+    
+  private:
+    THREAD_UNSAFE mThreadSafe;
   };
   
 
-#if defined(NDEBUG)
+#if !defined(NDEBUG)
   typedef TThreadUnSafe<TThreadUnSafe_Debug> TNotThreadSafe;
 #else
   typedef TThreadUnSafe<TThreadUnSafe_Production> TNotThreadSafe;

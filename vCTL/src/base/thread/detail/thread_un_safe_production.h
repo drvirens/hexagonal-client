@@ -15,8 +15,8 @@ namespace vbase
   class TThreadUnSafe_Production
   {
   public:
-    static void AssertValidThreadCall() {}
-    static void DisOwnThread() {}
+    bool AssertValidThreadCall() { return true; }
+    void DisOwnThread() {}
   };
   
 } //namespace vbase

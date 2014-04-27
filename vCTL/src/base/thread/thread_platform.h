@@ -78,7 +78,7 @@ class TPlatformThreadHandle
   };
   
 // --------------------------------------------------------------
-const TPlatformThreadHandle kInvalidThreadID(0);
+const TPlatformThreadID kInvalidThreadID(0);
  
 // -------------------------------------------------------------- EThreadPriority
 enum EThreadPriority

@@ -51,7 +51,7 @@ namespace detail
   };
   
 // ------------------------------------------------- TAutoLock
-  class TAutoLock //lock-RAII
+  class TAutoLock : private TNonCopyable<TAutoLock> //lock-RAII
   {
   public:
     explicit TAutoLock(TLock& aLock)
