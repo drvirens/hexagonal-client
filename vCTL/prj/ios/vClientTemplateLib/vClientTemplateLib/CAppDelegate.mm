@@ -20,12 +20,15 @@
 #if defined RUN_UNIT_TESTS
   RunUnitTests();
 #endif
+
+#if 0
     // Override point for customization after application launch.
   if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
       UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
       UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
       splitViewController.delegate = (id)navigationController.topViewController;
   }
+#endif
     return YES;
 }
 							

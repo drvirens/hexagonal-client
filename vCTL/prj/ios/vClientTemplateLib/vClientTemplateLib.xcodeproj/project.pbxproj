@@ -13,10 +13,6 @@
 		DB67F18019062BC3007567A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB67F17E19062BC3007567A9 /* InfoPlist.strings */; };
 		DB67F18219062BC3007567A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB67F18119062BC3007567A9 /* main.m */; };
 		DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F18519062BC3007567A9 /* CAppDelegate.mm */; };
-		DB67F18919062BC3007567A9 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB67F18719062BC3007567A9 /* Main_iPhone.storyboard */; };
-		DB67F18C19062BC3007567A9 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB67F18A19062BC3007567A9 /* Main_iPad.storyboard */; };
-		DB67F18F19062BC3007567A9 /* CMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB67F18E19062BC3007567A9 /* CMasterViewController.m */; };
-		DB67F19219062BC3007567A9 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F19119062BC3007567A9 /* CDetailViewController.mm */; };
 		DB67F19419062BC3007567A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB67F19319062BC3007567A9 /* Images.xcassets */; };
 		DB67F19B19062BC3007567A9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F19A19062BC3007567A9 /* XCTest.framework */; };
 		DB67F19C19062BC3007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17519062BC3007567A9 /* Foundation.framework */; };
@@ -40,13 +36,13 @@
 		DB67F2E01908F9D6007567A9 /* condition_variable_impl_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2DE1908F9D6007567A9 /* condition_variable_impl_POSIX.cpp */; };
 		DB67F365190A3BDA007567A9 /* thread_platform_IOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F364190A3BDA007567A9 /* thread_platform_IOS.mm */; };
 		DB67F368190A3CA5007567A9 /* thread_platform_optional_IOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F367190A3CA5007567A9 /* thread_platform_optional_IOS.mm */; };
-		DB67F38A190C9166007567A9 /* run_loop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F388190C9166007567A9 /* run_loop.cpp */; };
 		DB67F392190C9934007567A9 /* thread_un_safe_debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F390190C9934007567A9 /* thread_un_safe_debug.cpp */; };
 		DB67F39A190CE7F6007567A9 /* thread_loopless.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F399190CE7F6007567A9 /* thread_loopless.cpp */; };
 		DB67F39E190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F39C190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp */; };
 		DB67F39F190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F39D190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp */; };
 		DB67F3A2190CE878007567A9 /* lock_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F3A1190CE878007567A9 /* lock_UNIT_TEST.cpp */; };
 		DB67F3A4190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F3A3190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp */; };
+		DB67F3AD190DD18F007567A9 /* run_loop_DARWIN.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F3AC190DD18F007567A9 /* run_loop_DARWIN.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,12 +66,6 @@
 		DB67F18319062BC3007567A9 /* vClientTemplateLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vClientTemplateLib-Prefix.pch"; sourceTree = "<group>"; };
 		DB67F18419062BC3007567A9 /* CAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAppDelegate.h; sourceTree = "<group>"; };
 		DB67F18519062BC3007567A9 /* CAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CAppDelegate.mm; sourceTree = "<group>"; };
-		DB67F18819062BC3007567A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		DB67F18B19062BC3007567A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		DB67F18D19062BC3007567A9 /* CMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
-		DB67F18E19062BC3007567A9 /* CMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMasterViewController.m; sourceTree = "<group>"; };
-		DB67F19019062BC3007567A9 /* CDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
-		DB67F19119062BC3007567A9 /* CDetailViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
 		DB67F19319062BC3007567A9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DB67F19919062BC3007567A9 /* vClientTemplateLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vClientTemplateLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB67F19A19062BC3007567A9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -202,7 +192,6 @@
 		DB67F364190A3BDA007567A9 /* thread_platform_IOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = thread_platform_IOS.mm; sourceTree = "<group>"; };
 		DB67F366190A3CA5007567A9 /* thread_platform_optional_IOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_platform_optional_IOS.h; sourceTree = "<group>"; };
 		DB67F367190A3CA5007567A9 /* thread_platform_optional_IOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = thread_platform_optional_IOS.mm; sourceTree = "<group>"; };
-		DB67F388190C9166007567A9 /* run_loop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = run_loop.cpp; sourceTree = "<group>"; };
 		DB67F389190C9166007567A9 /* run_loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_loop.h; sourceTree = "<group>"; };
 		DB67F38C190C9200007567A9 /* thread_un_safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_un_safe.h; sourceTree = "<group>"; };
 		DB67F390190C9934007567A9 /* thread_un_safe_debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_un_safe_debug.cpp; sourceTree = "<group>"; };
@@ -214,6 +203,8 @@
 		DB67F39D190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_un_safe_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB67F3A1190CE878007567A9 /* lock_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB67F3A3190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopless_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB67F3AA190DD16B007567A9 /* run_loop_DARWIN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_loop_DARWIN.h; sourceTree = "<group>"; };
+		DB67F3AC190DD18F007567A9 /* run_loop_DARWIN.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_DARWIN.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,12 +267,6 @@
 			children = (
 				DB67F18419062BC3007567A9 /* CAppDelegate.h */,
 				DB67F18519062BC3007567A9 /* CAppDelegate.mm */,
-				DB67F18719062BC3007567A9 /* Main_iPhone.storyboard */,
-				DB67F18A19062BC3007567A9 /* Main_iPad.storyboard */,
-				DB67F18D19062BC3007567A9 /* CMasterViewController.h */,
-				DB67F18E19062BC3007567A9 /* CMasterViewController.m */,
-				DB67F19019062BC3007567A9 /* CDetailViewController.h */,
-				DB67F19119062BC3007567A9 /* CDetailViewController.mm */,
 				DB67F19319062BC3007567A9 /* Images.xcassets */,
 				DB67F17C19062BC3007567A9 /* Supporting Files */,
 			);
@@ -657,7 +642,8 @@
 		DB67F387190C913A007567A9 /* runloop */ = {
 			isa = PBXGroup;
 			children = (
-				DB67F388190C9166007567A9 /* run_loop.cpp */,
+				DB67F3A5190DD11E007567A9 /* detail */,
+				DB67F3A8190DD11E007567A9 /* unittests */,
 				DB67F389190C9166007567A9 /* run_loop.h */,
 			);
 			path = runloop;
@@ -677,6 +663,38 @@
 			isa = PBXGroup;
 			children = (
 				DB67F3A1190CE878007567A9 /* lock_UNIT_TEST.cpp */,
+			);
+			path = unittests;
+			sourceTree = "<group>";
+		};
+		DB67F3A5190DD11E007567A9 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F3A6190DD11E007567A9 /* darwin */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		DB67F3A6190DD11E007567A9 /* darwin */ = {
+			isa = PBXGroup;
+			children = (
+				DB67F3A7190DD11E007567A9 /* ios */,
+				DB67F3AA190DD16B007567A9 /* run_loop_DARWIN.h */,
+				DB67F3AC190DD18F007567A9 /* run_loop_DARWIN.mm */,
+			);
+			path = darwin;
+			sourceTree = "<group>";
+		};
+		DB67F3A7190DD11E007567A9 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		DB67F3A8190DD11E007567A9 /* unittests */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = unittests;
 			sourceTree = "<group>";
@@ -758,9 +776,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB67F18C19062BC3007567A9 /* Main_iPad.storyboard in Resources */,
 				DB67F19419062BC3007567A9 /* Images.xcassets in Resources */,
-				DB67F18919062BC3007567A9 /* Main_iPhone.storyboard in Resources */,
 				DB67F18019062BC3007567A9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -783,7 +799,6 @@
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
 				DB67F24419062FFA007567A9 /* gtest-typed-test.cc in Sources */,
 				DB67F26C19084EF1007567A9 /* lock.cpp in Sources */,
-				DB67F38A190C9166007567A9 /* run_loop.cpp in Sources */,
 				DB67F26519084B43007567A9 /* thread_platform_POSIX.cpp in Sources */,
 				DB67F365190A3BDA007567A9 /* thread_platform_IOS.mm in Sources */,
 				DB67F3A4190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp in Sources */,
@@ -797,14 +812,13 @@
 				DB67F2D51908CCD9007567A9 /* lock_impl_POSIX.cpp in Sources */,
 				DB67F24219062FFA007567A9 /* gtest-printers.cc in Sources */,
 				DB67F18219062BC3007567A9 /* main.m in Sources */,
-				DB67F18F19062BC3007567A9 /* CMasterViewController.m in Sources */,
 				DB67F368190A3CA5007567A9 /* thread_platform_optional_IOS.mm in Sources */,
 				DB67F23F19062FFA007567A9 /* gtest-death-test.cc in Sources */,
 				DB67F2DC1908F26D007567A9 /* condition_variable.cpp in Sources */,
 				DB67F3A2190CE878007567A9 /* lock_UNIT_TEST.cpp in Sources */,
 				DB67F392190C9934007567A9 /* thread_un_safe_debug.cpp in Sources */,
-				DB67F19219062BC3007567A9 /* CDetailViewController.mm in Sources */,
 				DB67F39E190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp in Sources */,
+				DB67F3AD190DD18F007567A9 /* run_loop_DARWIN.mm in Sources */,
 				DB67F2CA19089BBC007567A9 /* log.cc in Sources */,
 				DB67F24519062FFA007567A9 /* gtest.cc in Sources */,
 				DB67F2E01908F9D6007567A9 /* condition_variable_impl_POSIX.cpp in Sources */,
@@ -836,22 +850,6 @@
 				DB67F17F19062BC3007567A9 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DB67F18719062BC3007567A9 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DB67F18819062BC3007567A9 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		DB67F18A19062BC3007567A9 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DB67F18B19062BC3007567A9 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		DB67F1A319062BC3007567A9 /* InfoPlist.strings */ = {
@@ -942,6 +940,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vClientTemplateLib/vClientTemplateLib-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -961,6 +960,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vClientTemplateLib/vClientTemplateLib-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
