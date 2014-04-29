@@ -12,24 +12,24 @@
 #include "base/thread/thread_un_safe.h"
 
 namespace vbase
-{
-  class IWorkItem
-  {
-  public:
-    virtual ~IWorkItem() {}
-    virtual bool PerformWork() = 0;
-    virtual bool PerformIdleWork() = 0;
-  };
-  
-  
-  class IRunLoopBase : public TNotThreadSafe
-  {
-  public:
-    virtual ~IRunLoopBase() {}
-    virtual void Run(IWorkItem* aWorkItem) = 0;
-    virtual void Stop() = 0; //can only be called from thread that called Run()
-    virtual void ScheduleWork() = 0;
-  };
-} //namespace vbase
+    {
+    class IWorkItem
+        {
+    public:
+        virtual ~IWorkItem() {}
+        virtual bool PerformWork() = 0;
+        virtual bool PerformIdleWork() = 0;
+        };
+
+
+    class IRunLoopBase : public TNotThreadSafe
+        {
+    public:
+        virtual ~IRunLoopBase() {}
+        virtual void Run(IWorkItem* aWorkItem) = 0;
+        virtual void Stop() = 0; //can only be called from thread that called Run()
+        virtual void ScheduleWork() = 0;
+        };
+    } //namespace vbase
 
 #endif /* defined(__vClientTemplateLib__run_loop__) */

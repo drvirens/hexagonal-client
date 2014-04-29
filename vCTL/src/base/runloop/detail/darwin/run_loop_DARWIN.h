@@ -22,10 +22,13 @@ namespace vbase
 {
 namespace detail
 {
+  class TScopedAutoreleasePool;
+  
   class CRunLoopCFRunLoopBase
     : public IRunLoopBase
     , TNonCopyable<CRunLoopCFRunLoopBase>
   {
+    friend class TScopedAutoreleasePool;
   public:
     virtual ~CRunLoopCFRunLoopBase();
     
@@ -42,15 +45,18 @@ namespace detail
   protected:
     CRunLoopCFRunLoopBase();
     void Construct();
-    virtual NSAutoreleasePool* CreateAutoreleasePool();
+    
+    void SetWorkItem(IWorkItem* aWorkItem);
+    
+//    virtual NSAutoreleasePool* CreateAutoreleasePool();
     CFRunLoopRef NativeRunLoop() const { return mRunLoop; }
     
     //Callbacks for CFRunLoopObserverRef observers: must match signature below:
     // typedef void (*CFRunLoopObserverCallBack)(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info);
     // Refer to CFRunLoop.h/.c for more info
-    static void PreWaitObserver(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
-    static void PreSourceObserver(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
-    static void EnterExitObserver(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
+    static void ObserverPreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
+    static void ObserverPreSource(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
+    static void ObserverLoopEnterExit(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
     
   private:
   /*
@@ -78,6 +84,9 @@ namespace detail
     
     void DoCreateWorkSource();
     void DoCreateIdleWorkSource();
+    void DoCreateObserverPreAndPostWait();
+    void DoCreateObserverPreSource();
+    void DoCreateObserverLoopEnterExit();
     
   private:
     CFRunLoopRef mRunLoop;
@@ -85,9 +94,9 @@ namespace detail
     CFRunLoopSourceRef mWorkSource;
     CFRunLoopSourceRef mIdleWorkSource;
   
-    CFRunLoopObserverRef mPreWaitObserver;    // PreWaitObserver
-    CFRunLoopObserverRef mPreSourceObserver;  // PreSourceObserver
-    CFRunLoopObserverRef mEnterExitObserver;  // EnterExitObserver
+    CFRunLoopObserverRef mObserverPreAndPostWait;    // cb : ObserverPreAndPostWait()
+    CFRunLoopObserverRef mObserverPreSource;  // cb : ObserverPreSource
+    CFRunLoopObserverRef mObserverLoopEnterExit;  // cb : ObserverLoopEnterExit
     
     IWorkItem* mIWorkItem;
   };

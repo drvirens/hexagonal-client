@@ -205,6 +205,7 @@
 		DB67F3A3190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopless_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB67F3AA190DD16B007567A9 /* run_loop_DARWIN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_loop_DARWIN.h; sourceTree = "<group>"; };
 		DB67F3AC190DD18F007567A9 /* run_loop_DARWIN.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_DARWIN.mm; sourceTree = "<group>"; };
+		DB67F4B5190F5E61007567A9 /* run_loop_scoped_autorelease_pool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = run_loop_scoped_autorelease_pool.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -681,6 +682,7 @@
 				DB67F3A7190DD11E007567A9 /* ios */,
 				DB67F3AA190DD16B007567A9 /* run_loop_DARWIN.h */,
 				DB67F3AC190DD18F007567A9 /* run_loop_DARWIN.mm */,
+				DB67F4B5190F5E61007567A9 /* run_loop_scoped_autorelease_pool.h */,
 			);
 			path = darwin;
 			sourceTree = "<group>";
