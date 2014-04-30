@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB31E7691910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */; };
 		DB67F17619062BC3007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17519062BC3007567A9 /* Foundation.framework */; };
 		DB67F17819062BC3007567A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17719062BC3007567A9 /* CoreGraphics.framework */; };
 		DB67F17A19062BC3007567A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17919062BC3007567A9 /* UIKit.framework */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_cocoa_darwin_UT.mm; sourceTree = "<group>"; };
 		DB67F17219062BC3007567A9 /* vClientTemplateLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vClientTemplateLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB67F17519062BC3007567A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB67F17719062BC3007567A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -702,6 +704,7 @@
 		DB67F3A8190DD11E007567A9 /* unittests */ = {
 			isa = PBXGroup;
 			children = (
+				DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */,
 			);
 			path = unittests;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
+				DB31E7691910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm in Sources */,
 				DB67F24419062FFA007567A9 /* gtest-typed-test.cc in Sources */,
 				DB67F26C19084EF1007567A9 /* lock.cpp in Sources */,
 				DB67F26519084B43007567A9 /* thread_platform_POSIX.cpp in Sources */,
