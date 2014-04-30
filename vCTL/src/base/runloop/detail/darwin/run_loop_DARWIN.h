@@ -12,7 +12,7 @@
 #include "build/build_config.h"
 
 #if defined(V_PLATFORM_IOS)
-#import <Foundation/Foundation.h>
+#import <CoreFoundation/CoreFoundation.h>
 #endif
 
 #include "base/runloop/run_loop.h"
@@ -22,85 +22,52 @@ namespace vbase
 {
 namespace detail
 {
-  class TScopedAutoreleasePool;
-  
-  class CRunLoopCFRunLoopBase
-    : public IRunLoopBase
-    , TNonCopyable<CRunLoopCFRunLoopBase>
-  {
-    friend class TScopedAutoreleasePool;
-  public:
-    virtual ~CRunLoopCFRunLoopBase();
-    
-    //from IRunLoopBase
-    virtual void Run(IWorkItem* aWorkItem);
-    virtual void Stop(); //can only be called from thread that called Run()
-    virtual void ScheduleWork();
-    //TODO: Use better abstraction on top of long here
-    typedef long long TTimeInterval;
-    virtual void ScheduleDelayedWork(TTimeInterval aTTimeInterval); //more like Symbians' DFC
-    
-    virtual void DoRun(IWorkItem* aWorkItem) = 0;
-  
-  protected:
-    CRunLoopCFRunLoopBase();
-    void Construct();
-    
-    void SetWorkItem(IWorkItem* aWorkItem);
-    
-//    virtual NSAutoreleasePool* CreateAutoreleasePool();
-    CFRunLoopRef NativeRunLoop() const { return mRunLoop; }
-    
-    //Callbacks for CFRunLoopObserverRef observers: must match signature below:
-    // typedef void (*CFRunLoopObserverCallBack)(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info);
-    // Refer to CFRunLoop.h/.c for more info
-    static void ObserverPreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
-    static void ObserverPreSource(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
-    static void ObserverLoopEnterExit(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
-    
-  private:
-  /*
-         typedef struct {
-           CFIndex	version;
-           void *	info;
-           const void *(*retain)(const void *info);
-           void	(*release)(const void *info);
-           CFStringRef	(*copyDescription)(const void *info);
-           Boolean	(*equal)(const void *info1, const void *info2);
-           CFHashCode	(*hash)(const void *info);
-           void	(*schedule)(void *info, CFRunLoopRef rl, CFStringRef mode);
-           void	(*cancel)(void *info, CFRunLoopRef rl, CFStringRef mode);
-           void	(*perform)(void *info);
-         } CFRunLoopSourceContext;
-  */
-    //
-    // Function that will be passed to CFRunLoopSourceContext->perform
-    //
-    static void DoPerformSourceWork(void* aInfo);
-    bool DoPerformWork();
-    
-    static void DoPerformIdleSourceWork(void* aInfo);
-    bool DoPerformIdleWork();
-    
-    void DoCreateWorkSource();
-    void DoCreateIdleWorkSource();
-    void DoCreateObserverPreAndPostWait();
-    void DoCreateObserverPreSource();
-    void DoCreateObserverLoopEnterExit();
-    
-  private:
-    CFRunLoopRef mRunLoop;
-    
-    CFRunLoopSourceRef mWorkSource;
-    CFRunLoopSourceRef mIdleWorkSource;
-  
-    CFRunLoopObserverRef mObserverPreAndPostWait;    // cb : ObserverPreAndPostWait()
-    CFRunLoopObserverRef mObserverPreSource;  // cb : ObserverPreSource
-    CFRunLoopObserverRef mObserverLoopEnterExit;  // cb : ObserverLoopEnterExit
-    
-    IWorkItem* mIWorkItem;
-  };
-  
+
+    class CRunLoopCFRunLoopBase : public IRunLoopBase, TNonCopyable<CRunLoopCFRunLoopBase>
+        {
+    typedef long long TTimeInterval; //TODO: Use better abstraction on top of long here
+    public:
+        virtual ~CRunLoopCFRunLoopBase();
+        virtual void DoRun(IWorkItem* aWorkItem) = 0;
+        virtual void Stop() = 0; //can only be called from thread that called Run()
+        virtual void Run(IWorkItem* aWorkItem); //from IRunLoopBase
+        
+        virtual void ScheduleWork();
+        virtual void ScheduleDelayedWork(TTimeInterval aTTimeInterval); //more like Symbians' DFC
+        
+
+    protected:
+        CRunLoopCFRunLoopBase();
+        void Construct();
+        void SetWorkItem(IWorkItem* aWorkItem);
+        CFRunLoopRef NativeRunLoop() const { return mRunLoop; }
+        
+    private:
+        static void DoObservePreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
+        static void DoObservePreSource(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
+        static void DoObserveLoopEnterExit(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo);
+
+        static void DoPerformSourceWork(void* aInfo); // CFRunLoopSourceContext->perform
+        bool DoPerformWork();
+        static void DoPerformIdleSourceWork(void* aInfo);
+        bool DoPerformIdleWork();
+        
+        void DoCreateWorkSource();
+        void DoCreateIdleWorkSource();
+        void DoCreateObserverPreAndPostWait();
+        void DoCreateObserverPreSource();
+        void DoCreateObserverLoopEnterExit();
+
+    private:
+        CFRunLoopRef mRunLoop;
+        CFRunLoopSourceRef mWorkSource;
+        CFRunLoopSourceRef mIdleWorkSource;
+        CFRunLoopObserverRef mObserverPreAndPostWait;    // cb : DoObservePreAndPostWait()
+        CFRunLoopObserverRef mObserverPreSource;  // cb : DoObservePreSource
+        CFRunLoopObserverRef mObserverLoopEnterExit;  // cb : DoObserveLoopEnterExit
+        IWorkItem* mIWorkItem;
+        };
+
 } //namespace detail
 } //namespace vbase
 

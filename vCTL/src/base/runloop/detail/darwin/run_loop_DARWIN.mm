@@ -73,17 +73,17 @@ namespace detail
 //        return [[NSAutoreleasePool alloc] init];
 //        }
 
-    void CRunLoopCFRunLoopBase::ObserverPreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
+    void CRunLoopCFRunLoopBase::DoObservePreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
         {
 
         }
 
-    void CRunLoopCFRunLoopBase::ObserverPreSource(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
+    void CRunLoopCFRunLoopBase::DoObservePreSource(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
         {
 
         }
 
-    void CRunLoopCFRunLoopBase::ObserverLoopEnterExit(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
+    void CRunLoopCFRunLoopBase::DoObserveLoopEnterExit(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
         {
 
         }
@@ -111,7 +111,7 @@ namespace detail
         @autoreleasepool
             {
             bool r = mIWorkItem->PerformWork();
-            if( r )
+            if( r ) //more work to do
                 {
                 CFRunLoopSourceSignal(mWorkSource);
                 }
@@ -135,11 +135,9 @@ namespace detail
         ctxt.info = this;
         ctxt.perform = DoPerformSourceWork;
 
-        CFAllocatorRef allocator = 0;
         CFIndex order = 1;
-        mWorkSource = CFRunLoopSourceCreate(allocator, order, &ctxt);
+        mWorkSource = CFRunLoopSourceCreate(kCFAllocatorDefault, order, &ctxt);
 
-        //Add it to runloop
         CFRunLoopAddSource(mRunLoop, mWorkSource, kCFRunLoopCommonModes);
         }
 
@@ -149,9 +147,8 @@ namespace detail
         ctxt.info = this;
         ctxt.perform = DoPerformIdleSourceWork;
 
-        CFAllocatorRef allocator = 0;
         CFIndex order = 2;
-        mIdleWorkSource = CFRunLoopSourceCreate(allocator, order, &ctxt);
+        mIdleWorkSource = CFRunLoopSourceCreate(kCFAllocatorDefault, order, &ctxt);
 
         //Add it to runloop
         CFRunLoopAddSource(mRunLoop, mIdleWorkSource, kCFRunLoopCommonModes);
@@ -162,13 +159,12 @@ namespace detail
         CFRunLoopObserverContext observer = CFRunLoopObserverContext();
         observer.info = this;
             {
-            CFAllocatorRef allocator = 0;
             CFOptionFlags activities = kCFRunLoopBeforeWaiting | kCFRunLoopAfterWaiting;
             Boolean repeats = true;
             CFIndex order = 0;
-            CFRunLoopObserverCallBack callout = ObserverPreAndPostWait;
+            CFRunLoopObserverCallBack callout = &CRunLoopCFRunLoopBase::DoObservePreAndPostWait;
             CFRunLoopObserverContext* context = &observer;
-            mObserverPreAndPostWait = CFRunLoopObserverCreate(allocator, activities, repeats, order, callout, context);
+            mObserverPreAndPostWait = CFRunLoopObserverCreate(kCFAllocatorDefault, activities, repeats, order, callout, context);
             }
         CFRunLoopAddObserver(mRunLoop, mObserverPreAndPostWait, kCFRunLoopCommonModes);
         }
@@ -178,13 +174,12 @@ namespace detail
         CFRunLoopObserverContext observer = CFRunLoopObserverContext();
         observer.info = this;
             {
-            CFAllocatorRef allocator = 0;
             CFOptionFlags activities = kCFRunLoopBeforeSources;
             Boolean repeats = true;
             CFIndex order = 0;
-            CFRunLoopObserverCallBack callout = ObserverPreSource;
+            CFRunLoopObserverCallBack callout = &CRunLoopCFRunLoopBase::DoObservePreSource;
             CFRunLoopObserverContext* context = &observer;
-            mObserverPreSource = CFRunLoopObserverCreate(allocator, activities, repeats, order, callout, context);
+            mObserverPreSource = CFRunLoopObserverCreate(kCFAllocatorDefault, activities, repeats, order, callout, context);
             }
         CFRunLoopAddObserver(mRunLoop, mObserverPreSource, kCFRunLoopCommonModes);
         }
@@ -194,13 +189,12 @@ namespace detail
         CFRunLoopObserverContext observer = CFRunLoopObserverContext();
         observer.info = this;
         {
-            CFAllocatorRef allocator = 0;
             CFOptionFlags activities = kCFRunLoopEntry | kCFRunLoopExit;
             Boolean repeats = true;
             CFIndex order = 0;
-            CFRunLoopObserverCallBack callout = ObserverLoopEnterExit;
+            CFRunLoopObserverCallBack callout = &CRunLoopCFRunLoopBase::DoObserveLoopEnterExit;
             CFRunLoopObserverContext* context = &observer;
-            mObserverLoopEnterExit = CFRunLoopObserverCreate(allocator, activities, repeats, order, callout, context);
+            mObserverLoopEnterExit = CFRunLoopObserverCreate(kCFAllocatorDefault, activities, repeats, order, callout, context);
         }
         CFRunLoopAddObserver(mRunLoop, mObserverLoopEnterExit, kCFRunLoopCommonModes);
         }

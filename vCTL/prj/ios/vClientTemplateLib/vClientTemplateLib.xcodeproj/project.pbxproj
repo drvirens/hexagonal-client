@@ -43,6 +43,7 @@
 		DB67F3A2190CE878007567A9 /* lock_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F3A1190CE878007567A9 /* lock_UNIT_TEST.cpp */; };
 		DB67F3A4190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F3A3190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp */; };
 		DB67F3AD190DD18F007567A9 /* run_loop_DARWIN.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F3AC190DD18F007567A9 /* run_loop_DARWIN.mm */; };
+		DB67F5021910589B007567A9 /* run_loop_cocoa_DARWIN.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB67F5001910589B007567A9 /* run_loop_cocoa_DARWIN.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +207,8 @@
 		DB67F3AA190DD16B007567A9 /* run_loop_DARWIN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_loop_DARWIN.h; sourceTree = "<group>"; };
 		DB67F3AC190DD18F007567A9 /* run_loop_DARWIN.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_DARWIN.mm; sourceTree = "<group>"; };
 		DB67F4B5190F5E61007567A9 /* run_loop_scoped_autorelease_pool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = run_loop_scoped_autorelease_pool.h; sourceTree = "<group>"; };
+		DB67F5001910589B007567A9 /* run_loop_cocoa_DARWIN.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_cocoa_DARWIN.mm; sourceTree = "<group>"; };
+		DB67F5011910589B007567A9 /* run_loop_cocoa_DARWIN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_loop_cocoa_DARWIN.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -683,6 +686,8 @@
 				DB67F3AA190DD16B007567A9 /* run_loop_DARWIN.h */,
 				DB67F3AC190DD18F007567A9 /* run_loop_DARWIN.mm */,
 				DB67F4B5190F5E61007567A9 /* run_loop_scoped_autorelease_pool.h */,
+				DB67F5001910589B007567A9 /* run_loop_cocoa_DARWIN.mm */,
+				DB67F5011910589B007567A9 /* run_loop_cocoa_DARWIN.h */,
 			);
 			path = darwin;
 			sourceTree = "<group>";
@@ -817,6 +822,7 @@
 				DB67F368190A3CA5007567A9 /* thread_platform_optional_IOS.mm in Sources */,
 				DB67F23F19062FFA007567A9 /* gtest-death-test.cc in Sources */,
 				DB67F2DC1908F26D007567A9 /* condition_variable.cpp in Sources */,
+				DB67F5021910589B007567A9 /* run_loop_cocoa_DARWIN.mm in Sources */,
 				DB67F3A2190CE878007567A9 /* lock_UNIT_TEST.cpp in Sources */,
 				DB67F392190C9934007567A9 /* thread_un_safe_debug.cpp in Sources */,
 				DB67F39E190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp in Sources */,
