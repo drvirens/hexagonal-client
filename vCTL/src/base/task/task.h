@@ -12,22 +12,28 @@
 #include <queue>
 #include <string>
 
+#include "base/task/task_lambda.h"
+
 namespace vbase
 {
 
 class TTask
     {
 public:
-    TTask();
+    TTask(const TLambda& aLambda);
     ~TTask();
     TTask(const TTask& aRhs);
+    void SetUniqueId(int aUniqueId) { iUniqueId = aUniqueId; }
+    int UniqueId() const { return iUniqueId; }
+        
 private:
     int iUniqueId;
     std::string iTaskName;
+    TLambda iLambda;
     };
     
 typedef std::queue<TTask> TTaskQueue;
 
-}
+} //namespace vbase
 
 #endif /* defined(__vClientTemplateLib__task__) */

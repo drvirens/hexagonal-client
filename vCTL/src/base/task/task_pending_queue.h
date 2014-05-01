@@ -17,23 +17,23 @@ namespace vbase
 {
 
 class TTimeDelta;
-
-//todo:
-class TLambda
-    {
-        
-    };
+class TLambda;
+class ITaskPendingQueueListener;
 
 class TPendingTasksQ : public TNonCopyable<TPendingTasksQ>
     {
 public:
-    TPendingTasksQ(); //mainly for unit-testing
+    explicit TPendingTasksQ(ITaskPendingQueueListener& aTaskListListener);
     virtual ~TPendingTasksQ();
-    
     bool Add(const TLambda& aLambda, const TTimeDelta& aDelay);
+    
+private:
+    bool DoAdd(TTask* aTask);
 private:
     TLock iLock; //locks iPendingTasksQ
     TTaskQueue iPendingTasksQ;
+    int iUniqueNumber;
+    ITaskPendingQueueListener* iOurListener;
     };
     
 } //namespace vbase

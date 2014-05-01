@@ -13,24 +13,28 @@
 
 namespace vbase
 {
-    class IWorkItem
-        {
-    public:
-        virtual ~IWorkItem() {}
-        virtual bool PerformWork() = 0;
-        virtual bool PerformIdleWork() = 0;
-        };
+
+class IWorkLoad
+    //
+    // Typically, one work-load will have multiple tasks in it
+    //
+    {
+public:
+    virtual ~IWorkLoad() {}
+    virtual bool PerformWork() = 0;
+    virtual bool PerformIdleWork() = 0;
+    };
 
 
-    class IRunLoopBase : public TNotThreadSafe
-        {
-    public:
-        virtual ~IRunLoopBase() {}
-        virtual void Run(IWorkItem* aWorkItem) = 0;
-        virtual void Stop() = 0; //can only be called from thread that called Run()
-        virtual void ScheduleWork() = 0;
-        };
-        
+class IRunLoopBase : public TNotThreadSafe
+    {
+public:
+    virtual ~IRunLoopBase() {}
+    virtual void Run(IWorkLoad* aWorkLoad) = 0;
+    virtual void Stop() = 0; //can only be called from thread that called Run()
+    virtual void ScheduleWork() = 0;
+    };
+    
         
 } //namespace vbase
 

@@ -16,7 +16,7 @@
 namespace vbase
 {
     
-    class MyRealDumbWork : public IWorkItem
+    class MyRealDumbWork : public IWorkLoad
         {
     public:
         virtual bool PerformWork()
