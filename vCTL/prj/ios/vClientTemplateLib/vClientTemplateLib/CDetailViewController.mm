@@ -9,6 +9,8 @@
 #include "base/synchronize/lock.h"
 #import "CDetailViewController.h"
 
+
+
 @interface CDetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;

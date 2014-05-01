@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		DB31E7691910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */; };
+		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
+		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
+		DB31E7741911C5BA009A6CF6 /* task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB31E7721911C5BA009A6CF6 /* task.cpp */; };
+		DB31E7781911F390009A6CF6 /* task_pending_queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB31E7761911F390009A6CF6 /* task_pending_queue.cpp */; };
 		DB67F17619062BC3007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17519062BC3007567A9 /* Foundation.framework */; };
 		DB67F17819062BC3007567A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17719062BC3007567A9 /* CoreGraphics.framework */; };
 		DB67F17A19062BC3007567A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17919062BC3007567A9 /* UIKit.framework */; };
@@ -59,6 +63,15 @@
 
 /* Begin PBXFileReference section */
 		DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_cocoa_darwin_UT.mm; sourceTree = "<group>"; };
+		DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
+		DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
+		DB31E76C19117EA3009A6CF6 /* CMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
+		DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CMasterViewController.mm; sourceTree = "<group>"; };
+		DB31E77019117F99009A6CF6 /* run_loop_cocoa_darwin_UT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = run_loop_cocoa_darwin_UT.h; sourceTree = "<group>"; };
+		DB31E7721911C5BA009A6CF6 /* task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = task.cpp; sourceTree = "<group>"; };
+		DB31E7731911C5BA009A6CF6 /* task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = task.h; sourceTree = "<group>"; };
+		DB31E7761911F390009A6CF6 /* task_pending_queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = task_pending_queue.cpp; sourceTree = "<group>"; };
+		DB31E7771911F390009A6CF6 /* task_pending_queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = task_pending_queue.h; sourceTree = "<group>"; };
 		DB67F17219062BC3007567A9 /* vClientTemplateLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vClientTemplateLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB67F17519062BC3007567A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB67F17719062BC3007567A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -237,6 +250,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB31E7711911C43D009A6CF6 /* task */ = {
+			isa = PBXGroup;
+			children = (
+				DB31E7751911F19A009A6CF6 /* q */,
+				DB31E7721911C5BA009A6CF6 /* task.cpp */,
+				DB31E7731911C5BA009A6CF6 /* task.h */,
+			);
+			path = task;
+			sourceTree = "<group>";
+		};
+		DB31E7751911F19A009A6CF6 /* q */ = {
+			isa = PBXGroup;
+			children = (
+				DB31E7761911F390009A6CF6 /* task_pending_queue.cpp */,
+				DB31E7771911F390009A6CF6 /* task_pending_queue.h */,
+			);
+			path = q;
+			sourceTree = "<group>";
+		};
 		DB67F16919062BC3007567A9 = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +303,10 @@
 		DB67F17B19062BC3007567A9 /* vClientTemplateLib */ = {
 			isa = PBXGroup;
 			children = (
+				DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */,
+				DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */,
+				DB31E76C19117EA3009A6CF6 /* CMasterViewController.h */,
+				DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */,
 				DB67F18419062BC3007567A9 /* CAppDelegate.h */,
 				DB67F18519062BC3007567A9 /* CAppDelegate.mm */,
 				DB67F19319062BC3007567A9 /* Images.xcassets */,
@@ -512,6 +548,7 @@
 		DB67F23519062FFA007567A9 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				DB31E7711911C43D009A6CF6 /* task */,
 				DB67F387190C913A007567A9 /* runloop */,
 				DB67F360190A114E007567A9 /* time */,
 				DB67F2C419089BBC007567A9 /* logging */,
@@ -705,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */,
+				DB31E77019117F99009A6CF6 /* run_loop_cocoa_darwin_UT.h */,
 			);
 			path = unittests;
 			sourceTree = "<group>";
@@ -808,6 +846,7 @@
 			files = (
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
 				DB31E7691910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm in Sources */,
+				DB31E7781911F390009A6CF6 /* task_pending_queue.cpp in Sources */,
 				DB67F24419062FFA007567A9 /* gtest-typed-test.cc in Sources */,
 				DB67F26C19084EF1007567A9 /* lock.cpp in Sources */,
 				DB67F26519084B43007567A9 /* thread_platform_POSIX.cpp in Sources */,
@@ -818,7 +857,9 @@
 				DB67F24019062FFA007567A9 /* gtest-filepath.cc in Sources */,
 				DB67F24319062FFA007567A9 /* gtest-test-part.cc in Sources */,
 				DB67F24119062FFA007567A9 /* gtest-port.cc in Sources */,
+				DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */,
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
+				DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */,
 				DB67F39A190CE7F6007567A9 /* thread_loopless.cpp in Sources */,
 				DB67F2D51908CCD9007567A9 /* lock_impl_POSIX.cpp in Sources */,
 				DB67F24219062FFA007567A9 /* gtest-printers.cc in Sources */,
@@ -826,6 +867,7 @@
 				DB67F368190A3CA5007567A9 /* thread_platform_optional_IOS.mm in Sources */,
 				DB67F23F19062FFA007567A9 /* gtest-death-test.cc in Sources */,
 				DB67F2DC1908F26D007567A9 /* condition_variable.cpp in Sources */,
+				DB31E7741911C5BA009A6CF6 /* task.cpp in Sources */,
 				DB67F5021910589B007567A9 /* run_loop_cocoa_DARWIN.mm in Sources */,
 				DB67F3A2190CE878007567A9 /* lock_UNIT_TEST.cpp in Sources */,
 				DB67F392190C9934007567A9 /* thread_un_safe_debug.cpp in Sources */,

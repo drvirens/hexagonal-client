@@ -12,13 +12,14 @@
 //based on CRTP : curiously recursive template pattern
 template <class T>
 class TNonCopyable
-{
+    {
 protected:
-  TNonCopyable() {}
-  ~TNonCopyable() {} //non-virtual
+    TNonCopyable() {}
+    ~TNonCopyable() {} //non-virtual
+    
 private:
-  TNonCopyable(const TNonCopyable&);
-  TNonCopyable& operator=(const TNonCopyable&);
-};
+    TNonCopyable(const TNonCopyable&);
+    TNonCopyable& operator=(const TNonCopyable&);
+    };
 
 #endif

@@ -15,16 +15,23 @@
 namespace vbase
 {
   
-  class TTime
-  {
-  public:
+class TTime
+    {
+public:
     static const int64_t kMilliSecondsPerSecond = 1000;
     static const int64_t kMicroSecondsPerMilliSecond = 1000;
     static const int64_t kNanoSecondsPerMicroSecond = 1000;
-    
     static const int64_t kMicroSecondsPerSecond = kMicroSecondsPerMilliSecond * kMilliSecondsPerSecond;
     static const int64_t kNanoSecondsPerSecond = kNanoSecondsPerMicroSecond * kMicroSecondsPerSecond;
-  };
+    };
+
+class TTimeDelta
+    //
+    // currently not used
+    //
+    {
+public:
+    };
   
 }
 

@@ -12,7 +12,7 @@
 #include "base/thread/thread_un_safe.h"
 
 namespace vbase
-    {
+{
     class IWorkItem
         {
     public:
@@ -30,6 +30,8 @@ namespace vbase
         virtual void Stop() = 0; //can only be called from thread that called Run()
         virtual void ScheduleWork() = 0;
         };
-    } //namespace vbase
+        
+        
+} //namespace vbase
 
 #endif /* defined(__vClientTemplateLib__run_loop__) */

@@ -222,7 +222,7 @@ void TPlatformThread::Sleep(int64_t aSeconds)
   requested.tv_nsec = (long)nanoSeconds;
   //TODO: CHeck if thread has permissions to sleep. needs TLS to be implemented so do in phase2
   int e = nanosleep(&requested, &remaining);
-  
+  LOG_ERROR << "Sleep returned : " << strerror(e);
   while( -1 == e && EINTR == errno ) //-1 == e interuppted by signal handler
   {
     requested = remaining;

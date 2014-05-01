@@ -67,12 +67,6 @@ namespace detail
         }
         */
 
-
-//    NSAutoreleasePool* CRunLoopCFRunLoopBase::CreateAutoreleasePool()
-//        {
-//        return [[NSAutoreleasePool alloc] init];
-//        }
-
     void CRunLoopCFRunLoopBase::DoObservePreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
         {
 

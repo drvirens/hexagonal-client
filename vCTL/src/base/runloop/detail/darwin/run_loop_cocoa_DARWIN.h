@@ -22,10 +22,13 @@ namespace detail
     //
         {
     public:
-        CRunLoopCFRunLoop();
+        static CRunLoopCFRunLoop* New();
         virtual ~CRunLoopCFRunLoop();
         virtual void DoRun(IWorkItem* aWorkItem);
         virtual void Stop();
+    private:
+        CRunLoopCFRunLoop();
+        void Construct();
     private:
         CFRunLoopSourceRef iStopSource;
         bool iRunTag;
@@ -38,10 +41,14 @@ namespace detail
     //
         {
     public:
-        CRunLoopNSRunLoop();
+        static CRunLoopNSRunLoop* New();
+        
         virtual ~CRunLoopNSRunLoop();
         virtual void DoRun(IWorkItem* aWorkItem);
         virtual void Stop();
+    private:
+        CRunLoopNSRunLoop();
+        void Construct();
     private:
         CFRunLoopSourceRef iStopSource;
         bool iRunTag;

@@ -26,7 +26,7 @@ namespace detail
     class CRunLoopCFRunLoopBase : public IRunLoopBase, TNonCopyable<CRunLoopCFRunLoopBase>
         {
     typedef long long TTimeInterval; //TODO: Use better abstraction on top of long here
-    public:
+    protected:
         virtual ~CRunLoopCFRunLoopBase();
         virtual void DoRun(IWorkItem* aWorkItem) = 0;
         virtual void Stop() = 0; //can only be called from thread that called Run()
