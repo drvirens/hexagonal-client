@@ -7,6 +7,7 @@
 //
 
 #include "base/eventdispatcher/event_dispatcher.h"
+#include "base/time/time.h"
 
 namespace vbase
 {
@@ -68,13 +69,14 @@ void MEventDispatcher::UnRegisterTaskSpectator(const ITaskSpectator& aSpectator)
     
 void MEventDispatcher::ExecuteAsynch(const TLambda& aLambda)
     {
-        
+    vbase::TTimeDelta delay(0);
+    iPendingTasksQ.Add(aLambda, delay);
     }
     
 void MEventDispatcher::ExecuteAsynchAfterDelay(const TLambda& aLambda, const TTimeDelta& aTimeDelta)
     {
-        
-        
+    vbase::TTimeDelta delay(0);
+    iPendingTasksQ.Add(aLambda, delay);
     }
     
 MEventDispatcher::MEventDispatcher()

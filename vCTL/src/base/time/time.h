@@ -31,6 +31,8 @@ class TTimeDelta
     //
     {
 public:
+    explicit TTimeDelta(long aDelta)
+    {}
     };
   
 }
