@@ -1,10 +1,10 @@
-//
-//  run_loop_cocoa_darwin_UT.mm
-//  vClientTemplateLib
-//
-//  Created by Virendra Shakya on 4/29/14.
-//  Copyright (c) 2014 Virendra Shakya. All rights reserved.
-//
+    //
+    //  run_loop_cocoa_darwin_UT.mm
+    //  vClientTemplateLib
+    //
+    //  Created by Virendra Shakya on 4/29/14.
+    //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
+    //
 
 #include "base/thread/thread_platform.h"
 #include "base/runloop/detail/darwin/run_loop_cocoa_DARWIN.h"
@@ -17,24 +17,24 @@ namespace vbase
 {
     
     class MyRealDumbWork : public IWorkLoad
-        {
+    {
     public:
         virtual bool PerformWork()
-            {
+        {
             LOG_INFO << "PerformWork called";
             for(int i = 0; i < 10000; i++)
-                {
-                //TPlatformThread::Sleep(5);
-                //LOG_INFO << "i : " << i;
-                }
-            return false;
-            }
-            
-        virtual bool PerformIdleWork()
             {
-            return false;
+                    //TPlatformThread::Sleep(5);
+                    //LOG_INFO << "i : " << i;
             }
-        };
+            return false;
+        }
+        
+        virtual bool PerformIdleWork()
+        {
+            return false;
+        }
+    };
     
     
     
@@ -58,23 +58,22 @@ namespace vbase
             
             MyRealDumbWork* work = new MyRealDumbWork();
             iRunLoop = detail::CRunLoopCFRunLoop::New();
-            //iRunLoop = detail::CRunLoopNSRunLoop::New();
+                //iRunLoop = detail::CRunLoopNSRunLoop::New();
             
             if(iCallRun)
             {
-//                for(int i = 0; i < 10; i++) //infinite
-//                {
-//                    TPlatformThread::Sleep(5);
-//                }
                 iRunLoop->Run(work);
-                //iRunLoop->ScheduleWork();
+                iRunLoop->ScheduleWork(); //hmm this wont work since no underlying cfrunloop* shit is guaranteed to be ready.
             }
-            //call run-loop shit here for testing
+                //call run-loop shit here for testing
             
             return;
         }
         
-        void ScheduleWOrk() { iRunLoop->ScheduleWork(); }
+        void ScheduleWOrk()
+        {
+                //iRunLoop->ScheduleWork();
+        }
         
         bool TagDidRun() const { return mTagDidRun; }
         void SetSleepTag(bool aSleep) { iCallRun = aSleep; }
@@ -119,9 +118,9 @@ namespace vbase
         ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, threadEntry, &h, aPriority) );
         
             //TPlatformThread::Sleep(10);
-        //threadEntry->ScheduleWOrk();
-
-        //TPlatformThread::Join(&h);
+            //threadEntry->ScheduleWOrk();
+        
+            //TPlatformThread::Join(&h);
         ASSERT_TRUE( threadEntry->TagDidRun() );
     }
     
@@ -131,7 +130,7 @@ namespace vbase
         threadEntry->ScheduleWOrk();
     }
     
-   
+    
     
     
 } //namespace vbase

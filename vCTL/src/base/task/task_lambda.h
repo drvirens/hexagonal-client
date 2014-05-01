@@ -9,8 +9,6 @@
 #ifndef __vClientTemplateLib__task_lambda__
 #define __vClientTemplateLib__task_lambda__
 
-#include <iostream>
-
 namespace vbase
 {
 

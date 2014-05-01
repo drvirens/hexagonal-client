@@ -48,4 +48,14 @@ bool TPendingTasksQ::DoAdd(TTask* aTask)
     return ret;
     }
     
+void TPendingTasksQ::PourAllTasksInto(const TTaskQueue& aQueue)
+    {
+        
+    }
+    
+void TPendingTasksQ::WillDeleteEventDispatcherOfThisThread()
+    {
+        
+    }
+    
 } //namespace vbase

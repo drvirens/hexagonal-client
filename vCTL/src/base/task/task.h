@@ -32,7 +32,7 @@ private:
     TLambda iLambda;
     };
     
-typedef std::queue<TTask> TTaskQueue;
+//typedef std::queue<TTask> TTaskQueue;
 
 } //namespace vbase
 

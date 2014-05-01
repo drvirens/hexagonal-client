@@ -12,6 +12,8 @@
 #include "base/non_copyable.h"
 #include "base/task/task.h"
 #include "base/synchronize/lock.h"
+#include "base/task/task_queue.h"
+#include "base/eventdispatcher/event_dispatcher_destructor_spectator.h"
 
 namespace vbase
 {
@@ -20,15 +22,19 @@ class TTimeDelta;
 class TLambda;
 class ITaskPendingQueueListener;
 
-class TPendingTasksQ : public TNonCopyable<TPendingTasksQ>
+class TPendingTasksQ : public TNonCopyable<TPendingTasksQ>, public IEventDispatcherDestructorSpectator
     {
 public:
     explicit TPendingTasksQ(ITaskPendingQueueListener& aTaskListListener);
     virtual ~TPendingTasksQ();
     bool Add(const TLambda& aLambda, const TTimeDelta& aDelay);
+    void PourAllTasksInto(const TTaskQueue& aQueue);
+    
+    virtual void WillDeleteEventDispatcherOfThisThread();
     
 private:
     bool DoAdd(TTask* aTask);
+    
 private:
     TLock iLock; //locks iPendingTasksQ
     TTaskQueue iPendingTasksQ;

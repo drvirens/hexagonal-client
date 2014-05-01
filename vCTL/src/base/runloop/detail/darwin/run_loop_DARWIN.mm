@@ -31,6 +31,8 @@ void CRunLoopCFRunLoopBase::SetWorkLoad(IWorkLoad* aWorkLoad)
 
 void CRunLoopCFRunLoopBase::Run(IWorkLoad* aWorkLoad)
     {
+    AssertValidThreadCall();
+    
     //TODO: We don't support nesting of CFRunLoop at least for phase 1
     IWorkLoad* prevworkitem = mIWorkItem;
     SetWorkLoad(aWorkLoad);
@@ -42,17 +44,21 @@ void CRunLoopCFRunLoopBase::Run(IWorkLoad* aWorkLoad)
 
 void CRunLoopCFRunLoopBase::Stop()
     {
-
+    AssertValidThreadCall();
     }
 
 void CRunLoopCFRunLoopBase::ScheduleWork()
     {
+    AssertValidThreadCall();
+    
     CFRunLoopSourceSignal(mWorkSource);
     CFRunLoopWakeUp(mRunLoop); //must if you want the thread to do the work ASAP
     }
 
 void CRunLoopCFRunLoopBase::ScheduleDelayedWork(TTimeInterval aTTimeInterval)
     {
+    AssertValidThreadCall();
+    
     //CFRunLoopTimerSetNextFireDate();
     }
 
