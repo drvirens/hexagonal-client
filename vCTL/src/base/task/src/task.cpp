@@ -26,4 +26,9 @@ TTask::TTask(const TTask& aRhs)
     , iLambda(aRhs.iLambda)
     {}
     
+void TTask::Execute()
+    {
+    iLambda.Run();
+    }
+    
 }

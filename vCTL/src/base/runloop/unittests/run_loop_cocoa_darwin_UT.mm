@@ -130,7 +130,5 @@ namespace vbase
         threadEntry->ScheduleWOrk();
     }
     
-    
-    
-    
 } //namespace vbase
+

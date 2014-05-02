@@ -15,6 +15,7 @@ namespace vbase
 class TLambda
     {
 public:
+    void Run();
     };
 
 } //namespace vbase

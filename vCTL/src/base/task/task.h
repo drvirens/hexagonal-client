@@ -25,14 +25,13 @@ public:
     TTask(const TTask& aRhs);
     void SetUniqueId(int aUniqueId) { iUniqueId = aUniqueId; }
     int UniqueId() const { return iUniqueId; }
+    void Execute();
         
 private:
     int iUniqueId;
     std::string iTaskName;
     TLambda iLambda;
     };
-    
-//typedef std::queue<TTask> TTaskQueue;
 
 } //namespace vbase
 
