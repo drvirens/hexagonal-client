@@ -81,10 +81,12 @@ namespace vbase
     }
     
 #if !defined(NDEBUG)
+#if defined( __i386__)
     TEST(UT_MEventDispatcher, DISABLED_EventDispatcherThreadUnSafeDebug)
     {
         ASSERT_DEATH({ EventDispatcherThreadUnSafeTest(); }, "");
     }
+#endif
 #else
     TEST(UT_MEventDispatcher, EventDispatcherThreadUnSafeProduction)
     {
@@ -112,13 +114,7 @@ namespace vbase
             int ret = strcmp(name, "MMyEventDispatcherThreadUnSafeMainEntry");
             EXPECT_EQ(0, ret);
             
-            iMEventDispatcher = MEventDispatcher::New(); //ideally should be here
-//            TLambda lambda;
-//            iMEventDispatcher->ExecuteAsynch(lambda);
-            
-            
-            //ScheduleWork();
-            
+            iMEventDispatcher = MEventDispatcher::New();
             
             return;
         }
@@ -127,11 +123,11 @@ namespace vbase
         bool TagDidRun() const { return mTagDidRun; }
         void SetSleepTag(bool aSleep) { iCallRun = aSleep; }
         
-       void PostTask()
-            {
+        void PostTask()
+        {
             TLambda lambda;
             iMEventDispatcher->ExecuteAsynch(lambda);
-            }
+        }
         
         TPlatformThreadID GetThreadId() { return TPlatformThread::CurrentID(); }
         
@@ -143,7 +139,7 @@ namespace vbase
     
     
     
-    TEST(UT_MEventDispatcher, CallRun)
+    TEST(UT_MEventDispatcher, DISABLED_ExecuteAsynch_Threaded)
     {
         MMyEventDispatcherThreadUnSafeMainEntry* threadUnSafeEvtDispatcher = new MMyEventDispatcherThreadUnSafeMainEntry();
         TPlatformThreadHandle h;
@@ -152,11 +148,22 @@ namespace vbase
         
         EThreadPriority aPriority = EThreadPriority_Normal;
         ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, threadUnSafeEvtDispatcher, &h, aPriority) );
-        TPlatformThread::Join(&h);
-            //TPlatformThread::Sleep(100);
-        threadUnSafeEvtDispatcher->PostTask();
+        //TPlatformThread::Join(&h);
+        TPlatformThread::Sleep(700000);
+        //threadUnSafeEvtDispatcher->PostTask();
         ASSERT_TRUE( threadUnSafeEvtDispatcher->TagDidRun() );
     }
+    
+    TEST(UT_MEventDispatcher, DISABLED_ExecuteAsynch_SingleThreaded)
+    {
+        MEventDispatcher* eventDispatcher = MEventDispatcher::New();
+       
+        TLambda lambda;
+        eventDispatcher->ExecuteAsynch(lambda);
+        bool r = eventDispatcher->PerformWork();
+        ASSERT_TRUE( r );
+    }
+
     
     
 } //namespace vbase

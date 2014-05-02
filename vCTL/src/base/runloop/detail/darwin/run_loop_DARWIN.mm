@@ -7,6 +7,7 @@
 //
 
 #include "base/runloop/detail/darwin/run_loop_DARWIN.h"
+#include "base/logging/log.h"
 
 namespace vbase
 {
@@ -28,6 +29,12 @@ void CRunLoopCFRunLoopBase::SetWorkLoad(IWorkLoad* aWorkLoad)
         return;
         }
     }
+    
+    
+//    static void emptyPerform(void*)
+//    {
+//    LOG_INFO << "emptyPerform";
+//    }
 
 void CRunLoopCFRunLoopBase::Run(IWorkLoad* aWorkLoad)
     {
@@ -36,6 +43,11 @@ void CRunLoopCFRunLoopBase::Run(IWorkLoad* aWorkLoad)
     //TODO: We don't support nesting of CFRunLoop at least for phase 1
     IWorkLoad* prevworkitem = mIWorkItem;
     SetWorkLoad(aWorkLoad);
+    
+            // Must add a source to the run loop to prevent CFRunLoopRun() from exiting.
+//        CFRunLoopSourceContext ctxt = {0, (void*)1 /*must be non-NULL*/, 0, 0, 0, 0, 0, 0, 0, emptyPerform};
+//        CFRunLoopSourceRef bogusSource = CFRunLoopSourceCreate(0, 0, &ctxt);
+//        CFRunLoopAddSource(mRunLoop, bogusSource, kCFRunLoopDefaultMode);
 
     DoRun(aWorkLoad);
 
@@ -49,7 +61,7 @@ void CRunLoopCFRunLoopBase::Stop()
 
 void CRunLoopCFRunLoopBase::ScheduleWork()
     {
-    AssertValidThreadCall();
+    //AssertValidThreadCall();
     
     CFRunLoopSourceSignal(mWorkSource);
     CFRunLoopWakeUp(mRunLoop); //must if you want the thread to do the work ASAP
@@ -57,7 +69,7 @@ void CRunLoopCFRunLoopBase::ScheduleWork()
 
 void CRunLoopCFRunLoopBase::ScheduleDelayedWork(TTimeInterval aTTimeInterval)
     {
-    AssertValidThreadCall();
+    //AssertValidThreadCall();
     
     //CFRunLoopTimerSetNextFireDate();
     }
@@ -75,17 +87,17 @@ void CRunLoopCFRunLoopBase::ScheduleDelayedWork(TTimeInterval aTTimeInterval)
 
 void CRunLoopCFRunLoopBase::DoObservePreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
     {
-
+    LOG_INFO << "----> DoObservePreAndPostWait";
     }
 
 void CRunLoopCFRunLoopBase::DoObservePreSource(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
     {
-
+    LOG_INFO << "----> DoObservePreSource";
     }
 
 void CRunLoopCFRunLoopBase::DoObserveLoopEnterExit(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
     {
-
+    LOG_INFO << "----> DoObserveLoopEnterExit";
     }
 
 void CRunLoopCFRunLoopBase::DoPerformSourceWork(void* aInfo)

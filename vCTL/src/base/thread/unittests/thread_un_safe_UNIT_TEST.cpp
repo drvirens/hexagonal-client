@@ -85,11 +85,14 @@ namespace vbase
         EXPECT_TRUE(looplessThread.GetDidRunTag() == true);
     }
     
-#if !defined(NDEBUG)
+#if !defined(NDEBUG) 
+#if defined( __i386__)
+    //assert_death is not compiling on arm
     TEST(UT_TThreadUnSafe, DISABLED_CanNotCallMethodOnOtherThreadInDebug)
     {
         ASSERT_DEATH({ CanNotCallMethodOnOtherThreadTest(); }, "");
     }
+#endif
 #else
     TEST(UT_TThreadUnSafe, CanCallMethodOnOtherThreadInProduction)
     {

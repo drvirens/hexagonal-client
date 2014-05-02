@@ -87,6 +87,7 @@ void MEventDispatcher::ScheduleWork()
     //ASSERT(iRunLoop != 0);
     if(iRunLoop)
         {
+        iRunLoop->Run(this);
         iRunLoop->ScheduleWork();
         }
     }
@@ -151,7 +152,7 @@ void MEventDispatcher::Construct()
     ASSERT(iRunLoop); //todo: make this as scoped ptr
     if(iRunLoop)
         {
-        iRunLoop->Run(this); //start spinning the runloop. calls PerformWork() when sources are attached to runloop
+        //iRunLoop->Run(this); //start spinning the runloop. calls PerformWork() when sources are attached to runloop
         }
     }
 

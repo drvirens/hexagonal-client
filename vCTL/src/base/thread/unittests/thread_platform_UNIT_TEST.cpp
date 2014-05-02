@@ -32,9 +32,9 @@ namespace vbase
       
       if(mSleep)
       {
-        for(int i = 0; i < 10; i++) //infinite
+        for(int i = 0; i < 1; i++) //infinite
         {
-          TPlatformThread::Sleep(5);
+          TPlatformThread::Sleep(1);
         }
       }
       
