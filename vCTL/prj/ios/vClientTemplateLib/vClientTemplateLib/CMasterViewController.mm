@@ -10,8 +10,6 @@
 
 #import "CDetailViewController.h"
 
-#include "base/runloop/unittests/run_loop_cocoa_darwin_UT.h"
-
 @interface CMasterViewController () {
     NSMutableArray *_objects;
 }
@@ -113,14 +111,12 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSDate *object = _objects[indexPath.row];
         self.detailViewController.detailItem = object;
-        vbase::UT_CRunLoopCFRunLoop_ScheduleWOrk();
+        
     }
     else {
-        vbase::UT_CRunLoopCFRunLoop_ScheduleWOrk();
+        
     }
-    
-    //vbase::UT_CRunLoopCFRunLoop_ScheduleWOrk();
-}
+   }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

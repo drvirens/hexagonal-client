@@ -33,7 +33,7 @@ void MEventDispatcher::LoadTasks()
     {
     if(iWorkLoadItemsQ.empty())
         {
-        iPendingTasksQ.PourAllTasksInto(iWorkLoadItemsQ);
+        iPendingTasksQ->PourAllTasksInto(iWorkLoadItemsQ);
         }
     }
     
@@ -87,7 +87,7 @@ void MEventDispatcher::ScheduleWork()
     //ASSERT(iRunLoop != 0);
     if(iRunLoop)
         {
-        iRunLoop->Run(this);
+        //iRunLoop->Run(this);
         iRunLoop->ScheduleWork();
         }
     }
@@ -131,28 +131,32 @@ void MEventDispatcher::UnRegisterTaskSpectator(const ITaskSpectator& aSpectator)
 void MEventDispatcher::ExecuteAsynch(const TLambda& aLambda)
     {
     vbase::TTimeDelta delay(0);
-    iPendingTasksQ.Add(aLambda, delay);
+    iPendingTasksQ->Add(aLambda, delay);
     }
     
 void MEventDispatcher::ExecuteAsynchAfterDelay(const TLambda& aLambda, const TTimeDelta& aTimeDelta)
     {
     vbase::TTimeDelta delay(0);
-    iPendingTasksQ.Add(aLambda, delay);
+    iPendingTasksQ->Add(aLambda, delay);
     }
     
 MEventDispatcher::MEventDispatcher()
     : iWorkLoadItemsQ()
-    , iPendingTasksQ(*this)
+    , iPendingTasksQ(0)
     , iRunLoop(0)
-    {}
+    {
+    LOG_INFO << "MEventDispatcher ctor";
+    }
     
 void MEventDispatcher::Construct()
     {
+    iPendingTasksQ = new TPendingTasksQ(*this);
+    
     iRunLoop = TRunLoopFactory::PlatformRunLoop();
     ASSERT(iRunLoop); //todo: make this as scoped ptr
     if(iRunLoop)
         {
-        //iRunLoop->Run(this); //start spinning the runloop. calls PerformWork() when sources are attached to runloop
+        iRunLoop->Run(this); //start spinning the runloop. calls PerformWork() when sources are attached to runloop
         }
     }
 

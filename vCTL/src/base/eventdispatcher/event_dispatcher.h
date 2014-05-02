@@ -63,7 +63,7 @@ private:
     
 private:
     TTaskQueue iWorkLoadItemsQ; //tots internally
-    TPendingTasksQ iPendingTasksQ; //client facings q that accepts and stores the tasks in it
+    TPendingTasksQ* iPendingTasksQ; //client facings q that accepts and stores the tasks in it
     IRunLoopBase* iRunLoop;
     };
     

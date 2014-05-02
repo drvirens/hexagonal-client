@@ -15,11 +15,13 @@ namespace vbase
 {
 
 TPendingTasksQ::TPendingTasksQ(ITaskPendingQueueListener& aTaskListListener)
-    : iLock()
-    , iPendingTasksQ()
+    :
+      iPendingTasksQ()
     , iUniqueNumber(0)
     , iOurListener(&aTaskListListener)
-    {}
+    {
+    LOG_INFO << "iUniqueNumber : " << iUniqueNumber;
+    }
 
 TPendingTasksQ::~TPendingTasksQ()
     {
@@ -50,12 +52,12 @@ bool TPendingTasksQ::DoAdd(TTask* aTask)
     
 void TPendingTasksQ::PourAllTasksInto(const TTaskQueue& aQueue)
     {
-        
+    TAutoLock lock( iLock );
     }
     
 void TPendingTasksQ::WillDeleteEventDispatcherOfThisThread()
     {
-        
+     TAutoLock lock( iLock );   
     }
     
 } //namespace vbase

@@ -8,162 +8,71 @@
 
 #include "base/eventdispatcher/event_dispatcher.h"
 #include "base/task/task_lambda.h"
+#include "base/thread/thread_loopless.h"
 #include "3p/google/gtest/include/gtest/gtest.h"
 
 namespace vbase
 {
-    
-    class MMyEventDispatcherThreadMainEntry
-    : public IThreadMainEntryPoint
-    , private TNonCopyable<MMyEventDispatcherThreadMainEntry>
-    {
-    public:
-        MMyEventDispatcherThreadMainEntry()
-        : mTagDidRun(false)
-        , iCallRun(false)
-        {
-            iMEventDispatcher = MEventDispatcher::New(); //ctor for MEventDispatcher run on whoever called this MMyEventDispatcherThreadMainEntry ctor's thread
-        }
-        
-        virtual void MainEntry()
-        {
-            mTagDidRun = true;
-            TPlatformThread::SetName("viren-thread");
-            const char* name = TPlatformThread::Name();
-            int ret = strcmp(name, "viren-thread");
-            EXPECT_EQ(0, ret);
-            
-            TLambda lambda;
-            iMEventDispatcher->ExecuteAsynch(lambda);
-            
-            return;
-        }
-        
-        
-        bool TagDidRun() const { return mTagDidRun; }
-        void SetSleepTag(bool aSleep) { iCallRun = aSleep; }
-        
-        void ScheduleWork()
-        {
-            iMEventDispatcher->ScheduleWork(); // should abort. see comments in ctor
-        }
-        
-        TPlatformThreadID GetThreadId() { return TPlatformThread::CurrentID(); }
-        
-    private:
-        bool mTagDidRun;
-        bool iCallRun;
-        MEventDispatcher* iMEventDispatcher;
-    };
-    
-    
-    static const size_t kStackSize = 0;
-    static const bool kJoinable = true;
-    
-        // ------------------------------------------------------------ thread unsafe
-    
-    
-    void EventDispatcherThreadUnSafeTest()
-    {
-        MMyEventDispatcherThreadMainEntry* eventDispatcherThreadEntryObject = new MMyEventDispatcherThreadMainEntry();
-        TPlatformThreadHandle h;
-        eventDispatcherThreadEntryObject->SetSleepTag(true);
-        ASSERT_FALSE( eventDispatcherThreadEntryObject->TagDidRun() );
-        
-        EThreadPriority aPriority = EThreadPriority_Normal;
-        ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, eventDispatcherThreadEntryObject, &h, aPriority) );
-        
-            //TPlatformThread::Sleep(10);
-        eventDispatcherThreadEntryObject->ScheduleWork();
-        
-            //TPlatformThread::Join(&h);
-        ASSERT_TRUE( eventDispatcherThreadEntryObject->TagDidRun() );
-    }
-    
-#if !defined(NDEBUG)
-#if defined( __i386__)
-    TEST(UT_MEventDispatcher, DISABLED_EventDispatcherThreadUnSafeDebug)
-    {
-        ASSERT_DEATH({ EventDispatcherThreadUnSafeTest(); }, "");
-    }
-#endif
-#else
-    TEST(UT_MEventDispatcher, EventDispatcherThreadUnSafeProduction)
-    {
-        EventDispatcherThreadUnSafeTest();
-    }
-#endif
-    
-    
-        // -------------------------------------------
-    class MMyEventDispatcherThreadUnSafeMainEntry
-    : public IThreadMainEntryPoint
-    , private TNonCopyable<MMyEventDispatcherThreadUnSafeMainEntry>
-    {
-    public:
-        MMyEventDispatcherThreadUnSafeMainEntry()
-        : mTagDidRun(false)
-        , iCallRun(false)
-        {}
-        
-        virtual void MainEntry()
-        {
-            mTagDidRun = true;
-            TPlatformThread::SetName("MMyEventDispatcherThreadUnSafeMainEntry");
-            const char* name = TPlatformThread::Name();
-            int ret = strcmp(name, "MMyEventDispatcherThreadUnSafeMainEntry");
-            EXPECT_EQ(0, ret);
-            
-            iMEventDispatcher = MEventDispatcher::New();
-            
-            return;
-        }
-        
-        
-        bool TagDidRun() const { return mTagDidRun; }
-        void SetSleepTag(bool aSleep) { iCallRun = aSleep; }
-        
-        void PostTask()
-        {
-            TLambda lambda;
-            iMEventDispatcher->ExecuteAsynch(lambda);
-        }
-        
-        TPlatformThreadID GetThreadId() { return TPlatformThread::CurrentID(); }
-        
-    private:
-        bool mTagDidRun;
-        bool iCallRun;
-        MEventDispatcher* iMEventDispatcher;
-    };
-    
-    
-    
-    TEST(UT_MEventDispatcher, DISABLED_ExecuteAsynch_Threaded)
-    {
-        MMyEventDispatcherThreadUnSafeMainEntry* threadUnSafeEvtDispatcher = new MMyEventDispatcherThreadUnSafeMainEntry();
-        TPlatformThreadHandle h;
-        threadUnSafeEvtDispatcher->SetSleepTag(true);
-        ASSERT_FALSE( threadUnSafeEvtDispatcher->TagDidRun() );
-        
-        EThreadPriority aPriority = EThreadPriority_Normal;
-        ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, threadUnSafeEvtDispatcher, &h, aPriority) );
-        //TPlatformThread::Join(&h);
-        TPlatformThread::Sleep(700000);
-        //threadUnSafeEvtDispatcher->PostTask();
-        ASSERT_TRUE( threadUnSafeEvtDispatcher->TagDidRun() );
-    }
-    
-    TEST(UT_MEventDispatcher, DISABLED_ExecuteAsynch_SingleThreaded)
-    {
-        MEventDispatcher* eventDispatcher = MEventDispatcher::New();
-       
-        TLambda lambda;
-        eventDispatcher->ExecuteAsynch(lambda);
-        bool r = eventDispatcher->PerformWork();
-        ASSERT_TRUE( r );
-    }
 
+class UT_MEventDispatcher_LooplessThread
+    : public TLooplessThread
+    , private TNonCopyable<UT_MEventDispatcher_LooplessThread>
+    {
+public:
+    explicit UT_MEventDispatcher_LooplessThread(std::string& aThreadName)
+    : TLooplessThread(aThreadName)
+    , iDidRun(false)
+    {}
+    
+    virtual void Run()
+        {
+        iDidRun = true;
+        
+        TestEventDispatcher();
+        }
+    
+    void TestEventDispatcher()
+        {
+        //sleep(3);
+        
+        iMEventDispatcher = MEventDispatcher::New();
+//        TLambda lambda;
+//        iMEventDispatcher->ExecuteAsynch(lambda);
+PostLambda();
+        }
+        
+    void PostLambda()
+        {
+        TLambda lambda;
+        iMEventDispatcher->ExecuteAsynch(lambda);
+        }
+    
+    void Signal()
+        {
+        iMEventDispatcher->ScheduleWork();
+        }
+    
+    bool GetDidRunTag() const { return iDidRun; }
+private:
+    bool iDidRun;
+    MEventDispatcher* iMEventDispatcher;
+    };
+    
+    
+TEST(UT_MEventDispatcher, ExecuteLambda)
+    {
+    std::string threadName = "viren-loopless-thread";
+    UT_MEventDispatcher_LooplessThread* looplessThread = new UT_MEventDispatcher_LooplessThread(threadName);
+    EXPECT_TRUE(looplessThread->GetDidRunTag() == false);
+    looplessThread->Start();
+    EXPECT_TRUE(looplessThread->GetDidRunTag() == true);
+    
+    unsigned int r = sleep(13);
+    LOG_INFO << "sleep returned : " << r;
+    looplessThread->Signal();
+    
+    //looplessThread->PostLambda();
+    }
     
     
 } //namespace vbase

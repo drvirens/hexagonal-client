@@ -30,12 +30,6 @@ void CRunLoopCFRunLoopBase::SetWorkLoad(IWorkLoad* aWorkLoad)
         }
     }
     
-    
-//    static void emptyPerform(void*)
-//    {
-//    LOG_INFO << "emptyPerform";
-//    }
-
 void CRunLoopCFRunLoopBase::Run(IWorkLoad* aWorkLoad)
     {
     AssertValidThreadCall();
@@ -43,14 +37,7 @@ void CRunLoopCFRunLoopBase::Run(IWorkLoad* aWorkLoad)
     //TODO: We don't support nesting of CFRunLoop at least for phase 1
     IWorkLoad* prevworkitem = mIWorkItem;
     SetWorkLoad(aWorkLoad);
-    
-            // Must add a source to the run loop to prevent CFRunLoopRun() from exiting.
-//        CFRunLoopSourceContext ctxt = {0, (void*)1 /*must be non-NULL*/, 0, 0, 0, 0, 0, 0, 0, emptyPerform};
-//        CFRunLoopSourceRef bogusSource = CFRunLoopSourceCreate(0, 0, &ctxt);
-//        CFRunLoopAddSource(mRunLoop, bogusSource, kCFRunLoopDefaultMode);
-
     DoRun(aWorkLoad);
-
     SetWorkLoad(prevworkitem); //TODO: Not really needed???
     }
 
@@ -61,29 +48,14 @@ void CRunLoopCFRunLoopBase::Stop()
 
 void CRunLoopCFRunLoopBase::ScheduleWork()
     {
-    //AssertValidThreadCall();
-    
     CFRunLoopSourceSignal(mWorkSource);
-    CFRunLoopWakeUp(mRunLoop); //must if you want the thread to do the work ASAP
+    CFRunLoopWakeUp(mRunLoop);
     }
 
 void CRunLoopCFRunLoopBase::ScheduleDelayedWork(TTimeInterval aTTimeInterval)
     {
-    //AssertValidThreadCall();
-    
     //CFRunLoopTimerSetNextFireDate();
     }
-
-    /*
-    For details, see: http://www.opensource.apple.com/source/CF/CF-476.15/CFRunLoop.c
-    void CFRunLoopRun(void) {	//DOES CALLOUT
-    int32_t result;
-    do {
-    result = CFRunLoopRunSpecific(CFRunLoopGetCurrent(), kCFRunLoopDefaultMode, 1.0e10, false);
-    CHECK_FOR_FORK();
-    } while (kCFRunLoopRunStopped != result && kCFRunLoopRunFinished != result);
-    }
-    */
 
 void CRunLoopCFRunLoopBase::DoObservePreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
     {
@@ -113,23 +85,16 @@ void CRunLoopCFRunLoopBase::DoPerformSourceWork(void* aInfo)
     
 bool CRunLoopCFRunLoopBase::DoPerformWork()
     {
-        //drain the Autoreleasepool per run of the CFRunLoop to release all shit created by higher-level classes, if any
-        
-        //Arguably, @autoreleasepool is much faster than using NSAutoreleasePool manually:
-        //      1) http://stackoverflow.com/questions/21421715/why-autoreleasepool-is-6-times-faster-than-nsautoreleasepool
-        //      Comment by Greg parker: NSAutoreleasePool allocates an NSAutoreleasePool object (or fetches an existing one from a cache); @autoreleasepool does not. NSAutoreleasePool sends several Objective-C messages; @autoreleasepool does not. –
-        //      2) More info: https://developer.apple.com/library/ios/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html
-        
+    bool r = false;
     @autoreleasepool
         {
-        bool r = mIWorkItem->PerformWork();
-        if( r ) //more work to do
+        r = mIWorkItem->PerformWork();
+        if( r )
             {
             CFRunLoopSourceSignal(mWorkSource);
             }
-            return r;
         }
-    return false;
+    return r;
     }
 
 void CRunLoopCFRunLoopBase::DoPerformIdleSourceWork(void* aInfo)
