@@ -19,7 +19,7 @@ namespace vbase
 
 //this thread does not have any runloop in it
 
-  class TLooplessThread
+class TLooplessThread
     : public IThreadMainEntryPoint
     , private TNonCopyable<TLooplessThread>
   {
@@ -31,6 +31,7 @@ namespace vbase
     virtual void MainEntry(); //from IThreadMainEntryPoint
     virtual void Start();
     virtual void Join();
+    
   private:
     TLock mLock; // to access mIsStarted
     TConditionVariable mConditionVariable; // to be used by mLock

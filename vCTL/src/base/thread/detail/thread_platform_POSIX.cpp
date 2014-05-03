@@ -75,7 +75,6 @@ public:
     mWaitCondition = true;
     mConditionVariable.NotifyOne();
     mLock.Release();
-    
   }
   
 private:
