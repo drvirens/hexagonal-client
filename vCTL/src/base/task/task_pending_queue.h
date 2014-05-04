@@ -28,7 +28,7 @@ public:
     explicit TPendingTasksQ(ITaskPendingQueueListener& aTaskListListener);
     virtual ~TPendingTasksQ();
     bool Add(const TLambda& aLambda, const TTimeDelta& aDelay);
-    void PourAllTasksInto(const TTaskQueue& aQueue);
+    void PourAllTasksInto(TTaskQueue& aQueue);
     int Size() const { return iPendingTasksQ.size(); }
     
     virtual void WillDeleteEventDispatcherOfThisThread();

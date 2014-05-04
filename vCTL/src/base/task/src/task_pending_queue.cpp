@@ -50,14 +50,21 @@ bool TPendingTasksQ::DoAdd(TTask* aTask)
     return ret;
     }
     
-void TPendingTasksQ::PourAllTasksInto(const TTaskQueue& aQueue)
+void TPendingTasksQ::PourAllTasksInto(TTaskQueue& aQueue)
     {
-    //TAutoLock lock( iLock );
+    ASSERT(aQueue.empty());
+    
+    TAutoLock lock( iLock );
+    if(!iPendingTasksQ.empty())
+        {
+        iPendingTasksQ.Swap(&aQueue); //O(1)
+        }
+    ASSERT(iPendingTasksQ.empty());
     }
     
 void TPendingTasksQ::WillDeleteEventDispatcherOfThisThread()
     {
-    //TAutoLock lock( iLock );
+    TAutoLock lock( iLock );
     }
     
 } //namespace vbase
