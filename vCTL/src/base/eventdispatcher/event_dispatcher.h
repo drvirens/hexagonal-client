@@ -32,6 +32,8 @@ public:
     virtual ~MEventDispatcher();
     static MEventDispatcher* New();
     
+    void Run(); //start running
+    
     // IWorkLoad contract
     virtual bool PerformWork();
     virtual bool PerformIdleWork();
@@ -48,22 +50,21 @@ public:
     
     void ExecuteAsynch(const TLambda& aLambda);
     void ExecuteAsynchAfterDelay(const TLambda& aLambda, const TTimeDelta& aTimeDelta);
-    
-    void ScheduleWork();
-    
+
 protected:
     MEventDispatcher();
     void Construct();
     void LoadTasks();
     bool HasTasksToExecute() const;
     bool DoExecuteTask(TTask& aTask);
+    void ScheduleWork();
     
 private:
     
     
 private:
     TTaskQueue iWorkLoadItemsQ; //tots internally
-    TPendingTasksQ* iPendingTasksQ; //client facings q that accepts and stores the tasks in it
+    TPendingTasksQ iPendingTasksQ; //client facings q that accepts and stores the tasks in it
     IRunLoopBase* iRunLoop;
     };
     

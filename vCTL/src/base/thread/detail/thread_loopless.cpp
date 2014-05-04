@@ -31,6 +31,8 @@ void TLooplessThread::MainEntry()
     {
     TPlatformThread::SetName(mThreadName.c_str());
     
+    LOG_INFO << "threadName: " << mThreadName.c_str() << "threadId: " << TPlatformThread::CurrentID();
+    
     mLock.Acquire();
     mIsStarted = true;
     mConditionVariable.NotifyOne(); //Wait in TLooplessThread::Start()
@@ -71,27 +73,27 @@ void TLooplessThread::Start()
     mLock.Release();
     }
     
-    void TLooplessThread::Join()
+void TLooplessThread::Join()
+    {
+    ASSERT(mIsStarted);
+    if( !mIsStarted )
         {
-        ASSERT(mIsStarted);
-        if( !mIsStarted )
-            {
-            LOG_ERROR << "Start: This thread " << "[" << mThreadName << "]" << " was not started so cant join";
-            return;
-            }
-        ASSERT(mIsJoined == false);
-        if( mIsJoined )
-            {
-            LOG_ERROR << "Start: This thread " << "[" << mThreadName << "]" << " is in join state so cant call join again";
-            return;
-            }
-        TPlatformThread::Join(&mThreadHandle);
-        
-            //TODO: needs careful testing
-        mLock.Acquire();
-        mIsJoined = true;
-        mLock.Release();
+        LOG_ERROR << "Start: This thread " << "[" << mThreadName << "]" << " was not started so cant join";
+        return;
         }
+    ASSERT(mIsJoined == false);
+    if( mIsJoined )
+        {
+        LOG_ERROR << "Start: This thread " << "[" << mThreadName << "]" << " is in join state so cant call join again";
+        return;
+        }
+    TPlatformThread::Join(&mThreadHandle);
+    
+        //TODO: needs careful testing
+    mLock.Acquire();
+    mIsJoined = true;
+    mLock.Release();
+    }
     
     
 } //namespace vbase

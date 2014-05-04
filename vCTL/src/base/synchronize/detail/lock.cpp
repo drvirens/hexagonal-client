@@ -20,6 +20,7 @@ const TPlatformThreadID kNoThreadId = static_cast<TPlatformThreadID>(0);
 #if !defined(NDEBUG)
     mOwnedByThread = false;
     mOwningThreadId = kNoThreadId;
+    iThreadName = "";
 #endif
   }
   
@@ -81,6 +82,7 @@ const TPlatformThreadID kNoThreadId = static_cast<TPlatformThreadID>(0);
     ASSERT( mOwnedByThread == false );
     mOwnedByThread = true;
     mOwningThreadId = TPlatformThread::CurrentID();
+    iThreadName = TPlatformThread::Name();
   }
 #endif
 

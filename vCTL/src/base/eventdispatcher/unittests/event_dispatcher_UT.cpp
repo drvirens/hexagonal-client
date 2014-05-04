@@ -48,10 +48,10 @@ public:
         iMEventDispatcher->ExecuteAsynch(lambda);
         }
     
-    void Signal()
-        {
-        iMEventDispatcher->ScheduleWork();
-        }
+//    void Signal()
+//        {
+//        iMEventDispatcher->ScheduleWork();
+//        }
     
     bool GetDidRunTag() const { return iDidRun; }
 private:
@@ -60,10 +60,24 @@ private:
     std::string iThreadName;
     };
     
-    
-TEST(UT_MEventDispatcher, DISABLED_ExecuteLambda)
+void Test_UT_MEventDispatcher_Trivial()
     {
-    std::string threadName = "viren-loopless-thread";
+    std::string threadName = "UT_MEventDispatcher_LooplessThread";
+    UT_MEventDispatcher_LooplessThread* looplessThread = new UT_MEventDispatcher_LooplessThread(threadName);
+    EXPECT_TRUE(looplessThread->GetDidRunTag() == false);
+    looplessThread->Start();
+    EXPECT_TRUE(looplessThread->GetDidRunTag() == true);
+
+    unsigned int r = sleep(3);
+    LOG_INFO << "sleep returned : " << r;
+    //looplessThread->Signal();
+
+    looplessThread->PostLambda();
+    }
+    
+TEST(UT_MEventDispatcher, DISABLED_Trivial)
+    {
+    std::string threadName = "UT_MEventDispatcher_LooplessThread";
     UT_MEventDispatcher_LooplessThread* looplessThread = new UT_MEventDispatcher_LooplessThread(threadName);
     EXPECT_TRUE(looplessThread->GetDidRunTag() == false);
     looplessThread->Start();

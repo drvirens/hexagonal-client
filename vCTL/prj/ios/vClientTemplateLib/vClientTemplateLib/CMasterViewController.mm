@@ -10,8 +10,68 @@
 
 #import "CDetailViewController.h"
 
+#include "base/eventdispatcher/event_dispatcher.h"
+#include "base/task/task_lambda.h"
+#include "base/thread/thread_loopless.h"
+
+
+namespace vbase
+{
+    
+    class UT_MEventDispatcher_LooplessThread
+    : public TLooplessThread
+    , private TNonCopyable<UT_MEventDispatcher_LooplessThread>
+    {
+    public:
+        explicit UT_MEventDispatcher_LooplessThread(std::string& aThreadName)
+        : TLooplessThread(aThreadName)
+        , iDidRun(false)
+        , iThreadName(aThreadName)
+        , iMEventDispatcher(0)
+        {}
+        
+        virtual void Run()
+        {
+            iDidRun = true;
+            iMEventDispatcher = MEventDispatcher::New();
+            iMEventDispatcher->Run();
+        }
+        
+        
+        void PostLambda()
+        {
+            TLambda lambda;
+            iMEventDispatcher->ExecuteAsynch(lambda);
+        }
+        
+        bool GetDidRunTag() const { return iDidRun; }
+    private:
+        bool iDidRun;
+        MEventDispatcher* iMEventDispatcher;
+        std::string iThreadName;
+    };
+    
+    UT_MEventDispatcher_LooplessThread* Test_UT_MEventDispatcher_Start()
+    {
+        std::string threadName = "UT_MEventDispatcher_LooplessThread";
+        UT_MEventDispatcher_LooplessThread* looplessThread = new UT_MEventDispatcher_LooplessThread(threadName);
+        looplessThread->Start();
+        return looplessThread;
+    }
+    
+    void PostTask(UT_MEventDispatcher_LooplessThread* looplessThread)
+    {
+        looplessThread->PostLambda();
+    }
+}
+
+
+
+// -------------
+
 @interface CMasterViewController () {
     NSMutableArray *_objects;
+    vbase::UT_MEventDispatcher_LooplessThread* thread;
 }
 @end
 
@@ -23,6 +83,7 @@
       self.clearsSelectionOnViewWillAppear = NO;
       self.preferredContentSize = CGSizeMake(320.0, 600.0);
   }
+  thread = vbase::Test_UT_MEventDispatcher_Start();
     [super awakeFromNib];
 }
 
@@ -87,6 +148,7 @@
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        
     }
 }
 
@@ -114,7 +176,7 @@
         
     }
     else {
-        
+        PostTask(thread);
     }
    }
 

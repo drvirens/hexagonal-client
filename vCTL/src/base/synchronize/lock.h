@@ -9,6 +9,8 @@
 #ifndef __vClientTemplateLib__lock__
 #define __vClientTemplateLib__lock__
 
+#include <string>
+
 #include "build/build_config.h"
 #include "base/non_copyable.h"
 #include "base/synchronize/detail/lock_impl.h" //this breaks DIP (dependency-inversion-principle), but we want to keep all the threading-sync module as compact as possible
@@ -42,6 +44,7 @@ namespace detail
   
     bool mOwnedByThread;               //am I owned by any thread?
     TPlatformThreadID mOwningThreadId; //if yes, who owes me?
+    std::string iThreadName;
 #endif
 
 #if defined(V_PLATFORM_POSIX)
