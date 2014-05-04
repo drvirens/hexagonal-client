@@ -17,6 +17,7 @@
 #define _WHISPERLIB_BASE_LOG_H
 
 #include "base/logging/core_config.h"
+#include "base/synchronize/lock.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -116,9 +117,9 @@ class LogMessage {
 #ifdef ANDROID
     , file_(file)
 #endif
-
+    , iLock()
   {
-  
+    vbase::TAutoLock lock(iLock);
 #ifdef ANDROID
     oss << "1618labs: "
 #else
@@ -156,7 +157,9 @@ class LogMessage {
         }
 #endif
     }
+    
     std::ostream& stream() {
+        vbase::TAutoLock lock(iLock);
 #ifdef ANDROID
         return oss;
 #else
@@ -177,6 +180,8 @@ class LogMessage {
 #endif
 
   private:
+    vbase::TLock iLock; //locks pretty_date_ buffer and std::out
+    
     struct DateLogger {
         char buffer_[9];
         DateLogger() {
@@ -184,7 +189,7 @@ class LogMessage {
             _tzset();
 #endif
         }
-        char* const HumanDate();
+    char* const HumanDate();
     };
 
     DateLogger pretty_date_;
