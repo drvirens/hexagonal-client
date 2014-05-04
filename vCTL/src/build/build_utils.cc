@@ -41,7 +41,7 @@
 
 #include <algorithm>
 #include "build/build_utils.h"
-#include "base/logging/log.h"
+#include "logging/log_logger.h"
 
 //////////////////////////////////////////////////////////////////////
 // Assertions

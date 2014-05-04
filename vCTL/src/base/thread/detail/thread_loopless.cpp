@@ -7,7 +7,7 @@
 //
 
 #include "base/thread/thread_loopless.h"
-#include "base/logging/log.h"
+#include "logging/log_logger.h"
 #include "build/build_utils.h"
 
 namespace vbase

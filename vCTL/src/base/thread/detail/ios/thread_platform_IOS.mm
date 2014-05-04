@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #include "base/thread/thread_platform.h"
-#include "base/logging/log.h"
+#include "logging/log_logger.h"
 #include "build/build_utils.h"
 #include "base/error_handler.h"
 

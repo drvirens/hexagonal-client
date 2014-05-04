@@ -16,7 +16,7 @@
 #endif
 
 #include "build/build_utils.h"
-#include "base/logging/log.h"
+#include "logging/log_logger.h"
 
 
 //find out if a given class is calling the methods on valid thread

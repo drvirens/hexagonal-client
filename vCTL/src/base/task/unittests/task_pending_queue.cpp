@@ -11,7 +11,7 @@
 #include "base/task/task_pending_queue.h"
 #include "base/task/task_pending_q_listener.h"
 #include "base/time/time.h"
-#include "base/logging/log.h"
+#include "logging/log_logger.h"
 #include "base/runloop/detail/darwin/run_loop_cocoa_DARWIN.h"
 #include "base/runloop/run_loop.h"
 #include "3p/google/gtest/include/gtest/gtest.h"

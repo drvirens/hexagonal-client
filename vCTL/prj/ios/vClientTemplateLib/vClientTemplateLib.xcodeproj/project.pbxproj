@@ -38,7 +38,6 @@
 		DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F25319074530007567A9 /* unitest_run_all.cpp */; };
 		DB67F26519084B43007567A9 /* thread_platform_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F26219084B43007567A9 /* thread_platform_POSIX.cpp */; };
 		DB67F26C19084EF1007567A9 /* lock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F26B19084EF1007567A9 /* lock.cpp */; };
-		DB67F2CA19089BBC007567A9 /* log.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2C719089BBC007567A9 /* log.cc */; };
 		DB67F2D319089E50007567A9 /* build_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2D119089E50007567A9 /* build_utils.cc */; };
 		DB67F2D51908CCD9007567A9 /* lock_impl_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2D41908CCD9007567A9 /* lock_impl_POSIX.cpp */; };
 		DB67F2DC1908F26D007567A9 /* condition_variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB67F2DB1908F26D007567A9 /* condition_variable.cpp */; };
@@ -209,11 +208,6 @@
 		DB67F26219084B43007567A9 /* thread_platform_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_platform_POSIX.cpp; sourceTree = "<group>"; };
 		DB67F26919084CCB007567A9 /* lock_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock_impl.h; sourceTree = "<group>"; };
 		DB67F26B19084EF1007567A9 /* lock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock.cpp; sourceTree = "<group>"; };
-		DB67F2C519089BBC007567A9 /* core_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_config.h; sourceTree = "<group>"; };
-		DB67F2C619089BBC007567A9 /* gflags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gflags.h; sourceTree = "<group>"; };
-		DB67F2C719089BBC007567A9 /* log.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log.cc; sourceTree = "<group>"; };
-		DB67F2C819089BBC007567A9 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
-		DB67F2C919089BBC007567A9 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		DB67F2D119089E50007567A9 /* build_utils.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = build_utils.cc; sourceTree = "<group>"; };
 		DB67F2D219089E50007567A9 /* build_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_utils.h; sourceTree = "<group>"; };
 		DB67F2D41908CCD9007567A9 /* lock_impl_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock_impl_POSIX.cpp; sourceTree = "<group>"; };
@@ -635,7 +629,6 @@
 				DB31E77D19120DD0009A6CF6 /* task */,
 				DB67F387190C913A007567A9 /* runloop */,
 				DB67F360190A114E007567A9 /* time */,
-				DB67F2C419089BBC007567A9 /* logging */,
 				DB67F23619062FFA007567A9 /* file */,
 				DB67F23719062FFA007567A9 /* memory */,
 				DB67F23819062FFA007567A9 /* synchronize */,
@@ -727,18 +720,6 @@
 				DB67F2DE1908F9D6007567A9 /* condition_variable_impl_POSIX.cpp */,
 			);
 			path = detail;
-			sourceTree = "<group>";
-		};
-		DB67F2C419089BBC007567A9 /* logging */ = {
-			isa = PBXGroup;
-			children = (
-				DB67F2C519089BBC007567A9 /* core_config.h */,
-				DB67F2C619089BBC007567A9 /* gflags.h */,
-				DB67F2C719089BBC007567A9 /* log.cc */,
-				DB67F2C819089BBC007567A9 /* log.h */,
-				DB67F2C919089BBC007567A9 /* types.h */,
-			);
-			path = logging;
 			sourceTree = "<group>";
 		};
 		DB67F360190A114E007567A9 /* time */ = {
@@ -1001,7 +982,6 @@
 				DB67F392190C9934007567A9 /* thread_un_safe_debug.cpp in Sources */,
 				DB67F39E190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp in Sources */,
 				DB67F3AD190DD18F007567A9 /* run_loop_DARWIN.mm in Sources */,
-				DB67F2CA19089BBC007567A9 /* log.cc in Sources */,
 				DB67F24519062FFA007567A9 /* gtest.cc in Sources */,
 				DBB191621915F7C9006C9EAE /* log.cpp in Sources */,
 				DBB19167191620A7006C9EAE /* log_UNIT_TEST.cpp in Sources */,
@@ -1133,7 +1113,10 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = (
+					"-DENABLE_LOGGING=1",
+					"-DTHREADSAFE_LOGGING=1",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";
 				WRAPPER_EXTENSION = app;

@@ -44,6 +44,10 @@ void ISimpleBlockingOutput::Dump(ELogLevel aLogLevel,
             {
             out << "WARNING";
             } break;
+        case eFatal:
+            {
+            out << "FATAL";
+            } break;
         default:
             {
             out << "ERROR";

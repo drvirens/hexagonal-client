@@ -7,7 +7,7 @@
 //
 
 #include "base/task/task_lambda.h"
-#include "base/logging/log.h"
+#include "logging/log_logger.h"
 
 namespace vbase
 {

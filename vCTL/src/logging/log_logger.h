@@ -13,8 +13,8 @@
 #include "logging/log_level.h"
 
 
-
-#define ENABLE_LOGGING 1
+//#define THREADSAFE_LOGGING 1
+//#define ENABLE_LOGGING 1
 
 #define GET_FILE_NAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 
@@ -24,11 +24,21 @@
                             if ( (logging::level) <= (logging::TLogConfig::GetLevel()) ) \
                                 logging::TLog(logging::level, GET_FILE_NAME__, __LINE__, __func__).GetLogMetadata()
 
-   // ------------------------ base code uses these macros
+   // ------------------------ base/legacy code uses these macros
     #define LOG_INFO LOG(eInfo)
+    #define LOG_ERROR LOG(eError)
+    #define LOG_FATAL LOG(eFatal)
 
 #else
+
+#include <iostream>
+
     #define LOG( level )  std::cerr << std::endl
+
+    #define LOG_INFO LOG(eInfo)
+    #define LOG_ERROR LOG(eError)
+    #define LOG_FATAL LOG(eFatal)
+    
 #endif
 
 

@@ -14,6 +14,7 @@ namespace logging
 
 enum ELogLevel
     {
+    eFatal,
     eError,
     eWarning,
     eInfo,

@@ -7,7 +7,7 @@
 //
 
 #include "base/runloop/detail/darwin/run_loop_DARWIN.h"
-#include "base/logging/log.h"
+#include "logging/log_logger.h"
 
 namespace vbase
 {

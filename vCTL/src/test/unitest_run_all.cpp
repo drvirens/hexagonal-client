@@ -8,11 +8,16 @@
 
 #include "test/unitest_run_all.h"
 #include "gtest/gtest.h"
-
+#include "logging/log.h"
+#include "logging/log_output.h"
+#include "logging/log_logger.h"
 
 void RunUnitTests()
     {
-    printf("Running main() from CUnitTests_All.cpp\n");
+    
+    
+    logging::TLogConfig::AddOutput(new logging::CConsoleOutput(logging::eDebug));
+    LOG(eInfo) << "Running the unit tests...";
     
     CUnitTests_All* all = CUnitTests_All::New();
     if( all )

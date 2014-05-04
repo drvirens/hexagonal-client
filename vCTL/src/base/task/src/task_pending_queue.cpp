@@ -8,7 +8,7 @@
 
 #include "base/task/task_pending_queue.h"
 #include "build/build_utils.h"
-#include "base/logging/log.h"
+#include "logging/log_logger.h"
 #include "base/task/task_pending_q_listener.h"
 
 namespace vbase
