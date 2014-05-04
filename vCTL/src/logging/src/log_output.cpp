@@ -58,7 +58,7 @@ void ISimpleBlockingOutput::Dump(ELogLevel aLogLevel,
         } //switch
      
     //timestamp
-    out << "[" << aTimeStamp << "]";
+    out << " [" << aTimeStamp << "]";
     
     out << " : " << aFileName << ":" << aLineNumber << ":"
         << aFunctionName << "() = "

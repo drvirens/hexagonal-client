@@ -54,20 +54,6 @@ char* const TLogTimeStamp::PrettyTimeStamp()
                         now.tm_hour, now.tm_min, now.tm_sec, tv.tv_usec);
     ASSERT(n == sizeof(iBuffer));
     iBuffer[n] = 0;
-    
-//    
-//    char tmbuf[9] = {0};
-//    
-//    struct timeval tv;
-//    time_t nowtime;
-//    struct tm* nowtm;
-//    
-//    gettimeofday(&tv, 0);
-//    nowtime = tv.tv_sec;
-//    nowtm = localtime_r(&nowtime, nowtm);
-//    
-//    strftime(tmbuf, sizeof(tmbuf), "%H:%M:%S", nowtm);
-//    int n = snprintf(iBuffer, sizeof iBuffer, "", )
 #endif
     return iBuffer;
     }

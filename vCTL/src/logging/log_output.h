@@ -60,9 +60,25 @@ class CConsoleOutput : public ISimpleBlockingOutput
     {
 public:
     explicit CConsoleOutput(ELogLevel aLogLevel) : ISimpleBlockingOutput(aLogLevel) {}
+    virtual ~CConsoleOutput() {}
 private:
     virtual std::ostream& OutputTo();
     };
+    
+    
+// ------------------------------------- CFileOutput
+//TODO: do this after file abstraction is ready for iOS and Android
+class CFileOutput : public ISimpleBlockingOutput
+    {
+public:
+    explicit CFileOutput(ELogLevel aLogLevel) : ISimpleBlockingOutput(aLogLevel) {}
+    virtual ~CFileOutput() {}
+private:
+    virtual std::ostream& OutputTo();
+private:
+    //std::ofstream iOutputFile;
+    };
+
 
 } //namespace logging
 
