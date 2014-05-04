@@ -44,14 +44,7 @@ private:
 class TLog
     {
 public:
-    TLog(ELogLevel aLogLevel, const std::string& aFileName, int aLineNumber, const std::string& aFunctionName)
-        : iLogLevel(aLogLevel)
-        , iTimeStamp( "" )
-        , iFileName(aFileName)
-        , iLineNumber(aLineNumber)
-        , iFunctionName(aFunctionName)
-        {}
-        
+    TLog(ELogLevel aLogLevel, const std::string& aFileName, int aLineNumber, const std::string& aFunctionName);
     ~TLog();
     std::ostringstream& GetLogMetadata() { return iMessage; }
     

@@ -7,10 +7,13 @@
 //
 
 #include <iostream>
+
 #include "logging/log_output.h"
+
 
 namespace logging
 {
+// -----------------------
 
 void ISimpleBlockingOutput::Dump(ELogLevel aLogLevel,
                      const std::string& aTimeStamp,
@@ -54,7 +57,8 @@ void ISimpleBlockingOutput::Dump(ELogLevel aLogLevel,
             } break;
         } //switch
      
-    //todo: add time
+    //timestamp
+    out << "[" << aTimeStamp << "]";
     
     out << " : " << aFileName << ":" << aLineNumber << ":"
         << aFunctionName << "() = "

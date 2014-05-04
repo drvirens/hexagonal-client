@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <iostream>
 
 #if WIN32
 #define WIN32_LEAN_AND_MEAN
@@ -41,7 +42,7 @@
 
 #include <algorithm>
 #include "build/build_utils.h"
-#include "logging/log_logger.h"
+//#include "logging/log_logger.h"
 
 //////////////////////////////////////////////////////////////////////
 // Assertions
@@ -74,7 +75,9 @@ void LogAssert(const char* function, const char* file, int line,
     custom_assert_logger_(function, file, line, expression);
   } else {
   //viren+
-    LOG_ERROR << file << "(" << line << ")" << ": ASSERT FAILED: "
+//    LOG_ERROR << file << "(" << line << ")" << ": ASSERT FAILED: "
+//                  << expression << " @ " << function;
+    std::cerr << file << "(" << line << ")" << ": ASSERT FAILED: "
                   << expression << " @ " << function;
     //viren-
   }

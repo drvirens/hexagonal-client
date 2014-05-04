@@ -7,14 +7,72 @@
 //
 
 #include <iostream>
+#include <stdio.h>
+#include <sys/time.h>
+
 #include "logging/log_output.h"
 #include "logging/log.h"
+#include "build/build_utils.h"
 
 namespace logging
 {
 
 ELogLevel TLogConfig::iLogLevel = eDebug;
 std::vector<IOutput*> TLogConfig::iOutputs;
+
+
+// ----------------------- TLogTimeStamp
+class TLogTimeStamp
+    {
+public:
+    TLogTimeStamp()
+        {
+    #if defined(_MSC_VER)
+        _tzset();
+    #endif
+        }
+    char* const PrettyTimeStamp();
+    
+private:
+    char iBuffer[16];
+    };
+    
+char* const TLogTimeStamp::PrettyTimeStamp()
+    {
+#if defined(_MSC_VER)
+    _strtime_s(iBuffer, sizeof(iBuffer));
+#else
+    struct timeval tv;
+    
+    time_t timevalue = time(0);
+    struct tm now;
+    localtime_r(&timevalue, &now);
+    
+    gettimeofday(&tv, 0);
+    
+    int n = snprintf(iBuffer, sizeof(iBuffer), "%02d:%02d:%02d.%06d",
+                        now.tm_hour, now.tm_min, now.tm_sec, tv.tv_usec);
+    ASSERT(n == sizeof(iBuffer));
+    iBuffer[n] = 0;
+    
+//    
+//    char tmbuf[9] = {0};
+//    
+//    struct timeval tv;
+//    time_t nowtime;
+//    struct tm* nowtm;
+//    
+//    gettimeofday(&tv, 0);
+//    nowtime = tv.tv_sec;
+//    nowtm = localtime_r(&nowtime, nowtm);
+//    
+//    strftime(tmbuf, sizeof(tmbuf), "%H:%M:%S", nowtm);
+//    int n = snprintf(iBuffer, sizeof iBuffer, "", )
+#endif
+    return iBuffer;
+    }
+    
+
 
 void TLogConfig::SetLevel(ELogLevel aLevel)
     {
@@ -37,6 +95,18 @@ void TLogConfig::RemoveOutput(int aOutputId)
     }
 
 //
+
+TLog::TLog(ELogLevel aLogLevel, const std::string& aFileName, int aLineNumber, const std::string& aFunctionName)
+    : iLogLevel(aLogLevel)
+    , iTimeStamp( "" )
+    , iFileName(aFileName)
+    , iLineNumber(aLineNumber)
+    , iFunctionName(aFunctionName)
+    {
+    TLogTimeStamp timestamp;
+    iTimeStamp = timestamp.PrettyTimeStamp();
+    }
+        
 TLog::~TLog()
     {
     std::vector<IOutput*> v = TLogConfig::iOutputs;
