@@ -13,7 +13,7 @@
 
 namespace vbase
 {
-
+    
 class UT_MEventDispatcher_LooplessThread
     : public TLooplessThread
     , private TNonCopyable<UT_MEventDispatcher_LooplessThread>
@@ -23,59 +23,30 @@ public:
     : TLooplessThread(aThreadName)
     , iDidRun(false)
     , iThreadName(aThreadName)
+    , iMEventDispatcher(0)
     {}
     
     virtual void Run()
         {
         iDidRun = true;
-        
-        TestEventDispatcher();
-        
+        iMEventDispatcher = MEventDispatcher::New();
+        iMEventDispatcher->Run();
         }
     
-    void TestEventDispatcher()
+    void PostLambda(TLambda lambda)
         {
-        iMEventDispatcher = MEventDispatcher::New();
-//        TLambda lambda;
-//        iMEventDispatcher->ExecuteAsynch(lambda);
-
-        //PostLambda();
-        }
-        
-    void PostLambda()
-        {
-        TLambda lambda;
         iMEventDispatcher->ExecuteAsynch(lambda);
         }
-    
-//    void Signal()
-//        {
-//        iMEventDispatcher->ScheduleWork();
-//        }
     
     bool GetDidRunTag() const { return iDidRun; }
 private:
     bool iDidRun;
     MEventDispatcher* iMEventDispatcher;
     std::string iThreadName;
-    };
-    
-void Test_UT_MEventDispatcher_Trivial()
-    {
-    std::string threadName = "UT_MEventDispatcher_LooplessThread";
-    UT_MEventDispatcher_LooplessThread* looplessThread = new UT_MEventDispatcher_LooplessThread(threadName);
-    EXPECT_TRUE(looplessThread->GetDidRunTag() == false);
-    looplessThread->Start();
-    EXPECT_TRUE(looplessThread->GetDidRunTag() == true);
+};
 
-    unsigned int r = sleep(3);
-    LOG_INFO << "sleep returned : " << r;
-    //looplessThread->Signal();
-
-    looplessThread->PostLambda();
-    }
     
-TEST(UT_MEventDispatcher, DISABLED_Trivial)
+TEST(UT_MEventDispatcher, Trivial)
     {
     std::string threadName = "UT_MEventDispatcher_LooplessThread";
     UT_MEventDispatcher_LooplessThread* looplessThread = new UT_MEventDispatcher_LooplessThread(threadName);
@@ -83,11 +54,11 @@ TEST(UT_MEventDispatcher, DISABLED_Trivial)
     looplessThread->Start();
     EXPECT_TRUE(looplessThread->GetDidRunTag() == true);
     
-    unsigned int r = sleep(3);
-    LOG_INFO << "sleep returned : " << r;
-    //looplessThread->Signal();
+    sleep(3);
+    TLambda lambda;
+    looplessThread->PostLambda(lambda);
     
-    looplessThread->PostLambda();
+    EXPECT_TRUE(looplessThread->GetDidRunTag() == true);
     }
     
     

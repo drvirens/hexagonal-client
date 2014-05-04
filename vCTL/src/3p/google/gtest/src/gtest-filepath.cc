@@ -84,7 +84,9 @@ const char kCurrentDirectoryString[] = ".\\";
 # endif  // GTEST_OS_WINDOWS_MOBILE
 #else
 const char kPathSeparator = '/';
+#if VIREN_FIXED_WARNING
 const char kPathSeparatorString[] = "/";
+#endif
 const char kCurrentDirectoryString[] = "./";
 #endif  // GTEST_OS_WINDOWS
 

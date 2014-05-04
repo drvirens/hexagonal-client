@@ -83,6 +83,8 @@ namespace vbase
         looplessThread.Start();
         looplessThread.Join();
         EXPECT_TRUE(looplessThread.GetDidRunTag() == true);
+        
+        delete ctorThread; ctorThread=0;
     }
     
 #if !defined(NDEBUG) 

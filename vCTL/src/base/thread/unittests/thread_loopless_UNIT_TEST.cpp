@@ -34,9 +34,9 @@ private:
   bool mDidRun;
 };
 
-TEST(UT_TLooplessThread, DISABLED_Trivial)
+TEST(UT_TLooplessThread, Trivial)
 {
-  std::string threadName = "viren-loopless-thread";
+  std::string threadName = "UT_TLooplessThread";
   MyLooplessThread looplessThread(threadName);
   EXPECT_TRUE(looplessThread.GetDidRunTag() == false);
   looplessThread.Start();

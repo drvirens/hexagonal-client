@@ -133,7 +133,7 @@ private:
     IRunLoopBase* iRunLoop;
     };
     
-TEST(UT_TPendingTasksQ, DISABLED_MultithreadedAddLambda)
+TEST(UT_TPendingTasksQ, MultithreadedAddLambda)
     {
     std::string threadName = "UT_TPendingTasksQ_LooplessThread";
     UT_TPendingTasksQ_LooplessThread* thread = new UT_TPendingTasksQ_LooplessThread(threadName);
@@ -144,6 +144,8 @@ TEST(UT_TPendingTasksQ, DISABLED_MultithreadedAddLambda)
     sleep(1);
     thread->PostLambdaFromOtherThread();
     EXPECT_EQ(thread->QueueSize(), 2);
+    
+    delete thread; thread=0;
     }
 
  
