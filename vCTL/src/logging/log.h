@@ -20,18 +20,18 @@
 namespace logging
 {
 
-#define ENABLE_LOGGING 1
-
-#define GET_FILE_NAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
-
-#if defined ENABLE_LOGGING
-
-    #define LOG( level )  \
-                            if ( (logging::level) <= (logging::TLogConfig::GetLevel()) ) \
-                                logging::TLog(logging::level, GET_FILE_NAME__, __LINE__, __func__).GetLogMetadata()
-#else
-    #define LOG( level )  std::cerr << std::endl
-#endif
+//#define ENABLE_LOGGING 1
+//
+//#define GET_FILE_NAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+//
+//#if defined ENABLE_LOGGING
+//
+//    #define LOG( level )  \
+//                            if ( (logging::level) <= (logging::TLogConfig::GetLevel()) ) \
+//                                logging::TLog(logging::level, GET_FILE_NAME__, __LINE__, __func__).GetLogMetadata()
+//#else
+//    #define LOG( level )  std::cerr << std::endl
+//#endif
 
 // -------------------------- forward
 class IOutput;

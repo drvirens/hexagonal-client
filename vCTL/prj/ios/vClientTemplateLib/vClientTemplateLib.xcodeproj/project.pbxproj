@@ -248,6 +248,7 @@
 		DBB191601915F7C9006C9EAE /* log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log.cpp; sourceTree = "<group>"; };
 		DBB1916319161335006C9EAE /* log_output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_output.cpp; sourceTree = "<group>"; };
 		DBB19166191620A7006C9EAE /* log_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DBB191681916259F006C9EAE /* log_logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = log_logger.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -843,6 +844,7 @@
 			children = (
 				DBB1916519162061006C9EAE /* unittests */,
 				DBB1915B1915F7C9006C9EAE /* log.h */,
+				DBB191681916259F006C9EAE /* log_logger.h */,
 				DBB1915C1915F7C9006C9EAE /* log_level.h */,
 				DBB1915E1915F7C9006C9EAE /* log_output.h */,
 				DBB1915F1915F7C9006C9EAE /* src */,
