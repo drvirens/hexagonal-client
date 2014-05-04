@@ -9,7 +9,7 @@
 #include <errno.h>
 #include "base/synchronize/lock.h"
 #include "base/synchronize/detail/condition_variable_impl.h"
-#include "base/logging/log.h"
+//#include "base/logging/log.h"
 #include "base/error_handler.h"
 
 namespace vbase

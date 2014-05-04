@@ -105,7 +105,7 @@ public:
         iPendingTasksQ.Add(lambda, delta);
         }
         
-    int QueueSize() const
+    size_t QueueSize() const
         {
         return iPendingTasksQ.Size();
         }

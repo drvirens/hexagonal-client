@@ -9,13 +9,15 @@
 #ifndef vClientTemplateLib_error_handler_h
 #define vClientTemplateLib_error_handler_h
 
+#include <iostream>
+
 #define V_PTHREAD_CALL( expr ) \
                               do \
                                 { \
                                   int thePThreadCallError = ( expr ); \
                                   if ( 0 != thePThreadCallError ) \
                                   { \
-                                    LOG_ERROR << #expr << " : " << strerror(thePThreadCallError); \
+                                    std::cerr << #expr << " : " << strerror(thePThreadCallError); \
                                   } \
                               } while (false)
 
@@ -25,7 +27,7 @@
                                 ( err ) = ( expr ); \
                                 if ( 0 != ( err ) ) \
                                 { \
-                                  LOG_ERROR << #expr << " : " << strerror( ( err ) ); \
+                                  std::cerr << #expr << " : " << strerror( ( err ) ); \
                                 } \
                               } while (false)
 

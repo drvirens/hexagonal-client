@@ -14,10 +14,10 @@ namespace logging
 
 enum ELogLevel
     {
-    error,
-    warning,
-    info,
-    debug
+    eError,
+    eWarning,
+    eInfo,
+    eDebug
     };
 
 } //namespace logging

@@ -29,7 +29,7 @@ public:
     virtual ~TPendingTasksQ();
     bool Add(const TLambda& aLambda, const TTimeDelta& aDelay);
     void PourAllTasksInto(TTaskQueue& aQueue);
-    int Size() const { return iPendingTasksQ.size(); }
+    size_t Size() const { return iPendingTasksQ.size(); }
     
     virtual void WillDeleteEventDispatcherOfThisThread();
     
