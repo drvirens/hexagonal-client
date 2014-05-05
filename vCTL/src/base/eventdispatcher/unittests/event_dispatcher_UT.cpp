@@ -7,12 +7,28 @@
 //
 
 #include "base/eventdispatcher/event_dispatcher.h"
-#include "base/task/task_lambda.h"
+#include "base/lambda/lambda.h"
 #include "base/thread/thread_loopless.h"
 #include "3p/google/gtest/include/gtest/gtest.h"
 
 namespace vbase
 {
+
+class MyWorkToDo : public TLambda
+    {
+public:
+    MyWorkToDo() : iInt(69) {}
+    virtual void Run()
+        {
+        }
+    virtual TLambda* CreateCopy()
+        {
+        MyWorkToDo* me = new MyWorkToDo(*this);
+        return me;
+        }
+private:
+    int iInt;
+    };
     
 class UT_MEventDispatcher_LooplessThread
     : public TLooplessThread
@@ -33,7 +49,7 @@ public:
         iMEventDispatcher->Run();
         }
     
-    void PostLambda(TLambda lambda)
+    void PostLambda(TLambda& lambda)
         {
         iMEventDispatcher->ExecuteAsynch(lambda);
         }
@@ -55,8 +71,9 @@ TEST(UT_MEventDispatcher, Trivial)
     EXPECT_TRUE(looplessThread->GetDidRunTag() == true);
     
     sleep(3);
-    TLambda lambda;
-    looplessThread->PostLambda(lambda);
+    //TLambda lambda;
+    MyWorkToDo* lambda = new MyWorkToDo();
+    looplessThread->PostLambda(*lambda);
     
     EXPECT_TRUE(looplessThread->GetDidRunTag() == true);
     }

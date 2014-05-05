@@ -9,13 +9,17 @@
 #ifndef __vClientTemplateLib__task_lambda__
 #define __vClientTemplateLib__task_lambda__
 
+#include "base/lambda/lambda_functor.h"
+
 namespace vbase
 {
 
 class TLambda
     {
 public:
-    void Run();
+    virtual ~TLambda() {}
+    virtual void Run() = 0;
+    virtual TLambda* CreateCopy() = 0;
     };
 
 } //namespace vbase

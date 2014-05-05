@@ -7,14 +7,15 @@
 //
 
 #include "base/task/task.h"
+#include "base/lambda/lambda.h"
 
 namespace vbase
 {
 
-TTask::TTask(const TLambda& aLambda)
+TTask::TTask(TLambda& aLambda)
     : iUniqueId(-1) //not used currently
     , iTaskName("") //not used currently
-    , iLambda()
+    , iLambda(&aLambda)
     {}
 
 TTask::~TTask()
@@ -23,12 +24,14 @@ TTask::~TTask()
 TTask::TTask(const TTask& aRhs)
     : iUniqueId(aRhs.iUniqueId)
     , iTaskName(aRhs.iTaskName)
-    , iLambda(aRhs.iLambda)
-    {}
+   // , *iLambda(aRhs.iLambda)
+    {
+    iLambda = aRhs.iLambda->CreateCopy();
+    }
     
 void TTask::Execute()
     {
-    iLambda.Run();
+    iLambda->Run();
     }
     
 }

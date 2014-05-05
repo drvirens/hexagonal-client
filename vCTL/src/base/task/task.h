@@ -12,7 +12,7 @@
 #include <queue>
 #include <string>
 
-#include "base/task/task_lambda.h"
+#include "base/lambda/lambda.h"
 
 namespace vbase
 {
@@ -20,7 +20,7 @@ namespace vbase
 class TTask
     {
 public:
-    TTask(const TLambda& aLambda);
+    TTask(TLambda& aLambda);
     ~TTask();
     TTask(const TTask& aRhs);
     void SetUniqueId(int aUniqueId) { iUniqueId = aUniqueId; }
@@ -30,7 +30,7 @@ public:
 private:
     int iUniqueId;
     std::string iTaskName;
-    TLambda iLambda;
+    TLambda* iLambda;
     };
 
 } //namespace vbase

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
 //
 
-#include "base/task/task_lambda.h"
+#include "base/lambda/lambda.h"
 #include "base/thread/thread_loopless.h"
 #include "base/task/task_pending_queue.h"
 #include "base/task/task_pending_q_listener.h"
@@ -44,6 +44,24 @@ private:
 private:
     int iVal;
     };
+    
+
+class MySecondWorkToDo : public TLambda
+    {
+public:
+    MySecondWorkToDo() : iInt(69) {}
+    virtual void Run()
+        {
+        }
+    virtual TLambda* CreateCopy()
+        {
+        MySecondWorkToDo* me = new MySecondWorkToDo(*this);
+        return me;
+        }
+private:
+    int iInt;
+    };
+
 
 TEST(UT_TPendingTasksQ, Trivial)
     {
@@ -58,9 +76,9 @@ TEST(UT_TPendingTasksQ, AddLambda)
     TPendingTasksQ q(listener);
     EXPECT_EQ(listener.Val(), 0);
     
-    TLambda lambda;
+    MySecondWorkToDo* lambda = new MySecondWorkToDo();
     TTimeDelta delta(0);
-    q.Add(lambda, delta);
+    q.Add(*lambda, delta);
     
     EXPECT_EQ(listener.Val(), 1); //we increment the counter
     }
@@ -94,15 +112,15 @@ public:
     
     void PostLambdaFromSameThread()
         {
-        TLambda lambda;
+        MySecondWorkToDo* lambda = new MySecondWorkToDo();
         TTimeDelta delta(0);
-        iPendingTasksQ.Add(lambda, delta);
+        iPendingTasksQ.Add(*lambda, delta);
         }
     void PostLambdaFromOtherThread()
         {
-        TLambda lambda;
+        MySecondWorkToDo* lambda = new MySecondWorkToDo();
         TTimeDelta delta(0);
-        iPendingTasksQ.Add(lambda, delta);
+        iPendingTasksQ.Add(*lambda, delta);
         }
         
     size_t QueueSize() const

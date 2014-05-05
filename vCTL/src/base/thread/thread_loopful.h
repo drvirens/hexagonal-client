@@ -17,6 +17,7 @@
 namespace vbase
 {
 class MEventDispatcher;
+class TLambda;
 
 class TThread
     : public IThreadMainEntryPoint
@@ -29,6 +30,11 @@ public:
     bool Start();
     void Stop();
     bool IsRunning() const { return iRunning; }
+    
+    void FireAndForgetLambda(TLambda& aLambda);
+    //todo: second param should be TLambdaCompletion that should enclose
+    //      the thread-details on which the completion should be posted
+    void FireLambdaWithCompletion(TLambda& aLambda, TLambda& aCompletion);
     
 protected:
     virtual void RunEventLoop();

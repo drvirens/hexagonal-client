@@ -11,7 +11,6 @@
 		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
 		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
 		DB31E79519122554009A6CF6 /* task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB31E79219122554009A6CF6 /* task.cpp */; };
-		DB31E79619122554009A6CF6 /* task_lambda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB31E79319122554009A6CF6 /* task_lambda.cpp */; };
 		DB31E79719122554009A6CF6 /* task_pending_queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB31E79419122554009A6CF6 /* task_pending_queue.cpp */; };
 		DB31E79E19122581009A6CF6 /* event_dispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB31E79C19122581009A6CF6 /* event_dispatcher.cpp */; };
 		DB31E7A41912DAFE009A6CF6 /* run_loop_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB31E7A31912DAFE009A6CF6 /* run_loop_factory.cpp */; };
@@ -57,6 +56,8 @@
 		DBB19167191620A7006C9EAE /* log_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB19166191620A7006C9EAE /* log_UNIT_TEST.cpp */; };
 		DBB191721917196E006C9EAE /* thread_loopful.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB191701917196E006C9EAE /* thread_loopful.cpp */; };
 		DBB191731917196E006C9EAE /* thread_loopless.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB191711917196E006C9EAE /* thread_loopless.cpp */; };
+		DBB191BF19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB191BE19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp */; };
+		DBB191C4191772D6006C9EAE /* lambda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB191C3191772D6006C9EAE /* lambda.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,12 +77,10 @@
 		DB31E76C19117EA3009A6CF6 /* CMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
 		DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CMasterViewController.mm; sourceTree = "<group>"; };
 		DB31E78219120DD0009A6CF6 /* task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = task.h; sourceTree = "<group>"; };
-		DB31E78319120DD0009A6CF6 /* task_lambda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = task_lambda.h; sourceTree = "<group>"; };
 		DB31E78419120DD0009A6CF6 /* task_pending_q_listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = task_pending_q_listener.h; sourceTree = "<group>"; };
 		DB31E78519120DD0009A6CF6 /* task_pending_queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = task_pending_queue.h; sourceTree = "<group>"; };
 		DB31E78A191214AC009A6CF6 /* task_queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = task_queue.h; sourceTree = "<group>"; };
 		DB31E79219122554009A6CF6 /* task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = task.cpp; sourceTree = "<group>"; };
-		DB31E79319122554009A6CF6 /* task_lambda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = task_lambda.cpp; sourceTree = "<group>"; };
 		DB31E79419122554009A6CF6 /* task_pending_queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = task_pending_queue.cpp; sourceTree = "<group>"; };
 		DB31E79A19122581009A6CF6 /* event_dispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = event_dispatcher.h; sourceTree = "<group>"; };
 		DB31E79C19122581009A6CF6 /* event_dispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = event_dispatcher.cpp; sourceTree = "<group>"; };
@@ -246,6 +245,10 @@
 		DBB1916D19171923006C9EAE /* thread_loopful.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_loopful.h; sourceTree = "<group>"; };
 		DBB191701917196E006C9EAE /* thread_loopful.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopful.cpp; sourceTree = "<group>"; };
 		DBB191711917196E006C9EAE /* thread_loopless.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopless.cpp; sourceTree = "<group>"; };
+		DBB191BE19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopful_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DBB191C1191772D6006C9EAE /* lambda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lambda.h; sourceTree = "<group>"; };
+		DBB191C3191772D6006C9EAE /* lambda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lambda.cpp; sourceTree = "<group>"; };
+		DBB191C5191772F1006C9EAE /* lambda_functor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lambda_functor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,7 +282,6 @@
 				DB31E79119122554009A6CF6 /* src */,
 				DB31E77E19120DD0009A6CF6 /* detail */,
 				DB31E78219120DD0009A6CF6 /* task.h */,
-				DB31E78319120DD0009A6CF6 /* task_lambda.h */,
 				DB31E78419120DD0009A6CF6 /* task_pending_q_listener.h */,
 				DB31E78519120DD0009A6CF6 /* task_pending_queue.h */,
 				DB31E78A191214AC009A6CF6 /* task_queue.h */,
@@ -299,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				DB31E79219122554009A6CF6 /* task.cpp */,
-				DB31E79319122554009A6CF6 /* task_lambda.cpp */,
 				DB31E79419122554009A6CF6 /* task_pending_queue.cpp */,
 			);
 			path = src;
@@ -628,6 +629,7 @@
 		DB67F23519062FFA007567A9 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				DBB191C0191772D6006C9EAE /* lambda */,
 				DB31E79819122581009A6CF6 /* eventdispatcher */,
 				DB31E77D19120DD0009A6CF6 /* task */,
 				DB67F387190C913A007567A9 /* runloop */,
@@ -769,6 +771,7 @@
 				DB67F39C190CE85A007567A9 /* thread_platform_UNIT_TEST.cpp */,
 				DB67F39D190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp */,
 				DB67F3A3190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp */,
+				DBB191BE19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp */,
 			);
 			path = unittests;
 			sourceTree = "<group>";
@@ -860,6 +863,24 @@
 			children = (
 				DBB191701917196E006C9EAE /* thread_loopful.cpp */,
 				DBB191711917196E006C9EAE /* thread_loopless.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		DBB191C0191772D6006C9EAE /* lambda */ = {
+			isa = PBXGroup;
+			children = (
+				DBB191C1191772D6006C9EAE /* lambda.h */,
+				DBB191C2191772D6006C9EAE /* src */,
+				DBB191C5191772F1006C9EAE /* lambda_functor.h */,
+			);
+			path = lambda;
+			sourceTree = "<group>";
+		};
+		DBB191C2191772D6006C9EAE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				DBB191C3191772D6006C9EAE /* lambda.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -974,15 +995,16 @@
 				DB67F24019062FFA007567A9 /* gtest-filepath.cc in Sources */,
 				DBB191721917196E006C9EAE /* thread_loopful.cpp in Sources */,
 				DB67F24319062FFA007567A9 /* gtest-test-part.cc in Sources */,
+				DBB191BF19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp in Sources */,
 				DB67F24119062FFA007567A9 /* gtest-port.cc in Sources */,
 				DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */,
+				DBB191C4191772D6006C9EAE /* lambda.cpp in Sources */,
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
 				DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */,
 				DB31E7A61912DF56009A6CF6 /* event_dispatcher_UT.cpp in Sources */,
 				DB67F2D51908CCD9007567A9 /* lock_impl_POSIX.cpp in Sources */,
 				DB67F24219062FFA007567A9 /* gtest-printers.cc in Sources */,
 				DB67F18219062BC3007567A9 /* main.m in Sources */,
-				DB31E79619122554009A6CF6 /* task_lambda.cpp in Sources */,
 				DBB191731917196E006C9EAE /* thread_loopless.cpp in Sources */,
 				DB67F368190A3CA5007567A9 /* thread_platform_optional_IOS.mm in Sources */,
 				DBB190E91914BA0E006C9EAE /* task_pending_queue.cpp in Sources */,
@@ -1119,6 +1141,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vClientTemplateLib/vClientTemplateLib-Prefix.pch";
@@ -1142,6 +1166,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vClientTemplateLib/vClientTemplateLib-Prefix.pch";

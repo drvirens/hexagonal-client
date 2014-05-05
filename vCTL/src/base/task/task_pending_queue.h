@@ -27,7 +27,7 @@ class TPendingTasksQ : public TNonCopyable<TPendingTasksQ>, public IEventDispatc
 public:
     explicit TPendingTasksQ(ITaskPendingQueueListener& aTaskListListener);
     virtual ~TPendingTasksQ();
-    bool Add(const TLambda& aLambda, const TTimeDelta& aDelay);
+    bool Add(TLambda& aLambda, const TTimeDelta& aDelay);
     void PourAllTasksInto(TTaskQueue& aQueue);
     size_t Size() const { return iPendingTasksQ.size(); }
     

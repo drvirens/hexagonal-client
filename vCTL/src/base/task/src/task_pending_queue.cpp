@@ -28,7 +28,7 @@ TPendingTasksQ::~TPendingTasksQ()
     
     }
 
-bool TPendingTasksQ::Add(const TLambda& aLambda, const TTimeDelta& aDelay)
+bool TPendingTasksQ::Add(TLambda& aLambda, const TTimeDelta& aDelay)
     {
     TAutoLock lock( iLock );
     TTask task(aLambda);

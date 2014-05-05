@@ -10,7 +10,7 @@
 #include "logging/log_logger.h"
 #include "build/build_utils.h"
 #include "base/eventdispatcher/event_dispatcher.h"
-#include "base/task/task_lambda.h"
+#include "base/lambda/lambda.h"
 
 namespace vbase
 {
@@ -65,6 +65,14 @@ void TThread::RunEventLoop()
     {
     iMEventDispatcher = MEventDispatcher::New();
     iMEventDispatcher->Run();
+    }
+    
+void TThread::FireAndForgetLambda(TLambda& aLambda)
+    {
+    }
+    
+void TThread::FireLambdaWithCompletion(TLambda& aLambda, TLambda& aCompletion)
+    {
     }
 
 bool TThread::Start()

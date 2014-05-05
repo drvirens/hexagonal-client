@@ -83,5 +83,139 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
+            timestampString = "420968938.306907"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "Run()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__cxx_global_var_init"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
+                  timestampString = "420970718.341725"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::~UT_TThread_DISABLED_Trivial_Test()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
+                  timestampString = "420970718.342274"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::~UT_TThread_DISABLED_Trivial_Test()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
+                  timestampString = "420970718.342757"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::~UT_TThread_DISABLED_Trivial_Test()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
+                  timestampString = "420970718.344234"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::UT_TThread_DISABLED_Trivial_Test()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
+                  timestampString = "420970718.344731"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::UT_TThread_DISABLED_Trivial_Test()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
+                  timestampString = "420970718.345083"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "10">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../src/base/eventdispatcher/unittests/event_dispatcher_UT.cpp"
+            timestampString = "420970426.289007"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "TEST(UT_MEventDispatcher, Trivial)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../src/base/task/src/task.cpp"
+            timestampString = "420970508.911192"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "TTask::TTask(const TTask&amp; aRhs)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

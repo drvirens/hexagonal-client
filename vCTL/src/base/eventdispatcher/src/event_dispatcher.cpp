@@ -29,13 +29,13 @@ MEventDispatcher* MEventDispatcher::New()
     return obj;
     }
     
-void MEventDispatcher::ExecuteAsynch(const TLambda& aLambda)
+void MEventDispatcher::ExecuteAsynch(TLambda& aLambda)
     {
     vbase::TTimeDelta delay(0);
     iPendingTasksQ.Add(aLambda, delay);
     }
 
-void MEventDispatcher::ExecuteAsynchAfterDelay(const TLambda& aLambda, const TTimeDelta& aTimeDelta)
+void MEventDispatcher::ExecuteAsynchAfterDelay(TLambda& aLambda, const TTimeDelta& aTimeDelta)
     {
     vbase::TTimeDelta delay(0);
     iPendingTasksQ.Add(aLambda, delay);

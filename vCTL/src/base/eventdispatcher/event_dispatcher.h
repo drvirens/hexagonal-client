@@ -48,8 +48,8 @@ public:
     void RegisterTaskSpectator(const ITaskSpectator& aSpectator);
     void UnRegisterTaskSpectator(const ITaskSpectator& aSpectator);
     
-    void ExecuteAsynch(const TLambda& aLambda);
-    void ExecuteAsynchAfterDelay(const TLambda& aLambda, const TTimeDelta& aTimeDelta);
+    void ExecuteAsynch(TLambda& aLambda);
+    void ExecuteAsynchAfterDelay(TLambda& aLambda, const TTimeDelta& aTimeDelta);
 
 protected:
     MEventDispatcher();
