@@ -16,14 +16,14 @@
 
 namespace vbase
 {
-
-//this thread does not have any runloop in it
-
 class TLooplessThread
     : public IThreadMainEntryPoint
     , private TNonCopyable<TLooplessThread>
-  {
-  public:
+//
+// this thread does not have any runloop in it
+//
+    {
+public:
     explicit TLooplessThread(std::string& aThreadName);
     virtual ~TLooplessThread() {}
     
@@ -32,16 +32,16 @@ class TLooplessThread
     virtual void Start();
     virtual void Join();
     
-  private:
-    TLock mLock; // to access mIsStarted
-    TConditionVariable mConditionVariable; // to be used by mLock
-    bool mIsStarted;
+private:
+    TLock iLock; // to access iIsStarted
+    TConditionVariable iConditionVariable; // to be used by iLock
+    bool iIsStarted;
     
-    bool mIsJoined;
-    TPlatformThreadHandle mThreadHandle;
-    std::string mThreadName;
-  };
-  
+    bool iIsJoined;
+    TPlatformThreadHandle iThreadHandle;
+    std::string iThreadName;
+    };
+    
 } //namespace vbase
 
 #endif /* defined(__vClientTemplateLib__thread_loopless__) */

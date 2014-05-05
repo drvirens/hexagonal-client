@@ -85,7 +85,6 @@ bool MEventDispatcher::DoExecuteTask(TTask& aTask)
     
 bool MEventDispatcher::PerformWork()
     {
-    //while 2 loops? in future, we are going to support delayed tasks
     bool ret = false;
     for(;;)
         {
@@ -118,7 +117,7 @@ bool MEventDispatcher::PerformIdleWork()
     
 void MEventDispatcher::ScheduleWork()
     {
-    //ASSERT(iRunLoop != 0);
+    ASSERT(iRunLoop != 0);
     if(iRunLoop)
         {
         //iRunLoop->Run(this);
@@ -128,10 +127,7 @@ void MEventDispatcher::ScheduleWork()
     
 void MEventDispatcher::OnTaskAdded(TTask* aTask)
     {
-//    ASSERT(aTask != 0);
-    //clients can start adding tasks into the queue even before the loop is ready.
-    //this is valid.
-    
+    ASSERT(aTask != 0);
     if(aTask)
         {
         ScheduleWork();
