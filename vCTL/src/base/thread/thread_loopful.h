@@ -28,10 +28,13 @@ public:
     
     bool Start();
     void Stop();
-    void Join();
+    bool IsRunning() const { return iRunning; }
     
 protected:
-    virtual void Run();
+    virtual void RunEventLoop();
+    virtual void PreNotifyInit() {}
+    virtual void OnThreadGonnaExit() {}
+    void Join();
     
 private:
     virtual void MainEntry(); //from IThreadMainEntryPoint
@@ -45,6 +48,7 @@ private:
     std::string iThreadName;
     
     MEventDispatcher* iMEventDispatcher;
+    bool iRunning;
     };
 
 } //namespace vbase

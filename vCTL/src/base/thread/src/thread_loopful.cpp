@@ -9,6 +9,8 @@
 #include "base/thread/thread_loopful.h"
 #include "logging/log_logger.h"
 #include "build/build_utils.h"
+#include "base/eventdispatcher/event_dispatcher.h"
+#include "base/task/task_lambda.h"
 
 namespace vbase
 {
@@ -18,14 +20,15 @@ static const bool kJoinable = true;
 static const EThreadPriority kLooplessThreadDefaultPriority = EThreadPriority_Normal;
 
 TThread::TThread(std::string& aThreadName)
-    :  iLock()
+    : iLock()
     , iConditionVariable(&iLock)
     , iIsStarted(false)
     , iIsJoined(false)
     , iThreadHandle()
     , iThreadName(aThreadName)
+    , iMEventDispatcher(0)
+    , iRunning(false)
     {
-        
     }
     
 TThread::~TThread()
@@ -38,12 +41,30 @@ void TThread::MainEntry()
     
     LOG_INFO << "threadName: " << iThreadName.c_str() << "threadId: " << TPlatformThread::CurrentID();
     
+    PreNotifyInit();
+    
+    iRunning = true;
+    
     iLock.Acquire();
     iIsStarted = true;
     iConditionVariable.NotifyOne(); //Wait in TThread::Start()
     iLock.Release();
     
-    Run();
+    RunEventLoop(); //on iOS, the CFRunLoopRun() call will not return once this function
+        // is called untill CFRunLoopStop() is issued. So this Run() must be the
+        // last one in the bootstrap sequence here
+        
+    iRunning = false;
+    OnThreadGonnaExit();
+    
+    delete iMEventDispatcher;
+    iMEventDispatcher = 0;
+    }
+    
+void TThread::RunEventLoop()
+    {
+    iMEventDispatcher = MEventDispatcher::New();
+    iMEventDispatcher->Run();
     }
 
 bool TThread::Start()
