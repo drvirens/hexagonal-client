@@ -57,7 +57,6 @@
 		DBB191721917196E006C9EAE /* thread_loopful.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB191701917196E006C9EAE /* thread_loopful.cpp */; };
 		DBB191731917196E006C9EAE /* thread_loopless.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB191711917196E006C9EAE /* thread_loopless.cpp */; };
 		DBB191BF19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB191BE19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp */; };
-		DBB191C4191772D6006C9EAE /* lambda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB191C3191772D6006C9EAE /* lambda.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,9 +245,8 @@
 		DBB191701917196E006C9EAE /* thread_loopful.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopful.cpp; sourceTree = "<group>"; };
 		DBB191711917196E006C9EAE /* thread_loopless.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopless.cpp; sourceTree = "<group>"; };
 		DBB191BE19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread_loopful_UNIT_TEST.cpp; sourceTree = "<group>"; };
-		DBB191C1191772D6006C9EAE /* lambda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lambda.h; sourceTree = "<group>"; };
-		DBB191C3191772D6006C9EAE /* lambda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lambda.cpp; sourceTree = "<group>"; };
 		DBB191C5191772F1006C9EAE /* lambda_functor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lambda_functor.h; sourceTree = "<group>"; };
+		DBB191C71918983C006C9EAE /* lambda.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lambda.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -870,9 +868,9 @@
 		DBB191C0191772D6006C9EAE /* lambda */ = {
 			isa = PBXGroup;
 			children = (
-				DBB191C1191772D6006C9EAE /* lambda.h */,
 				DBB191C2191772D6006C9EAE /* src */,
 				DBB191C5191772F1006C9EAE /* lambda_functor.h */,
+				DBB191C71918983C006C9EAE /* lambda.h */,
 			);
 			path = lambda;
 			sourceTree = "<group>";
@@ -880,7 +878,6 @@
 		DBB191C2191772D6006C9EAE /* src */ = {
 			isa = PBXGroup;
 			children = (
-				DBB191C3191772D6006C9EAE /* lambda.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -998,7 +995,6 @@
 				DBB191BF19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp in Sources */,
 				DB67F24119062FFA007567A9 /* gtest-port.cc in Sources */,
 				DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */,
-				DBB191C4191772D6006C9EAE /* lambda.cpp in Sources */,
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
 				DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */,
 				DB31E7A61912DF56009A6CF6 /* event_dispatcher_UT.cpp in Sources */,

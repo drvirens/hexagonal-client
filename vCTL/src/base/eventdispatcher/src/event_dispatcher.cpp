@@ -97,6 +97,8 @@ bool MEventDispatcher::PerformWork()
             
         while(HasTasksToExecute())
             {
+            //task should not be exposed to external APIs
+            //TODO: task must be ref-counted so that it can walk across thread-boundaries freely
             TTask task = iWorkLoadItemsQ.front();
             iWorkLoadItemsQ.pop();
             

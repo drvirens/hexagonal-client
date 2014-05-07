@@ -188,7 +188,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../src/base/eventdispatcher/unittests/event_dispatcher_UT.cpp"
@@ -204,16 +204,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../src/base/task/src/task.cpp"
-            timestampString = "420970508.911192"
+            filePath = "../../../src/base/eventdispatcher/src/event_dispatcher.cpp"
+            timestampString = "421127406.022706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "TTask::TTask(const TTask&amp; aRhs)"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "MEventDispatcher::PerformWork()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

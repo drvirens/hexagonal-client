@@ -7,7 +7,6 @@
 //
 
 #include "base/task/task.h"
-#include "base/lambda/lambda.h"
 
 namespace vbase
 {
@@ -15,23 +14,32 @@ namespace vbase
 TTask::TTask(TLambda& aLambda)
     : iUniqueId(-1) //not used currently
     , iTaskName("") //not used currently
-    , iLambda(&aLambda)
+    , iLambda(aLambda) //copy-ctor of tlambda
     {}
 
 TTask::~TTask()
     {}
-    
-TTask::TTask(const TTask& aRhs)
-    : iUniqueId(aRhs.iUniqueId)
-    , iTaskName(aRhs.iTaskName)
-   // , *iLambda(aRhs.iLambda)
-    {
-    iLambda = aRhs.iLambda->CreateCopy();
-    }
-    
+//    
+//TTask::TTask(const TTask& aRhs)
+//    {
+//    if( &aRhs != this )
+//        {
+//        iUniqueId = aRhs.iUniqueId)
+//        iTaskName = aRhs.iTaskName)
+//        iLambda(aRhs.iLambda);
+//        }
+//    }
+//    
+//void TTask::Execute()
+//    {
+//    iLambda->Run();
+//    }
+//
+
 void TTask::Execute()
     {
-    iLambda->Run();
     }
-    
-}
+   
+} //namespace vbase
+
+

@@ -22,7 +22,7 @@ class TTask
 public:
     TTask(TLambda& aLambda);
     ~TTask();
-    TTask(const TTask& aRhs);
+    //TODO: TTask(const TTask& aRhs);
     void SetUniqueId(int aUniqueId) { iUniqueId = aUniqueId; }
     int UniqueId() const { return iUniqueId; }
     void Execute();
@@ -30,7 +30,7 @@ public:
 private:
     int iUniqueId;
     std::string iTaskName;
-    TLambda* iLambda;
+    TLambda iLambda; //we copy entire work in our thread-context...we dont rely on clients here because they may delete the work before it is executed
     };
 
 } //namespace vbase
