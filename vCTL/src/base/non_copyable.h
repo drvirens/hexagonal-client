@@ -9,8 +9,10 @@
 #ifndef vClientTemplateLib_non_copyable_h
 #define vClientTemplateLib_non_copyable_h
 
+//TODO: Add inside namespace vctl
+
 //based on CRTP : curiously recursive template pattern
-template <class T>
+template <class CRTP>
 class TNonCopyable
     {
 protected:

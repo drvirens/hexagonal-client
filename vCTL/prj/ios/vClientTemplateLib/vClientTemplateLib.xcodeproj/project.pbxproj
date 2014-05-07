@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB0F5B611919EDF7006DE69F /* rc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5B601919EDF7006DE69F /* rc.cpp */; };
 		DB31E7691910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */; };
 		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
 		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
@@ -70,6 +71,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB0F5B581919E6E9006DE69F /* atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomic.h; sourceTree = "<group>"; };
+		DB0F5B5E1919EDDE006DE69F /* rc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc.h; sourceTree = "<group>"; };
+		DB0F5B601919EDF7006DE69F /* rc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rc.cpp; sourceTree = "<group>"; };
 		DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_cocoa_darwin_UT.mm; sourceTree = "<group>"; };
 		DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
 		DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
@@ -273,6 +277,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB0F5B521919E62D006DE69F /* memory */ = {
+			isa = PBXGroup;
+			children = (
+				DB0F5B5A1919EDC4006DE69F /* ref */,
+				DB0F5B531919E62D006DE69F /* atomic */,
+			);
+			path = memory;
+			sourceTree = "<group>";
+		};
+		DB0F5B531919E62D006DE69F /* atomic */ = {
+			isa = PBXGroup;
+			children = (
+				DB0F5B541919E62D006DE69F /* detail */,
+				DB0F5B551919E62D006DE69F /* src */,
+				DB0F5B561919E62D006DE69F /* unittests */,
+				DB0F5B581919E6E9006DE69F /* atomic.h */,
+			);
+			path = atomic;
+			sourceTree = "<group>";
+		};
+		DB0F5B541919E62D006DE69F /* detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		DB0F5B551919E62D006DE69F /* src */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		DB0F5B561919E62D006DE69F /* unittests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = unittests;
+			sourceTree = "<group>";
+		};
+		DB0F5B5A1919EDC4006DE69F /* ref */ = {
+			isa = PBXGroup;
+			children = (
+				DB0F5B5B1919EDC4006DE69F /* src */,
+				DB0F5B5C1919EDC4006DE69F /* unittests */,
+				DB0F5B5E1919EDDE006DE69F /* rc.h */,
+			);
+			path = ref;
+			sourceTree = "<group>";
+		};
+		DB0F5B5B1919EDC4006DE69F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				DB0F5B601919EDF7006DE69F /* rc.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		DB0F5B5C1919EDC4006DE69F /* unittests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = unittests;
+			sourceTree = "<group>";
+		};
 		DB31E77D19120DD0009A6CF6 /* task */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +496,7 @@
 		DB67F1B019062FFA007567A9 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				DB0F5B521919E62D006DE69F /* memory */,
 				DB67F25219074530007567A9 /* test */,
 				DB67F24B190644AE007567A9 /* build */,
 				DB67F1B119062FFA007567A9 /* 3p */,
@@ -989,6 +1060,7 @@
 				DB67F3A4190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp in Sources */,
 				DB67F39F190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp in Sources */,
 				DB67F2D319089E50007567A9 /* build_utils.cc in Sources */,
+				DB0F5B611919EDF7006DE69F /* rc.cpp in Sources */,
 				DB67F24019062FFA007567A9 /* gtest-filepath.cc in Sources */,
 				DBB191721917196E006C9EAE /* thread_loopful.cpp in Sources */,
 				DB67F24319062FFA007567A9 /* gtest-test-part.cc in Sources */,
