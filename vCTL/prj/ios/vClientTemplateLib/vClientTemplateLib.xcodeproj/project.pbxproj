@@ -74,6 +74,8 @@
 		DB0F5B581919E6E9006DE69F /* atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomic.h; sourceTree = "<group>"; };
 		DB0F5B5E1919EDDE006DE69F /* rc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc.h; sourceTree = "<group>"; };
 		DB0F5B601919EDF7006DE69F /* rc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rc.cpp; sourceTree = "<group>"; };
+		DB0F5B63191A0BE0006DE69F /* atomic_count.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomic_count.h; sourceTree = "<group>"; };
+		DB0F5B66191A0EAA006DE69F /* rc_thread_safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc_thread_safe.h; sourceTree = "<group>"; };
 		DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_cocoa_darwin_UT.mm; sourceTree = "<group>"; };
 		DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
 		DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				DB0F5B551919E62D006DE69F /* src */,
 				DB0F5B561919E62D006DE69F /* unittests */,
 				DB0F5B581919E6E9006DE69F /* atomic.h */,
+				DB0F5B63191A0BE0006DE69F /* atomic_count.h */,
 			);
 			path = atomic;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				DB0F5B5B1919EDC4006DE69F /* src */,
 				DB0F5B5C1919EDC4006DE69F /* unittests */,
 				DB0F5B5E1919EDDE006DE69F /* rc.h */,
+				DB0F5B66191A0EAA006DE69F /* rc_thread_safe.h */,
 			);
 			path = ref;
 			sourceTree = "<group>";

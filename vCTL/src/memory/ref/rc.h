@@ -10,7 +10,6 @@
 #define __vClientTemplateLib__rc__
 
 #include "logging/log_logger.h"
-#include "memory/atomic/atomic.h"
 #include "base/non_copyable.h"
 #include "build/build_utils.h"
 
@@ -18,6 +17,11 @@ namespace vctl
 {
 
 class CReferenceBase : private TNonCopyable<CReferenceBase>
+    //
+    // not thread-safe.
+    // use it on the same thread.
+    // to use thread-safe rc, scroll down
+    //
     {
 protected:
     CReferenceBase()
@@ -70,6 +74,7 @@ class CReference : public CReferenceBase, private TNonCopyable<CReference<CRTP> 
     //
 public:
     CReference() {}
+    
     void Retain() const
         {
         CReferenceBase::Retain();
@@ -87,7 +92,7 @@ public:
 protected:
     ~CReference() {}
     };
-
+    
 } //namespace vctl
 
 #endif /* defined(__vClientTemplateLib__rc__) */
