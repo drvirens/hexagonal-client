@@ -16,7 +16,13 @@ static bool TAtomicCount_DoDecrement(volatile TAtomicInt32* aNumber, TAtomicInt3
 
 bool TAtomicCount_IsZero(volatile TAtomicInt32* aNumber)
     {
-    return false;
+    bool r = false;
+    TAtomicInt32 value = TAtomicOperation::AcquireLoad(aNumber);
+    if( 0 == value )
+        {
+        r = true;
+        }
+    return r;
     }
     
 void TAtomicCount_IncrementByOne(volatile TAtomicInt32* aNumber)

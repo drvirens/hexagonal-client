@@ -24,5 +24,12 @@ TAtomicInt32 TAtomicOperation::BarrieredAtomicIncrement(volatile TAtomicInt32* a
     return detail::DoBarrieredAtomicIncrement(aValueToIncrement, aIncrementByAmount);
     }
     
+TAtomicInt32 TAtomicOperation::AcquireLoad(volatile const TAtomicInt32* aPtr)
+    {
+    TAtomicInt32 r = *aPtr;
+    MemoryBarrier();
+    return r;
+    }
+    
 
 } //namespace vctl

@@ -25,6 +25,8 @@ public:
     // Increment "*aValueToIncrement" by "aIncrementByAmount" and return the value
     //
     static TAtomicInt32 BarrieredAtomicIncrement(volatile TAtomicInt32* aValueToIncrement, TAtomicInt32 aIncrementByAmount);
+    
+    static TAtomicInt32 AcquireLoad(volatile const TAtomicInt32* aPtr);
     };
 
 } //namespace vctl

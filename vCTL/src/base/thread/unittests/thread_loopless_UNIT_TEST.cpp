@@ -34,7 +34,7 @@ private:
   bool mDidRun;
 };
 
-TEST(UT_TLooplessThread, Trivial)
+TEST(UT_TLooplessThread, DISABLED_Trivial)
 {
   std::string threadName = "UT_TLooplessThread";
   MyLooplessThread looplessThread(threadName);

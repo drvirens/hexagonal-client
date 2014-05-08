@@ -32,11 +32,11 @@ private:
 TEST(UT_CReference, Trivial)
     {
     CMyRefCountedClass* ref = new CMyRefCountedClass();
-    ref->Retain();
-    //ref->Retain();
+    ref->Retain(); // count = 1
     
-    ref->Release();
+    ref->Release(); //count = 0
     //ref->iSomeNumber = 90; //undefined since ref is deleted here
+    ref->Release(); //should assert for debug build
     }
 
 } //namespace vbase

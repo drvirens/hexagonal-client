@@ -17,9 +17,11 @@
 namespace logging
 {
 
+static const int kPrettyTimeBufferSize = 15;
+
+// ----------------------- TLogConfig class statics
 ELogLevel TLogConfig::iLogLevel = eDebug;
 std::vector<IOutput*> TLogConfig::iOutputs;
-
 
 // ----------------------- TLogTimeStamp
 class TLogTimeStamp
@@ -34,7 +36,7 @@ public:
     char* const PrettyTimeStamp();
     
 private:
-    char iBuffer[16];
+    char iBuffer[kPrettyTimeBufferSize];
     };
     
 char* const TLogTimeStamp::PrettyTimeStamp()
