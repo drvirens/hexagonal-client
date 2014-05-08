@@ -43,7 +43,7 @@ protected:
     bool Release() const
         {
         ASSERT(false == iIsCommitingSuicide); //if object is already ready to commit suicide, then you can't just shoot at such object.
-        if(0 == iCount)
+        if(0 == --iCount)
             {
             iIsCommitingSuicide = true;
             }

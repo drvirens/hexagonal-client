@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB0F5B611919EDF7006DE69F /* rc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5B601919EDF7006DE69F /* rc.cpp */; };
+		DB0F5B69191AB542006DE69F /* rc_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5B68191AB542006DE69F /* rc_UNIT_TEST.cpp */; };
+		DB0F5B6C191AD86C006DE69F /* atomic_count.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5B6A191AD86C006DE69F /* atomic_count.cpp */; };
+		DB0F5B6D191AD86C006DE69F /* atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5B6B191AD86C006DE69F /* atomic.cpp */; };
+		DB0F5B74191AEA83006DE69F /* atomic_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5B73191AEA83006DE69F /* atomic_impl.cpp */; };
+		DB0F5B76191AEF44006DE69F /* atomic_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB0F5B75191AEF44006DE69F /* atomic_UNIT_TEST.cpp */; };
 		DB31E7691910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */; };
 		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
 		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
@@ -73,9 +77,15 @@
 /* Begin PBXFileReference section */
 		DB0F5B581919E6E9006DE69F /* atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomic.h; sourceTree = "<group>"; };
 		DB0F5B5E1919EDDE006DE69F /* rc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc.h; sourceTree = "<group>"; };
-		DB0F5B601919EDF7006DE69F /* rc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rc.cpp; sourceTree = "<group>"; };
 		DB0F5B63191A0BE0006DE69F /* atomic_count.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomic_count.h; sourceTree = "<group>"; };
 		DB0F5B66191A0EAA006DE69F /* rc_thread_safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc_thread_safe.h; sourceTree = "<group>"; };
+		DB0F5B68191AB542006DE69F /* rc_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rc_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB0F5B6A191AD86C006DE69F /* atomic_count.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atomic_count.cpp; sourceTree = "<group>"; };
+		DB0F5B6B191AD86C006DE69F /* atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atomic.cpp; sourceTree = "<group>"; };
+		DB0F5B71191ADA1E006DE69F /* atomic_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = atomic_impl.h; sourceTree = "<group>"; };
+		DB0F5B72191ADB80006DE69F /* atomic_type.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = atomic_type.h; sourceTree = "<group>"; };
+		DB0F5B73191AEA83006DE69F /* atomic_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atomic_impl.cpp; sourceTree = "<group>"; };
+		DB0F5B75191AEF44006DE69F /* atomic_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atomic_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_cocoa_darwin_UT.mm; sourceTree = "<group>"; };
 		DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
 		DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
@@ -296,6 +306,7 @@
 				DB0F5B561919E62D006DE69F /* unittests */,
 				DB0F5B581919E6E9006DE69F /* atomic.h */,
 				DB0F5B63191A0BE0006DE69F /* atomic_count.h */,
+				DB0F5B72191ADB80006DE69F /* atomic_type.h */,
 			);
 			path = atomic;
 			sourceTree = "<group>";
@@ -303,6 +314,8 @@
 		DB0F5B541919E62D006DE69F /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				DB0F5B71191ADA1E006DE69F /* atomic_impl.h */,
+				DB0F5B73191AEA83006DE69F /* atomic_impl.cpp */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -310,6 +323,8 @@
 		DB0F5B551919E62D006DE69F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				DB0F5B6A191AD86C006DE69F /* atomic_count.cpp */,
+				DB0F5B6B191AD86C006DE69F /* atomic.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -317,6 +332,7 @@
 		DB0F5B561919E62D006DE69F /* unittests */ = {
 			isa = PBXGroup;
 			children = (
+				DB0F5B75191AEF44006DE69F /* atomic_UNIT_TEST.cpp */,
 			);
 			path = unittests;
 			sourceTree = "<group>";
@@ -335,7 +351,6 @@
 		DB0F5B5B1919EDC4006DE69F /* src */ = {
 			isa = PBXGroup;
 			children = (
-				DB0F5B601919EDF7006DE69F /* rc.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -343,6 +358,7 @@
 		DB0F5B5C1919EDC4006DE69F /* unittests */ = {
 			isa = PBXGroup;
 			children = (
+				DB0F5B68191AB542006DE69F /* rc_UNIT_TEST.cpp */,
 			);
 			path = unittests;
 			sourceTree = "<group>";
@@ -1064,13 +1080,14 @@
 				DB67F3A4190CF76A007567A9 /* thread_loopless_UNIT_TEST.cpp in Sources */,
 				DB67F39F190CE85A007567A9 /* thread_un_safe_UNIT_TEST.cpp in Sources */,
 				DB67F2D319089E50007567A9 /* build_utils.cc in Sources */,
-				DB0F5B611919EDF7006DE69F /* rc.cpp in Sources */,
 				DB67F24019062FFA007567A9 /* gtest-filepath.cc in Sources */,
 				DBB191721917196E006C9EAE /* thread_loopful.cpp in Sources */,
 				DB67F24319062FFA007567A9 /* gtest-test-part.cc in Sources */,
 				DBB191BF19176E0D006C9EAE /* thread_loopful_UNIT_TEST.cpp in Sources */,
 				DB67F24119062FFA007567A9 /* gtest-port.cc in Sources */,
 				DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */,
+				DB0F5B76191AEF44006DE69F /* atomic_UNIT_TEST.cpp in Sources */,
+				DB0F5B69191AB542006DE69F /* rc_UNIT_TEST.cpp in Sources */,
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
 				DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */,
 				DB31E7A61912DF56009A6CF6 /* event_dispatcher_UT.cpp in Sources */,
@@ -1084,6 +1101,8 @@
 				DB67F2DC1908F26D007567A9 /* condition_variable.cpp in Sources */,
 				DB31E7A41912DAFE009A6CF6 /* run_loop_factory.cpp in Sources */,
 				DB31E79519122554009A6CF6 /* task.cpp in Sources */,
+				DB0F5B74191AEA83006DE69F /* atomic_impl.cpp in Sources */,
+				DB0F5B6C191AD86C006DE69F /* atomic_count.cpp in Sources */,
 				DB67F5021910589B007567A9 /* run_loop_cocoa_DARWIN.mm in Sources */,
 				DB67F3A2190CE878007567A9 /* lock_UNIT_TEST.cpp in Sources */,
 				DB31E79E19122581009A6CF6 /* event_dispatcher.cpp in Sources */,
@@ -1095,6 +1114,7 @@
 				DBB19167191620A7006C9EAE /* log_UNIT_TEST.cpp in Sources */,
 				DBB1916419161335006C9EAE /* log_output.cpp in Sources */,
 				DB67F2E01908F9D6007567A9 /* condition_variable_impl_POSIX.cpp in Sources */,
+				DB0F5B6D191AD86C006DE69F /* atomic.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

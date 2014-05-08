@@ -21,14 +21,76 @@ namespace vctl
 class CReferenceBaseThreadSafe : private TNonCopyable<CReferenceBaseThreadSafe>
     {
 protected:
-    CReferenceBaseThreadSafe();
-    ~CReferenceBaseThreadSafe();
-    void Retain() const;
-    bool Release() const;
+    CReferenceBaseThreadSafe()
+        : iCount(0)
+        , iIsCommitingSuicide(false)
+        {}
+
+    ~CReferenceBaseThreadSafe()
+        {
+        ASSERT(true == iIsCommitingSuicide);
+        }
+
+    void Retain() const
+        {
+        ASSERT(false == iIsCommitingSuicide);
+        TAtomicCount_IncrementByOne(&iCount);
+        }
+
+    bool Release() const
+        {
+        ASSERT(false == iIsCommitingSuicide);
+        ASSERT(false == TAtomicCount_IsZero(&iCount));
+        bool retisnonzero = TAtomicCount_DecrementByOne(&iCount);
+        if(!retisnonzero)
+            {
+            iIsCommitingSuicide = true;
+            }
+        return iIsCommitingSuicide;
+        }
+
     
 private:
-    mutable TAtomicCount iCount;
+    mutable TAtomicInt32 iCount;
     mutable bool iIsCommitingSuicide;
+    };
+    
+    
+// -----------
+template <class POINTER_TYPE>
+class TDefaultDeletionPolicy
+    {
+public:
+    static void Delete(const POINTER_TYPE* aThis)
+        {
+        delete aThis;
+        }
+    };
+
+template <class CRTP, typename DELETE_POLICY>
+class CReferenceThreadSafe
+    : public CReferenceBaseThreadSafe
+    , private TNonCopyable< CReferenceThreadSafe<CRTP, DELETE_POLICY> >
+    {
+public:
+    CReferenceThreadSafe() {}
+    
+    void Retain() const
+        {
+        CReferenceBaseThreadSafe::Retain();
+        }
+        
+    bool Release() const
+        {
+        if(CReferenceBaseThreadSafe::Release())
+            {
+            CRTP* thiz = static_cast<CRTP*>(this);
+            DELETE_POLICY::Delete(thiz);
+            }
+        }
+        
+protected:
+    ~CReferenceThreadSafe() {}
     };
 
 } //namespace vctl

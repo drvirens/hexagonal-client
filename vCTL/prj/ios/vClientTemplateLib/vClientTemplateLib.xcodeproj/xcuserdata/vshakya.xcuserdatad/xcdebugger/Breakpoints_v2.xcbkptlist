@@ -9,78 +9,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../src/logging/unittests/log_UNIT_TEST.cpp"
-            timestampString = "420882037.54201"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "TEST(UT_Logger, Trivial)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/base/runloop/unittests/run_loop_cocoa_darwin_UT.mm"
-            timestampString = "420934324.852249"
+            filePath = "../../../src/memory/atomic/detail/atomic_impl.cpp"
+            timestampString = "421198376.201929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
             endingLineNumber = "39"
-            landmarkName = "PerformWork()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/base/runloop/detail/darwin/run_loop_DARWIN.mm"
-            timestampString = "420934340.641206"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "CRunLoopCFRunLoopBase::DoObservePreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/logging/src/log.cpp"
-            timestampString = "420938298.336729"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "TLog::~TLog()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/logging/src/log.cpp"
-            timestampString = "420938287.712129"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "TLogTimeStamp::PrettyTimeStamp()"
-            landmarkType = "5">
+            landmarkName = "DoBarrieredAtomicIncrement(volatile TAtomicInt32* aValueToIncrement, TAtomicInt32 aIncrementByAmount)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -89,132 +25,60 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
-            timestampString = "420968938.306907"
+            filePath = "../../../src/memory/ref/unittests/rc_UNIT_TEST.cpp"
+            timestampString = "421206164.632131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "Run()"
-            landmarkType = "5">
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "TEST(UT_CReference, Trivial)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../src/memory/ref/unittests/rc_UNIT_TEST.cpp"
+            timestampString = "421206261.479189"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "~CMyRefCountedClass()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__cxx_global_var_init"
+                  symbolName = "vctl::CMyRefCountedClass::~CMyRefCountedClass()"
                   moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
-                  timestampString = "420970718.341725"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/memory/ref/unittests/rc_UNIT_TEST.cpp"
+                  timestampString = "421206261.481954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "0">
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::~UT_TThread_DISABLED_Trivial_Test()"
+                  symbolName = "vctl::CMyRefCountedClass::~CMyRefCountedClass()"
                   moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
-                  timestampString = "420970718.342274"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/memory/ref/unittests/rc_UNIT_TEST.cpp"
+                  timestampString = "421206261.482251"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "10">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::~UT_TThread_DISABLED_Trivial_Test()"
-                  moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
-                  timestampString = "420970718.342757"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "10">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::~UT_TThread_DISABLED_Trivial_Test()"
-                  moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
-                  timestampString = "420970718.344234"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "10">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::UT_TThread_DISABLED_Trivial_Test()"
-                  moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
-                  timestampString = "420970718.344731"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "10">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "vbase::UT_TThread_DISABLED_Trivial_Test::UT_TThread_DISABLED_Trivial_Test()"
-                  moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/thread/unittests/thread_loopful_UNIT_TEST.cpp"
-                  timestampString = "420970718.345083"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "10">
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/base/eventdispatcher/unittests/event_dispatcher_UT.cpp"
-            timestampString = "420970426.289007"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "TEST(UT_MEventDispatcher, Trivial)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/base/eventdispatcher/src/event_dispatcher.cpp"
-            timestampString = "421127406.022706"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "MEventDispatcher::PerformWork()"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

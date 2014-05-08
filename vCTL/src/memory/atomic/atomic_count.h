@@ -9,12 +9,14 @@
 #ifndef __vClientTemplateLib__atomic_count__
 #define __vClientTemplateLib__atomic_count__
 
+#include "memory/atomic/atomic.h"
+
 namespace vctl
 {
-    
-class TAtomicCount
-    {
-    };
+
+bool TAtomicCount_IsZero(volatile TAtomicInt32* aNumber);
+void TAtomicCount_IncrementByOne(volatile TAtomicInt32* aNumber);
+bool TAtomicCount_DecrementByOne(volatile TAtomicInt32* aNumber); //return if result is non-zero
     
 } // namespace vctl
 

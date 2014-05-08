@@ -9,16 +9,22 @@
 #ifndef __vClientTemplateLib__atomic__
 #define __vClientTemplateLib__atomic__
 
-#include <stdint.h>
+
+#include "memory/atomic/atomic_type.h"
 
 namespace vctl
 {
 
-class TAtomic
+class TAtomicOperation
     {
 public:
-    static int32_t BarrieredAtomicAdd();
-    static int32_t BarrieredAtomicIncrement();
+    // see http://en.wikipedia.org/wiki/Memory_barrier
+    static void MemoryBarrier();
+    
+    //
+    // Increment "*aValueToIncrement" by "aIncrementByAmount" and return the value
+    //
+    static TAtomicInt32 BarrieredAtomicIncrement(volatile TAtomicInt32* aValueToIncrement, TAtomicInt32 aIncrementByAmount);
     };
 
 } //namespace vctl
