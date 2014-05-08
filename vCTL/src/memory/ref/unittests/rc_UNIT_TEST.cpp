@@ -52,7 +52,7 @@ void UnMatchedRetainRelease()
     //assert_death is not compiling on arm
     TEST(UT_CReference, UnMatchedRetainReleaseTest)
     {
-        ASSERT_DEATH({ UnMatchedRetainRelease(); }, "Retain and Release did not match");
+        EXPECT_DEATH({ UnMatchedRetainRelease(); }, "Retain and Release did not match");
     }
 #endif
 
