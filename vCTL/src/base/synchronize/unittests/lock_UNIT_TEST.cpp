@@ -38,7 +38,7 @@ namespace vbase
   };
   
   
-  TEST(UT_TLock, AcquireAndRelease)
+  TEST(UT_TLock, DISABLED_AcquireAndRelease)
   {
     TLock myLock;
     MLockTestThread t(myLock); // = new MLockTestThread(myLock);

@@ -8,6 +8,8 @@
 
 #include "memory/ref/rc.h"
 #include "memory/ref/rc_thread_safe.h"
+#include "build/build_config.h"
+
 #include "3p/google/gtest/include/gtest/gtest.h"
 
 namespace vctl
@@ -33,11 +35,26 @@ TEST(UT_CReference, Trivial)
     {
     CMyRefCountedClass* ref = new CMyRefCountedClass();
     ref->Retain(); // count = 1
+    ref->Release(); //count = 0 --> will delete ref
+    }
+
+void UnMatchedRetainRelease()
+    {
+    CMyRefCountedClass* ref = new CMyRefCountedClass();
+    ref->Retain(); // count = 1
     
     ref->Release(); //count = 0
-    //ref->iSomeNumber = 90; //undefined since ref is deleted here
     ref->Release(); //should assert for debug build
     }
+
+    
+#if defined( __i386__)
+    //assert_death is not compiling on arm
+    TEST(UT_CReference, UnMatchedRetainReleaseTest)
+    {
+        ASSERT_DEATH({ UnMatchedRetainRelease(); }, "Retain and Release did not match");
+    }
+#endif
 
 } //namespace vbase
 
