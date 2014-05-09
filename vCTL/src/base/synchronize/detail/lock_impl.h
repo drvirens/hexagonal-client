@@ -38,16 +38,16 @@ namespace vbase
 {
 namespace detail
 {
-    // -------------------------------------------------------------- typedefs
+        // -------------------------------------------------------------- typedefs
 #if defined(V_PLATFORM_POSIX)
-  typedef pthread_mutex_t TNativeLock;
+    typedef pthread_mutex_t TNativeLock;
 #elif defined(V_PLATFORM_WIN)
-  typedef CRITICAL_SECTION TNativeLock;
+    typedef CRITICAL_SECTION TNativeLock;
 #endif
-
-  class TLockImpl : private TNonCopyable<TLockImpl>
-  {
-  public:
+    
+class TLockImpl : private TNonCopyable<TLockImpl>
+    {
+public:
     TLockImpl();
     ~TLockImpl();
     
@@ -59,10 +59,10 @@ namespace detail
     TNativeLock* GetHandle() { return &mNativeLock; }
 #endif
     
-  private:
+private:
     TNativeLock mNativeLock;
-  };
-  
+    };
+    
 } //namespace detail
 } //namespace vbase
 

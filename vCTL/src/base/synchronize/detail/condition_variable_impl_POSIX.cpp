@@ -9,7 +9,6 @@
 #include <errno.h>
 #include "base/synchronize/lock.h"
 #include "base/synchronize/detail/condition_variable_impl.h"
-//#include "logging/log_logger.h"
 #include "base/error_handler.h"
 
 namespace vbase
@@ -31,7 +30,16 @@ MConditionVariablePosixImpl::~MConditionVariablePosixImpl()
 
 void MConditionVariablePosixImpl::DoWait()
 {
-  V_PTHREAD_CALL( pthread_cond_wait(&mCondition, mMutex) );
+  //V_PTHREAD_CALL( pthread_cond_wait(&mCondition, mMutex) );
+  do
+    {
+      int thePThreadCallError = ( pthread_cond_wait(&mCondition, mMutex) );
+      if ( 0 != thePThreadCallError )
+      {
+        std::cerr << "MConditionVariablePosixImpl: pthread_cond_wait" << " : " << strerror(thePThreadCallError);
+      }
+  } while (false);
+
 }
 
 void MConditionVariablePosixImpl::DoNotifyOne()

@@ -18,16 +18,16 @@
 
 namespace vbase
 {
-
+    
 namespace detail
 {
-  class MConditionVariablePosixImpl;
+    class MConditionVariablePosixImpl;
 }
-  
-// ------------------------------------------------- TLock
-  class TLock : private TNonCopyable<TLock>
-  {
-  public:
+    
+    // ------------------------------------------------- TLock
+class TLock : private TNonCopyable<TLock>
+    {
+public:
     TLock();
     ~TLock();
     void Acquire();
@@ -35,41 +35,42 @@ namespace detail
     bool Try();
     void AssertAcquired() const;
     
-  private:
+private:
     detail::TLockImpl mImpl;
     
 #if !defined(NDEBUG)
     void CheckHeldAndUnMark();
     void CheckUnHeldAndMark();
-  
+    
     bool mOwnedByThread;               //am I owned by any thread?
     TPlatformThreadID mOwningThreadId; //if yes, who owes me?
     std::string iThreadName;
 #endif
-
+    
 #if defined(V_PLATFORM_POSIX)
     friend class detail::MConditionVariablePosixImpl;
 #endif
+    };
 
-  };
-  
-// ------------------------------------------------- TAutoLock
-  class TAutoLock : private TNonCopyable<TAutoLock> //lock-RAII
-  {
-  public:
+    // ------------------------------------------------- TAutoLock
+class TAutoLock : private TNonCopyable<TAutoLock> 
+    {
+public:
     explicit TAutoLock(TLock& aLock)
-      : mLock(aLock)
-    {
-      mLock.Acquire();
-    }
+        : mLock(aLock)
+        {
+        mLock.Acquire();
+        }
+        
     ~TAutoLock()
-    {
-      mLock.AssertAcquired();
-      mLock.Release();
-    }
-  private:
+        {
+        mLock.AssertAcquired();
+        mLock.Release();
+        }
+        
+private:
     TLock& mLock;
-  };
+    };
 }
 
 #endif /* defined(__vClientTemplateLib__lock__) */

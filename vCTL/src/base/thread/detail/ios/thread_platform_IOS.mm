@@ -9,10 +9,16 @@
 #include <stdio.h>
 
 #include "base/thread/thread_platform.h"
-#include "logging/log_logger.h"
 #include "build/build_utils.h"
 #include "base/error_handler.h"
 
+//
+// NOTE NOTE NOTE NOTE :::: NOTE NOTE NOTE NOTE
+//
+// DO NOT USE LOG_XXX or LOG(XXX) in here...it will lead to deadlock
+//
+// NOTE NOTE NOTE NOTE :::: NOTE NOTE NOTE NOTE
+//
 
 namespace vbase
 {
@@ -27,8 +33,7 @@ void TPlatformThread::SetName(const char* aName)
 const char* TPlatformThread::Name()
 {
   char* name = new char[kMaxThreadNameLength + 1];
-  V_PTHREAD_CALL( pthread_getname_np(TPlatformThread::CurrentHandle().RawHandle(), name, kMaxThreadNameLength) );
-  //LOG_INFO << "ThreadName: " << name;
+  V_PTHREAD_CALL( pthread_getname_np(pthread_self(), name, kMaxThreadNameLength) );
   return name;
 }
 

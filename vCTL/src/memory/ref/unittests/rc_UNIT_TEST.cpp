@@ -43,14 +43,14 @@ void UnMatchedRetainRelease()
     CMyRefCountedClass* ref = new CMyRefCountedClass();
     ref->Retain(); // count = 1
     
-    ref->Release(); //count = 0
+    //ref->Release(); //count = 0
     ref->Release(); //should assert for debug build
     }
 
     
 #if defined( __i386__)
     //assert_death is not compiling on arm
-    TEST(UT_CReference, UnMatchedRetainReleaseTest)
+    TEST(UT_CReference, DISABLED_UnMatchedRetainReleaseTest)
     {
         EXPECT_DEATH({ UnMatchedRetainRelease(); }, "Retain and Release did not match");
     }

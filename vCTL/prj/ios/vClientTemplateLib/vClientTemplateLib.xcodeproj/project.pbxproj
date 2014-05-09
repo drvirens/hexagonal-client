@@ -249,6 +249,7 @@
 		DB67F3AC190DD18F007567A9 /* run_loop_DARWIN.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_DARWIN.mm; sourceTree = "<group>"; };
 		DB67F5001910589B007567A9 /* run_loop_cocoa_DARWIN.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = run_loop_cocoa_DARWIN.mm; sourceTree = "<group>"; };
 		DB67F5011910589B007567A9 /* run_loop_cocoa_DARWIN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_loop_cocoa_DARWIN.h; sourceTree = "<group>"; };
+		DB6ADB39191C5B970098E92C /* macrologger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macrologger.h; sourceTree = "<group>"; };
 		DBB190E81914BA0E006C9EAE /* task_pending_queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = task_pending_queue.cpp; sourceTree = "<group>"; };
 		DBB1915B1915F7C9006C9EAE /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
 		DBB1915C1915F7C9006C9EAE /* log_level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log_level.h; sourceTree = "<group>"; };
@@ -718,33 +719,18 @@
 		DB67F23519062FFA007567A9 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				DB6ADB37191C58350098E92C /* thread_syn_logger */,
 				DBB191C0191772D6006C9EAE /* lambda */,
 				DB31E79819122581009A6CF6 /* eventdispatcher */,
 				DB31E77D19120DD0009A6CF6 /* task */,
 				DB67F387190C913A007567A9 /* runloop */,
 				DB67F360190A114E007567A9 /* time */,
-				DB67F23619062FFA007567A9 /* file */,
-				DB67F23719062FFA007567A9 /* memory */,
 				DB67F23819062FFA007567A9 /* synchronize */,
 				DB67F23919062FFA007567A9 /* thread */,
 				DB67F24D19065186007567A9 /* non_copyable.h */,
 				DB67F35F1909A028007567A9 /* error_handler.h */,
 			);
 			path = base;
-			sourceTree = "<group>";
-		};
-		DB67F23619062FFA007567A9 /* file */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = file;
-			sourceTree = "<group>";
-		};
-		DB67F23719062FFA007567A9 /* memory */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = memory;
 			sourceTree = "<group>";
 		};
 		DB67F23819062FFA007567A9 /* synchronize */ = {
@@ -906,6 +892,14 @@
 				DB31E7671910D0D7009A6CF6 /* run_loop_cocoa_darwin_UT.mm */,
 			);
 			path = unittests;
+			sourceTree = "<group>";
+		};
+		DB6ADB37191C58350098E92C /* thread_syn_logger */ = {
+			isa = PBXGroup;
+			children = (
+				DB6ADB39191C5B970098E92C /* macrologger.h */,
+			);
+			path = thread_syn_logger;
 			sourceTree = "<group>";
 		};
 		DBB190E71914B9D0006C9EAE /* unittests */ = {
@@ -1247,6 +1241,7 @@
 					"-DENABLE_LOGGING=1",
 					"-DTHREADSAFE_LOGGING=1",
 					"-DENABLE_DEBUG=1",
+					"-DLOGGING_ENABLED=1",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";

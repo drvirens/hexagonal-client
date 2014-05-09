@@ -12,34 +12,46 @@
 
 namespace vbase
 {
-  class MLockTestThread
+    
+TEST(UT_TLock, Trivial)
+    {
+    int trivial = 0;
+    TLock lock;
+        {
+        lock.Acquire();
+        trivial = 10;
+        lock.Release();
+        }
+    }
+    
+class MLockTestThread
     : public IThreadMainEntryPoint
     , private TNonCopyable<MLockTestThread>
-  {
-  public:
+    {
+public:
     explicit MLockTestThread(TLock& aLock)
-      : mLock(aLock)
-      , mCounter(0)
-    {}
+        : mLock(aLock)
+        , mCounter(0)
+        {}
     
     virtual void MainEntry()
-    {
-      mLock.Acquire();
-      mCounter++;
-      mLock.Release();
-    }
+        {
+        mLock.Acquire();
+        mCounter++;
+        mLock.Release();
+        }
     
     int Counter() const { return mCounter; }
     void SetCounter(int aCounter) { mCounter = aCounter; }
     
-  private:
+private:
     TLock& mLock; // protects mCOunter
     int mCounter;
-  };
-  
-  
-  TEST(UT_TLock, DISABLED_AcquireAndRelease)
-  {
+    };
+
+
+TEST(UT_TLock, DISABLED_AcquireAndRelease)
+    {
     TLock myLock;
     MLockTestThread t(myLock); // = new MLockTestThread(myLock);
     TPlatformThreadHandle h; // = new TPlatformThreadHandle();
@@ -54,6 +66,6 @@ namespace vbase
     TPlatformThread::Join(&h);
     
     ASSERT_GT(t.Counter(), 0);
-  }
+    }
 } //vbase
 

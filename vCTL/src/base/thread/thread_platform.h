@@ -12,12 +12,12 @@
 #include "build/build_config.h"
 
 #if defined(V_PLATFORM_POSIX)
-  #include <pthread.h>
+#include <pthread.h>
 #if defined(V_PLATFORM_IOS)
-  #include <sys/types.h> //for pid_t
+#include <sys/types.h> //for pid_t
 #endif
 #elif defined(V_PLATFORM_WIN)
-  #include <windows.h>
+#include <windows.h>
 #endif
 
 #include "base/non_copyable.h"
@@ -25,109 +25,110 @@
 namespace vbase
 {
 
-// -------------------------------------------------------------- typedefs
+    // -------------------------------------------------------------- typedefs
 #if defined(V_PLATFORM_POSIX)
-  //typedef pid_t TPlatformThreadID;
-  typedef unsigned int TPlatformThreadID;
-  typedef pthread_t TThreadHandle;
+    //typedef pid_t TPlatformThreadID;
+    typedef unsigned int TPlatformThreadID;
+    typedef pthread_t TThreadHandle;
 #elif defined(V_PLATFORM_WIN)
-  typedef DWORD TPlatformThreadID;
-  typedef void* TThreadHandle;
+    typedef DWORD TPlatformThreadID;
+    typedef void* TThreadHandle;
 #endif
 
-// -------------------------------------------------------------- TPlatformThreadHandle
+    // -------------------------------------------------------------- TPlatformThreadHandle
 /**
-* Simple abstraction for thread-handle
-*/
+ * Simple abstraction for thread-handle
+ */
 class TPlatformThreadHandle
-  {
-  public:
+    {
+public:
     TPlatformThreadHandle()
-      : mRawHandle(0)
-      , mThreadId(0)
-    {}
+        : mRawHandle(0)
+        , mThreadId(0)
+        {}
     
     explicit TPlatformThreadHandle(TThreadHandle aRawHandle)
-      : mRawHandle(aRawHandle)
-      , mThreadId(0)
-    {}
+        : mRawHandle(aRawHandle)
+        , mThreadId(0)
+        {}
     
-    explicit TPlatformThreadHandle(TThreadHandle aRawHandle, TPlatformThreadID aThreadID)
-      : mRawHandle(aRawHandle)
-      , mThreadId(aThreadID)
-    {}
+    TPlatformThreadHandle(TThreadHandle aRawHandle, TPlatformThreadID aThreadID)
+        : mRawHandle(aRawHandle)
+        , mThreadId(aThreadID)
+        {}
     
     bool IsEqual(const TPlatformThreadHandle& aThreadHandle) const
-    {
-      return (mRawHandle == aThreadHandle.mRawHandle);
-    }
+        {
+        return (mRawHandle == aThreadHandle.mRawHandle);
+        }
     
     bool IsNull() const
-    {
-      return !mRawHandle;
-    }
+        {
+        return !mRawHandle;
+        }
     
-    TThreadHandle RawHandle() const
-    {
-      return mRawHandle;
-    }
-
-  private:
+//    TThreadHandle RawHandle() const
+//        {
+//        return mRawHandle;
+//        }
+    
+private:
     TThreadHandle mRawHandle;
     TPlatformThreadID mThreadId;
-  };
-  
-// --------------------------------------------------------------
+};
+
+    // --------------------------------------------------------------
 const TPlatformThreadID kInvalidThreadID(0);
- 
-// -------------------------------------------------------------- EThreadPriority
+
+    // -------------------------------------------------------------- EThreadPriority
 enum EThreadPriority
-  {
+    {
     EThreadPriority_Normal,
     EThreadPriority_Realtime,   //e.g. low-latency, glitch-resistant audio
     EThreadPriority_Display,    //threads that generate data for UI
     EThreadPriority_Background  //threads that should not disrupt high priority work
-  };
-  
-// -------------------------------------------------------------- IThreadMainEntryPoint
+    };
+
+    // -------------------------------------------------------------- IThreadMainEntryPoint
 class IThreadMainEntryPoint
-  {
-  public:
+    {
+public:
     virtual void MainEntry() = 0;
-  protected:
+protected:
     virtual ~IThreadMainEntryPoint() {}
-  };
-  
-// -------------------------------------------------------------- IThreadTrivialInterface
+    };
+
+    // -------------------------------------------------------------- IThreadTrivialInterface
 template <class PLATFORM>
 class IThreadOptionalInterface
-{
+    {
 public:
-  static void OnPreThreadCreate()
-  {
-    PLATFORM::OnPreThreadCreate();
-  }
-  static void OnThreadMainEnter()
-  {
-    PLATFORM::OnThreadMainEnter();
-  }
-  static void OnThreadMainExit()
-  {
-    PLATFORM::OnThreadMainExit();
-  }
+    static void OnPreThreadCreate()
+        {
+        PLATFORM::OnPreThreadCreate();
+        }
+    static void OnThreadMainEnter()
+        {
+        PLATFORM::OnThreadMainEnter();
+        }
+    static void OnThreadMainExit()
+        {
+        PLATFORM::OnThreadMainExit();
+        }
+        
 #if defined(V_PLATFORM_POSIX)
-  static size_t GetDefaultStackSize(const pthread_attr_t& aAttributes)
-  {
-    return PLATFORM::GetDefaultStackSize(aAttributes);
-  }
+    static size_t GetDefaultStackSize(const pthread_attr_t& aAttributes)
+        {
+        return PLATFORM::GetDefaultStackSize(aAttributes);
+        }
 #endif
-};
+    };
 
-  
-// -------------------------------------------------------------- TPlatformThread
+
+    // -------------------------------------------------------------- TPlatformThread
 class TPlatformThread : private TNonCopyable<TPlatformThread>
-  {
-  public:
+    {
+public:
     static TPlatformThreadHandle CurrentHandle();
     static TPlatformThreadID CurrentID();
     static bool Create(size_t aStackSize,
@@ -140,11 +141,11 @@ class TPlatformThread : private TNonCopyable<TPlatformThread>
     static void Yield();
     static void Sleep(int64_t aSeconds);
     
-    //debug aid
+        //debug aid
     static void SetName(const char* aName); //not copied
     static const char* Name();
-  };
-  
+    };
+
 } //namespace vbase
 
 

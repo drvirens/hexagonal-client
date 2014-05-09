@@ -7,7 +7,7 @@
 //
 
 #include "base/thread/thread_loopful.h"
-#include "logging/log_logger.h"
+#include "base/thread_syn_logger/macrologger.h"
 #include "build/build_utils.h"
 #include "base/eventdispatcher/event_dispatcher.h"
 #include "base/lambda/lambda.h"

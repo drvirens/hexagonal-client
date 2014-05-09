@@ -25,9 +25,9 @@ namespace vbase
     virtual void MainEntry()
     {
       mTagDidRun = true;
-      TPlatformThread::SetName("viren-thread");
+      TPlatformThread::SetName("UT_TPlatformThread");
       const char* name = TPlatformThread::Name();
-      int ret = strcmp(name, "viren-thread");
+      int ret = strcmp(name, "UT_TPlatformThread");
       EXPECT_EQ(0, ret);
       
       if(mSleep)
@@ -83,7 +83,7 @@ namespace vbase
   }
 
 // ------------------------------------------------------------ ThreadID
-  TEST(UT_TPlatformThread, DISABLED_ThreadID)
+  TEST(UT_TPlatformThread, ThreadID)
   {
     TPlatformThreadID mainThreadId = TPlatformThread::CurrentID();
     
@@ -116,13 +116,13 @@ namespace vbase
       mTagDidRun = true;
       mYielderThreadId = TPlatformThread::CurrentID();
       
-      TPlatformThread::SetName("viren-thread");
+      TPlatformThread::SetName("MYielderThreadMainEntry");
       const char* name = TPlatformThread::Name();
-      int ret = strcmp(name, "viren-thread");
+      int ret = strcmp(name, "MYielderThreadMainEntry");
       EXPECT_EQ(0, ret);
       
       TPlatformThread::Yield();
-      TPlatformThread::Sleep(100);
+      TPlatformThread::Sleep(1);
       
       EXPECT_EQ(TPlatformThread::CurrentID(), mYielderThreadId);
       
