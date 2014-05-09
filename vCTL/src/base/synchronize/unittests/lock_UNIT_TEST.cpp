@@ -13,7 +13,7 @@
 namespace vbase
 {
     
-TEST(UT_TLock, Trivial)
+TEST(UT_TLock, DISABLED_Trivial)
     {
     int trivial = 0;
     TLock lock;

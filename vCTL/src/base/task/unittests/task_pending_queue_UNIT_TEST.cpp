@@ -63,14 +63,14 @@ private:
     };
 
 
-TEST(UT_TPendingTasksQ, Trivial)
+TEST(UT_TPendingTasksQ, DISABLED_Trivial)
     {
     Test_ITaskPendingQueueListener listener;
     TPendingTasksQ q(listener);
     EXPECT_EQ(listener.Val(), 0);
     }
     
-TEST(UT_TPendingTasksQ, AddLambda)
+TEST(UT_TPendingTasksQ, DISABLED_AddLambda)
     {
     Test_ITaskPendingQueueListener listener;
     TPendingTasksQ q(listener);

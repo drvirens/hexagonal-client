@@ -31,7 +31,7 @@ private:
     
     };
 
-TEST(UT_CReference, Trivial)
+TEST(UT_CReference, DISABLED_Trivial)
     {
     CMyRefCountedClass* ref = new CMyRefCountedClass();
     ref->Retain(); // count = 1

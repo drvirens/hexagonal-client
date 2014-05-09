@@ -54,7 +54,7 @@ namespace vbase
   static const size_t kStackSize = 0;
   static const bool kJoinable = true;
 // ------------------------------------------------------------ CreatePlatformThread
-  TEST(UT_TPlatformThread, CreatePlatformThread)
+  TEST(UT_TPlatformThread, DISABLED_CreatePlatformThread)
   {
     MMyThreadMainEntry threadEntry;
     TPlatformThreadHandle h;
@@ -83,7 +83,7 @@ namespace vbase
   }
 
 // ------------------------------------------------------------ ThreadID
-  TEST(UT_TPlatformThread, ThreadID)
+  TEST(UT_TPlatformThread, DISABLED_ThreadID)
   {
     TPlatformThreadID mainThreadId = TPlatformThread::CurrentID();
     
@@ -141,7 +141,7 @@ namespace vbase
 
   
 // ------------------------------------------------------------ Yield
-  TEST(UT_TPlatformThread, Yield)
+  TEST(UT_TPlatformThread, DISABLED_Yield)
   {
     MYielderThreadMainEntry threadEntry;
     TPlatformThreadHandle handle;

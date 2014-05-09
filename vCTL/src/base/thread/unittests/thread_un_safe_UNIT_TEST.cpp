@@ -35,20 +35,20 @@ namespace vbase
         }
     };
     
-    TEST(UT_TThreadUnSafe, ThreadUnSafeTrivial)
+    TEST(UT_TThreadUnSafe, DISABLED_ThreadUnSafeTrivial)
     {
         TNotThreadSafe tud;
         tud.AssertValidThreadCall();
     }
     
-    TEST(UT_TThreadUnSafe, DeriveFromThreadUnSafe)
+    TEST(UT_TThreadUnSafe, DISABLED_DeriveFromThreadUnSafe)
     {
         MyThreadUnSafeClass t;
         t.Foo();
     }
     
         // ---------------------
-    class FooCallerThread
+class FooCallerThread
     : public TLooplessThread
     , private TNonCopyable<FooCallerThread>
     {
@@ -96,7 +96,7 @@ namespace vbase
     }
 #endif
 #else
-    TEST(UT_TThreadUnSafe, CanCallMethodOnOtherThreadInProduction)
+    TEST(UT_TThreadUnSafe, DISABLED_CanCallMethodOnOtherThreadInProduction)
     {
         CanNotCallMethodOnOtherThreadTest();
     }

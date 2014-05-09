@@ -12,7 +12,7 @@
 namespace vctl
 {
 
-TEST(UT_TAtomicOperation, Trivial)
+TEST(UT_TAtomicOperation, DISABLED_Trivial)
     {
     TAtomicInt32 valuetoincrement = 68;
     TAtomicInt32 incrementbyamount = 1;

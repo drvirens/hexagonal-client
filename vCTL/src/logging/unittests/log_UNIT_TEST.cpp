@@ -14,7 +14,7 @@
 namespace logging
 {
 
-TEST(UT_Logger, Trivial)
+TEST(UT_Logger, DISABLED_Trivial)
     {
     //TLogConfig::SetLevel(logging::eDebug);
     logging::TLogConfig::AddOutput(new logging::CConsoleOutput(logging::eDebug));
