@@ -24,7 +24,7 @@ void IOSThreadOptionalImpl::OnPreThreadCreate()
     [NSThread detachNewThreadSelector:@selector(class) toTarget:[NSObject class] withObject:nil];
     multithreaded = YES;
     
-    //ASSERT_DEBUG([NSThread isMultiThreaded]);
+   // ASSERT([NSThread isMultiThreaded]);
   }
 }
 

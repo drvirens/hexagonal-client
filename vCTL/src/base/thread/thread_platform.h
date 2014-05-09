@@ -21,6 +21,7 @@
 #endif
 
 #include "base/non_copyable.h"
+#include "base/thread/thread_priority.h"
 
 namespace vbase
 {
@@ -47,10 +48,10 @@ public:
         , mThreadId(0)
         {}
     
-    explicit TPlatformThreadHandle(TThreadHandle aRawHandle)
-        : mRawHandle(aRawHandle)
-        , mThreadId(0)
-        {}
+//    explicit TPlatformThreadHandle(TThreadHandle aRawHandle)
+//        : mRawHandle(aRawHandle)
+//        , mThreadId(0)
+//        {}
     
     TPlatformThreadHandle(TThreadHandle aRawHandle, TPlatformThreadID aThreadID)
         : mRawHandle(aRawHandle)
@@ -67,10 +68,10 @@ public:
         return !mRawHandle;
         }
     
-//    TThreadHandle RawHandle() const
-//        {
-//        return mRawHandle;
-//        }
+    TThreadHandle RawHandle() const
+        {
+        return mRawHandle;
+        }
     
 private:
     TThreadHandle mRawHandle;
@@ -80,14 +81,6 @@ private:
     // --------------------------------------------------------------
 const TPlatformThreadID kInvalidThreadID(0);
 
-    // -------------------------------------------------------------- EThreadPriority
-enum EThreadPriority
-    {
-    EThreadPriority_Normal,
-    EThreadPriority_Realtime,   //e.g. low-latency, glitch-resistant audio
-    EThreadPriority_Display,    //threads that generate data for UI
-    EThreadPriority_Background  //threads that should not disrupt high priority work
-    };
 
     // -------------------------------------------------------------- IThreadMainEntryPoint
 class IThreadMainEntryPoint

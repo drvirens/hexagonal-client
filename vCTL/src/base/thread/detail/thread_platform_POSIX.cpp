@@ -11,126 +11,130 @@
 #include <sched.h> //for yield
 
 #include "base/time/time.h" //for sleep
-#include "base/thread/thread_platform.h"
 #include "base/thread_syn_logger/macrologger.h"
+
 #include "build/build_utils.h"
 #include "base/error_handler.h"
 #include "base/synchronize/lock.h"
 #include "base/synchronize/condition_variable.h"
 
+#include "base/thread/detail/thread_bootstrap_params.h"
+
+
 #if defined(V_PLATFORM_ANDROID)
-#error for android do we need any other things like thread_platform_optional_IOS.h?
+    #error for android do we need any other things like thread_platform_optional_IOS.h?
 #elif defined(V_PLATFORM_IOS)
 
-#include "base/thread/detail/ios/thread_platform_optional_IOS.h"
+    #include "base/thread/detail/ios/thread_platform_optional_IOS.h"
+    typedef IOSThreadOptionalImpl PosixOptionalImpl;
 
-typedef IOSThreadOptionalImpl PosixOptionalImpl;
-
-#elif defined(V_PLATFORM_TIZEN)
 #else
-#error Define optional thread interface
+    #error Define optional thread interface
 #endif
+
 
 namespace vbase
 {
-    // --------------------------------------------------- TThreadParams
-class TThreadParams : private TNonCopyable<TThreadParams>
-    {
-public:
-    TThreadParams()
-        : mMainEntry(0)
-        , mJoinable(false)
-        , mThreadPriority(EThreadPriority_Normal)
-        , mHandle(0)
-        , mLock(0)
-        , mConditionVariable(0)
-        , mWaitCondition(false)
-        {
-        mLock = new TLock();
-        mConditionVariable = new TConditionVariable(mLock);
-        }
-    
-    TThreadParams(IThreadMainEntryPoint* aMainEntry, bool aJoinable, EThreadPriority aThreadPriority, TPlatformThreadHandle* aHandle)
-        : mMainEntry(aMainEntry)
-        , mJoinable(aJoinable)
-        , mThreadPriority(aThreadPriority)
-        , mHandle(aHandle)
-        , mLock(0)
-        , mConditionVariable(0)
-        , mWaitCondition(false)
-        {
-        mLock = new TLock();
-        mConditionVariable = new TConditionVariable(mLock);
-        }
-        
-    ~TThreadParams()
-        {
-        delete mConditionVariable; mConditionVariable= 0;
-        delete mLock; mLock = 0;
-        }
-    
-    static void* ThreadEntryFunction(void* aTThreadParamsPtr);
-    
-    void Wait()
-        {
-        mLock->Acquire();
-        while(mWaitCondition == false)
-            {
-            mConditionVariable->Wait();
-            }
-        mLock->Release();
-        }
-    
-    void Signal()
-        {
-        mLock->Acquire();
-        mWaitCondition = true;
-        mConditionVariable->NotifyOne();
-        //mConditionVariable.NotifyAll();
-        mLock->Release();
-        }
-    
-private:
-    IThreadMainEntryPoint* mMainEntry;
-    bool mJoinable;
-    EThreadPriority mThreadPriority;
-    TPlatformThreadHandle* mHandle;
-    TLock* mLock; //locks access to mConditionVariable & mWaitCondition
-    TConditionVariable* mConditionVariable; //waits on mWaitCondition
-    bool mWaitCondition;
-    };
+//    // --------------------------------------------------- TThreadParams
+//class TThreadParams : private TNonCopyable<TThreadParams>
+//    {
+//public:
+//    TThreadParams()
+//        : mMainEntry(0)
+//        , mJoinable(false)
+//        , mThreadPriority(EThreadPriority_Normal)
+//        , mHandle(0)
+//        , mLock(0)
+//        , mConditionVariable(0)
+//        , mWaitCondition(false)
+//        {
+//        mLock = new TLock();
+//        mConditionVariable = new TConditionVariable(mLock);
+//        }
+//    
+//    TThreadParams(IThreadMainEntryPoint* aMainEntry, bool aJoinable, EThreadPriority aThreadPriority, TPlatformThreadHandle* aHandle)
+//        : mMainEntry(aMainEntry)
+//        , mJoinable(aJoinable)
+//        , mThreadPriority(aThreadPriority)
+//        , mHandle(aHandle)
+//        , mLock(0)
+//        , mConditionVariable(0)
+//        , mWaitCondition(false)
+//        {
+//        mLock = new TLock();
+//        mConditionVariable = new TConditionVariable(mLock);
+//        }
+//        
+//    ~TThreadParams()
+//        {
+//        delete mConditionVariable; mConditionVariable= 0;
+//        delete mLock; mLock = 0;
+//        }
+//    
+//    static void* ThreadEntryFunction(void* aTThreadParamsPtr);
+//    
+//    void Wait()
+//        {
+//        mLock->Acquire();
+//        while(mWaitCondition == false)
+//            {
+//            mConditionVariable->Wait();
+//            }
+//        mLock->Release();
+//        }
+//    
+//    void Signal()
+//        {
+//        mLock->Acquire();
+//        mWaitCondition = true;
+//        mConditionVariable->NotifyOne();
+//        //mConditionVariable.NotifyAll();
+//        mLock->Release();
+//        }
+//    
+//private:
+//    IThreadMainEntryPoint* mMainEntry;
+//    bool mJoinable;
+//    EThreadPriority mThreadPriority;
+//    TPlatformThreadHandle* mHandle;
+//    TLock* mLock; //locks access to mConditionVariable & mWaitCondition
+//    TConditionVariable* mConditionVariable; //waits on mWaitCondition
+//    bool mWaitCondition;
+//    };
 
     // ----------------------------------------- TPlatformThread impl
+//
+//void* TThreadParams::ThreadEntryFunction(void* aTThreadParamsPtr)
+//    {
+//    IThreadOptionalInterface<PosixOptionalImpl>::OnThreadMainEnter();
+//    
+//    ASSERT( aTThreadParamsPtr != 0 );
+//    TThreadParams* tThis = static_cast<TThreadParams*>(aTThreadParamsPtr);
+//    IThreadMainEntryPoint* mainEntry = tThis->mMainEntry;
+//    ASSERT( mainEntry != 0 );
+//    if( !aTThreadParamsPtr || !mainEntry )
+//        {
+//        return 0;
+//        }
+//    
+//    if(EThreadPriority_Normal != tThis->mThreadPriority)
+//        {
+//        TPlatformThread::SetPriority(TPlatformThread::CurrentHandle(), tThis->mThreadPriority);
+//        }
+//    
+//    *(tThis->mHandle) = TPlatformThread::TPlatformThread::CurrentHandle();
+//    
+////    tThis->Signal(); //Signal for Wait in TPlatformThread::Create
+//    mainEntry->MainEntry();
+//    
+//    IThreadOptionalInterface<PosixOptionalImpl>::OnThreadMainExit();
+//    return 0;
+//    }
 
-void* TThreadParams::ThreadEntryFunction(void* aTThreadParamsPtr)
-    {
-    IThreadOptionalInterface<PosixOptionalImpl>::OnThreadMainEnter();
-    
-    ASSERT( aTThreadParamsPtr != 0 );
-    TThreadParams* tThis = static_cast<TThreadParams*>(aTThreadParamsPtr);
-    IThreadMainEntryPoint* mainEntry = tThis->mMainEntry;
-    ASSERT( mainEntry != 0 );
-    if( !aTThreadParamsPtr || !mainEntry )
-        {
-        return 0;
-        }
-    
-    if(EThreadPriority_Normal != tThis->mThreadPriority)
-        {
-        TPlatformThread::SetPriority(TPlatformThread::CurrentHandle(), tThis->mThreadPriority);
-        }
-    
-    *(tThis->mHandle) = TPlatformThread::TPlatformThread::CurrentHandle();
-    
-//    tThis->Signal(); //Signal for Wait in TPlatformThread::Create
-    mainEntry->MainEntry();
-    
-    IThreadOptionalInterface<PosixOptionalImpl>::OnThreadMainExit();
-    return 0;
-    }
 
 TPlatformThreadHandle TPlatformThread::CurrentHandle()
     {
+    LOG_INFO(">> TPlatformThread::CurrentHandle: CurrentID: [ %d ]", CurrentID());
     return TPlatformThreadHandle(pthread_self(), CurrentID());
     }
 
@@ -151,18 +155,18 @@ TPlatformThreadID TPlatformThread::CurrentID()
 
 bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntryPoint* aMainENtry, TPlatformThreadHandle* aThreadHandle, EThreadPriority aPriority)
     {
+    LOG_INFO(">> TPlatformThread::Create");
+    
     IThreadOptionalInterface<PosixOptionalImpl>::OnPreThreadCreate();
     bool ret = false;
     int err = 0;
     
     pthread_attr_t attributes;
     V_PTHREAD_CALL( pthread_attr_init(&attributes) );
-    
     if(!aJoinable)
         {
         V_PTHREAD_CALL( pthread_attr_setdetachstate(&attributes, PTHREAD_CREATE_DETACHED) ); //by default, pthread is joinable so explicitly make it detached if aJoinable==false
         }
-    
     if(0 == aStackSize)
         {
         aStackSize = IThreadOptionalInterface<PosixOptionalImpl>::GetDefaultStackSize(attributes);
@@ -172,38 +176,41 @@ bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntry
         V_PTHREAD_CALL( pthread_attr_setstacksize(&attributes, aStackSize) );
         }
     
-    TThreadParams params(aMainENtry, aJoinable, aPriority, aThreadHandle);
+    detail::CThreadBootstrapParams* params = detail::CThreadBootstrapParams::New(aMainENtry, aJoinable, aPriority, aThreadHandle);
     pthread_t pthreadHandle = 0;
-    V_PTHREAD_CALL_RET_ERROR( pthread_create(&pthreadHandle, &attributes, &TThreadParams::ThreadEntryFunction, &params), err );
+    V_PTHREAD_CALL_RET_ERROR( pthread_create(&pthreadHandle, &attributes, &detail::CThreadBootstrapParams::ThreadEntryFunction, params), err );
     ret = !err;
     if(0 != err)
         {
         errno = err;
-        //LOG_ERROR << "Could not create thread pthread_create";
         LOG_ERROR("Could not create thread pthread_create");
         }
     
+    LOG_INFO(">> pthread_create called");
+    
     pthread_attr_destroy(&attributes);
     
-//        //wait until thread id is set in the handle (which happens in ThreadEntryPoint)
-//    if(ret)
-//        {
-//        params.Wait(); //Wait to be signalled in TThreadParams::ThreadEntryFunction
-//        }
-//    ASSERT( pthreadHandle == aThreadHandle->RawHandle() );
-//    if(pthreadHandle != aThreadHandle->RawHandle())
-//        {
-//        LOG_ERROR << "pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading";
-//            //return false;
-//        }
+        //wait until thread id is set in the handle (which happens in ThreadEntryPoint)
+    if(ret)
+        {
+        params->Wait(); //Wait to be signalled in TThreadParams::ThreadEntryFunction
+        }
+    ASSERT( pthreadHandle == aThreadHandle->RawHandle() );
+    if(pthreadHandle != aThreadHandle->RawHandle())
+        {
+        LOG_ERROR ("pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading");
+            //return false;
+        }
     
     return ret;
     }
 
 void TPlatformThread::Join(TPlatformThreadHandle* aThreadHandle)
     {
-    //V_PTHREAD_CALL( pthread_join(aThreadHandle->RawHandle(), 0) );
-    V_PTHREAD_CALL( pthread_join(pthread_self(), 0) );
+    LOG_INFO(">> pthread_join called");
+    TThreadHandle handle = aThreadHandle->RawHandle();
+    V_PTHREAD_CALL( pthread_join(handle, 0) );
+    //V_PTHREAD_CALL( pthread_join(pthread_self(), 0) );
     }
 
 void TPlatformThread::SetPriority(TPlatformThreadHandle aThreadHandle, EThreadPriority aPriority)

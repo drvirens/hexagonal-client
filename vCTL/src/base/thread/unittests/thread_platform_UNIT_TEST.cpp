@@ -32,7 +32,7 @@ namespace vbase
       
       if(mSleep)
       {
-        for(int i = 0; i < 1; i++) //infinite
+        for(int i = 0; i < 1000; i++)
         {
           TPlatformThread::Sleep(1);
         }
@@ -54,7 +54,7 @@ namespace vbase
   static const size_t kStackSize = 0;
   static const bool kJoinable = true;
 // ------------------------------------------------------------ CreatePlatformThread
-  TEST(UT_TPlatformThread, DISABLED_CreatePlatformThread)
+  TEST(UT_TPlatformThread, CreatePlatformThread)
   {
     MMyThreadMainEntry threadEntry;
     TPlatformThreadHandle h;
@@ -141,7 +141,7 @@ namespace vbase
 
   
 // ------------------------------------------------------------ Yield
-  TEST(UT_TPlatformThread, DISABLED_Yield)
+  TEST(UT_TPlatformThread, Yield)
   {
     MYielderThreadMainEntry threadEntry;
     TPlatformThreadHandle handle;

@@ -11,14 +11,14 @@
 
 namespace vbase
 {
-  
-  class TThreadUnSafe_Production
-  {
-  public:
+    
+class TThreadUnSafe_Production
+    {
+public:
     bool AssertValidThreadCall() { return true; }
     void DisOwnThread() {}
-  };
-  
+    };
+    
 } //namespace vbase
 
 
