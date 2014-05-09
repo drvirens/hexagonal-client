@@ -213,11 +213,6 @@ void TPlatformThread::Join(TPlatformThreadHandle* aThreadHandle)
     //V_PTHREAD_CALL( pthread_join(pthread_self(), 0) );
     }
 
-void TPlatformThread::SetPriority(TPlatformThreadHandle aThreadHandle, EThreadPriority aPriority)
-    {
-    
-    }
-
 void TPlatformThread::Yield()
     {
     /**

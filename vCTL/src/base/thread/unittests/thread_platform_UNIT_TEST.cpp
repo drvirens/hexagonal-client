@@ -12,65 +12,101 @@
 
 namespace vbase
 {
-  class MMyThreadMainEntry
+class TestTrivialThread
     : public IThreadMainEntryPoint
-    , private TNonCopyable<MMyThreadMainEntry>
-  {
-  public:
-    MMyThreadMainEntry()
-      : mTagDidRun(false)
-      , mSleep(false)
-    {}
+    , private TNonCopyable<TestTrivialThread>
+    {
+public:
+    TestTrivialThread()
+        : mTagDidRun(false)
+        , mSleep(false)
+        {}
     
     virtual void MainEntry()
-    {
-      mTagDidRun = true;
-      TPlatformThread::SetName("UT_TPlatformThread");
-      const char* name = TPlatformThread::Name();
-      int ret = strcmp(name, "UT_TPlatformThread");
-      EXPECT_EQ(0, ret);
-      
-      if(mSleep)
-      {
-        for(int i = 0; i < 1000; i++)
         {
-          TPlatformThread::Sleep(1);
+        TPlatformThread::SetName("UT_TPlatformThread");
+        
+        mTagDidRun = true;
+    
+        const char* name = TPlatformThread::Name();
+        int ret = strcmp(name, "UT_TPlatformThread");
+        EXPECT_EQ(0, ret);
+
+//        if(mSleep)
+//            {
+//            for(int i = 0; i < 1000; i++)
+//                {
+//                TPlatformThread::Sleep(1);
+//                }
+//            }
+//        
+        return;
         }
-      }
-      
-      return;
-    }
     
     bool TagDidRun() const { return mTagDidRun; }
     void SetSleepTag(bool aSleep) { mSleep = aSleep; }
-    TPlatformThreadID GetThreadId() { return TPlatformThread::CurrentID(); }
     
-  private:
+private:
     bool mTagDidRun;
     bool mSleep;
-  };
-  
-  
-  static const size_t kStackSize = 0;
-  static const bool kJoinable = true;
-// ------------------------------------------------------------ CreatePlatformThread
-  TEST(UT_TPlatformThread, DISABLED_CreatePlatformThread)
-  {
-    MMyThreadMainEntry threadEntry;
+    };
+    
+    
+static const size_t kStackSize = 0;
+static const bool kJoinable = true;
+    // ------------------------------------------------------------ CreatePlatformThread
+TEST(UT_TPlatformThread, CreateOnePlatformThread)
+    {
+    TestTrivialThread threadEntry;
+    
     TPlatformThreadHandle h;
+    
     threadEntry.SetSleepTag(false);
     ASSERT_FALSE( threadEntry.TagDidRun() );
     
     EThreadPriority aPriority = EThreadPriority_Normal;
+    
     ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, &threadEntry, &h, aPriority) );
+    
     TPlatformThread::Join(&h);
+    
     ASSERT_TRUE( threadEntry.TagDidRun() );
-  }
+    }
+    
+TEST(UT_TPlatformThread, CreateTenPlatformThreads)
+    {
+    TestTrivialThread threadEntry[10];
+    
+    TPlatformThreadHandle h[10];
+    
+    for(int i = 0; i < 10; i++)
+        {
+        threadEntry[i].SetSleepTag(false);
+        ASSERT_FALSE( threadEntry[i].TagDidRun() );
+        }
+    
+    EThreadPriority aPriority = EThreadPriority_Normal;
+    
+    for(int i = 0; i < 10; i++)
+        {
+        ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, &threadEntry[i], &h[i], aPriority) );
+        }
+    
+    for(int i = 0; i < 10; i++)
+        {
+        TPlatformThread::Join(&h[i]);
+        }
+    
+    for(int i = 0; i < 10; i++)
+        {
+        ASSERT_TRUE( threadEntry[i].TagDidRun() );
+        }
+    }
 
-// ------------------------------------------------------------ SleepForNSeconds
-  TEST(UT_TPlatformThread, DISABLED_SleepForNSeconds)
-  {
-    MMyThreadMainEntry threadEntry;
+    // ------------------------------------------------------------ SleepForNSeconds
+TEST(UT_TPlatformThread, DISABLED_SleepForNSeconds)
+    {
+    TestTrivialThread threadEntry;
     TPlatformThreadHandle handle;
     threadEntry.SetSleepTag(true);
     ASSERT_FALSE( threadEntry.TagDidRun() );
@@ -80,14 +116,14 @@ namespace vbase
     
     TPlatformThread::Join(&handle);
     ASSERT_TRUE( threadEntry.TagDidRun() );
-  }
+    }
 
-// ------------------------------------------------------------ ThreadID
-  TEST(UT_TPlatformThread, DISABLED_ThreadID)
-  {
+    // ------------------------------------------------------------ ThreadID
+TEST(UT_TPlatformThread, DISABLED_ThreadID)
+    {
     TPlatformThreadID mainThreadId = TPlatformThread::CurrentID();
     
-    MMyThreadMainEntry threadEntry;
+    TestTrivialThread threadEntry;
     TPlatformThreadHandle h;
     threadEntry.SetSleepTag(false);
     ASSERT_FALSE( threadEntry.TagDidRun() );
@@ -98,51 +134,50 @@ namespace vbase
     ASSERT_TRUE( threadEntry.TagDidRun() );
     
     EXPECT_EQ(mainThreadId, TPlatformThread::CurrentID());
-  }
-  
-// -----------------------------------------
-  class MYielderThreadMainEntry
+    }
+
+    // -----------------------------------------
+class MYielderThreadMainEntry
     : public IThreadMainEntryPoint
     , private TNonCopyable<MYielderThreadMainEntry>
-  {
-  public:
+    {
+public:
     MYielderThreadMainEntry()
-      : mTagDidRun(false)
-      , mSleep(false)
-    {}
+        : mTagDidRun(false)
+        , mSleep(false)
+        {}
     
     virtual void MainEntry()
-    {
-      mTagDidRun = true;
-      mYielderThreadId = TPlatformThread::CurrentID();
-      
-      TPlatformThread::SetName("MYielderThreadMainEntry");
-      const char* name = TPlatformThread::Name();
-      int ret = strcmp(name, "MYielderThreadMainEntry");
-      EXPECT_EQ(0, ret);
-      
-      TPlatformThread::Yield();
-      TPlatformThread::Sleep(1);
-      
-      EXPECT_EQ(TPlatformThread::CurrentID(), mYielderThreadId);
-      
-      
-      return;
-    }
+        {
+        mTagDidRun = true;
+        mYielderThreadId = TPlatformThread::CurrentID();
+        
+        TPlatformThread::SetName("MYielderThreadMainEntry");
+        const char* name = TPlatformThread::Name();
+        int ret = strcmp(name, "MYielderThreadMainEntry");
+        EXPECT_EQ(0, ret);
+        
+        TPlatformThread::Yield();
+        TPlatformThread::Sleep(1);
+        
+        EXPECT_EQ(TPlatformThread::CurrentID(), mYielderThreadId);
+        
+        return;
+        }
     
     bool TagDidRun() const { return mTagDidRun; }
     void SetSleepTag(bool aSleep) { mSleep = aSleep; }
     
-  private:
+private:
     bool mTagDidRun;
     bool mSleep;
     TPlatformThreadID mYielderThreadId;
-  };
+    };
 
-  
-// ------------------------------------------------------------ Yield
-  TEST(UT_TPlatformThread, DISABLED_Yield)
-  {
+
+    // ------------------------------------------------------------ Yield
+TEST(UT_TPlatformThread, DISABLED_Yield)
+    {
     MYielderThreadMainEntry threadEntry;
     TPlatformThreadHandle handle;
     threadEntry.SetSleepTag(true);
@@ -153,8 +188,8 @@ namespace vbase
     
     TPlatformThread::Join(&handle);
     ASSERT_TRUE( threadEntry.TagDidRun() );
-  }
-
+    }
+    
 } //namespace vbase
 
 

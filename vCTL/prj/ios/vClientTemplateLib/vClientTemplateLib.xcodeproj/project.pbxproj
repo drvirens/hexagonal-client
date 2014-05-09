@@ -937,9 +937,9 @@
 		DB6ADB8C191C9B4A0098E92C /* unittests */ = {
 			isa = PBXGroup;
 			children = (
+				DB6ADB8F191C9B4A0098E92C /* thread_platform_UNIT_TEST.cpp */,
 				DB6ADB8D191C9B4A0098E92C /* thread_loopful_UNIT_TEST.cpp */,
 				DB6ADB8E191C9B4A0098E92C /* thread_loopless_UNIT_TEST.cpp */,
-				DB6ADB8F191C9B4A0098E92C /* thread_platform_UNIT_TEST.cpp */,
 				DB6ADB90191C9B4A0098E92C /* thread_un_safe_UNIT_TEST.cpp */,
 			);
 			path = unittests;
@@ -1263,11 +1263,10 @@
 				);
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
 				OTHER_CFLAGS = (
-					"-DNDEBUG=1",
+					"-DNDEBUG=0",
 					"-DENABLE_LOGGING=1",
 					"-DTHREADSAFE_LOGGING=1",
 					"-DENABLE_DEBUG=1",
-					"-DLOGGING_ENABLED=1",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";
