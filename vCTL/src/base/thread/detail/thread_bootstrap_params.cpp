@@ -114,6 +114,7 @@ void CThreadBootstrapParams::Wait()
     mLock->Acquire();
     while(mWaitCondition == false)
         {
+        LOG_INFO("Waiting...");
         mConditionVariable->Wait();
         }
     mLock->Release();
@@ -122,11 +123,11 @@ void CThreadBootstrapParams::Wait()
 void CThreadBootstrapParams::Signal()
     {
     LOG_INFO(">> CThreadBootstrapParams::Signal");
-    mLock->Acquire();
+    //mLock->Acquire(); 
     mWaitCondition = true;
     mConditionVariable->NotifyOne();
     //mConditionVariable.NotifyAll();
-    mLock->Release();
+    //mLock->Release();
     }
     
     

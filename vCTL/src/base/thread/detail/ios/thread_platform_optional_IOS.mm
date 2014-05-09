@@ -15,28 +15,32 @@
  To let Cocoa know that you intend to use multiple threads, all you have to do is spawn a single thread using the NSThread class and let that thread immediately exit. Your thread entry point need not do anything. Just the act of spawning a thread using NSThread is enough to ensure that the locks needed by the Cocoa frameworks are put in place.
  
  If you are not sure if Cocoa thinks your application is multithreaded or not, you can use the isMultiThreaded method of NSThread to check.
-*/
+ */
+
 void IOSThreadOptionalImpl::OnPreThreadCreate()
-{
-  static BOOL multithreaded = [NSThread isMultiThreaded];
-  if( !multithreaded )
-  {
-    [NSThread detachNewThreadSelector:@selector(class) toTarget:[NSObject class] withObject:nil];
-    multithreaded = YES;
-    
-   // ASSERT([NSThread isMultiThreaded]);
-  }
-}
+    {
+#if defined(SIMULATE_SINGLE_THREADED)
+    return;
+#endif
+    static BOOL multithreaded = [NSThread isMultiThreaded];
+    if( !multithreaded )
+        {
+        [NSThread detachNewThreadSelector:@selector(class) toTarget:[NSObject class] withObject:nil];
+        multithreaded = YES;
+        
+            // ASSERT([NSThread isMultiThreaded]);
+        }
+    }
 
 void IOSThreadOptionalImpl::OnThreadMainEnter()
-{
-}
+    {
+    }
 
 void IOSThreadOptionalImpl::OnThreadMainExit()
-{
-}
+    {
+    }
 
 size_t IOSThreadOptionalImpl::GetDefaultStackSize(const pthread_attr_t& aAttributes)
-{
-  return 0;
-}
+    {
+    return 0;
+    }

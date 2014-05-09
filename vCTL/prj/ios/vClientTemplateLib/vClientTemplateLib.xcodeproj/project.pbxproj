@@ -1263,10 +1263,10 @@
 				);
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
 				OTHER_CFLAGS = (
-					"-DNDEBUG=0",
 					"-DENABLE_LOGGING=1",
 					"-DTHREADSAFE_LOGGING=1",
 					"-DENABLE_DEBUG=1",
+					"-DSIMULATE_SINGLE_THREADED=1",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";
