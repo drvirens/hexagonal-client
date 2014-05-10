@@ -83,11 +83,13 @@ TEST(UT_TPlatformThread, CreateOnePlatformThread)
     ASSERT_TRUE( threadEntry.TagDidRun() );
     }
     
-TEST(UT_TPlatformThread, DISABLED_CreateTenPlatformThreads)
+TEST(UT_TPlatformThread, CreateTenPlatformThreads)
     {
     TestTrivialThread threadEntry[10];
     
     TPlatformThreadHandle h[10];
+    
+    TThreadHandle threadhandle[10];
     
     for(int i = 0; i < 10; i++)
         {
@@ -99,13 +101,28 @@ TEST(UT_TPlatformThread, DISABLED_CreateTenPlatformThreads)
     
     for(int i = 0; i < 10; i++)
         {
-        ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, &threadEntry[i], &h[i], aPriority) );
+        threadhandle[i] = TPlatformThread::Create(kStackSize, kJoinable, &threadEntry[i], &h[i], aPriority) ;
         }
     
     for(int i = 0; i < 10; i++)
         {
-        TPlatformThread::Join(&h[i]);
+        TPlatformThreadHandle joinhandle;
+        if(h[i].RawHandle() == 0)
+            {
+            //use threadhandle
+            joinhandle.SetRawHandle( threadhandle[i] );
+            }
+        else
+            {
+            joinhandle = h[i];
+            }
+        TPlatformThread::Join(&joinhandle);
         }
+    
+//    for(int i = 0; i < 10; i++)
+//        {
+//        TPlatformThread::Join(&h[i]);
+//        }
     
     for(int i = 0; i < 10; i++)
         {
@@ -129,7 +146,7 @@ TEST(UT_TPlatformThread, DISABLED_SleepForNSeconds)
     }
 
     // ------------------------------------------------------------ ThreadID
-TEST(UT_TPlatformThread, DISABLED_ThreadID)
+TEST(UT_TPlatformThread, ThreadID)
     {
     TPlatformThreadID mainThreadId = TPlatformThread::CurrentID();
     
@@ -139,8 +156,21 @@ TEST(UT_TPlatformThread, DISABLED_ThreadID)
     ASSERT_FALSE( threadEntry.TagDidRun() );
     
     EThreadPriority aPriority = EThreadPriority_Normal;
-    ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, &threadEntry, &h, aPriority) );
-    TPlatformThread::Join(&h);
+    TThreadHandle threadhandle = TPlatformThread::Create(kStackSize, kJoinable, &threadEntry, &h, aPriority);
+    
+    TPlatformThreadHandle joinhandle;
+    if(h.RawHandle() == 0)
+        {
+        //use threadhandle
+        joinhandle.SetRawHandle( threadhandle );
+        }
+    else
+        {
+        joinhandle = h;
+        }
+    TPlatformThread::Join(&joinhandle);
+    
+//    TPlatformThread::Join(&h);
     ASSERT_TRUE( threadEntry.TagDidRun() );
     
     EXPECT_EQ(mainThreadId, TPlatformThread::CurrentID());
@@ -186,7 +216,7 @@ private:
 
 
     // ------------------------------------------------------------ Yield
-TEST(UT_TPlatformThread, DISABLED_Yield)
+TEST(UT_TPlatformThread, Yield)
     {
     MYielderThreadMainEntry threadEntry;
     TPlatformThreadHandle handle;
@@ -194,9 +224,21 @@ TEST(UT_TPlatformThread, DISABLED_Yield)
     ASSERT_FALSE( threadEntry.TagDidRun() );
     
     EThreadPriority aPriority = EThreadPriority_Normal;
-    ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, &threadEntry, &handle, aPriority) );
+    TThreadHandle threadhandle = TPlatformThread::Create(kStackSize, kJoinable, &threadEntry, &handle, aPriority);
     
-    TPlatformThread::Join(&handle);
+        TPlatformThreadHandle joinhandle;
+    if(handle.RawHandle() == 0)
+        {
+        //use threadhandle
+        joinhandle.SetRawHandle( threadhandle );
+        }
+    else
+        {
+        joinhandle = handle;
+        }
+    TPlatformThread::Join(&joinhandle);
+
+    //TPlatformThread::Join(&handle);
     ASSERT_TRUE( threadEntry.TagDidRun() );
     }
     
