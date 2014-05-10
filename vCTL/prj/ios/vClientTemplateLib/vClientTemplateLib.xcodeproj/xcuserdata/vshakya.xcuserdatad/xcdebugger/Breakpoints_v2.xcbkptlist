@@ -9,94 +9,114 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../src/logging/src/log_output.cpp"
-            timestampString = "421391448.145421"
+            filePath = "../../../src/base/synchronize/unittests/lock_UNIT_TEST.cpp"
+            timestampString = "421398272.451086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "ISimpleBlockingOutput::Dump(ELogLevel aLogLevel, const std::string&amp; aTimeStamp, const std::string&amp; aFileName, int aLineNumber, const std::string&amp; aFunctionName, const std::string&amp; aMessage)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/base/thread/unittests/thread_platform_UNIT_TEST.cpp"
-            timestampString = "421391809.719673"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "MainEntry()"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "TEST(UT_TLock, DoubleLockDeath)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/base/thread/unittests/thread_platform_UNIT_TEST.cpp"
-            timestampString = "421393352.995486"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "TEST(UT_TPlatformThread, CreateOnePlatformThread)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/base/thread/unittests/thread_platform_UNIT_TEST.cpp"
-            timestampString = "421393771.077404"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "TEST(UT_TPlatformThread, DISABLED_CreateTenPlatformThreads)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/base/thread/unittests/thread_platform_UNIT_TEST.cpp"
-            timestampString = "421393808.11293"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "TEST(UT_TPlatformThread, CreateTenPlatformThreads)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../src/base/thread/unittests/thread_platform_UNIT_TEST.cpp"
-            timestampString = "421393849.21806"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "TEST(UT_TPlatformThread, CreateOnePlatformThread)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TLock_DoubleLockDeath_Test::TestBody()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/synchronize/unittests/lock_UNIT_TEST.cpp"
+                  timestampString = "421398275.604064"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TLock_DoubleLockDeath_Test::TestBody()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/synchronize/unittests/lock_UNIT_TEST.cpp"
+                  timestampString = "421398275.605602"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "46">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TLock_DoubleLockDeath_Test::TestBody()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/synchronize/unittests/lock_UNIT_TEST.cpp"
+                  timestampString = "421398275.606094"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "190">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TLock_DoubleLockDeath_Test::TestBody()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/synchronize/unittests/lock_UNIT_TEST.cpp"
+                  timestampString = "421398275.606502"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "203">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TLock_DoubleLockDeath_Test::TestBody()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/synchronize/unittests/lock_UNIT_TEST.cpp"
+                  timestampString = "421398275.606849"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "307">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TLock_DoubleLockDeath_Test::TestBody()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/synchronize/unittests/lock_UNIT_TEST.cpp"
+                  timestampString = "421398275.607314"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "456">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vbase::UT_TLock_DoubleLockDeath_Test::TestBody()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/synchronize/unittests/lock_UNIT_TEST.cpp"
+                  timestampString = "421398275.607745"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "572">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

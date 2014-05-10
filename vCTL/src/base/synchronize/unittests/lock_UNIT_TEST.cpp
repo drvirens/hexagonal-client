@@ -13,7 +13,7 @@
 namespace vbase
 {
     
-TEST(UT_TLock, DISABLED_Trivial)
+TEST(UT_TLock, Trivial)
     {
     int trivial = 0;
     TLock lock;
@@ -22,6 +22,24 @@ TEST(UT_TLock, DISABLED_Trivial)
         trivial = 10;
         lock.Release();
         }
+    }
+    
+void TestDoubleLockDeath()
+    {
+    int trivial = 0;
+    TLock lock;
+        {
+        lock.Acquire();
+        trivial = 10;
+        lock.Acquire();  // <--- expect assertion abort
+        lock.Release();
+        }
+    }
+
+    
+TEST(UT_TLock, DoubleLockDeath)
+    {
+    EXPECT_DEATH(TestDoubleLockDeath(), "");
     }
     
 class MLockTestThread
@@ -50,7 +68,7 @@ private:
     };
 
 
-TEST(UT_TLock, DISABLED_AcquireAndRelease)
+TEST(UT_TLock, AcquireAndRelease)
     {
     TLock myLock;
     MLockTestThread t(myLock); // = new MLockTestThread(myLock);
@@ -62,8 +80,20 @@ TEST(UT_TLock, DISABLED_AcquireAndRelease)
     size_t aStackSize = 0;
     bool aJoinable = true;
     EThreadPriority aPriority = EThreadPriority_Normal;
-    ASSERT_TRUE( TPlatformThread::Create(aStackSize, aJoinable, &t, &h, aPriority) );
-    TPlatformThread::Join(&h);
+    TThreadHandle threadhandle = TPlatformThread::Create(aStackSize, aJoinable, &t, &h, aPriority) ;
+    //TPlatformThread::Join(&h);
+    TPlatformThreadHandle joinhandle;
+    if(h.RawHandle() == 0)
+        {
+        //use threadhandle
+        joinhandle.SetRawHandle( threadhandle );
+        }
+    else
+        {
+        joinhandle = h;
+        }
+    TPlatformThread::Join(&joinhandle);
+
     
     ASSERT_GT(t.Counter(), 0);
     }
