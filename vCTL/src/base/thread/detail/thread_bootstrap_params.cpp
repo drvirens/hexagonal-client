@@ -31,7 +31,7 @@ namespace detail
 
 void* CThreadBootstrapParams::ThreadEntryFunction(void* aTThreadParamsPtr)
     {
-    LOG_INFO(">> CThreadBootstrapParams::ThreadEntryFunction <---- ENTER");
+    KERNEL_LOG_INFO(">> CThreadBootstrapParams::ThreadEntryFunction <---- ENTER");
     
     IThreadOptionalInterface<PosixOptionalImpl>::OnThreadMainEnter();
     
@@ -44,11 +44,11 @@ void* CThreadBootstrapParams::ThreadEntryFunction(void* aTThreadParamsPtr)
         return 0;
         }
     
-    LOG_INFO(">> CThreadBootstrapParams:: before CurrentHandle <----");
+    KERNEL_LOG_INFO(">> CThreadBootstrapParams:: before CurrentHandle <----");
     
     *(tThis->mHandle) = TPlatformThread::TPlatformThread::CurrentHandle();
     
-    LOG_INFO(">> CThreadBootstrapParams:: after CurrentHandle <----");
+    KERNEL_LOG_INFO(">> CThreadBootstrapParams:: after CurrentHandle <----");
     
     if(EThreadPriority_Normal != tThis->mThreadPriority)
         {
@@ -62,7 +62,7 @@ void* CThreadBootstrapParams::ThreadEntryFunction(void* aTThreadParamsPtr)
     
     IThreadOptionalInterface<PosixOptionalImpl>::OnThreadMainExit();
     
-    LOG_INFO(">> CThreadBootstrapParams::ThreadEntryFunction <---- EXIT");
+    KERNEL_LOG_INFO(">> CThreadBootstrapParams::ThreadEntryFunction <---- EXIT");
     return 0;
     }
     
@@ -71,7 +71,7 @@ CThreadBootstrapParams* CThreadBootstrapParams::New(IThreadMainEntryPoint* aMain
                             EThreadPriority aThreadPriority,
                             TPlatformThreadHandle* aHandle)
     {
-    LOG_INFO(">> CThreadBootstrapParams::New");
+    KERNEL_LOG_INFO(">> CThreadBootstrapParams::New");
     CThreadBootstrapParams* obj = new CThreadBootstrapParams(aMainEntry, aJoinable, aThreadPriority, aHandle);
     if(obj)
         {
@@ -82,7 +82,7 @@ CThreadBootstrapParams* CThreadBootstrapParams::New(IThreadMainEntryPoint* aMain
     
 void CThreadBootstrapParams::Construct()
     {
-    LOG_INFO(">> CThreadBootstrapParams::Construct");
+    KERNEL_LOG_INFO(">> CThreadBootstrapParams::Construct");
 //    mLock = new TLock();
 //    mConditionVariable = new TConditionVariable(mLock);
     }
@@ -101,7 +101,7 @@ CThreadBootstrapParams::CThreadBootstrapParams(IThreadMainEntryPoint* aMainEntry
     
 CThreadBootstrapParams::~CThreadBootstrapParams()
     {
-    LOG_INFO(">> CThreadBootstrapParams::destructor");
+    KERNEL_LOG_INFO(">> CThreadBootstrapParams::destructor");
 //    delete mConditionVariable; mConditionVariable= 0;
 //    delete mLock; mLock = 0;
     }

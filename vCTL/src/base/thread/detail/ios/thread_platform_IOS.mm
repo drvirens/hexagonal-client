@@ -85,7 +85,7 @@ void DoSetNormalPriority(mach_port_t aMachThreadPriority)
     kern_return_t r = thread_policy_set(thread, flavor, policy_info, policy_infoCnt);
     if(KERN_SUCCESS != r)
         {
-        LOG_ERROR( "thread_policy_set failed, error = %d", r );
+        KERNEL_LOG_ERROR( "thread_policy_set failed, error = %d", r );
         }
     }
 

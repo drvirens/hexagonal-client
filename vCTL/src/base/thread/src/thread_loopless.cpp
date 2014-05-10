@@ -32,8 +32,7 @@ void TLooplessThread::MainEntry()
     {
     TPlatformThread::SetName(iThreadName.c_str());
     
-    //LOG_INFO << "threadName: " << iThreadName.c_str() << "threadId: " << TPlatformThread::CurrentID();
-    LOG_INFO ("threadName: %s, threadId: %d", iThreadName.c_str(), TPlatformThread::CurrentID());
+    KERNEL_LOG_INFO ("threadName: %s, threadId: %d", iThreadName.c_str(), TPlatformThread::CurrentID());
     
     iLock.Acquire();
     iIsStarted = true;
@@ -48,13 +47,13 @@ void TLooplessThread::Start()
     ASSERT(!iIsStarted);
     if( iIsStarted )
         {
-        LOG_ERROR ( "Start: This thread [ %s ] was already started", iThreadName.c_str() );
+        KERNEL_LOG_ERROR ( "Start: This thread [ %s ] was already started", iThreadName.c_str() );
         return;
         }
     ASSERT(!iIsJoined);
     if( iIsJoined )
         {
-        LOG_ERROR ("Start: This thread  [ %s ] is in join state so cant call start", iThreadName.c_str() );
+        KERNEL_LOG_ERROR ("Start: This thread  [ %s ] is in join state so cant call start", iThreadName.c_str() );
         return;
         }
     
@@ -62,7 +61,7 @@ void TLooplessThread::Start()
     ASSERT(e);
     if(!e)
         {
-        LOG_ERROR ( "Start: Problem in creating thread " );
+        KERNEL_LOG_ERROR ( "Start: Problem in creating thread " );
         return;
         }
     
@@ -80,13 +79,13 @@ void TLooplessThread::Join()
     ASSERT(iIsStarted);
     if( !iIsStarted )
         {
-        LOG_ERROR ( "Start: This thread  [ %s ] was not started so cant join" , iThreadName.c_str() );
+        KERNEL_LOG_ERROR ( "Start: This thread  [ %s ] was not started so cant join" , iThreadName.c_str() );
         return;
         }
     ASSERT(iIsJoined == false);
     if( iIsJoined )
         {
-        LOG_ERROR ( "Start: This thread  [ %s ] is in join state so cant call join again", iThreadName.c_str() );
+        KERNEL_LOG_ERROR ( "Start: This thread  [ %s ] is in join state so cant call join again", iThreadName.c_str() );
         return;
         }
     TPlatformThread::Join(&iThreadHandle);

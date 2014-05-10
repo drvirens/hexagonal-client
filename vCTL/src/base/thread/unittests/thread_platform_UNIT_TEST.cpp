@@ -131,7 +131,7 @@ TEST(UT_TPlatformThread, CreateTenPlatformThreads)
     }
 
     // ------------------------------------------------------------ SleepForNSeconds
-TEST(UT_TPlatformThread, DISABLED_SleepForNSeconds)
+TEST(UT_TPlatformThread, SleepForNSeconds)
     {
     TestTrivialThread threadEntry;
     TPlatformThreadHandle handle;
@@ -139,9 +139,23 @@ TEST(UT_TPlatformThread, DISABLED_SleepForNSeconds)
     ASSERT_FALSE( threadEntry.TagDidRun() );
     
     EThreadPriority aPriority = EThreadPriority_Normal;
-    ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, &threadEntry, &handle, aPriority) );
+    TThreadHandle threadhandle = TPlatformThread::Create(kStackSize, kJoinable, &threadEntry, &handle, aPriority);
     
-    TPlatformThread::Join(&handle);
+        
+    TPlatformThreadHandle joinhandle;
+    if(handle.RawHandle() == 0)
+        {
+        //use threadhandle
+        joinhandle.SetRawHandle( threadhandle );
+        }
+    else
+        {
+        joinhandle = handle;
+        }
+    TPlatformThread::Join(&joinhandle);
+
+    
+    //TPlatformThread::Join(&handle);
     ASSERT_TRUE( threadEntry.TagDidRun() );
     }
 

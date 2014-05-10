@@ -25,10 +25,10 @@
 
 #if !defined(ENABLE_KERNEL_LOGGING)
 
-#define LOG_DEBUG(message, args...)
-#define LOG_INFO(message, args...)
-#define LOG_ERROR(message, args...)
-#define LOG_IF_ERROR(condition, message, args...)
+#define KERNEL_LOG_DEBUG(message, args...)
+#define KERNEL_LOG_INFO(message, args...)
+#define KERNEL_LOG_ERROR(message, args...)
+#define KERNEL_LOG_IF_ERROR(condition, message, args...)
 
 
 #else //ENABLE_KERNEL_LOGGING
@@ -83,27 +83,27 @@ static inline char *timenow();
 #define DEBUG_TAG   "DEBUG"
 
 #if LOG_LEVEL >= DEBUG_LEVEL
-#define LOG_DEBUG(message, args...)     PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(DEBUG_TAG), ## args)
+#define KERNEL_LOG_DEBUG(message, args...)     PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(DEBUG_TAG), ## args)
 #else
-#define LOG_DEBUG(message, args...)
+#define KERNEL_LOG_DEBUG(message, args...)
 #endif
 
 #if LOG_LEVEL >= INFO_LEVEL
-#define LOG_INFO(message, args...)      PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(INFO_TAG), ## args)
+#define KERNEL_LOG_INFO(message, args...)      PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(INFO_TAG), ## args)
 #else
-#define LOG_INFO(message, args...)
+#define KERNEL_LOG_INFO(message, args...)
 #endif
 
 #if LOG_LEVEL >= ERROR_LEVEL
-#define LOG_ERROR(message, args...)     PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(ERROR_TAG), ## args)
+#define KERNEL_LOG_ERROR(message, args...)     PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(ERROR_TAG), ## args)
 #else
-#define LOG_ERROR(message, args...)
+#define KERNEL_LOG_ERROR(message, args...)
 #endif
 
 #if LOG_LEVEL >= NO_LOGS
-#define LOG_IF_ERROR(condition, message, args...) if (condition) PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(ERROR_TAG), ## args)
+#define KERNEL_LOG_IF_ERROR(condition, message, args...) if (condition) PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(ERROR_TAG), ## args)
 #else
-#define LOG_IF_ERROR(condition, message, args...)
+#define KERNEL_LOG_IF_ERROR(condition, message, args...)
 #endif
 
 static inline char *timenow() {

@@ -38,7 +38,7 @@ namespace vbase
 
 TPlatformThreadHandle TPlatformThread::CurrentHandle()
     {
-    LOG_INFO(">> TPlatformThread::CurrentHandle: CurrentID: [ %d ]", CurrentID());
+    KERNEL_LOG_INFO(">> TPlatformThread::CurrentHandle: CurrentID: [ %d ]", CurrentID());
     return TPlatformThreadHandle(pthread_self(), CurrentID());
     }
 
@@ -59,7 +59,7 @@ TPlatformThreadID TPlatformThread::CurrentID()
 
 TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntryPoint* aMainENtry, TPlatformThreadHandle* aThreadHandle, EThreadPriority aPriority)
     {
-    LOG_INFO(">> TPlatformThread::Create");
+    KERNEL_LOG_INFO(">> TPlatformThread::Create");
     
     IThreadOptionalInterface<PosixOptionalImpl>::OnPreThreadCreate();
     bool ret = false;
@@ -87,10 +87,10 @@ TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThread
     if(0 != err)
         {
         errno = err;
-        LOG_ERROR("Could not create thread pthread_create");
+        KERNEL_LOG_ERROR("Could not create thread pthread_create");
         }
     
-    LOG_INFO(">> pthread_create called");
+    KERNEL_LOG_INFO(">> pthread_create called");
     
     pthread_attr_destroy(&attributes);
     
@@ -102,7 +102,7 @@ TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThread
 //    ASSERT( pthreadHandle == aThreadHandle->RawHandle() );
 //    if(pthreadHandle != aThreadHandle->RawHandle())
 //        {
-//        LOG_ERROR ("pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading");
+//        KERNEL_LOG_ERROR ("pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading");
 //            //return false;
 //        }
     
@@ -111,7 +111,7 @@ TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThread
 
 void TPlatformThread::Join(TPlatformThreadHandle* aThreadHandle)
     {
-    LOG_INFO(">> pthread_join called");
+    KERNEL_LOG_INFO(">> pthread_join called");
     TThreadHandle handle = aThreadHandle->RawHandle();
     V_PTHREAD_CALL( pthread_join(handle, 0) );
     //V_PTHREAD_CALL( pthread_join(pthread_self(), 0) );
@@ -135,8 +135,8 @@ void TPlatformThread::Sleep(int64_t aSeconds)
     requested.tv_nsec = (long)nanoSeconds;
         //TODO: CHeck if thread has permissions to sleep. needs TLS to be implemented so do in phase2
     int e = nanosleep(&requested, &remaining);
-    //LOG_ERROR << "Sleep returned : " << strerror(e);
-    LOG_INFO("Sleep returned : %s", strerror(e));
+    //KERNEL_LOG_ERROR << "Sleep returned : " << strerror(e);
+    KERNEL_LOG_INFO("Sleep returned : %s", strerror(e));
     while( -1 == e && EINTR == errno ) //-1 == e interuppted by signal handler
         {
         requested = remaining;

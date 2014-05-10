@@ -36,11 +36,15 @@ void TestDoubleLockDeath()
         }
     }
 
-    
+#if !defined(NDEBUG)
+#if defined( __i386__)
 TEST(UT_TLock, DoubleLockDeath)
     {
     EXPECT_DEATH(TestDoubleLockDeath(), "");
     }
+#endif
+#else
+#endif
     
 class MLockTestThread
     : public IThreadMainEntryPoint
