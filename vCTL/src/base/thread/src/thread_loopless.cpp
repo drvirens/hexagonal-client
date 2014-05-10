@@ -18,8 +18,9 @@ static const bool kJoinable = true;
 static const EThreadPriority kLooplessThreadDefaultPriority = EThreadPriority_Normal;
 
 TLooplessThread::TLooplessThread(std::string& aThreadName)
-    :  iLock()
-    , iConditionVariable(&iLock)
+    :
+    iLock()
+//    , iConditionVariable(&iLock)
     , iIsStarted(false)
     , iIsJoined(false)
     , iThreadHandle()
@@ -34,10 +35,10 @@ void TLooplessThread::MainEntry()
     
     KERNEL_LOG_INFO ("threadName: %s, threadId: %d", iThreadName.c_str(), TPlatformThread::CurrentID());
     
-    iLock.Acquire();
+//    iLock.Acquire();
     iIsStarted = true;
-    iConditionVariable.NotifyOne(); //Wait in TLooplessThread::Start()
-    iLock.Release();
+//    iConditionVariable.NotifyOne(); //Wait in TLooplessThread::Start()
+//    iLock.Release();
     
     Run();
     }
@@ -57,31 +58,31 @@ void TLooplessThread::Start()
         return;
         }
     
-    bool e = TPlatformThread::Create(kStackSize, kJoinable, this, &iThreadHandle, kLooplessThreadDefaultPriority);
-    ASSERT(e);
-    if(!e)
+    TThreadHandle threadhandle = TPlatformThread::Create(kStackSize, kJoinable, this, &iThreadHandle, kLooplessThreadDefaultPriority);
+    
+    if(iThreadHandle.RawHandle() == 0) //set this in case the thread deletion comes immediately
         {
-        KERNEL_LOG_ERROR ( "Start: Problem in creating thread " );
-        return;
+        //use threadhandle
+        iThreadHandle.SetRawHandle( threadhandle );
         }
     
-        //wait for MainEntry to run
-    iLock.Acquire();
-    while(false == iIsStarted)
-        {
-        iConditionVariable.Wait(); //Signal in TLooplessThread::MainEntry()
-        }
-    iLock.Release();
+//        //wait for MainEntry to run
+//    iLock.Acquire();
+//    while(false == iIsStarted)
+//        {
+//        iConditionVariable.Wait(); //Signal in TLooplessThread::MainEntry()
+//        }
+//    iLock.Release();
     }
 
 void TLooplessThread::Join()
     {
-    ASSERT(iIsStarted);
-    if( !iIsStarted )
-        {
-        KERNEL_LOG_ERROR ( "Start: This thread  [ %s ] was not started so cant join" , iThreadName.c_str() );
-        return;
-        }
+//    ASSERT(iIsStarted);
+//    if( !iIsStarted )
+//        {
+//        KERNEL_LOG_ERROR ( "Start: This thread  [ %s ] was not started so cant join" , iThreadName.c_str() );
+//        return;
+//        }
     ASSERT(iIsJoined == false);
     if( iIsJoined )
         {
@@ -90,7 +91,6 @@ void TLooplessThread::Join()
         }
     TPlatformThread::Join(&iThreadHandle);
     
-        //TODO: needs careful testing
     iLock.Acquire();
     iIsJoined = true;
     iLock.Release();

@@ -33,8 +33,8 @@ public:
     virtual void Join();
     
 private:
-    TLock iLock; // to access iIsStarted
-    TConditionVariable iConditionVariable; // to be used by iLock
+    TLock iLock; // to access iIsJoined
+//    TConditionVariable iConditionVariable; // to be used by iLock
     bool iIsStarted;
     
     bool iIsJoined;

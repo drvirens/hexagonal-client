@@ -1267,7 +1267,6 @@
 				OTHER_CFLAGS = (
 					"-DENABLE_DEBUG=1",
 					"-DTHREADSAFE_LOGGING=1",
-					"-DENABLE_KERNEL_LOGGING",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";

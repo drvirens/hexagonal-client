@@ -13,35 +13,35 @@
 
 namespace vbase
 {
-
+    
 class MyLooplessThread
-  : public TLooplessThread
-  , private TNonCopyable<MyLooplessThread>
-{
+    : public TLooplessThread
+    , private TNonCopyable<MyLooplessThread>
+    {
 public:
-  explicit MyLooplessThread(std::string& aThreadName)
-    : TLooplessThread(aThreadName)
-    , mDidRun(false)
-  {}
-  
-  virtual void Run()
-  {
-    mDidRun = true;
-  }
-  
-  bool GetDidRunTag() const { return mDidRun; }
+    explicit MyLooplessThread(std::string& aThreadName)
+        : TLooplessThread(aThreadName)
+        , mDidRun(false)
+        {}
+    
+    virtual void Run()
+        {
+        mDidRun = true;
+        }
+    
+    bool GetDidRunTag() const { return mDidRun; }
 private:
-  bool mDidRun;
-};
+    bool mDidRun;
+    };
 
-TEST(UT_TLooplessThread, DISABLED_Trivial)
-{
-  std::string threadName = "UT_TLooplessThread";
-  MyLooplessThread looplessThread(threadName);
-  EXPECT_TRUE(looplessThread.GetDidRunTag() == false);
-  looplessThread.Start();
-  looplessThread.Join();
-  EXPECT_TRUE(looplessThread.GetDidRunTag() == true);
-}
-
+TEST(UT_TLooplessThread, Trivial)
+    {
+    std::string threadName = "UT_TLooplessThread";
+    MyLooplessThread looplessThread(threadName);
+    EXPECT_TRUE(looplessThread.GetDidRunTag() == false);
+    looplessThread.Start();
+    looplessThread.Join();
+    EXPECT_TRUE(looplessThread.GetDidRunTag() == true);
+    }
+    
 } //namespace vbase

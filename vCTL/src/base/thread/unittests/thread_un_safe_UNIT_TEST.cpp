@@ -1,10 +1,10 @@
-    //
-    //  thread_un_safe_UNIT_TEST.cpp
-    //  vClientTemplateLib
-    //
-    //  Created by Virendra Shakya on 4/26/14.
-    //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
-    //
+//
+//  thread_un_safe_UNIT_TEST.cpp
+//  vClientTemplateLib
+//
+//  Created by Virendra Shakya on 4/26/14.
+//  Copyright (c) 2014 Virendra Shakya. All rights reserved.
+//
 
 #include <stdio.h>
 
@@ -18,91 +18,89 @@
 namespace vbase
 {
     
-    class MyThreadUnSafeClass : public TNotThreadSafe
+class MyThreadUnSafeClass : public TNotThreadSafe
     {
-    public:
-        MyThreadUnSafeClass()
+public:
+    MyThreadUnSafeClass()
+        {}
+    void Foo()
         {
-            
+        AssertValidThreadCall();
         }
-        void Foo()
+    void DiwOwnThread()
         {
-            AssertValidThreadCall();
+        DisOwnThread();
         }
-        void DiwOwnThread()
-        {
-            DisOwnThread();
-        }
-    };
-    
-    TEST(UT_TThreadUnSafe, DISABLED_ThreadUnSafeTrivial)
+};
+
+TEST(UT_TThreadUnSafe, ThreadUnSafeTrivial)
     {
-        TNotThreadSafe tud;
-        tud.AssertValidThreadCall();
+    TNotThreadSafe tud;
+    tud.AssertValidThreadCall();
     }
-    
-    TEST(UT_TThreadUnSafe, DISABLED_DeriveFromThreadUnSafe)
+
+TEST(UT_TThreadUnSafe, DeriveFromThreadUnSafe)
     {
-        MyThreadUnSafeClass t;
-        t.Foo();
+    MyThreadUnSafeClass t;
+    t.Foo();
     }
-    
-        // ---------------------
+
+    // ---------------------
 class FooCallerThread
     : public TLooplessThread
     , private TNonCopyable<FooCallerThread>
     {
-    public:
-        explicit FooCallerThread(std::string& aThreadName, MyThreadUnSafeClass* aMyThreadUnSafeClass)
+public:
+    FooCallerThread(std::string& aThreadName, MyThreadUnSafeClass* aMyThreadUnSafeClass)
         : TLooplessThread(aThreadName)
         , mDidRun(false)
         , mMyThreadUnSafeClass(aMyThreadUnSafeClass)
         {}
-        
-        virtual void Run()
+    
+    virtual void Run()
         {
-            mDidRun = true;
-            mMyThreadUnSafeClass->Foo(); //should assert for IsNotThreadSafe-test
+        mDidRun = true;
+        mMyThreadUnSafeClass->Foo(); //should assert for IsNotThreadSafe-test
         }
-        
-        bool GetDidRunTag() const { return mDidRun; }
-    private:
-        bool mDidRun;
-        MyThreadUnSafeClass* mMyThreadUnSafeClass;
+    
+    bool GetDidRunTag() const { return mDidRun; }
+private:
+    bool mDidRun;
+    MyThreadUnSafeClass* mMyThreadUnSafeClass;
     };
-    
-        //since it calls Foo in other thread, program should abort
-    void CanNotCallMethodOnOtherThreadTest()
+
+    //since it calls Foo in other thread, program should abort
+void CanNotCallMethodOnOtherThreadTest()
     {
-            //constructor allocated on this thread, so should not call Foo() on other thread
-        MyThreadUnSafeClass* ctorThread = new MyThreadUnSafeClass();
-        
-        std::string threadName = "viren-loopless-thread";
-        FooCallerThread looplessThread(threadName, ctorThread);
-        EXPECT_TRUE(looplessThread.GetDidRunTag() == false);
-        looplessThread.Start();
-        looplessThread.Join();
-        EXPECT_TRUE(looplessThread.GetDidRunTag() == true);
-        
-        delete ctorThread; ctorThread=0;
-    }
+        //constructor allocated on this thread, so should not call Foo() on other thread
+    MyThreadUnSafeClass* ctorThread = new MyThreadUnSafeClass();
     
-#if !defined(NDEBUG) 
+    std::string threadName = "viren-loopless-thread";
+    FooCallerThread looplessThread(threadName, ctorThread);
+    EXPECT_TRUE(looplessThread.GetDidRunTag() == false);
+    looplessThread.Start();
+    looplessThread.Join();
+    EXPECT_TRUE(looplessThread.GetDidRunTag() == true);
+    
+    delete ctorThread; ctorThread=0;
+    }
+
+#if !defined(NDEBUG)
 #if defined( __i386__)
     //assert_death is not compiling on arm
-    TEST(UT_TThreadUnSafe, DISABLED_CanNotCallMethodOnOtherThreadInDebug)
+TEST(UT_TThreadUnSafe, CanNotCallMethodOnOtherThreadInDebug)
     {
-        ASSERT_DEATH({ CanNotCallMethodOnOtherThreadTest(); }, "");
+    ASSERT_DEATH({ CanNotCallMethodOnOtherThreadTest(); }, "");
     }
 #endif
 #else
-    TEST(UT_TThreadUnSafe, DISABLED_CanCallMethodOnOtherThreadInProduction)
+TEST(UT_TThreadUnSafe, CanCallMethodOnOtherThreadInProduction)
     {
-        CanNotCallMethodOnOtherThreadTest();
+    CanNotCallMethodOnOtherThreadTest();
     }
 #endif
-    
-    
+
+
     
     
 } // namespace vbase
