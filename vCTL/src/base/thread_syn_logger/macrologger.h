@@ -39,10 +39,14 @@
 //#else
 #include <time.h>
 #include <string.h>
+#include <stdio.h>
+#include <sys/time.h>
+#include <assert.h>
 //#endif
 
 // === auxiliar functions
-static inline char *timenow();
+//static inline char *timenow();
+static char* timenow();
 
 #define _FILE strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__
 
@@ -106,18 +110,42 @@ static inline char *timenow();
 #define KERNEL_LOG_IF_ERROR(condition, message, args...)
 #endif
 
-static inline char *timenow() {
-    static char buffer[64];
-    time_t rawtime;
-    struct tm *timeinfo;
+//static inline char *timenow() {
+//    static char buffer[64];
+//    time_t rawtime;
+//    struct tm *timeinfo;
+//    
+//    time(&rawtime);
+//    timeinfo = localtime(&rawtime);
+//    
+//    strftime(buffer, 64, "%Y-%m-%d %H:%M:%S", timeinfo);
+//    
+//    return buffer;
+//}
+
+static const int kPrettyTimeBufferSize = 15;
+static char* timenow()
+    {
+    static char iBuffer[kPrettyTimeBufferSize];
+#if defined(_MSC_VER)
+    _strtime_s(iBuffer, sizeof(iBuffer));
+#else
+    struct timeval tv;
     
-    time(&rawtime);
-    timeinfo = localtime(&rawtime);
+    time_t timevalue = time(0);
+    struct tm now;
+    localtime_r(&timevalue, &now);
     
-    strftime(buffer, 64, "%Y-%m-%d %H:%M:%S", timeinfo);
+    gettimeofday(&tv, 0);
     
-    return buffer;
-}
+    int n = snprintf(iBuffer, sizeof(iBuffer), "%02d:%02d:%02d.%06d",
+                        now.tm_hour, now.tm_min, now.tm_sec, tv.tv_usec);
+    assert(n == sizeof(iBuffer));
+    iBuffer[n] = 0;
+#endif
+    return iBuffer;
+    }
+
 
 //#ifdef __OBJC__
 //

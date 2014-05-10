@@ -137,7 +137,7 @@ public:
     static void Join(TPlatformThreadHandle* aThreadHandle);
     static void SetPriority(TPlatformThreadHandle aThreadHandle, EThreadPriority aPriority);
     static void Yield();
-    static void Sleep(int64_t aSeconds);
+    static void Sleep(long aSeconds);
     
         //debug aid
     static void SetName(const char* aName); //not copied

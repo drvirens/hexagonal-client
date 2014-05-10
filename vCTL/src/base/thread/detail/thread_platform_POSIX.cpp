@@ -114,7 +114,6 @@ void TPlatformThread::Join(TPlatformThreadHandle* aThreadHandle)
     KERNEL_LOG_INFO(">> pthread_join called");
     TThreadHandle handle = aThreadHandle->RawHandle();
     V_PTHREAD_CALL( pthread_join(handle, 0) );
-    //V_PTHREAD_CALL( pthread_join(pthread_self(), 0) );
     }
 
 void TPlatformThread::Yield()
@@ -126,22 +125,45 @@ void TPlatformThread::Yield()
     V_PTHREAD_CALL( sched_yield() );
     }
 
-void TPlatformThread::Sleep(int64_t aSeconds)
+void TPlatformThread::Sleep(long aSeconds)
     {
-    struct timespec requested;
-    struct timespec remaining;
-    requested.tv_sec = 0;
-    int64_t nanoSeconds = aSeconds * TTime::kNanoSecondsPerSecond;
-    requested.tv_nsec = (long)nanoSeconds;
+    #define NSEC_PER_USEC 1000ull
+    //const struct timespec t = {.tv_nsec = static_cast<long>(aSeconds * 50000*NSEC_PER_USEC)};
+    long seconds = aSeconds;
+    const struct timespec t = {.tv_nsec = static_cast<long>(seconds*50000*NSEC_PER_USEC)};
+    
+    int e = nanosleep(&t, NULL);
+    KERNEL_LOG_INFO("Sleep returned : %s, errno = %d, ret = %d", strerror(errno), errno, e);
+        
+//    struct timespec a;
+//    a.tv_nsec = aSeconds * 10000;
+//
+//    /** THE FIX! **/
+//    a.tv_sec = 0;
+//    /** THE FIX! **/
+//KERNEL_LOG_INFO("Sleep:start");
+//    nanosleep(&a,NULL);
+
+    /*
+    struct timespec requested = {0, static_cast<long>(aSeconds * TTime::kNanoSecondsPerSecond)};
+    int e = nanosleep(&requested, 0);
+    KERNEL_LOG_INFO("Sleep returned : %s, errno = %d, ret = %d", strerror(errno), errno, e);
+*/
+//    struct timespec remaining = {0};
+//    requested.tv_sec = 0;
+//    int64_t nanoSeconds = aSeconds * TTime::kNanoSecondsPerSecond;
+//    requested.tv_nsec = (long)nanoSeconds;
+//    requested.tv_nsec = (long)nanoSeconds;
+    
         //TODO: CHeck if thread has permissions to sleep. needs TLS to be implemented so do in phase2
-    int e = nanosleep(&requested, &remaining);
-    //KERNEL_LOG_ERROR << "Sleep returned : " << strerror(e);
-    KERNEL_LOG_INFO("Sleep returned : %s", strerror(e));
-    while( -1 == e && EINTR == errno ) //-1 == e interuppted by signal handler
-        {
-        requested = remaining;
-        nanosleep(&requested, &remaining);
-        }
+//    int e = nanosleep(&requested, &remaining);
+//    KERNEL_LOG_INFO("Sleep returned : %s, errno = %d", strerror(errno), errno);
+//    while( -1 == e && EINTR == errno ) //-1 == e interuppted by signal handler
+//        {
+//        requested = remaining;
+//        nanosleep(&requested, &remaining);
+//        }
+    
     }
     
 } //namespace vbase
