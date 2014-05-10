@@ -62,7 +62,7 @@ private:
 };
 
     
-TEST(UT_MEventDispatcher, DISABLED_Trivial)
+TEST(UT_MEventDispatcher, Trivial)
     {
     std::string threadName = "UT_MEventDispatcher_LooplessThread";
     UT_MEventDispatcher_LooplessThread* looplessThread = new UT_MEventDispatcher_LooplessThread(threadName);

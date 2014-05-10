@@ -14,14 +14,14 @@
 namespace logging
 {
 
-TEST(UT_Logger, DISABLED_Trivial)
+TEST(UT_Logger, Trivial)
     {
     //TLogConfig::SetLevel(logging::eDebug);
     logging::TLogConfig::AddOutput(new logging::CConsoleOutput(logging::eDebug));
     
-    LOG(eDebug) << "test";
+    LOG(eDebug) << "log test";
     
-    LOG_INFO << "plain test";
+    LOG_INFO << "log plain info";
     }
 
 } //namespace logging
