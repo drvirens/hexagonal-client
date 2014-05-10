@@ -33,9 +33,9 @@ public:
     ~CThreadBootstrapParams();
     
     static void* ThreadEntryFunction(void* aTThreadParamsPtr);
-    
-    void Wait();
-    void Signal();
+//    
+//    void Wait();
+//    void Signal();
     
 private:
     CThreadBootstrapParams(IThreadMainEntryPoint* aMainEntry,
@@ -50,9 +50,9 @@ private:
     EThreadPriority mThreadPriority;
     TPlatformThreadHandle* mHandle;
     
-    TLock* mLock; //locks access to mConditionVariable & mWaitCondition
-    TConditionVariable* mConditionVariable; //waits on mWaitCondition
-    bool mWaitCondition;
+//    TLock* mLock; //locks access to mConditionVariable & mWaitCondition
+//    TConditionVariable* mConditionVariable; //waits on mWaitCondition
+//    bool mWaitCondition;
     };
 
 

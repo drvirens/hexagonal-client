@@ -55,9 +55,7 @@ void* CThreadBootstrapParams::ThreadEntryFunction(void* aTThreadParamsPtr)
         TPlatformThread::SetPriority(TPlatformThread::CurrentHandle(), tThis->mThreadPriority);
         }
     
-
-    
-    tThis->Signal(); //Signal for Wait in TPlatformThread::Create
+//    tThis->Signal(); //Signal for Wait in TPlatformThread::Create
     mainEntry->MainEntry();
     
     
@@ -85,8 +83,8 @@ CThreadBootstrapParams* CThreadBootstrapParams::New(IThreadMainEntryPoint* aMain
 void CThreadBootstrapParams::Construct()
     {
     LOG_INFO(">> CThreadBootstrapParams::Construct");
-    mLock = new TLock();
-    mConditionVariable = new TConditionVariable(mLock);
+//    mLock = new TLock();
+//    mConditionVariable = new TConditionVariable(mLock);
     }
 
 CThreadBootstrapParams::CThreadBootstrapParams(IThreadMainEntryPoint* aMainEntry, bool aJoinable, EThreadPriority aThreadPriority, TPlatformThreadHandle* aHandle)
@@ -94,9 +92,9 @@ CThreadBootstrapParams::CThreadBootstrapParams(IThreadMainEntryPoint* aMainEntry
     , mJoinable(aJoinable)
     , mThreadPriority(aThreadPriority)
     , mHandle(aHandle)
-    , mLock(0)
-    , mConditionVariable(0)
-    , mWaitCondition(false)
+//    , mLock(0)
+//    , mConditionVariable(0)
+//    , mWaitCondition(false)
     {
     
     }
@@ -104,31 +102,31 @@ CThreadBootstrapParams::CThreadBootstrapParams(IThreadMainEntryPoint* aMainEntry
 CThreadBootstrapParams::~CThreadBootstrapParams()
     {
     LOG_INFO(">> CThreadBootstrapParams::destructor");
-    delete mConditionVariable; mConditionVariable= 0;
-    delete mLock; mLock = 0;
+//    delete mConditionVariable; mConditionVariable= 0;
+//    delete mLock; mLock = 0;
     }
 
-void CThreadBootstrapParams::Wait()
-    {
-    LOG_INFO(">> CThreadBootstrapParams::Wait");
-    mLock->Acquire();
-    while(mWaitCondition == false)
-        {
-        LOG_INFO("Waiting...");
-        mConditionVariable->Wait();
-        }
-    mLock->Release();
-    }
-
-void CThreadBootstrapParams::Signal()
-    {
-    LOG_INFO(">> CThreadBootstrapParams::Signal");
-    //mLock->Acquire(); 
-    mWaitCondition = true;
-    mConditionVariable->NotifyOne();
-    //mConditionVariable.NotifyAll();
-    //mLock->Release();
-    }
+//void CThreadBootstrapParams::Wait()
+//    {
+//    LOG_INFO(">> CThreadBootstrapParams::Wait");
+//    mLock->Acquire();
+//    while(mWaitCondition == false)
+//        {
+//        LOG_INFO("Waiting...");
+//        mConditionVariable->Wait();
+//        }
+//    mLock->Release();
+//    }
+//
+//void CThreadBootstrapParams::Signal()
+//    {
+//    LOG_INFO(">> CThreadBootstrapParams::Signal");
+//    //mLock->Acquire(); 
+//    mWaitCondition = true;
+//    mConditionVariable->NotifyOne();
+//    //mConditionVariable.NotifyAll();
+//    //mLock->Release();
+//    }
     
     
  

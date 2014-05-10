@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../src/base/thread/detail/thread_bootstrap_params.cpp"
-            timestampString = "421310532.864271"
+            filePath = "../../../src/logging/src/log_output.cpp"
+            timestampString = "421391448.145421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "CThreadBootstrapParams::Wait()"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "ISimpleBlockingOutput::Dump(ELogLevel aLogLevel, const std::string&amp; aTimeStamp, const std::string&amp; aFileName, int aLineNumber, const std::string&amp; aFunctionName, const std::string&amp; aMessage)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,14 +25,30 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../src/base/thread/detail/thread_bootstrap_params.cpp"
-            timestampString = "421310535.714936"
+            filePath = "../../../src/base/thread/unittests/thread_platform_UNIT_TEST.cpp"
+            timestampString = "421391809.719673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "CThreadBootstrapParams::Wait()"
-            landmarkType = "5">
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "MainEntry()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../src/base/thread/unittests/thread_platform_UNIT_TEST.cpp"
+            timestampString = "421393352.995486"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "TEST(UT_TPlatformThread, CreateOnePlatformThread)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

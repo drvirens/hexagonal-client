@@ -32,13 +32,13 @@ public:
         int ret = strcmp(name, "UT_TPlatformThread");
         EXPECT_EQ(0, ret);
 
-//        if(mSleep)
-//            {
-//            for(int i = 0; i < 1000; i++)
-//                {
-//                TPlatformThread::Sleep(1);
-//                }
-//            }
+        if(mSleep)
+            {
+            for(int i = 0; i < 1; i++)
+                {
+                TPlatformThread::Sleep(1);
+                }
+            }
         
         return;
         }
@@ -66,14 +66,24 @@ TEST(UT_TPlatformThread, CreateOnePlatformThread)
     
     EThreadPriority aPriority = EThreadPriority_Normal;
     
-    ASSERT_TRUE( TPlatformThread::Create(kStackSize, kJoinable, &threadEntry, &h, aPriority) );
+    TThreadHandle threadhandle = TPlatformThread::Create(kStackSize, kJoinable, &threadEntry, &h, aPriority) ;
     
-    TPlatformThread::Join(&h);
+    TPlatformThreadHandle joinhandle;
+    if(h.RawHandle() == 0)
+        {
+        //use threadhandle
+        joinhandle.SetRawHandle( threadhandle );
+        }
+    else
+        {
+        joinhandle = h;
+        }
+    TPlatformThread::Join(&joinhandle);
     
     ASSERT_TRUE( threadEntry.TagDidRun() );
     }
     
-TEST(UT_TPlatformThread, CreateTenPlatformThreads)
+TEST(UT_TPlatformThread, DISABLED_CreateTenPlatformThreads)
     {
     TestTrivialThread threadEntry[10];
     

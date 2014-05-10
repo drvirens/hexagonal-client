@@ -36,8 +36,6 @@
 namespace vbase
 {
 
-
-
 TPlatformThreadHandle TPlatformThread::CurrentHandle()
     {
     LOG_INFO(">> TPlatformThread::CurrentHandle: CurrentID: [ %d ]", CurrentID());
@@ -59,7 +57,7 @@ TPlatformThreadID TPlatformThread::CurrentID()
 #endif
     }
 
-bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntryPoint* aMainENtry, TPlatformThreadHandle* aThreadHandle, EThreadPriority aPriority)
+TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntryPoint* aMainENtry, TPlatformThreadHandle* aThreadHandle, EThreadPriority aPriority)
     {
     LOG_INFO(">> TPlatformThread::Create");
     
@@ -96,19 +94,19 @@ bool TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThreadMainEntry
     
     pthread_attr_destroy(&attributes);
     
-        //wait until thread id is set in the handle (which happens in ThreadEntryPoint)
-    if(ret)
-        {
-        params->Wait(); //Wait to be signalled in TThreadParams::ThreadEntryFunction
-        }
-    ASSERT( pthreadHandle == aThreadHandle->RawHandle() );
-    if(pthreadHandle != aThreadHandle->RawHandle())
-        {
-        LOG_ERROR ("pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading");
-            //return false;
-        }
+//        //wait until thread id is set in the handle (which happens in ThreadEntryPoint)
+//    if(ret)
+//        {
+//        params->Wait(); //Wait to be signalled in TThreadParams::ThreadEntryFunction
+//        }
+//    ASSERT( pthreadHandle == aThreadHandle->RawHandle() );
+//    if(pthreadHandle != aThreadHandle->RawHandle())
+//        {
+//        LOG_ERROR ("pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading");
+//            //return false;
+//        }
     
-    return ret;
+    return pthreadHandle;
     }
 
 void TPlatformThread::Join(TPlatformThreadHandle* aThreadHandle)

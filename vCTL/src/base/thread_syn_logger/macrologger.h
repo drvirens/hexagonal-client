@@ -23,6 +23,17 @@
 #ifndef __MACROLOGGER_H__
 #define __MACROLOGGER_H__
 
+#if !defined(ENABLE_KERNEL_LOGGING)
+
+#define LOG_DEBUG(message, args...)
+#define LOG_INFO(message, args...)
+#define LOG_ERROR(message, args...)
+#define LOG_IF_ERROR(condition, message, args...)
+
+
+#else //ENABLE_KERNEL_LOGGING
+
+
 //#ifdef __OBJC__
 //#import <Foundation/Foundation.h>
 //#else
@@ -122,5 +133,7 @@ static inline char *timenow() {
 //}
 //
 //#endif
+
+#endif // ENABLE_KERNEL_LOGGING
 
 #endif

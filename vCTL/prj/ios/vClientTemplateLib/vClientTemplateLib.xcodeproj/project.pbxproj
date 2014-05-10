@@ -269,6 +269,7 @@
 		DB6ADBB4191C9C480098E92C /* log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log.cpp; sourceTree = "<group>"; };
 		DB6ADBB5191C9C480098E92C /* log_output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_output.cpp; sourceTree = "<group>"; };
 		DB6ADBB7191C9C480098E92C /* log_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB6ADF32191DECB30098E92C /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +454,7 @@
 				DB67F25219074530007567A9 /* test */,
 				DB67F24B190644AE007567A9 /* build */,
 				DB67F1B119062FFA007567A9 /* 3p */,
+				DB6ADF32191DECB30098E92C /* macros.h */,
 			);
 			name = src;
 			path = ../../../src;
@@ -1262,12 +1264,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
-				OTHER_CFLAGS = (
-					"-DENABLE_LOGGING=1",
-					"-DTHREADSAFE_LOGGING=1",
-					"-DENABLE_DEBUG=1",
-					"-DSIMULATE_SINGLE_THREADED=1",
-				);
+				OTHER_CFLAGS = "-DENABLE_DEBUG=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";
 				WRAPPER_EXTENSION = app;

@@ -72,6 +72,11 @@ public:
         {
         return mRawHandle;
         }
+        
+    void SetRawHandle(TThreadHandle aHandle)
+        {
+        mRawHandle = aHandle;
+        }
     
 private:
     TThreadHandle mRawHandle;
@@ -124,7 +129,7 @@ class TPlatformThread : private TNonCopyable<TPlatformThread>
 public:
     static TPlatformThreadHandle CurrentHandle();
     static TPlatformThreadID CurrentID();
-    static bool Create(size_t aStackSize,
+    static TThreadHandle Create(size_t aStackSize,
                        bool aJoinable,
                        IThreadMainEntryPoint* aMainENtry,
                        TPlatformThreadHandle* aThreadHandle,
