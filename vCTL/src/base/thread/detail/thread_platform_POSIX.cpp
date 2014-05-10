@@ -130,11 +130,19 @@ void TPlatformThread::Sleep(long aSeconds)
     #define NSEC_PER_USEC 1000ull
     //const struct timespec t = {.tv_nsec = static_cast<long>(aSeconds * 50000*NSEC_PER_USEC)};
     long seconds = aSeconds;
-    const struct timespec t = {.tv_nsec = static_cast<long>(seconds*50000*NSEC_PER_USEC)};
+    struct timespec t = {.tv_nsec =  seconds * 50000 * 1000 };
+    
+    struct timespec remaining = {0, 0};
     
     int e = nanosleep(&t, NULL);
     KERNEL_LOG_INFO("Sleep returned : %s, errno = %d, ret = %d", strerror(errno), errno, e);
-        
+    while( -1 == e && EINTR == errno ) //-1 == e interuppted by signal handler
+        {
+        t = remaining;
+        nanosleep(&t, &remaining);
+        }
+
+
 //    struct timespec a;
 //    a.tv_nsec = aSeconds * 10000;
 //

@@ -34,9 +34,9 @@ public:
 
         if(mSleep)
             {
-            //for(int i = 0; i < 10; i++)
+            for(int i = 0; i < 10; i++)
                 {
-                TPlatformThread::Sleep(90099L); //10 seconds X 10 loops = 100 seconds
+                TPlatformThread::Sleep(10); //10 seconds X 10 loops = 100 seconds
                 }
             }
         
