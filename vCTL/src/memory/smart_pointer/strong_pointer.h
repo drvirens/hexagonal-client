@@ -15,7 +15,6 @@ namespace vctl
 {
 
 //T must be RefCounted
-asdf
 template <class T>
 class TStrongPointer
     {
@@ -50,7 +49,7 @@ private:
 // inline implementation
 //
 template <class T>
-inline TStrongPointer::~TStrongPointer()
+inline TStrongPointer<T>::~TStrongPointer()
     {
     if( iPtr )
         {
@@ -59,12 +58,12 @@ inline TStrongPointer::~TStrongPointer()
     }
 
 template <class T>
-inline TStrongPointer::TStrongPointer() : iPtr(0)
+inline TStrongPointer<T>::TStrongPointer() : iPtr(0)
     {
     }
 
 template <class T>
-inline TStrongPointer::TStrongPointer(T* aPtr)
+inline TStrongPointer<T>::TStrongPointer(T* aPtr)
     : iPtr(aPtr)
     {
     if( iPtr )
@@ -74,7 +73,7 @@ inline TStrongPointer::TStrongPointer(T* aPtr)
     }
 
 template <class T>
-inline TStrongPointer::TStrongPointer(const TStrongPointer<T>& aRhs)
+inline TStrongPointer<T>::TStrongPointer(const TStrongPointer<T>& aRhs)
     : iPtr( aRhs.iPtr )
     {
     if( iPtr )
@@ -84,7 +83,7 @@ inline TStrongPointer::TStrongPointer(const TStrongPointer<T>& aRhs)
     }
 
 template <class T>
-inline TStrongPointer<T>& TStrongPointer::operator=(T* aPtr)
+inline TStrongPointer<T>& TStrongPointer<T>::operator=(T* aPtr)
     {
     if( aPtr )
         {
@@ -100,14 +99,14 @@ inline TStrongPointer<T>& TStrongPointer::operator=(T* aPtr)
     }
 
 template <class T>
-TStrongPointer<T>& TStrongPointer::operator=(const TStrongPointer<T>& aRhs)
+TStrongPointer<T>& TStrongPointer<T>::operator=(const TStrongPointer<T>& aRhs)
     {
     return (*this = aRhs.iPtr);
     }
 
 template <class T>
 template <typename U>
-inline TStrongPointer::TStrongPointer(const TStrongPointer<U>& aRhs)
+inline TStrongPointer<T>::TStrongPointer(const TStrongPointer<U>& aRhs)
     : iPtr(aRhs.Get())
     {
     if( iPtr )
@@ -118,26 +117,26 @@ inline TStrongPointer::TStrongPointer(const TStrongPointer<U>& aRhs)
 
 template <class T>
 template <typename U>
-TStrongPointer<U>& TStrongPointer::operator=(const TStrongPointer<U>& aRhs)
+TStrongPointer<U>& TStrongPointer<T>::operator=(const TStrongPointer<U>& aRhs)
     {
     return (*this = aRhs.Get());
     }
 
 template <class T>
-T* TStrongPointer::Get() const
+T* TStrongPointer<T>::Get() const
     {
     return iPtr;
     }
 
 template <class T>
-T* TStrongPointer::operator->() const
+T* TStrongPointer<T>::operator->() const
     {
     assert(iPtr != 0);
     return iPtr;
     }
 
 template <class T>
-TStrongPointer::operator T*() const
+TStrongPointer<T>::operator T*() const
     {
     return iPtr;
     }

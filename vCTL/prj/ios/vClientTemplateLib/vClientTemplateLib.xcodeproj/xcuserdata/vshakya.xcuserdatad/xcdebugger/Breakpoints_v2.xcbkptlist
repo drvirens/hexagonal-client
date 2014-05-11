@@ -230,16 +230,140 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../src/memory/smart_pointer/unittests/strong_pointer_UNIT_TEST.cpp"
-            timestampString = "421475457.59668"
+            timestampString = "421476094.563314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "TEST(UT_StrongPointer, Trivial)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../src/memory/smart_pointer/unittests/strong_pointer_UNIT_TEST.cpp"
+            timestampString = "421476089.211105"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "~Foo()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vctl::Foo::~Foo()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/memory/smart_pointer/unittests/strong_pointer_UNIT_TEST.cpp"
+                  timestampString = "421476265.319215"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vctl::Foo::~Foo()"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/memory/smart_pointer/unittests/strong_pointer_UNIT_TEST.cpp"
+                  timestampString = "421476265.319606"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "10">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../src/memory/smart_pointer/unittests/strong_pointer_UNIT_TEST.cpp"
+            timestampString = "421476261.305278"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "TEST(UT_StrongPointer, Trivial)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../src/memory/ref/rc.h"
+            timestampString = "421476371.60676"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "Release()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vctl::CReference&lt;vctl::CMyRefCountedClass&gt;::Release() const"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/prj/ios/vClientTemplateLib/../../../src/memory/ref/rc.h"
+                  timestampString = "421476713.377006"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vctl::CReference&lt;vctl::Foo&gt;::Release() const"
+                  moduleName = "vClientTemplateLib"
+                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/prj/ios/vClientTemplateLib/../../../src/memory/ref/rc.h"
+                  timestampString = "421476713.377482"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "10">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../src/memory/smart_pointer/unittests/strong_pointer_UNIT_TEST.cpp"
+            timestampString = "421476706.944811"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "TEST(UT_StrongPointer, ConversionOperatorTest)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
