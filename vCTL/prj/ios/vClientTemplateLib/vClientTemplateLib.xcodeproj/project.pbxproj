@@ -270,6 +270,8 @@
 		DB6ADBB5191C9C480098E92C /* log_output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_output.cpp; sourceTree = "<group>"; };
 		DB6ADBB7191C9C480098E92C /* log_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB6ADF32191DECB30098E92C /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
+		DB6ADF35191F2A120098E92C /* strong_pointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = strong_pointer.h; sourceTree = "<group>"; };
+		DB6ADF37191F33820098E92C /* strong_pointer_UNIT_TEST.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = strong_pointer_UNIT_TEST.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +301,7 @@
 		DB0F5B521919E62D006DE69F /* memory */ = {
 			isa = PBXGroup;
 			children = (
+				DB6ADF34191F28250098E92C /* smart_pointer */,
 				DB0F5B5A1919EDC4006DE69F /* ref */,
 				DB0F5B531919E62D006DE69F /* atomic */,
 			);
@@ -989,6 +992,23 @@
 			isa = PBXGroup;
 			children = (
 				DB6ADBB7191C9C480098E92C /* log_UNIT_TEST.cpp */,
+			);
+			path = unittests;
+			sourceTree = "<group>";
+		};
+		DB6ADF34191F28250098E92C /* smart_pointer */ = {
+			isa = PBXGroup;
+			children = (
+				DB6ADF36191F33230098E92C /* unittests */,
+				DB6ADF35191F2A120098E92C /* strong_pointer.h */,
+			);
+			path = smart_pointer;
+			sourceTree = "<group>";
+		};
+		DB6ADF36191F33230098E92C /* unittests */ = {
+			isa = PBXGroup;
+			children = (
+				DB6ADF37191F33820098E92C /* strong_pointer_UNIT_TEST.cpp */,
 			);
 			path = unittests;
 			sourceTree = "<group>";

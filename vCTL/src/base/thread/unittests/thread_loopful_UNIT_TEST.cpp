@@ -55,7 +55,7 @@ private:
     int ret = f(i, out);
 */
 
-TEST(UT_TThread, Trivial)
+TEST(UT_TThread, DISABLED_Trivial)
     {
     std::string tname("UT_TThread");
     TThread thread(tname);

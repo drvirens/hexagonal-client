@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
 //
 
+#include "memory/smart_pointer/smart_pointer.h"
+
 #include "memory/ref/rc.h"
 #include "memory/ref/rc_thread_safe.h"
 #include "build/build_config.h"
