@@ -29,6 +29,7 @@ public:
     
     bool Start();
     void Stop();
+    void Join();
     bool IsRunning() const { return iRunning; }
     
     void FireAndForgetLambda(TLambda& aLambda);
@@ -40,14 +41,15 @@ protected:
     virtual void RunEventLoop();
     virtual void PreNotifyInit() {}
     virtual void OnThreadGonnaExit() {}
-    void Join();
+//    void Join();
+    void StopSoon();
     
 private:
     virtual void MainEntry(); //from IThreadMainEntryPoint
 
 private:
     TLock iLock; // to access iIsStarted
-    TConditionVariable iConditionVariable; // to be used by iLock
+    //TConditionVariable iConditionVariable; // to be used by iLock
     bool iIsStarted;
     bool iIsJoined;
     TPlatformThreadHandle iThreadHandle;
@@ -55,6 +57,7 @@ private:
     
     MEventDispatcher* iMEventDispatcher;
     bool iRunning;
+    bool iStopping;
     };
 
 } //namespace vbase

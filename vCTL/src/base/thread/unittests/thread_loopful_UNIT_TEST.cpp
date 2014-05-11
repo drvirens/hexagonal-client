@@ -55,11 +55,13 @@ private:
     int ret = f(i, out);
 */
 
-TEST(UT_TThread, DISABLED_Trivial)
+TEST(UT_TThread, Trivial)
     {
     std::string tname("UT_TThread");
     TThread thread(tname);
     thread.Start();
+    //thread.Stop();
+    thread.Join();
 //    
 //    Increment<int> incre(10);
 //    TAssign<Increment, int> functor(incre);

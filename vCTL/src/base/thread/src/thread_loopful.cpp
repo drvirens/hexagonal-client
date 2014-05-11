@@ -21,18 +21,20 @@ static const EThreadPriority kLooplessThreadDefaultPriority = EThreadPriority_No
 
 TThread::TThread(std::string& aThreadName)
     : iLock()
-    , iConditionVariable(&iLock)
+    //, iConditionVariable(&iLock)
     , iIsStarted(false)
     , iIsJoined(false)
     , iThreadHandle()
     , iThreadName(aThreadName)
     , iMEventDispatcher(0)
     , iRunning(false)
+    , iStopping(false)
     {
     }
     
 TThread::~TThread()
     {
+    //Stop();
     }
     
 void TThread::MainEntry()
@@ -45,10 +47,10 @@ void TThread::MainEntry()
     
     iRunning = true;
     
-    iLock.Acquire();
+//    iLock.Acquire();
     iIsStarted = true;
-    iConditionVariable.NotifyOne(); //Wait in TThread::Start()
-    iLock.Release();
+//    iConditionVariable.NotifyOne(); //Wait in TThread::Start()
+//    iLock.Release();
     
     RunEventLoop(); //on iOS, the CFRunLoopRun() call will not return once this function
         // is called untill CFRunLoopStop() is issued. So this Run() must be the
@@ -90,33 +92,60 @@ bool TThread::Start()
         return false;
         }
     
-    bool e = TPlatformThread::Create(kStackSize, kJoinable, this, &iThreadHandle, kLooplessThreadDefaultPriority);
-    ASSERT(e);
-    if(!e)
+    TThreadHandle threadhandle = TPlatformThread::Create(kStackSize, kJoinable, this, &iThreadHandle, kLooplessThreadDefaultPriority);
+    if(iThreadHandle.RawHandle() == 0) //set this in case the thread exit/join comes immediately
         {
-        LOG_ERROR << "Start: Problem in creating thread ";
-        return false;
+        iThreadHandle.SetRawHandle( threadhandle );
         }
-    
-        //wait for MainEntry to run
-    iLock.Acquire();
-    while(false == iIsStarted)
-        {
-        iConditionVariable.Wait(); //Signal in TThread::MainEntry()
-        }
-    iLock.Release();
-    
+        
+//    ASSERT(e);
+//    if(!e)
+//        {
+//        LOG_ERROR << "Start: Problem in creating thread ";
+//        return false;
+//        }
+//    
+//        //wait for MainEntry to run
+//    iLock.Acquire();
+//    while(false == iIsStarted)
+//        {
+//        iConditionVariable.Wait(); //Signal in TThread::MainEntry()
+//        }
+//    iLock.Release();
+//    
     return true;
+    }
+    
+void TThread::Stop()
+    {
+    if( !iIsStarted )
+        {
+        return;
+        }
+    StopSoon();
+    
+    Join();
+    iIsStarted = false;
+    iRunning = false;
+    }
+    
+void TThread::StopSoon()
+    {
+    if(!iStopping || !iMEventDispatcher)
+        {
+        return;
+        }
+    iStopping = true;
     }
 
 void TThread::Join()
     {
-    ASSERT(iIsStarted);
-    if( !iIsStarted )
-        {
-        LOG_ERROR << "Start: This thread " << "[" << iThreadName << "]" << " was not started so cant join";
-        return;
-        }
+//    ASSERT(iIsStarted);
+//    if( !iIsStarted )
+//        {
+//        LOG_ERROR << "Start: This thread " << "[" << iThreadName << "]" << " was not started so cant join";
+//        return;
+//        }
     ASSERT(iIsJoined == false);
     if( iIsJoined )
         {
@@ -125,7 +154,6 @@ void TThread::Join()
         }
     TPlatformThread::Join(&iThreadHandle);
     
-        //TODO: needs careful testing
     iLock.Acquire();
     iIsJoined = true;
     iLock.Release();
