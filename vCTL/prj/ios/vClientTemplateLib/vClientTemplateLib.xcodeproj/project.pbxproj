@@ -68,6 +68,8 @@
 		DB8041331920557700190CBE /* semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8041321920557700190CBE /* semaphore.cpp */; };
 		DB804138192059B200190CBE /* semaphore_impl_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB804137192059B200190CBE /* semaphore_impl_POSIX.cpp */; };
 		DB80413A1920715D00190CBE /* semaphore_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8041391920715D00190CBE /* semaphore_UNIT_TEST.cpp */; };
+		DB80413F192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB80413E192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp */; };
+		DB8041411920917E00190CBE /* rendezvous_simple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8041401920917E00190CBE /* rendezvous_simple.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,6 +285,9 @@
 		DB8041351920599700190CBE /* semaphore_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semaphore_impl.h; sourceTree = "<group>"; };
 		DB804137192059B200190CBE /* semaphore_impl_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semaphore_impl_POSIX.cpp; sourceTree = "<group>"; };
 		DB8041391920715D00190CBE /* semaphore_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semaphore_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB80413C19208FB700190CBE /* rendezvous_simple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rendezvous_simple.h; sourceTree = "<group>"; };
+		DB80413E192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rendezvous_simple_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB8041401920917E00190CBE /* rendezvous_simple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rendezvous_simple.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -737,6 +742,7 @@
 				DB6ADB5D191C9B4A0098E92C /* condition_variable.h */,
 				DB6ADB65191C9B4A0098E92C /* lock.h */,
 				DB8041301920553700190CBE /* semaphore.h */,
+				DB80413C19208FB700190CBE /* rendezvous_simple.h */,
 				DB6ADB5E191C9B4A0098E92C /* detail */,
 				DB6ADB66191C9B4A0098E92C /* unittests */,
 			);
@@ -746,6 +752,7 @@
 		DB6ADB5E191C9B4A0098E92C /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				DB8041401920917E00190CBE /* rendezvous_simple.cpp */,
 				DB8041351920599700190CBE /* semaphore_impl.h */,
 				DB804137192059B200190CBE /* semaphore_impl_POSIX.cpp */,
 				DB8041321920557700190CBE /* semaphore.cpp */,
@@ -764,6 +771,7 @@
 			children = (
 				DB6ADB67191C9B4A0098E92C /* lock_UNIT_TEST.cpp */,
 				DB8041391920715D00190CBE /* semaphore_UNIT_TEST.cpp */,
+				DB80413E192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp */,
 			);
 			path = unittests;
 			sourceTree = "<group>";
@@ -1166,6 +1174,7 @@
 				DB6ADBAA191C9B4A0098E92C /* thread_loopful_UNIT_TEST.cpp in Sources */,
 				DB6ADF55191F35C30098E92C /* rc_UNIT_TEST.cpp in Sources */,
 				DB8041331920557700190CBE /* semaphore.cpp in Sources */,
+				DB8041411920917E00190CBE /* rendezvous_simple.cpp in Sources */,
 				DB6ADB98191C9B4A0098E92C /* run_loop_DARWIN.mm in Sources */,
 				DB67F24519062FFA007567A9 /* gtest.cc in Sources */,
 				DB6ADB99191C9B4A0098E92C /* run_loop_factory.cpp in Sources */,
@@ -1175,6 +1184,7 @@
 				DB6ADB9B191C9B4A0098E92C /* condition_variable.cpp in Sources */,
 				DB6ADBA9191C9B4A0098E92C /* thread_loopless.cpp in Sources */,
 				DB6ADB96191C9B4A0098E92C /* event_dispatcher_UNIT_TEST.cpp in Sources */,
+				DB80413F192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp in Sources */,
 				DB6ADB9C191C9B4A0098E92C /* condition_variable_impl_POSIX.cpp in Sources */,
 				DB6ADB97191C9B4A0098E92C /* run_loop_cocoa_DARWIN.mm in Sources */,
 				DB6ADF51191F35C30098E92C /* atomic.cpp in Sources */,

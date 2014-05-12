@@ -108,7 +108,7 @@ void* thread_B(void* aData)
     return NULL;
     }
 
-TEST(UT_TSemaphore, Trivial)
+TEST(UT_TSemaphore, Rendezvous)
     {
     
     TSemaphore aArrivedSemaphore(0);
@@ -129,4 +129,4 @@ TEST(UT_TSemaphore, Trivial)
     
     }
 
-}
+} //namespace vbase
