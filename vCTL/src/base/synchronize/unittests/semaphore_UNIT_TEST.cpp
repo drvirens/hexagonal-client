@@ -43,8 +43,8 @@ enum EStatementType
     {
     kStatement_NotInitialized,
     kStatementA1,
-    kStatementA2,
     kStatementB1,
+    kStatementA2,
     kStatementB2,
     kStatement_MaxValue
     };
@@ -74,17 +74,35 @@ EStatementType SharedData::iCurrentStatement = kStatement_NotInitialized;
 void* thread_A(void* aData)
     {
     SharedData* thiz = static_cast<SharedData*>(aData);
+    TSemaphore* aArrived = thiz->iSemaphoreA;
+    TSemaphore* bArrived = thiz->iSemaphoreB;
+    
     
     thiz->iCurrentStatement = kStatementA1;
+    
+    aArrived->Signal();
+    bArrived->Wait();
+    
+    EXPECT_LE(thiz->iCurrentStatement, kStatementA2);
+    
     thiz->iCurrentStatement = kStatementA2;
     
     return NULL;
     }
+    
 void* thread_B(void* aData)
     {
     SharedData* thiz = static_cast<SharedData*>(aData);
+    TSemaphore* aArrived = thiz->iSemaphoreA;
+    TSemaphore* bArrived = thiz->iSemaphoreB;
     
     thiz->iCurrentStatement = kStatementB1;
+    
+    bArrived->Signal();
+    aArrived->Wait();
+    
+    EXPECT_LE(thiz->iCurrentStatement, kStatementA2);
+    
     thiz->iCurrentStatement = kStatementB2;
     
     return NULL;
@@ -107,7 +125,7 @@ TEST(UT_TSemaphore, Trivial)
     pthread_join(handleA, NULL);
     pthread_join(handleB, NULL);
     
-    EXPECT_EQ( data.iCurrentStatement, kStatementB1 );
+    EXPECT_EQ(data.iCurrentStatement, kStatementB2);
     
     }
 
