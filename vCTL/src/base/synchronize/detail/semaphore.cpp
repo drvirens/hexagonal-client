@@ -34,5 +34,10 @@ void TSemaphore::Signal()
     {
     iImpl.DoSignal();
     }
+    
+bool TSemaphore::Value(int& aValue) const
+    {
+    return iImpl.DoGetValue(aValue);
+    }
 
 } //namespace vbase

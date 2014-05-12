@@ -10,6 +10,7 @@
 #define vClientTemplateLib_error_handler_h
 
 #include <iostream>
+#include "base/thread_syn_logger/macrologger.h"
 
 #define V_PTHREAD_CALL( expr ) \
                               do \

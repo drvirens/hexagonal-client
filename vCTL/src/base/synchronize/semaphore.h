@@ -35,6 +35,8 @@ public:
       */
     void Signal();
     
+    bool Value(int& aValue) const;
+    
 private:
     detail::TSemaphoreImpl iImpl;
     };

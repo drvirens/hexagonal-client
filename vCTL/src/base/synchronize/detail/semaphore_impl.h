@@ -45,8 +45,10 @@ private:
     bool DoTryWait();
     void DoSignal();
     
+    bool DoGetValue(int& aValue) const;
+    
 private:
-    TNativeSemaphore iSemaphore;
+    mutable TNativeSemaphore iSemaphore;
     };
 
 } //namespace vbase
