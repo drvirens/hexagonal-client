@@ -94,6 +94,29 @@ TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThread
     
     pthread_attr_destroy(&attributes);
     
+    //TODO: Use Rendezevous Syncrhonization here:
+    // Signal() here and outside TPlatformThread::Create, use Wait()
+    /*
+        
+    Thread Parent                              Thread Child
+    
+    Create();                                  DoThreadInit();
+    child.Wait();                              child.Signal();
+    parent.Signal();                           parent.Wait();
+    
+    NOTE: above will cause un-necessary thread-switch. Figure out how?
+
+    Thread Parent                              Thread Child
+    
+    Create();                                  DoThreadInit();
+    parent.Signal();                           child.Signal();
+    child.Wait();                              parent.Wait();
+     
+    
+    
+     
+     */
+    
 //        //wait until thread id is set in the handle (which happens in ThreadEntryPoint)
 //    if(ret)
 //        {

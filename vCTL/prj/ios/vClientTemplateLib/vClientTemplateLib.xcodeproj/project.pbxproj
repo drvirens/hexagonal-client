@@ -65,6 +65,8 @@
 		DB6ADF54191F35C30098E92C /* rc_thread_safe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB6ADF49191F35C30098E92C /* rc_thread_safe.cpp */; };
 		DB6ADF55191F35C30098E92C /* rc_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB6ADF4B191F35C30098E92C /* rc_UNIT_TEST.cpp */; };
 		DB6ADF56191F35C30098E92C /* strong_pointer_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB6ADF4F191F35C30098E92C /* strong_pointer_UNIT_TEST.cpp */; };
+		DB8041331920557700190CBE /* semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8041321920557700190CBE /* semaphore.cpp */; };
+		DB804138192059B200190CBE /* semaphore_impl_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB804137192059B200190CBE /* semaphore_impl_POSIX.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,6 +277,10 @@
 		DB6ADF4B191F35C30098E92C /* rc_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rc_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB6ADF4D191F35C30098E92C /* strong_pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strong_pointer.h; sourceTree = "<group>"; };
 		DB6ADF4F191F35C30098E92C /* strong_pointer_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strong_pointer_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB8041301920553700190CBE /* semaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semaphore.h; sourceTree = "<group>"; };
+		DB8041321920557700190CBE /* semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semaphore.cpp; sourceTree = "<group>"; };
+		DB8041351920599700190CBE /* semaphore_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semaphore_impl.h; sourceTree = "<group>"; };
+		DB804137192059B200190CBE /* semaphore_impl_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semaphore_impl_POSIX.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -727,8 +733,9 @@
 			isa = PBXGroup;
 			children = (
 				DB6ADB5D191C9B4A0098E92C /* condition_variable.h */,
-				DB6ADB5E191C9B4A0098E92C /* detail */,
 				DB6ADB65191C9B4A0098E92C /* lock.h */,
+				DB8041301920553700190CBE /* semaphore.h */,
+				DB6ADB5E191C9B4A0098E92C /* detail */,
 				DB6ADB66191C9B4A0098E92C /* unittests */,
 			);
 			path = synchronize;
@@ -737,6 +744,9 @@
 		DB6ADB5E191C9B4A0098E92C /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				DB8041351920599700190CBE /* semaphore_impl.h */,
+				DB804137192059B200190CBE /* semaphore_impl_POSIX.cpp */,
+				DB8041321920557700190CBE /* semaphore.cpp */,
 				DB6ADB5F191C9B4A0098E92C /* condition_variable.cpp */,
 				DB6ADB60191C9B4A0098E92C /* condition_variable_impl.h */,
 				DB6ADB61191C9B4A0098E92C /* condition_variable_impl_POSIX.cpp */,
@@ -1114,6 +1124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB804138192059B200190CBE /* semaphore_impl_POSIX.cpp in Sources */,
 				DB6ADBBA191C9C480098E92C /* log_UNIT_TEST.cpp in Sources */,
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
 				DB6ADB9E191C9B4A0098E92C /* lock_impl_POSIX.cpp in Sources */,
@@ -1150,6 +1161,7 @@
 				DB67F23F19062FFA007567A9 /* gtest-death-test.cc in Sources */,
 				DB6ADBAA191C9B4A0098E92C /* thread_loopful_UNIT_TEST.cpp in Sources */,
 				DB6ADF55191F35C30098E92C /* rc_UNIT_TEST.cpp in Sources */,
+				DB8041331920557700190CBE /* semaphore.cpp in Sources */,
 				DB6ADB98191C9B4A0098E92C /* run_loop_DARWIN.mm in Sources */,
 				DB67F24519062FFA007567A9 /* gtest.cc in Sources */,
 				DB6ADB99191C9B4A0098E92C /* run_loop_factory.cpp in Sources */,
