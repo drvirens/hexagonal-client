@@ -26,6 +26,7 @@ TLockImpl::TLockImpl()
         {
         KERNEL_LOG_ERROR("pthread_mutexattr_init error = [%s]", strerror(errno));
         }
+        
     e = pthread_mutexattr_settype(&m, PTHREAD_MUTEX_ERRORCHECK) ;
     if( 0 != e )
         {

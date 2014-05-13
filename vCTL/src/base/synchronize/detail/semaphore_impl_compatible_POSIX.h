@@ -10,14 +10,14 @@
 #define __vClientTemplateLib__semaphore_impl_compatible_POSIX__
 
 #include "base/non_copyable.h"
-#include "base/synchronize/lock.h"
-#include "base/synchronize/condition_variable.h"
 #include "base/synchronize/semaphore_value.h"
 
 namespace vbase
 {
 namespace detail
 {
+
+class TSemaphorePosixCompatibleData;
 
 class TSemaphorePosixCompatible : private TNonCopyable<TSemaphorePosixCompatible>
     {
@@ -27,11 +27,9 @@ public:
     bool DoWait();
     bool DoSignal();
     bool DoSignalAll();
+    
 private:
-    TLock iLock; //locks iValue && iCondVar accesses
-    TSemaphoreValue iCount;
-//    unsigned int iNumWaiting;
-    TConditionVariable iCondVar; //for wiat and signalling
+    TSemaphorePosixCompatibleData* iData;
     };
 
 } //namespace detail
