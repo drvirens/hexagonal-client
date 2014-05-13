@@ -11,15 +11,10 @@
 
 #include "build/build_config.h"
 #include "base/non_copyable.h"
+#include "base/synchronize/semaphore_value.h"
 
 namespace vbase
 {
-
-#if defined(V_PLATFORM_POSIX)
-typedef unsigned int TSemaphoreValue;
-#else //V_PLATFORM_POSIX
-#error defined typedef for TSemaphoreValue
-#endif
 
 class TSemaphore;
 
@@ -27,9 +22,17 @@ namespace detail
 {
 
 #if defined(V_PLATFORM_POSIX)
-    #include <sys/semaphore.h>
-
-    typedef sem_t TNativeSemaphore;
+    
+    #if defined(V_PLATFORM_DARWIN)
+        class TSemaphorePosixCompatible;
+    
+    #elif defined(V_PLATFORM_ANDROID)
+        #error Android Semaphore research for posix support
+    #else //Posix
+        #include <semaphore.h>
+        typedef sem_t TNativeSemaphore;
+    #endif
+    
 #elif defined(V_PLATFORM_WIN)
     #error define semaphore for windows. not implemented yet file: semaphore_impl.h
 #endif
@@ -48,7 +51,11 @@ private:
     bool DoGetValue(int& aValue) const;
     
 private:
+#if defined(V_PLATFORM_DARWIN)
+    mutable TSemaphorePosixCompatible* iPosixSemaphore;
+#else // #if defined(V_PLATFORM_DARWIN)
     mutable TNativeSemaphore iSemaphore;
+#endif
     };
 
 } //namespace vbase

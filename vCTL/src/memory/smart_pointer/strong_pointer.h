@@ -9,7 +9,8 @@
 #ifndef vClientTemplateLib_strong_pointer_h
 #define vClientTemplateLib_strong_pointer_h
 
-#include <assert.h>
+//#include <assert.h>
+//#include <stdexcept>
 
 namespace vctl
 {
@@ -131,7 +132,7 @@ T* TStrongPointer<T>::Get() const
 template <class T>
 T* TStrongPointer<T>::operator->() const
     {
-    assert(iPtr != 0);
+    //assert(iPtr != 0);
     return iPtr;
     }
 

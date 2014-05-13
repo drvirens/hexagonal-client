@@ -56,6 +56,7 @@ void* CThreadBootstrapParams::ThreadEntryFunction(void* aTThreadParamsPtr)
         }
     
 //    tThis->Signal(); //Signal for Wait in TPlatformThread::Create
+    
     mainEntry->MainEntry();
     
     
@@ -127,8 +128,18 @@ CThreadBootstrapParams::~CThreadBootstrapParams()
 //    //mConditionVariable.NotifyAll();
 //    //mLock->Release();
 //    }
-    
-    
+
+void CThreadBootstrapParams::Wait()
+    {
+    KERNEL_LOG_INFO(">> CThreadBootstrapParams::Wait");
+    iRendezvous.Rendezvous(TRendezvous::ECheckpoint_Second_Arrived);
+    }
+
+void CThreadBootstrapParams::Signal()
+    {
+    KERNEL_LOG_INFO(">> CThreadBootstrapParams::Signal");
+    iRendezvous.Rendezvous(TRendezvous::ECheckpoint_First_Arrived);
+    }
  
 
 } //namespace detail

@@ -108,7 +108,7 @@ void* thread_B(void* aData)
     return NULL;
     }
 
-TEST(UT_TSemaphore, Rendezvous)
+TEST(UT_TSemaphore, DISABLED_Rendezvous)
     {
     
     TSemaphore aArrivedSemaphore(0);

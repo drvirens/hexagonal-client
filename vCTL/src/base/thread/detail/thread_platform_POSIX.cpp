@@ -6,18 +6,17 @@
 //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
 //
 
+#include <string.h>
 #include <errno.h>
 #include <time.h> //for sleep::nanoseconds
 #include <sched.h> //for yield
 
+#include "build/build_utils.h"
 #include "base/time/time.h" //for sleep
 #include "base/thread_syn_logger/macrologger.h"
-
-#include "build/build_utils.h"
 #include "base/error_handler.h"
 #include "base/synchronize/lock.h"
 #include "base/synchronize/condition_variable.h"
-
 #include "base/thread/detail/thread_bootstrap_params.h"
 
 
@@ -66,10 +65,19 @@ TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThread
     int err = 0;
     
     pthread_attr_t attributes;
-    V_PTHREAD_CALL( pthread_attr_init(&attributes) );
+    int e = pthread_attr_init(&attributes);
+    if ( 0 != e )
+        {
+        KERNEL_LOG_ERROR("pthread_attr_init error = [%s]", strerror(errno));
+        }
+
     if(!aJoinable)
         {
-        V_PTHREAD_CALL( pthread_attr_setdetachstate(&attributes, PTHREAD_CREATE_DETACHED) ); //by default, pthread is joinable so explicitly make it detached if aJoinable==false
+        e = pthread_attr_setdetachstate(&attributes, PTHREAD_CREATE_DETACHED); //by default, pthread is joinable so explicitly make it detached if aJoinable==false
+        if ( 0 != e )
+            {
+            KERNEL_LOG_ERROR("pthread_attr_setdetachstate error = [%s]", strerror(errno));
+            }
         }
     if(0 == aStackSize)
         {
@@ -77,12 +85,21 @@ TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThread
         }
     if(aStackSize > 0)
         {
-        V_PTHREAD_CALL( pthread_attr_setstacksize(&attributes, aStackSize) );
+        e = pthread_attr_setstacksize(&attributes, aStackSize);
+        if ( 0 != e )
+            {
+            KERNEL_LOG_ERROR("pthread_attr_setstacksize error = [%s]", strerror(errno));
+            }
         }
     
     detail::CThreadBootstrapParams* params = detail::CThreadBootstrapParams::New(aMainENtry, aJoinable, aPriority, aThreadHandle);
     pthread_t pthreadHandle = 0;
-    V_PTHREAD_CALL_RET_ERROR( pthread_create(&pthreadHandle, &attributes, &detail::CThreadBootstrapParams::ThreadEntryFunction, params), err );
+    e = pthread_create(&pthreadHandle, &attributes, &detail::CThreadBootstrapParams::ThreadEntryFunction, params);
+    if ( 0 != e )
+        {
+        KERNEL_LOG_ERROR("pthread_create error = [%s]", strerror(errno));
+        }
+
     ret = !err;
     if(0 != err)
         {
@@ -90,9 +107,12 @@ TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThread
         KERNEL_LOG_ERROR("Could not create thread pthread_create");
         }
     
-    KERNEL_LOG_INFO(">> pthread_create called");
-    
-    pthread_attr_destroy(&attributes);
+    e = pthread_attr_destroy(&attributes);
+    if ( 0 != e )
+        {
+        KERNEL_LOG_ERROR("pthread_attr_destroy error = [%s]", strerror(errno));
+        }
+
     
     //TODO: Use Rendezevous Syncrhonization here:
     // Signal() here and outside TPlatformThread::Create, use Wait()
@@ -111,13 +131,9 @@ TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThread
     Create();                                  DoThreadInit();
     parent.Signal();                           child.Signal();
     child.Wait();                              parent.Wait();
-     
-    
-    
-     
      */
     
-//        //wait until thread id is set in the handle (which happens in ThreadEntryPoint)
+        //wait until thread id is set in the handle (which happens in ThreadEntryPoint)
 //    if(ret)
 //        {
 //        params->Wait(); //Wait to be signalled in TThreadParams::ThreadEntryFunction
@@ -136,7 +152,12 @@ void TPlatformThread::Join(TPlatformThreadHandle* aThreadHandle)
     {
     KERNEL_LOG_INFO(">> pthread_join called");
     TThreadHandle handle = aThreadHandle->RawHandle();
-    V_PTHREAD_CALL( pthread_join(handle, 0) );
+    int e = pthread_join(handle, 0);
+    if( 0 != e )
+        {
+        KERNEL_LOG_ERROR("pthread_join error = [%s]", strerror(errno));
+        }
+
     }
 
 void TPlatformThread::Yield()
@@ -145,7 +166,12 @@ void TPlatformThread::Yield()
      TODO: Look into this later: In the Linux implementation, sched_yield() always succeeds.
      http://man7.org/linux/man-pages/man2/sched_yield.2.html
      */
-    V_PTHREAD_CALL( sched_yield() );
+    int e = sched_yield();
+    if( 0 != e )
+        {
+        KERNEL_LOG_ERROR("sched_yield error = [%s]", strerror(errno));
+        }
+
     }
 
 void TPlatformThread::Sleep(long aSeconds)
@@ -158,7 +184,7 @@ void TPlatformThread::Sleep(long aSeconds)
     struct timespec remaining = {0, 0};
     
     int e = nanosleep(&t, NULL);
-    KERNEL_LOG_INFO("Sleep returned : %s, errno = %d, ret = %d", strerror(errno), errno, e);
+    //KERNEL_LOG_INFO("Sleep returned : %s, errno = %d, ret = %d", strerror(errno), errno, e);
     while( -1 == e && EINTR == errno ) //-1 == e interuppted by signal handler
         {
         t = remaining;

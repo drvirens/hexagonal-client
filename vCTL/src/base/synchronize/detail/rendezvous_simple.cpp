@@ -43,7 +43,7 @@ void TRendezvous::Rendezvous(const ECheckpointType& aCheckpoint)
 
     default:
         {
-        KERNEL_LOG_ERROR("ERROR: Wrong value passed to Rendezvous");
+        //KERNEL_LOG_ERROR("ERROR: Wrong value passed to Rendezvous");
         } break;
     }
     }

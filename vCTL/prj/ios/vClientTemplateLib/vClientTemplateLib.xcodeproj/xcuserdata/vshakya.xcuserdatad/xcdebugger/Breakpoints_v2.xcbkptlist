@@ -10,43 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../src/base/synchronize/unittests/semaphore_UNIT_TEST.cpp"
-            timestampString = "421558992.049044"
+            timestampString = "421619640.00433"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "SharedData(TSemaphore* aSemaA, TSemaphore* aSemaB)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "vbase::SharedData::SharedData(vbase::TSemaphore*, vbase::TSemaphore*)"
-                  moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/synchronize/unittests/semaphore_UNIT_TEST.cpp"
-                  timestampString = "421558992.062705"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "14">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "vbase::SharedData::SharedData(vbase::TSemaphore*, vbase::TSemaphore*)"
-                  moduleName = "vClientTemplateLib"
-                  urlString = "file:///Users/vshakya/hexagonal-client/vCTL/src/base/synchronize/unittests/semaphore_UNIT_TEST.cpp"
-                  timestampString = "421558992.063142"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "10">
-               </Location>
-            </Locations>
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "TEST(UT_TSemaphore, Rendezvous)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

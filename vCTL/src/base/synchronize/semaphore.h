@@ -11,6 +11,7 @@
 
 #include "base/non_copyable.h"
 #include "base/synchronize/detail/semaphore_impl.h"
+#include "base/synchronize/semaphore_value.h"
 
 namespace vbase
 {

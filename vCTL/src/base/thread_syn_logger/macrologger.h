@@ -23,32 +23,55 @@
 #ifndef __MACROLOGGER_H__
 #define __MACROLOGGER_H__
 
+#include <stdio.h>
+#include <string.h>
+
+//
+//Common - we always print errors even on production build
+//
+
+#define ERROR_TAG   "ERROR"
+
+extern char* PleaseGetTheTimeNow();
+extern const char* PleaseGetStrRChr(const char* aStr, int aChar);
+
+#define _FILE PleaseGetStrRChr(__FILE__, '/') ? PleaseGetStrRChr(__FILE__, '/') + 1 : __FILE__
+
+
+#define PRINTFUNCTION(format, ...)      printf(format, __VA_ARGS__)
+#define LOG_FMT             "\n%s | %-7s | %-15s | %s:%d | "
+#define LOG_ARGS(LOG_TAG)   PleaseGetTheTimeNow(), LOG_TAG, _FILE, __FUNCTION__, __LINE__
+#define NEWLINE     "\n"
+
+
 #if !defined(ENABLE_KERNEL_LOGGING)
 
 #define KERNEL_LOG_DEBUG(message, args...)
 #define KERNEL_LOG_INFO(message, args...)
-#define KERNEL_LOG_ERROR(message, args...)
-#define KERNEL_LOG_IF_ERROR(condition, message, args...)
-
+//#define KERNEL_LOG_ERROR(message, args...)
+//Always print the error messages
+#define KERNEL_LOG_ERROR(message, args...)     PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(ERROR_TAG), ## args)
 
 #else //ENABLE_KERNEL_LOGGING
 
 
-//#ifdef __OBJC__
-//#import <Foundation/Foundation.h>
-//#else
-#include <time.h>
-#include <string.h>
-#include <stdio.h>
-#include <sys/time.h>
-#include <assert.h>
-//#endif
+////#ifdef __OBJC__
+////#import <Foundation/Foundation.h>
+////#else
+//#include <time.h>
+//#include <string.h>
+//#include <stdio.h>
+////#include <sys/time.h>
+////#include <stdexcept> //for assert
+////#include <assert.h>
+////#endif
 
-// === auxiliar functions
-//static inline char *timenow();
-static char* timenow();
+/*
+extern char* PleaseGetTheTimeNow();
+extern const char* PleaseGetStrRChr(const char* aStr, int aChar);
 
-#define _FILE strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__
+#define _FILE PleaseGetStrRChr(__FILE__, '/') ? PleaseGetStrRChr(__FILE__, '/') + 1 : __FILE__
+*/
 
 #define NO_LOG          0x00
 #define ERROR_LEVEL     0x01
@@ -73,16 +96,20 @@ static char* timenow();
 //
 //#define PRINTFUNCTION(format, ...)      objc_print(@format, __VA_ARGS__)
 //#else
-#define PRINTFUNCTION(format, ...)      fprintf(stderr, format, __VA_ARGS__)
+
+/*
+//#define PRINTFUNCTION(format, ...)      fprintf(stderr, format, __VA_ARGS__)
+#define PRINTFUNCTION(format, ...)      printf(format, __VA_ARGS__)
 
 //#endif
 
 #define LOG_FMT             "\n%s | %-7s | %-15s | %s:%d | "
-#define LOG_ARGS(LOG_TAG)   timenow(), LOG_TAG, _FILE, __FUNCTION__, __LINE__
+#define LOG_ARGS(LOG_TAG)   PleaseGetTheTimeNow(), LOG_TAG, _FILE, __FUNCTION__, __LINE__
 
 #define NEWLINE     "\n"
+*/
 
-#define ERROR_TAG   "ERROR"
+/* #define ERROR_TAG   "ERROR" */
 #define INFO_TAG    "INFO"
 #define DEBUG_TAG   "DEBUG"
 
@@ -109,43 +136,6 @@ static char* timenow();
 #else
 #define KERNEL_LOG_IF_ERROR(condition, message, args...)
 #endif
-
-//static inline char *timenow() {
-//    static char buffer[64];
-//    time_t rawtime;
-//    struct tm *timeinfo;
-//    
-//    time(&rawtime);
-//    timeinfo = localtime(&rawtime);
-//    
-//    strftime(buffer, 64, "%Y-%m-%d %H:%M:%S", timeinfo);
-//    
-//    return buffer;
-//}
-
-static const int kPrettyTimeBufferSize = 15;
-static char* timenow()
-    {
-    static char iBuffer[kPrettyTimeBufferSize];
-#if defined(_MSC_VER)
-    _strtime_s(iBuffer, sizeof(iBuffer));
-#else
-    struct timeval tv;
-    
-    time_t timevalue = time(0);
-    struct tm now;
-    localtime_r(&timevalue, &now);
-    
-    gettimeofday(&tv, 0);
-    
-    int n = snprintf(iBuffer, sizeof(iBuffer), "%02d:%02d:%02d.%06d",
-                        now.tm_hour, now.tm_min, now.tm_sec, tv.tv_usec);
-    assert(n == sizeof(iBuffer));
-    iBuffer[n] = 0;
-#endif
-    return iBuffer;
-    }
-
 
 //#ifdef __OBJC__
 //

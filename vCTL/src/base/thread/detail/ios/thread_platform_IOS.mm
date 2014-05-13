@@ -6,10 +6,11 @@
 //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
 //
 
-#include <stdio.h>
+//#include <stdio.h>
 #import <Foundation/Foundation.h>
 #include <mach/mach.h>
 #include <mach/thread_policy.h>
+#include <string>
 
 #include "base/thread/thread_platform.h"
 #include "build/build_utils.h"
@@ -37,13 +38,21 @@ static const int kMaxThreadNameLength = 63;
 void TPlatformThread::SetName(const char* aName)
     {
     std::string clippedThreadName = std::string(aName).substr(0, kMaxThreadNameLength);
-    V_PTHREAD_CALL( pthread_setname_np(clippedThreadName.c_str()) );
+    int e = pthread_setname_np(clippedThreadName.c_str());
+    if( 0 != e )
+        {
+        KERNEL_LOG_ERROR("pthread_setname_np error = [%s]", strerror(errno));
+        }
     }
 
 const char* TPlatformThread::Name()
     {
     char* name = new char[kMaxThreadNameLength + 1];
-    V_PTHREAD_CALL( pthread_getname_np(pthread_self(), name, kMaxThreadNameLength) );
+    int e = pthread_getname_np(pthread_self(), name, kMaxThreadNameLength);
+    if( 0 != e )
+        {
+        KERNEL_LOG_ERROR("pthread_getname_np error = [%s]", strerror(errno));
+        }
     return name;
     }
     

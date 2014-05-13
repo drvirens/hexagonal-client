@@ -66,10 +66,18 @@
 		DB6ADF55191F35C30098E92C /* rc_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB6ADF4B191F35C30098E92C /* rc_UNIT_TEST.cpp */; };
 		DB6ADF56191F35C30098E92C /* strong_pointer_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB6ADF4F191F35C30098E92C /* strong_pointer_UNIT_TEST.cpp */; };
 		DB8041331920557700190CBE /* semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8041321920557700190CBE /* semaphore.cpp */; };
-		DB804138192059B200190CBE /* semaphore_impl_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB804137192059B200190CBE /* semaphore_impl_POSIX.cpp */; };
 		DB80413A1920715D00190CBE /* semaphore_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8041391920715D00190CBE /* semaphore_UNIT_TEST.cpp */; };
 		DB80413F192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB80413E192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp */; };
 		DB8041411920917E00190CBE /* rendezvous_simple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8041401920917E00190CBE /* rendezvous_simple.cpp */; };
+		DB8041441920AFB600190CBE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8041431920AFB600190CBE /* SystemConfiguration.framework */; };
+		DB8041461920AFBF00190CBE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8041451920AFBF00190CBE /* CoreFoundation.framework */; };
+		DB8041481920B03100190CBE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8041471920B03100190CBE /* MobileCoreServices.framework */; };
+		DB8042ED1920B34400190CBE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8042EC1920B34400190CBE /* Security.framework */; };
+		DB8042EF1920B61D00190CBE /* semaphore_impl_DARWIN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8042EE1920B61D00190CBE /* semaphore_impl_DARWIN.cpp */; };
+		DB8042F119213D3C00190CBE /* macrologger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8042F019213D3C00190CBE /* macrologger.cpp */; };
+		DB8053A2192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8053A0192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp */; };
+		DB8053A8192166CB00190CBE /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8053A4192166CB00190CBE /* Main_iPad.storyboard */; };
+		DB8053A9192166CB00190CBE /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8053A6192166CB00190CBE /* Main_iPhone.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,11 +291,21 @@
 		DB8041301920553700190CBE /* semaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semaphore.h; sourceTree = "<group>"; };
 		DB8041321920557700190CBE /* semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semaphore.cpp; sourceTree = "<group>"; };
 		DB8041351920599700190CBE /* semaphore_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semaphore_impl.h; sourceTree = "<group>"; };
-		DB804137192059B200190CBE /* semaphore_impl_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semaphore_impl_POSIX.cpp; sourceTree = "<group>"; };
 		DB8041391920715D00190CBE /* semaphore_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semaphore_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB80413C19208FB700190CBE /* rendezvous_simple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rendezvous_simple.h; sourceTree = "<group>"; };
 		DB80413E192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rendezvous_simple_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB8041401920917E00190CBE /* rendezvous_simple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rendezvous_simple.cpp; sourceTree = "<group>"; };
+		DB8041431920AFB600190CBE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DB8041451920AFBF00190CBE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		DB8041471920B03100190CBE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DB8042EC1920B34400190CBE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DB8042EE1920B61D00190CBE /* semaphore_impl_DARWIN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semaphore_impl_DARWIN.cpp; sourceTree = "<group>"; };
+		DB8042F019213D3C00190CBE /* macrologger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = macrologger.cpp; sourceTree = "<group>"; };
+		DB8053A0192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semaphore_impl_compatible_POSIX.cpp; sourceTree = "<group>"; };
+		DB8053A1192158A300190CBE /* semaphore_impl_compatible_POSIX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semaphore_impl_compatible_POSIX.h; sourceTree = "<group>"; };
+		DB8053A31921618000190CBE /* semaphore_value.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = semaphore_value.h; sourceTree = "<group>"; };
+		DB8053A5192166CB00190CBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		DB8053A7192166CB00190CBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +313,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8042ED1920B34400190CBE /* Security.framework in Frameworks */,
+				DB8041481920B03100190CBE /* MobileCoreServices.framework in Frameworks */,
+				DB8041461920AFBF00190CBE /* CoreFoundation.framework in Frameworks */,
+				DB8041441920AFB600190CBE /* SystemConfiguration.framework in Frameworks */,
 				DB67F17819062BC3007567A9 /* CoreGraphics.framework in Frameworks */,
 				DB67F17A19062BC3007567A9 /* UIKit.framework in Frameworks */,
 				DB67F17619062BC3007567A9 /* Foundation.framework in Frameworks */,
@@ -337,6 +359,10 @@
 		DB67F17419062BC3007567A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB8042EC1920B34400190CBE /* Security.framework */,
+				DB8041471920B03100190CBE /* MobileCoreServices.framework */,
+				DB8041451920AFBF00190CBE /* CoreFoundation.framework */,
+				DB8041431920AFB600190CBE /* SystemConfiguration.framework */,
 				DB67F17519062BC3007567A9 /* Foundation.framework */,
 				DB67F17719062BC3007567A9 /* CoreGraphics.framework */,
 				DB67F17919062BC3007567A9 /* UIKit.framework */,
@@ -348,6 +374,8 @@
 		DB67F17B19062BC3007567A9 /* vClientTemplateLib */ = {
 			isa = PBXGroup;
 			children = (
+				DB8053A4192166CB00190CBE /* Main_iPad.storyboard */,
+				DB8053A6192166CB00190CBE /* Main_iPhone.storyboard */,
 				DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */,
 				DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */,
 				DB31E76C19117EA3009A6CF6 /* CMasterViewController.h */,
@@ -745,6 +773,7 @@
 				DB80413C19208FB700190CBE /* rendezvous_simple.h */,
 				DB6ADB5E191C9B4A0098E92C /* detail */,
 				DB6ADB66191C9B4A0098E92C /* unittests */,
+				DB8053A31921618000190CBE /* semaphore_value.h */,
 			);
 			path = synchronize;
 			sourceTree = "<group>";
@@ -752,10 +781,12 @@
 		DB6ADB5E191C9B4A0098E92C /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				DB8042EE1920B61D00190CBE /* semaphore_impl_DARWIN.cpp */,
 				DB8041401920917E00190CBE /* rendezvous_simple.cpp */,
 				DB8041351920599700190CBE /* semaphore_impl.h */,
-				DB804137192059B200190CBE /* semaphore_impl_POSIX.cpp */,
 				DB8041321920557700190CBE /* semaphore.cpp */,
+				DB8053A0192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp */,
+				DB8053A1192158A300190CBE /* semaphore_impl_compatible_POSIX.h */,
 				DB6ADB5F191C9B4A0098E92C /* condition_variable.cpp */,
 				DB6ADB60191C9B4A0098E92C /* condition_variable_impl.h */,
 				DB6ADB61191C9B4A0098E92C /* condition_variable_impl_POSIX.cpp */,
@@ -903,6 +934,7 @@
 			isa = PBXGroup;
 			children = (
 				DB6ADB92191C9B4A0098E92C /* macrologger.h */,
+				DB8042F019213D3C00190CBE /* macrologger.cpp */,
 			);
 			path = thread_syn_logger;
 			sourceTree = "<group>";
@@ -1115,6 +1147,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8053A9192166CB00190CBE /* Main_iPhone.storyboard in Resources */,
+				DB8053A8192166CB00190CBE /* Main_iPad.storyboard in Resources */,
 				DB67F19419062BC3007567A9 /* Images.xcassets in Resources */,
 				DB67F18019062BC3007567A9 /* InfoPlist.strings in Resources */,
 			);
@@ -1135,7 +1169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB804138192059B200190CBE /* semaphore_impl_POSIX.cpp in Sources */,
 				DB6ADBBA191C9C480098E92C /* log_UNIT_TEST.cpp in Sources */,
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
 				DB6ADB9E191C9B4A0098E92C /* lock_impl_POSIX.cpp in Sources */,
@@ -1180,11 +1213,14 @@
 				DB6ADB99191C9B4A0098E92C /* run_loop_factory.cpp in Sources */,
 				DB6ADBA5191C9B4A0098E92C /* thread_bootstrap_params.cpp in Sources */,
 				DB6ADF56191F35C30098E92C /* strong_pointer_UNIT_TEST.cpp in Sources */,
+				DB8042F119213D3C00190CBE /* macrologger.cpp in Sources */,
 				DB6ADB95191C9B4A0098E92C /* event_dispatcher.cpp in Sources */,
 				DB6ADB9B191C9B4A0098E92C /* condition_variable.cpp in Sources */,
+				DB8042EF1920B61D00190CBE /* semaphore_impl_DARWIN.cpp in Sources */,
 				DB6ADBA9191C9B4A0098E92C /* thread_loopless.cpp in Sources */,
 				DB6ADB96191C9B4A0098E92C /* event_dispatcher_UNIT_TEST.cpp in Sources */,
 				DB80413F192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp in Sources */,
+				DB8053A2192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp in Sources */,
 				DB6ADB9C191C9B4A0098E92C /* condition_variable_impl_POSIX.cpp in Sources */,
 				DB6ADB97191C9B4A0098E92C /* run_loop_cocoa_DARWIN.mm in Sources */,
 				DB6ADF51191F35C30098E92C /* atomic.cpp in Sources */,
@@ -1224,6 +1260,22 @@
 				DB67F1A419062BC3007567A9 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DB8053A4192166CB00190CBE /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB8053A5192166CB00190CBE /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		DB8053A6192166CB00190CBE /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB8053A7192166CB00190CBE /* Base */,
+			);
+			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1306,7 +1358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1316,10 +1368,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
-				OTHER_CFLAGS = (
-					"-DENABLE_DEBUG=1",
-					"-DTHREADSAFE_LOGGING=1",
-				);
+				OTHER_CFLAGS = "-DENABLE_DEBUG=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";
 				WRAPPER_EXTENSION = app;
@@ -1331,7 +1380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

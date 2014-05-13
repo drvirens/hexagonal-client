@@ -9,7 +9,7 @@
 #ifndef __vClientTemplateLib__lock__
 #define __vClientTemplateLib__lock__
 
-#include <string>
+//#include <string>
 
 #include "build/build_config.h"
 #include "base/non_copyable.h"
@@ -44,11 +44,11 @@ private:
     
     bool mOwnedByThread;               //am I owned by any thread?
     TPlatformThreadID mOwningThreadId; //if yes, who owes me?
-    std::string iThreadName;
+    //std::string iThreadName;
 #endif
     
 #if defined(V_PLATFORM_POSIX)
-    friend class detail::MConditionVariablePosixImpl;
+    friend class detail::MConditionVariablePosixImpl; //needs access to lock
 #endif
     };
 

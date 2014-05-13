@@ -20,7 +20,7 @@ TLock::TLock()
 #if !defined(NDEBUG)
     mOwnedByThread = false;
     mOwningThreadId = kNoThreadId;
-    iThreadName = "";
+//    iThreadName = "";
 #endif
     }
 
@@ -82,7 +82,7 @@ void TLock::CheckUnHeldAndMark()
     ASSERT( mOwnedByThread == false );
     mOwnedByThread = true;
     mOwningThreadId = TPlatformThread::CurrentID();
-    iThreadName = TPlatformThread::Name();
+//    iThreadName = TPlatformThread::Name();
     }
 #endif
     

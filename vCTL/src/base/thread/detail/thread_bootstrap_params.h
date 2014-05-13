@@ -11,6 +11,7 @@
 
 #include "base/non_copyable.h"
 #include "base/thread/thread_priority.h"
+#include "base/synchronize/rendezvous_simple.h"
 
 namespace vbase
 {
@@ -33,9 +34,9 @@ public:
     ~CThreadBootstrapParams();
     
     static void* ThreadEntryFunction(void* aTThreadParamsPtr);
-//    
-//    void Wait();
-//    void Signal();
+    
+    void Wait();
+    void Signal();
     
 private:
     CThreadBootstrapParams(IThreadMainEntryPoint* aMainEntry,
@@ -53,6 +54,7 @@ private:
 //    TLock* mLock; //locks access to mConditionVariable & mWaitCondition
 //    TConditionVariable* mConditionVariable; //waits on mWaitCondition
 //    bool mWaitCondition;
+    TRendezvous iRendezvous;
     };
 
 
