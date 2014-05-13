@@ -55,7 +55,7 @@ void* CThreadBootstrapParams::ThreadEntryFunction(void* aTThreadParamsPtr)
         TPlatformThread::SetPriority(TPlatformThread::CurrentHandle(), tThis->mThreadPriority);
         }
     
-//    tThis->Signal(); //Signal for Wait in TPlatformThread::Create
+    tThis->Signal(); //Signal for Wait in TPlatformThread::Create
     
     mainEntry->MainEntry();
     

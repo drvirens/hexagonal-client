@@ -111,7 +111,7 @@ void* thread_B(void* aData)
     return NULL;
     }
 
-TEST(UT_TRendezvous, DISABLED_SynchronizeTwoThreads)
+TEST(UT_TRendezvous, SynchronizeTwoThreads)
     {
     
     TRendezvous rendezvous;

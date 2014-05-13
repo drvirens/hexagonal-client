@@ -134,16 +134,16 @@ TThreadHandle TPlatformThread::Create(size_t aStackSize, bool aJoinable, IThread
      */
     
         //wait until thread id is set in the handle (which happens in ThreadEntryPoint)
-//    if(ret)
-//        {
-//        params->Wait(); //Wait to be signalled in TThreadParams::ThreadEntryFunction
-//        }
-//    ASSERT( pthreadHandle == aThreadHandle->RawHandle() );
-//    if(pthreadHandle != aThreadHandle->RawHandle())
-//        {
-//        KERNEL_LOG_ERROR ("pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading");
-//            //return false;
-//        }
+    if(ret)
+        {
+        params->Wait(); //Wait to be signalled in TThreadParams::ThreadEntryFunction
+        }
+    ASSERT( pthreadHandle == aThreadHandle->RawHandle() );
+    if(pthreadHandle != aThreadHandle->RawHandle())
+        {
+        KERNEL_LOG_ERROR ("pthreadHandle != aThreadHandle->RawHandle: Serious ERROR in threading");
+            //return false;
+        }
     
     return pthreadHandle;
     }
