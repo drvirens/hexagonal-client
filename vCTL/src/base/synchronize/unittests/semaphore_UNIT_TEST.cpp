@@ -100,6 +100,7 @@ void* thread_B(void* aData)
     
     bArrived->Signal();
     aArrived->Wait();
+//
     
     EXPECT_LE(thiz->iCurrentStatement, kStatementA2);
     
@@ -108,7 +109,7 @@ void* thread_B(void* aData)
     return NULL;
     }
 
-TEST(UT_TSemaphore, DISABLED_Rendezvous)
+TEST(UT_TSemaphore, Rendezvous)
     {
     
     TSemaphore aArrivedSemaphore(0);

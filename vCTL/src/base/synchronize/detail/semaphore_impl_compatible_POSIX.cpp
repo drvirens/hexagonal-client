@@ -28,13 +28,12 @@ bool TSemaphorePosixCompatible::DoWait()
     {
     bool r = true;
         {
-        iLock.Acquire();
-            iCount--;
-            while(0 <= iCount)
-                {
-                iCondVar.Wait();
-                }
-        iLock.Release();
+        TAutoLock guard(iLock);
+        while(!iCount)
+            {
+            iCondVar.Wait();
+            }
+        --iCount;
         }
     return r;
     }
@@ -43,13 +42,9 @@ bool TSemaphorePosixCompatible::DoSignal()
     {
     bool r = true;
         {
-        iLock.Acquire();
+        TAutoLock guard(iLock);
         iCount++;
-        if( iCount > 0 )
-            {
-            iCondVar.NotifyOne();
-            }
-        iLock.Release();
+        iCondVar.NotifyOne();
         }
     return r;
     }
