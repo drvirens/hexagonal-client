@@ -171,12 +171,11 @@ void TPlatformThread::Yield()
         {
         KERNEL_LOG_ERROR("sched_yield error = [%s]", strerror(errno));
         }
-
     }
 
 void TPlatformThread::Sleep(long aSeconds)
     {
-    #define NSEC_PER_USEC 1000ull
+     #define NSEC_PER_USEC 1000ull
     //const struct timespec t = {.tv_nsec = static_cast<long>(aSeconds * 50000*NSEC_PER_USEC)};
     long seconds = aSeconds;
     struct timespec t = {.tv_nsec =  seconds * 50000 * 1000 };

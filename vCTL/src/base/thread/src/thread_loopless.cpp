@@ -18,16 +18,11 @@ static const bool kJoinable = true;
 static const EThreadPriority kLooplessThreadDefaultPriority = EThreadPriority_Normal;
 
 TLooplessThread::TLooplessThread(std::string& aThreadName)
-    :
-    iLock()
-//    , iConditionVariable(&iLock)
-    , iIsStarted(false)
+    : iIsStarted(false)
     , iIsJoined(false)
     , iThreadHandle()
     , iThreadName(aThreadName)
-    {
-        
-    }
+    {}
     
 void TLooplessThread::MainEntry()
     {
@@ -39,6 +34,8 @@ void TLooplessThread::MainEntry()
     iIsStarted = true;
 //    iConditionVariable.NotifyOne(); //Wait in TLooplessThread::Start()
 //    iLock.Release();
+   
+    iRendezvous.Rendezvous(TRendezvous::ECheckpoint_Second_Arrived);
     
     Run();
     }
@@ -66,23 +63,24 @@ void TLooplessThread::Start()
         iThreadHandle.SetRawHandle( threadhandle );
         }
     
-//        //wait for MainEntry to run
+        //wait for MainEntry to run
 //    iLock.Acquire();
 //    while(false == iIsStarted)
 //        {
 //        iConditionVariable.Wait(); //Signal in TLooplessThread::MainEntry()
 //        }
 //    iLock.Release();
+    iRendezvous.Rendezvous(TRendezvous::ECheckpoint_First_Arrived);
     }
 
 void TLooplessThread::Join()
     {
-//    ASSERT(iIsStarted);
-//    if( !iIsStarted )
-//        {
-//        KERNEL_LOG_ERROR ( "Start: This thread  [ %s ] was not started so cant join" , iThreadName.c_str() );
-//        return;
-//        }
+    ASSERT(iIsStarted);
+    if( !iIsStarted )
+        {
+        KERNEL_LOG_ERROR ( "Start: This thread  [ %s ] was not started so cant join" , iThreadName.c_str() );
+        return;
+        }
     ASSERT(iIsJoined == false);
     if( iIsJoined )
         {
@@ -91,9 +89,9 @@ void TLooplessThread::Join()
         }
     TPlatformThread::Join(&iThreadHandle);
     
-    iLock.Acquire();
+//    iLock.Acquire();
     iIsJoined = true;
-    iLock.Release();
+//    iLock.Release();
     }
     
     

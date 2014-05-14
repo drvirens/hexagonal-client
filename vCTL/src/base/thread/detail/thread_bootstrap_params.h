@@ -16,8 +16,8 @@
 namespace vbase
 {
 class IThreadMainEntryPoint;
-class TLock;
-class TConditionVariable;
+//class TLock;
+//class TConditionVariable;
 class TPlatformThreadHandle;
 
 namespace detail

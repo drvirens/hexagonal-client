@@ -11,8 +11,7 @@
 
 #include <string>
 #include "base/thread/thread_platform.h"
-#include "base/synchronize/lock.h"
-#include "base/synchronize/condition_variable.h"
+#include "base/synchronize/rendezvous_simple.h"
 
 namespace vbase
 {
@@ -33,13 +32,15 @@ public:
     virtual void Join();
     
 private:
-    TLock iLock; // to access iIsJoined
-//    TConditionVariable iConditionVariable; // to be used by iLock
+//    TLock iLock; // to access iIsJoined
+////    TConditionVariable iConditionVariable; // to be used by iLock
     bool iIsStarted;
     
     bool iIsJoined;
     TPlatformThreadHandle iThreadHandle;
     std::string iThreadName;
+    
+    TRendezvous iRendezvous;
     };
     
 } //namespace vbase

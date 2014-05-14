@@ -83,7 +83,7 @@ TEST(UT_TPlatformThread, CreateOnePlatformThread)
     ASSERT_TRUE( threadEntry.TagDidRun() );
     }
     
-TEST(UT_TPlatformThread, DISABLED_CreateTenPlatformThreads)
+TEST(UT_TPlatformThread, CreateTenPlatformThreads)
     {
     TestTrivialThread threadEntry[10];
     

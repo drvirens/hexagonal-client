@@ -8,9 +8,10 @@
 
 #include "base/thread/detail/thread_bootstrap_params.h"
 #include "base/thread_syn_logger/macrologger.h"
+#include "base/thread/thread_platform.h"
 #include "build/build_utils.h"
-#include "base/synchronize/lock.h"
-#include "base/synchronize/condition_variable.h"
+//#include "base/synchronize/lock.h"
+//#include "base/synchronize/condition_variable.h"
 
 #if defined(V_PLATFORM_ANDROID)
     #error for android do we need any other things like thread_platform_optional_IOS.h?
