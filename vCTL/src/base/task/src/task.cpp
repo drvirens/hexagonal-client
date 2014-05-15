@@ -11,7 +11,7 @@
 namespace vbase
 {
 
-TTask::TTask(TLambda& aLambda)
+TTask::TTask(CLambda& aLambda)
     : iUniqueId(-1) //not used currently
     , iTaskName("") //not used currently
     , iLambda(aLambda) //copy-ctor of tlambda
@@ -36,8 +36,16 @@ TTask::~TTask()
 //    }
 //
 
+//class Foo : public CLambda{
+//public:
+//void Run(int& a)
+//    {
+//    }
+//    };
+
 void TTask::Execute()
     {
+    iLambda.Run();
     }
    
 } //namespace vbase

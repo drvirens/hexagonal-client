@@ -17,7 +17,9 @@
 namespace vbase
 {
 class MEventDispatcher;
-class TLambda;
+class CLambda;
+
+class TThreadStartupData;
 
 class TThread
     : public IThreadMainEntryPoint
@@ -29,35 +31,35 @@ public:
     
     bool Start();
     void Stop();
-    void Join();
     bool IsRunning() const { return iRunning; }
     
-    void FireAndForgetLambda(TLambda& aLambda);
+    void FireAndForgetLambda(CLambda& aLambda);
     //todo: second param should be TLambdaCompletion that should enclose
     //      the thread-details on which the completion should be posted
-    void FireLambdaWithCompletion(TLambda& aLambda, TLambda& aCompletion);
+    void FireLambdaWithCompletion(CLambda& aLambda, CLambda& aCompletion);
     
 protected:
     virtual void RunEventLoop();
     virtual void PreNotifyInit() {}
     virtual void OnThreadGonnaExit() {}
-//    void Join();
+    void Join();
     void StopSoon();
     
 private:
     virtual void MainEntry(); //from IThreadMainEntryPoint
 
 private:
-    TLock iLock; // to access iIsStarted
-    //TConditionVariable iConditionVariable; // to be used by iLock
     bool iIsStarted;
     bool iIsJoined;
     TPlatformThreadHandle iThreadHandle;
+    TPlatformThreadID iThreadId;
     std::string iThreadName;
     
     MEventDispatcher* iMEventDispatcher;
     bool iRunning;
     bool iStopping;
+    
+    TThreadStartupData* iStartupData;
     };
 
 } //namespace vbase

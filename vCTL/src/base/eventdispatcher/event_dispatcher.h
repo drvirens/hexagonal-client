@@ -19,7 +19,7 @@
 namespace vbase
 {
 
-class TLambda;
+class CLambda;
 class TTimeDelta;
 class ITaskSpectator;
 
@@ -33,6 +33,7 @@ public:
     static MEventDispatcher* New();
     
     void Run(); //start running
+    void StopWhenIdle();
     
     // IWorkLoad contract
     virtual bool PerformWork();
@@ -48,8 +49,8 @@ public:
     void RegisterTaskSpectator(const ITaskSpectator& aSpectator);
     void UnRegisterTaskSpectator(const ITaskSpectator& aSpectator);
     
-    void ExecuteAsynch(TLambda& aLambda);
-    void ExecuteAsynchAfterDelay(TLambda& aLambda, const TTimeDelta& aTimeDelta);
+    void ExecuteAsynch(CLambda& aLambda);
+    void ExecuteAsynchAfterDelay(CLambda& aLambda, const TTimeDelta& aTimeDelta);
 
 protected:
     MEventDispatcher();

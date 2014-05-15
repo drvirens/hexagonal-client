@@ -11,6 +11,7 @@
 #include "build/build_utils.h"
 #include "base/eventdispatcher/event_dispatcher.h"
 #include "base/lambda/lambda.h"
+#include "base/synchronize/rendezvous_simple.h"
 
 namespace vbase
 {
@@ -19,38 +20,40 @@ static const size_t kStackSize = 0;
 static const bool kJoinable = true;
 static const EThreadPriority kLooplessThreadDefaultPriority = EThreadPriority_Normal;
 
+class TThreadStartupData
+    {
+public:
+    TThreadStartupData() {}
+public:
+    TRendezvous iRendezvous;
+    };
+
+
 TThread::TThread(std::string& aThreadName)
-    : iLock()
-    //, iConditionVariable(&iLock)
-    , iIsStarted(false)
+    : iIsStarted(false)
     , iIsJoined(false)
     , iThreadHandle()
     , iThreadName(aThreadName)
     , iMEventDispatcher(0)
     , iRunning(false)
     , iStopping(false)
-    {
-    }
+    {}
     
 TThread::~TThread()
     {
-    //Stop();
+    Stop();
     }
     
 void TThread::MainEntry()
     {
     TPlatformThread::SetName(iThreadName.c_str());
-    
+    iThreadId = TPlatformThread::CurrentID();
     LOG_INFO << "threadName: " << iThreadName.c_str() << "threadId: " << TPlatformThread::CurrentID();
     
     PreNotifyInit();
     
     iRunning = true;
-    
-//    iLock.Acquire();
-    iIsStarted = true;
-//    iConditionVariable.NotifyOne(); //Wait in TThread::Start()
-//    iLock.Release();
+    iStartupData->iRendezvous.Rendezvous(TRendezvous::ECheckpoint_Second_Arrived);
     
     RunEventLoop(); //on iOS, the CFRunLoopRun() call will not return once this function
         // is called untill CFRunLoopStop() is issued. So this Run() must be the
@@ -69,50 +72,35 @@ void TThread::RunEventLoop()
     iMEventDispatcher->Run();
     }
     
-void TThread::FireAndForgetLambda(TLambda& aLambda)
+void TThread::FireAndForgetLambda(CLambda& aLambda)
     {
     }
     
-void TThread::FireLambdaWithCompletion(TLambda& aLambda, TLambda& aCompletion)
+void TThread::FireLambdaWithCompletion(CLambda& aLambda, CLambda& aCompletion)
     {
     }
 
 bool TThread::Start()
     {
-    ASSERT(!iIsStarted);
-    if( iIsStarted )
+    ASSERT( iMEventDispatcher == 0 ); //dont re-create the fucking runloops
+    if( iMEventDispatcher ) //thread was laready started
         {
-        LOG_ERROR << "Start: This thread " << "[" << iThreadName << "]" << " was already started";
         return false;
-        }
-    ASSERT(!iIsJoined);
-    if( iIsJoined )
-        {
-        LOG_ERROR << "Start: This thread " << "[" << iThreadName << "]" << " is in join state so cant call start";
-        return false;
-        }
-    
-    TThreadHandle threadhandle = TPlatformThread::Create(kStackSize, kJoinable, this, &iThreadHandle, kLooplessThreadDefaultPriority);
-    if(iThreadHandle.RawHandle() == 0) //set this in case the thread exit/join comes immediately
-        {
-        iThreadHandle.SetRawHandle( threadhandle );
         }
         
-//    ASSERT(e);
-//    if(!e)
-//        {
-//        LOG_ERROR << "Start: Problem in creating thread ";
-//        return false;
-//        }
-//    
-//        //wait for MainEntry to run
-//    iLock.Acquire();
-//    while(false == iIsStarted)
-//        {
-//        iConditionVariable.Wait(); //Signal in TThread::MainEntry()
-//        }
-//    iLock.Release();
-//    
+    TThreadStartupData startupdata;
+    iStartupData = &startupdata;
+    
+    /* TThreadHandle threadhandle = */
+    TPlatformThread::Create(kStackSize, kJoinable, this, &iThreadHandle, kLooplessThreadDefaultPriority);
+        
+    //wait until main entry is run
+    startupdata.iRendezvous.Rendezvous(TRendezvous::ECheckpoint_First_Arrived);
+    iStartupData = 0;
+    iIsStarted = true;
+    
+    //ASSERT( iMEventDispatcher != 0 );
+        
     return true;
     }
     
@@ -124,7 +112,8 @@ void TThread::Stop()
         }
     StopSoon();
     
-    Join();
+    TPlatformThread::Join(&iThreadHandle);
+    
     iIsStarted = false;
     iRunning = false;
     }
@@ -135,30 +124,9 @@ void TThread::StopSoon()
         {
         return;
         }
+    //TODO: Post lambda in the work queue
     iStopping = true;
     }
-
-void TThread::Join()
-    {
-//    ASSERT(iIsStarted);
-//    if( !iIsStarted )
-//        {
-//        LOG_ERROR << "Start: This thread " << "[" << iThreadName << "]" << " was not started so cant join";
-//        return;
-//        }
-    ASSERT(iIsJoined == false);
-    if( iIsJoined )
-        {
-        LOG_ERROR << "Start: This thread " << "[" << iThreadName << "]" << " is in join state so cant call join again";
-        return;
-        }
-    TPlatformThread::Join(&iThreadHandle);
-    
-    iLock.Acquire();
-    iIsJoined = true;
-    iLock.Release();
-    }
-    
     
 } //namespace vbase
 

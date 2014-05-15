@@ -86,15 +86,15 @@ private:
     };
     
 
-TEST(UT_CRunLoopCFRunLoop, DISABLED_CallsPerformWorkCorrectlyOnLooplessThread)
+TEST(UT_CRunLoopCFRunLoop, CallsPerformWorkCorrectlyOnLooplessThread)
     {
-    std::string threadName = "viren-loopless-thread";
+    std::string threadName = "UT_CRunLoopCFRunLoop";
     UT_CRunLoopCFRunLoop_LooplessThread* looplessThread = new UT_CRunLoopCFRunLoop_LooplessThread(threadName);
     EXPECT_TRUE(looplessThread->GetDidRunTag() == false);
     looplessThread->Start();
     //EXPECT_TRUE(looplessThread->GetDidRunTag() == true);
     
-    unsigned int r = sleep(20);
+    unsigned int r = sleep(3);
     LOG_INFO << "sleep returned : " << r;
     looplessThread->Signal();
     }

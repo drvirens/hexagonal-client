@@ -29,13 +29,13 @@ MEventDispatcher* MEventDispatcher::New()
     return obj;
     }
     
-void MEventDispatcher::ExecuteAsynch(TLambda& aLambda)
+void MEventDispatcher::ExecuteAsynch(CLambda& aLambda)
     {
     vbase::TTimeDelta delay(0);
     iPendingTasksQ.Add(aLambda, delay);
     }
 
-void MEventDispatcher::ExecuteAsynchAfterDelay(TLambda& aLambda, const TTimeDelta& aTimeDelta)
+void MEventDispatcher::ExecuteAsynchAfterDelay(CLambda& aLambda, const TTimeDelta& aTimeDelta)
     {
     vbase::TTimeDelta delay(0);
     iPendingTasksQ.Add(aLambda, delay);
@@ -60,6 +60,14 @@ void MEventDispatcher::Run()
     if(iRunLoop)
         {
         iRunLoop->Run(this); //start spinning the runloop. calls PerformWork() when sources are attached to runloop
+        }
+    }
+    
+void MEventDispatcher::StopWhenIdle()
+    {
+    if( iRunLoop )
+        {
+        iRunLoop->SetStopWhenIdle();
         }
     }
     
@@ -122,7 +130,6 @@ void MEventDispatcher::ScheduleWork()
     ASSERT(iRunLoop != 0);
     if(iRunLoop)
         {
-        //iRunLoop->Run(this);
         iRunLoop->ScheduleWork();
         }
     }

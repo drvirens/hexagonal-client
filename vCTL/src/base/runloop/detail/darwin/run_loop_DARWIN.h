@@ -30,11 +30,11 @@ protected:
     virtual ~CRunLoopCFRunLoopBase();
     virtual void DoRun(IWorkLoad* aWorkLoad) = 0;
     virtual void Stop() = 0; //can only be called from thread that called Run()
+    virtual void SetStopWhenIdle();
     virtual void Run(IWorkLoad* aWorkLoad); //from IRunLoopBase
     
     virtual void ScheduleWork();
     virtual void ScheduleDelayedWork(TTimeInterval aTTimeInterval); //more like Symbians' DFC
-    
 
 protected:
     CRunLoopCFRunLoopBase();
@@ -65,7 +65,8 @@ private:
     CFRunLoopObserverRef mObserverPreAndPostWait;    // cb : DoObservePreAndPostWait()
     CFRunLoopObserverRef mObserverPreSource;  // cb : DoObservePreSource
     CFRunLoopObserverRef mObserverLoopEnterExit;  // cb : DoObserveLoopEnterExit
-    IWorkLoad* mIWorkItem;
+    IWorkLoad* mIWorkItem; //not owned so dont delete
+    bool mSetStopWhenIdelTag;
     };
 
 } //namespace detail

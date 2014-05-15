@@ -14,17 +14,14 @@
 namespace vbase
 {
 
-class MyWorkToDo : public TLambda
+class MyWorkToDo : public CLambda
     {
 public:
     MyWorkToDo() : iInt(69) {}
-    virtual void Run()
+private:
+    virtual void DoRun()
         {
-        }
-    virtual TLambda* CreateCopy()
-        {
-        MyWorkToDo* me = new MyWorkToDo(*this);
-        return me;
+        iInt = 70;
         }
 private:
     int iInt;
@@ -49,7 +46,7 @@ public:
         iMEventDispatcher->Run();
         }
     
-    void PostLambda(TLambda& lambda)
+    void PostLambda(CLambda& lambda)
         {
         iMEventDispatcher->ExecuteAsynch(lambda);
         }
@@ -71,7 +68,7 @@ TEST(UT_MEventDispatcher, Trivial)
     //EXPECT_TRUE(looplessThread->GetDidRunTag() == true);
     
     sleep(3);
-    //TLambda lambda;
+    //CLambda lambda;
     MyWorkToDo* lambda = new MyWorkToDo();
     looplessThread->PostLambda(*lambda);
     

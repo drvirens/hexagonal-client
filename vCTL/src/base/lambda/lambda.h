@@ -9,12 +9,24 @@
 #ifndef vClientTemplateLib_lambda_h
 #define vClientTemplateLib_lambda_h
 
+#include "memory/ref/rc_thread_safe.h"
+#include "memory/ref/rc.h"
+
 namespace vbase
 {
 
-class TLambda
+class CLambda : public vctl::CReferenceBaseThreadSafe
     {
+public:
+    virtual ~CLambda() {}
+    void Run()
+        {
+        DoRun();
+        }
+private:
+    virtual void DoRun() = 0;
     };
+
     
 }
 

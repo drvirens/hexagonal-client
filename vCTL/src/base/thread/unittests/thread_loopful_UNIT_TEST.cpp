@@ -17,32 +17,32 @@
 namespace vbase
 {
 
-template <class T, typename OUTPUT>
-class Increment : public TLambda
-    {
-public:
-    Increment( T a, OUTPUT aOutput )
-        : iArgument(a)
-        , iOutput(aOutput)
-        {}
-    
-    //template<typename OUTPUT>
-    T operator() ( T& aValue, OUTPUT& aOutput )
-        {
-        aValue = aValue + iArgument;
-        aOutput = aValue;
-        return 1;
-        }
-        
-    virtual void Run()
-        {
-        *this(iArgument, iOutput);
-        }
-    
-private:
-    T iArgument;
-    OUTPUT iOutput;
-    };
+//template <class T, typename OUTPUT>
+//class Increment : public CLambda
+//    {
+//public:
+//    Increment( T a, OUTPUT aOutput )
+//        : iArgument(a)
+//        , iOutput(aOutput)
+//        {}
+//    
+//    //template<typename OUTPUT>
+//    T operator() ( T& aValue, OUTPUT& aOutput )
+//        {
+//        aValue = aValue + iArgument;
+//        aOutput = aValue;
+//        return 1;
+//        }
+//        
+//    virtual void Run()
+//        {
+//        *this(iArgument, iOutput);
+//        }
+//    
+//private:
+//    T iArgument;
+//    OUTPUT iOutput;
+//    };
 
 /*
  Increment<int> addone(1);
@@ -61,12 +61,12 @@ TEST(UT_TThread, DISABLED_Trivial)
     TThread thread(tname);
     thread.Start();
     //thread.Stop();
-    thread.Join();
+    //thread.Join();
 //    
 //    Increment<int> incre(10);
 //    TAssign<Increment, int> functor(incre);
 //    
-//    TLambda lambda(functor);
+//    CLambda lambda(functor);
 //    
 //    thread.FireAndForgetLambda(lambda);
     

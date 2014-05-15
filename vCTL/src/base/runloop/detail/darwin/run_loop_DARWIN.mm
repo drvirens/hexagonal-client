@@ -16,7 +16,21 @@ namespace detail
 
 CRunLoopCFRunLoopBase::~CRunLoopCFRunLoopBase()
     {
-    //TODO: tear down all CF* objects here.
+    CFRunLoopRemoveObserver(mRunLoop, mObserverLoopEnterExit, kCFRunLoopCommonModes);
+    CFRelease(mObserverLoopEnterExit);
+    
+    CFRunLoopRemoveObserver(mRunLoop, mObserverPreSource, kCFRunLoopCommonModes);
+    CFRelease(mObserverPreSource);
+    
+    CFRunLoopRemoveObserver(mRunLoop, mObserverPreAndPostWait, kCFRunLoopCommonModes);
+    CFRelease(mObserverPreAndPostWait);
+    
+    CFRunLoopRemoveSource(mRunLoop, mIdleWorkSource, kCFRunLoopCommonModes);
+    CFRelease(mIdleWorkSource);
+    
+    CFRunLoopRemoveSource(mRunLoop, mWorkSource, kCFRunLoopCommonModes);
+    CFRelease(mWorkSource);
+    
     CFRelease(mRunLoop);
     }
 
@@ -41,6 +55,11 @@ void CRunLoopCFRunLoopBase::Run(IWorkLoad* aWorkLoad)
     SetWorkLoad(prevworkitem); //TODO: Not really needed???
     }
 
+void CRunLoopCFRunLoopBase::SetStopWhenIdle()
+    {
+    mSetStopWhenIdelTag = true;
+    }
+    
 void CRunLoopCFRunLoopBase::Stop()
     {
     AssertValidThreadCall();
@@ -99,11 +118,28 @@ bool CRunLoopCFRunLoopBase::DoPerformWork()
 
 void CRunLoopCFRunLoopBase::DoPerformIdleSourceWork(void* aInfo)
     {
-
+    CRunLoopCFRunLoopBase* thiz = static_cast<CRunLoopCFRunLoopBase*>(aInfo);
+    ASSERT( thiz != 0);
+    if( !thiz )
+        {
+        return;
+        }
+    thiz->DoPerformIdleWork();
     }
+    
 bool CRunLoopCFRunLoopBase::DoPerformIdleWork()
     {
-    return false;
+    bool r = false;
+    @autoreleasepool
+        {
+        r = mIWorkItem->PerformIdleWork();
+        //if( r )
+        if( mSetStopWhenIdelTag )
+            {
+            CFRunLoopSourceSignal(mIdleWorkSource);
+            }
+        }
+    return r;
     }
 
 void CRunLoopCFRunLoopBase::DoCreateWorkSource()
@@ -184,6 +220,7 @@ CRunLoopCFRunLoopBase::CRunLoopCFRunLoopBase()
     , mObserverPreSource(0)
     , mObserverLoopEnterExit(0)
     , mIWorkItem(0)
+    , mSetStopWhenIdelTag(false)
 {}
 
 void CRunLoopCFRunLoopBase::Construct()

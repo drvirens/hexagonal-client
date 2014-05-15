@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB262DCC192444E8005417AA /* lambda_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB262DCB192444E8005417AA /* lambda_UNIT_TEST.cpp */; };
+		DB262DE319248260005417AA /* log_logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB262DE219248260005417AA /* log_logger.cpp */; };
 		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
 		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
 		DB67F17619062BC3007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17519062BC3007567A9 /* Foundation.framework */; };
@@ -91,6 +93,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB262DCB192444E8005417AA /* lambda_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lambda_UNIT_TEST.cpp; sourceTree = "<group>"; };
+		DB262DE219248260005417AA /* log_logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_logger.cpp; sourceTree = "<group>"; };
 		DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
 		DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
 		DB31E76C19117EA3009A6CF6 /* CMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
@@ -336,6 +340,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB262DCA192444C4005417AA /* unittests */ = {
+			isa = PBXGroup;
+			children = (
+				DB262DCB192444E8005417AA /* lambda_UNIT_TEST.cpp */,
+			);
+			path = unittests;
+			sourceTree = "<group>";
+		};
 		DB67F16919062BC3007567A9 = {
 			isa = PBXGroup;
 			children = (
@@ -697,6 +709,7 @@
 			children = (
 				DB6ADB4A191C9B4A0098E92C /* lambda.h */,
 				DB6ADB4B191C9B4A0098E92C /* lambda_functor.h */,
+				DB262DCA192444C4005417AA /* unittests */,
 				DB6ADB4C191C9B4A0098E92C /* src */,
 			);
 			path = lambda;
@@ -965,6 +978,7 @@
 			children = (
 				DB6ADBB4191C9C480098E92C /* log.cpp */,
 				DB6ADBB5191C9C480098E92C /* log_output.cpp */,
+				DB262DE219248260005417AA /* log_logger.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1171,6 +1185,7 @@
 			files = (
 				DB6ADBBA191C9C480098E92C /* log_UNIT_TEST.cpp in Sources */,
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
+				DB262DE319248260005417AA /* log_logger.cpp in Sources */,
 				DB6ADB9E191C9B4A0098E92C /* lock_impl_POSIX.cpp in Sources */,
 				DB6ADBB8191C9C480098E92C /* log.cpp in Sources */,
 				DB6ADF50191F35C30098E92C /* atomic_impl.cpp in Sources */,
@@ -1189,6 +1204,7 @@
 				DB6ADBA6191C9B4A0098E92C /* thread_platform_POSIX.cpp in Sources */,
 				DB6ADB9A191C9B4A0098E92C /* run_loop_cocoa_darwin_UNIT_TEST.mm in Sources */,
 				DB6ADBA8191C9B4A0098E92C /* thread_loopful.cpp in Sources */,
+				DB262DCC192444E8005417AA /* lambda_UNIT_TEST.cpp in Sources */,
 				DB6ADBA2191C9B4A0098E92C /* task_pending_queue_UNIT_TEST.cpp in Sources */,
 				DB6ADBA3191C9B4A0098E92C /* thread_platform_IOS.mm in Sources */,
 				DB6ADBB9191C9C480098E92C /* log_output.cpp in Sources */,
@@ -1358,8 +1374,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vClientTemplateLib/vClientTemplateLib-Prefix.pch";
@@ -1368,7 +1384,10 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
-				OTHER_CFLAGS = "-DENABLE_DEBUG=1";
+				OTHER_CFLAGS = (
+					"-DENABLE_DEBUG",
+					"-DTHREADSAFE_LOGGING",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";
 				WRAPPER_EXTENSION = app;
@@ -1380,8 +1399,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vClientTemplateLib/vClientTemplateLib-Prefix.pch";

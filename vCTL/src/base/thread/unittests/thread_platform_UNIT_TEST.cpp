@@ -104,25 +104,25 @@ TEST(UT_TPlatformThread, CreateTenPlatformThreads)
         threadhandle[i] = TPlatformThread::Create(kStackSize, kJoinable, &threadEntry[i], &h[i], aPriority) ;
         }
     
-    for(int i = 0; i < 10; i++)
-        {
-        TPlatformThreadHandle joinhandle;
-        if(h[i].RawHandle() == 0)
-            {
-            //use threadhandle
-            joinhandle.SetRawHandle( threadhandle[i] );
-            }
-        else
-            {
-            joinhandle = h[i];
-            }
-        TPlatformThread::Join(&joinhandle);
-        }
-    
 //    for(int i = 0; i < 10; i++)
 //        {
-//        TPlatformThread::Join(&h[i]);
+//        TPlatformThreadHandle joinhandle;
+//        if(h[i].RawHandle() == 0)
+//            {
+//            //use threadhandle
+//            joinhandle.SetRawHandle( threadhandle[i] );
+//            }
+//        else
+//            {
+//            joinhandle = h[i];
+//            }
+//        TPlatformThread::Join(&joinhandle);
 //        }
+    
+    for(int i = 0; i < 10; i++)
+        {
+        TPlatformThread::Join(&h[i]);
+        }
     
     for(int i = 0; i < 10; i++)
         {

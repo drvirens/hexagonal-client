@@ -33,6 +33,7 @@ public:
     virtual void Run(IWorkLoad* aWorkLoad) = 0;
     virtual void Stop() = 0; //can only be called from thread that called Run()
     virtual void ScheduleWork() = 0;
+    virtual void SetStopWhenIdle() = 0;
     };
     
         

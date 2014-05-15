@@ -20,7 +20,6 @@ TPendingTasksQ::TPendingTasksQ(ITaskPendingQueueListener& aTaskListListener)
     , iUniqueNumber(0)
     , iOurListener(&aTaskListListener)
     {
-    LOG_INFO << "iUniqueNumber : " << iUniqueNumber;
     }
 
 TPendingTasksQ::~TPendingTasksQ()
@@ -28,7 +27,7 @@ TPendingTasksQ::~TPendingTasksQ()
     
     }
 
-bool TPendingTasksQ::Add(TLambda& aLambda, const TTimeDelta& aDelay)
+bool TPendingTasksQ::Add(CLambda& aLambda, const TTimeDelta& aDelay)
     {
     TAutoLock lock( iLock );
     TTask task(aLambda);

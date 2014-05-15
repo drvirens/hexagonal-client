@@ -20,7 +20,7 @@ namespace vbase
 class TTask
     {
 public:
-    TTask(TLambda& aLambda);
+    TTask(CLambda& aLambda);
     ~TTask();
     //TODO: TTask(const TTask& aRhs);
     void SetUniqueId(int aUniqueId) { iUniqueId = aUniqueId; }
@@ -30,7 +30,7 @@ public:
 private:
     int iUniqueId;
     std::string iTaskName;
-    TLambda iLambda; //we copy entire work in our thread-context...we dont rely on clients here because they may delete the work before it is executed
+    CLambda& iLambda; //lambda us ref-counted
     };
 
 } //namespace vbase

@@ -105,5 +105,6 @@ TLog::~TLog()
         }
     }
 
+// --------
 
 } //namespace logging

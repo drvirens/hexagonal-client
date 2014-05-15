@@ -30,10 +30,7 @@ void TLooplessThread::MainEntry()
     
     KERNEL_LOG_INFO ("threadName: %s, threadId: %d", iThreadName.c_str(), TPlatformThread::CurrentID());
     
-//    iLock.Acquire();
     iIsStarted = true;
-//    iConditionVariable.NotifyOne(); //Wait in TLooplessThread::Start()
-//    iLock.Release();
    
     iRendezvous.Rendezvous(TRendezvous::ECheckpoint_Second_Arrived);
     
@@ -62,14 +59,7 @@ void TLooplessThread::Start()
         //use threadhandle
         iThreadHandle.SetRawHandle( threadhandle );
         }
-    
-        //wait for MainEntry to run
-//    iLock.Acquire();
-//    while(false == iIsStarted)
-//        {
-//        iConditionVariable.Wait(); //Signal in TLooplessThread::MainEntry()
-//        }
-//    iLock.Release();
+
     iRendezvous.Rendezvous(TRendezvous::ECheckpoint_First_Arrived);
     }
 

@@ -14,9 +14,11 @@
 
 void RunUnitTests()
     {
+    //for unit tests using gtest, disable logs so that they dont interfere with tests
+    //and also gtest unit tests results are easy to read
+    logging::ELogLevel loglevel = logging::eFatal; //logging::eDebug to print all logs
+    logging::TLogConfig::AddOutput(new logging::CConsoleOutput(loglevel));
     
-    
-    logging::TLogConfig::AddOutput(new logging::CConsoleOutput(logging::eDebug));
     LOG(eInfo) << "Running the unit tests...";
     
     CUnitTests_All* all = CUnitTests_All::New();

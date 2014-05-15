@@ -46,31 +46,28 @@ private:
     };
     
 
-class MySecondWorkToDo : public TLambda
+class MySecondWorkToDo : public CLambda
     {
 public:
     MySecondWorkToDo() : iInt(69) {}
-    virtual void Run()
+private:
+    virtual void DoRun()
         {
-        }
-    virtual TLambda* CreateCopy()
-        {
-        MySecondWorkToDo* me = new MySecondWorkToDo(*this);
-        return me;
+        iInt = 70;
         }
 private:
     int iInt;
     };
 
 
-TEST(UT_TPendingTasksQ, DISABLED_Trivial)
+TEST(UT_TPendingTasksQ, Trivial)
     {
     Test_ITaskPendingQueueListener listener;
     TPendingTasksQ q(listener);
     EXPECT_EQ(listener.Val(), 0);
     }
     
-TEST(UT_TPendingTasksQ, DISABLED_AddLambda)
+TEST(UT_TPendingTasksQ, AddLambda)
     {
     Test_ITaskPendingQueueListener listener;
     TPendingTasksQ q(listener);
@@ -100,9 +97,9 @@ public:
     virtual void Run()
         {
         iDidRun = true;
-        iRunLoop = detail::CRunLoopCFRunLoop::New();
+        //iRunLoop = detail::CRunLoopCFRunLoop::New();
         PostLambdaFromSameThread();
-        iRunLoop->Run(0);
+        //iRunLoop->Run(0);
         
         }
     
@@ -148,16 +145,16 @@ private:
     bool iDidRun;
     int iVal;
     TPendingTasksQ iPendingTasksQ;
-    IRunLoopBase* iRunLoop;
+    //IRunLoopBase* iRunLoop;
     };
     
-TEST(UT_TPendingTasksQ, DISABLED_MultithreadedAddLambda)
+TEST(UT_TPendingTasksQ, MultithreadedAddLambda)
     {
     std::string threadName = "UT_TPendingTasksQ_LooplessThread";
     UT_TPendingTasksQ_LooplessThread* thread = new UT_TPendingTasksQ_LooplessThread(threadName);
     thread->Start();
     sleep(3);
-    EXPECT_EQ(thread->QueueSize(), 1);
+    EXPECT_EQ(thread->QueueSize(), 1); // 1 because PostLambdaFromSameThread() is donr from within Run()
     
     sleep(1);
     thread->PostLambdaFromOtherThread();

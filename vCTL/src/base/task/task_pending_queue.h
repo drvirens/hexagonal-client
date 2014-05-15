@@ -19,7 +19,7 @@ namespace vbase
 {
 
 class TTimeDelta;
-class TLambda;
+class CLambda;
 class ITaskPendingQueueListener;
 
 class TPendingTasksQ : public TNonCopyable<TPendingTasksQ>, public IEventDispatcherDestructorSpectator
@@ -27,7 +27,7 @@ class TPendingTasksQ : public TNonCopyable<TPendingTasksQ>, public IEventDispatc
 public:
     explicit TPendingTasksQ(ITaskPendingQueueListener& aTaskListListener);
     virtual ~TPendingTasksQ();
-    bool Add(TLambda& aLambda, const TTimeDelta& aDelay);
+    bool Add(CLambda& aLambda, const TTimeDelta& aDelay);
     void PourAllTasksInto(TTaskQueue& aQueue);
     size_t Size() const { return iPendingTasksQ.size(); }
     

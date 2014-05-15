@@ -20,7 +20,7 @@ TEST(UT_Logger, Trivial)
     logging::TLogConfig::AddOutput(new logging::CConsoleOutput(logging::eDebug));
     
     LOG(eDebug) << "log test";
-    
+    LOG(eInfo) << "log test";
     LOG_INFO << "log plain info";
     }
 
