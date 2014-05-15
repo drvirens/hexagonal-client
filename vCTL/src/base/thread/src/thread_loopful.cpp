@@ -117,15 +117,32 @@ void TThread::Stop()
     iIsStarted = false;
     iRunning = false;
     }
-    
+
+// ---------------------------- StopTask
+class CThreadStop : public CLambda
+    {
+public:
+    CThreadStop() : iInt(69) {}
+private:
+    virtual void DoRun()
+        {
+        iInt = 70;
+        }
+private:
+    int iInt;
+    };
+
+
 void TThread::StopSoon()
     {
-    if(!iStopping || !iMEventDispatcher)
+    if(iStopping || !iMEventDispatcher)
         {
         return;
         }
-    //TODO: Post lambda in the work queue
     iStopping = true;
+    
+    CThreadStop* stopthread = new CThreadStop();
+    iMEventDispatcher->ExecuteAsynch(*stopthread);
     }
     
 } //namespace vbase

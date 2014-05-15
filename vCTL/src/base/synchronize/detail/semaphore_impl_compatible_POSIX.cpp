@@ -87,6 +87,7 @@ public:
     ~CondVar();
     void Wait(Futex& aLock);
     void SignalOne();
+    void SignalAll();
 private:
     pthread_cond_t iCondition;
     };
@@ -112,6 +113,12 @@ void CondVar::Wait(Futex& aLock)
 void CondVar::SignalOne()
     {
     int e = pthread_cond_signal(&iCondition);
+    LOG_IF_ERROR(e);
+    }
+    
+void CondVar::SignalAll()
+    {
+    int e = pthread_cond_broadcast(&iCondition);
     LOG_IF_ERROR(e);
     }
 
@@ -147,7 +154,8 @@ bool TSemaphorePosixCompatible::DoWait()
         {
         iData->iLock.Lock();
         
-            while(!iData->iCount)
+            //while(!iData->iCount)
+            while(iData->iCount == 0)
                 {
                 iData->iCondVar.Wait( (iData->iLock) );
                 }
@@ -165,7 +173,8 @@ bool TSemaphorePosixCompatible::DoSignal()
         iData->iLock.Lock();
         
             iData->iCount++;
-            iData->iCondVar.SignalOne();
+            //iData->iCondVar.SignalOne();
+            iData->iCondVar.SignalAll();
         
         iData->iLock.Unlock();
         }
