@@ -58,6 +58,7 @@ private:
     MEventDispatcher* iMEventDispatcher;
     bool iRunning;
     bool iStopping;
+    bool iStopScheduled;
     
     TThreadStartupData* iStartupData;
     };

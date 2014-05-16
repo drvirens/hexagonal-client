@@ -63,6 +63,7 @@ void CRunLoopCFRunLoopBase::SetStopWhenIdle()
 void CRunLoopCFRunLoopBase::Stop()
     {
     AssertValidThreadCall();
+    CFRunLoopStop(mRunLoop);
     }
 
 void CRunLoopCFRunLoopBase::ScheduleWork()
@@ -79,6 +80,27 @@ void CRunLoopCFRunLoopBase::ScheduleDelayedWork(TTimeInterval aTTimeInterval)
 void CRunLoopCFRunLoopBase::DoObservePreAndPostWait(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
     {
     LOG_INFO << "----> DoObservePreAndPostWait";
+    
+    CRunLoopCFRunLoopBase* thiz = static_cast<CRunLoopCFRunLoopBase*>(aInfo);
+    
+    switch(aActivity)
+        {
+        
+    case kCFRunLoopAfterWaiting:
+        {
+        LOG_INFO << "----> kCFRunLoopAfterWaiting";
+        } break;
+    case kCFRunLoopBeforeWaiting:
+        {
+        LOG_INFO << "----> kCFRunLoopBeforeWaiting";
+        } break;
+    default:
+        {
+        } break;
+        
+        } //end switch
+
+    thiz->DoPerformIdleWork(); //try doing some idle work before waiting
     }
 
 void CRunLoopCFRunLoopBase::DoObservePreSource(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
@@ -89,6 +111,28 @@ void CRunLoopCFRunLoopBase::DoObservePreSource(CFRunLoopObserverRef aObserver, C
 void CRunLoopCFRunLoopBase::DoObserveLoopEnterExit(CFRunLoopObserverRef aObserver, CFRunLoopActivity aActivity, void* aInfo)
     {
     LOG_INFO << "----> DoObserveLoopEnterExit";
+    
+    CRunLoopCFRunLoopBase* thiz = static_cast<CRunLoopCFRunLoopBase*>(aInfo);
+    
+    switch(aActivity)
+        {
+        
+    case kCFRunLoopEntry:
+        {
+        LOG_INFO << "----> kCFRunLoopEntry";
+        } break;
+    case kCFRunLoopExit:
+        {
+        LOG_INFO << "----> kCFRunLoopExit";
+        } break;
+    default:
+        {
+        LOG_INFO << "----> default";
+        } break;
+        
+        } //end switch
+        
+    
     }
 
 void CRunLoopCFRunLoopBase::DoPerformSourceWork(void* aInfo)
@@ -133,10 +177,9 @@ bool CRunLoopCFRunLoopBase::DoPerformIdleWork()
     @autoreleasepool
         {
         r = mIWorkItem->PerformIdleWork();
-        //if( r )
         if( mSetStopWhenIdelTag )
             {
-            CFRunLoopSourceSignal(mIdleWorkSource);
+            Stop();
             }
         }
     return r;
@@ -144,7 +187,7 @@ bool CRunLoopCFRunLoopBase::DoPerformIdleWork()
 
 void CRunLoopCFRunLoopBase::DoCreateWorkSource()
     {
-    CFRunLoopSourceContext ctxt = CFRunLoopSourceContext(); //valid since we are always gonna compile this by c++ compiler
+    CFRunLoopSourceContext ctxt = CFRunLoopSourceContext();
     ctxt.info = this;
     ctxt.perform = DoPerformSourceWork;
 

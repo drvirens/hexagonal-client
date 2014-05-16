@@ -17,7 +17,7 @@
 namespace vbase
 {
 
-TEST(UT_TThread, DISABLED_Trivial)
+TEST(UT_TThread, Trivial)
     {
     std::string tname("UT_TThread");
     TThread thread(tname);

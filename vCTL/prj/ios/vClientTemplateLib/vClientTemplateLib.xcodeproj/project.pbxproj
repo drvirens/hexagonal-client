@@ -1385,7 +1385,7 @@
 				);
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
 				OTHER_CFLAGS = (
-					"-DENABLE_DEBUG",
+					"-DENABLE_LOGGING",
 					"-DTHREADSAFE_LOGGING",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

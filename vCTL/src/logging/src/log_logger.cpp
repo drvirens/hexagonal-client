@@ -8,6 +8,7 @@
 
 #include "logging/log_logger.h"
 
+#if !defined(ENABLE_LOGGING)
 
 CdmLogMessage::CdmLogMessage(const char* file, int line) {
   std::string filename(file);
@@ -55,5 +56,8 @@ CdmLogMessage::~CdmLogMessage() {
   // created."
   std::cout << std::endl;
 }
+
+#endif
+
 
 

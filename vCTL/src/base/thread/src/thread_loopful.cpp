@@ -37,6 +37,7 @@ TThread::TThread(std::string& aThreadName)
     , iMEventDispatcher(0)
     , iRunning(false)
     , iStopping(false)
+    , iStopScheduled(false)
     {}
     
 TThread::~TThread()
@@ -53,7 +54,9 @@ void TThread::MainEntry()
     PreNotifyInit();
     
     iRunning = true;
+    printf("\n[Statement B1]\n");
     iStartupData->iRendezvous.Rendezvous(TRendezvous::ECheckpoint_Second_Arrived);
+    printf("[Statement B2]\n");
     
     RunEventLoop(); //on iOS, the CFRunLoopRun() call will not return once this function
         // is called untill CFRunLoopStop() is issued. So this Run() must be the
@@ -69,6 +72,10 @@ void TThread::MainEntry()
 void TThread::RunEventLoop()
     {
     iMEventDispatcher = MEventDispatcher::New();
+    if( iStopScheduled )
+        {
+        StopSoon();
+        }
     iMEventDispatcher->Run();
     }
     
@@ -93,9 +100,11 @@ bool TThread::Start()
     
     /* TThreadHandle threadhandle = */
     TPlatformThread::Create(kStackSize, kJoinable, this, &iThreadHandle, kLooplessThreadDefaultPriority);
-        
+    
+    printf("\n[Statement A1]\n");
     //wait until main entry is run
     startupdata.iRendezvous.Rendezvous(TRendezvous::ECheckpoint_First_Arrived);
+    printf("[Statement A2]\n");
     iStartupData = 0;
     iIsStarted = true;
     
@@ -122,14 +131,19 @@ void TThread::Stop()
 class CThreadStop : public CLambda
     {
 public:
-    CThreadStop() : iInt(69) {}
+    CThreadStop(MEventDispatcher& aEventDispatcher)
+        : iInt(69)
+        , iEventDispatcher(aEventDispatcher)
+        {}
 private:
     virtual void DoRun()
         {
         iInt = 70;
+        iEventDispatcher.StopWhenIdle();
         }
 private:
     int iInt;
+    MEventDispatcher& iEventDispatcher; //using
     };
 
 
@@ -137,11 +151,15 @@ void TThread::StopSoon()
     {
     if(iStopping || !iMEventDispatcher)
         {
+        //iMEventDispatcher is not created yet but stop was called
+        //remember to come back here and stop soon
+        iStopScheduled = true;
         return;
         }
+        
     iStopping = true;
     
-    CThreadStop* stopthread = new CThreadStop();
+    CThreadStop* stopthread = new CThreadStop(*iMEventDispatcher);
     iMEventDispatcher->ExecuteAsynch(*stopthread);
     }
     
