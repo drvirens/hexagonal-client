@@ -24,6 +24,7 @@
 		DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6A192715B6005417AA /* http_core_status.cpp */; };
 		DB263B6F19271CF2005417AA /* htpp_client_default.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6D19271CF2005417AA /* htpp_client_default.cpp */; };
 		DB263B7319271E9A005417AA /* htpp_client_curl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7119271E9A005417AA /* htpp_client_curl.cpp */; };
+		DB263B76192746A4005417AA /* http_core_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B74192746A4005417AA /* http_core_entity.cpp */; };
 		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
 		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
 		DB67F17619062BC3007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17519062BC3007567A9 /* Foundation.framework */; };
@@ -140,6 +141,8 @@
 		DB263B6E19271CF2005417AA /* htpp_client_default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htpp_client_default.h; sourceTree = "<group>"; };
 		DB263B7119271E9A005417AA /* htpp_client_curl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = htpp_client_curl.cpp; sourceTree = "<group>"; };
 		DB263B7219271E9A005417AA /* htpp_client_curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htpp_client_curl.h; sourceTree = "<group>"; };
+		DB263B74192746A4005417AA /* http_core_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_entity.cpp; sourceTree = "<group>"; };
+		DB263B75192746A4005417AA /* http_core_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_entity.h; sourceTree = "<group>"; };
 		DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
 		DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
 		DB31E76C19117EA3009A6CF6 /* CMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
@@ -457,6 +460,8 @@
 				DB263B6819271286005417AA /* http_core_statusline.h */,
 				DB263B6A192715B6005417AA /* http_core_status.cpp */,
 				DB263B6B192715B6005417AA /* http_core_status.h */,
+				DB263B74192746A4005417AA /* http_core_entity.cpp */,
+				DB263B75192746A4005417AA /* http_core_entity.h */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -1341,6 +1346,7 @@
 				DB6ADBA3191C9B4A0098E92C /* thread_platform_IOS.mm in Sources */,
 				DB6ADBB9191C9C480098E92C /* log_output.cpp in Sources */,
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
+				DB263B76192746A4005417AA /* http_core_entity.cpp in Sources */,
 				DB6ADBAC191C9B4A0098E92C /* thread_platform_UNIT_TEST.cpp in Sources */,
 				DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */,
 				DB6ADF52191F35C30098E92C /* atomic_count.cpp in Sources */,
