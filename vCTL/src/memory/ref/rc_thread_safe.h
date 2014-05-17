@@ -80,11 +80,11 @@ public:
         CReferenceBaseThreadSafe::Retain();
         }
         
-    bool Release() const
+    void Release() const
         {
         if(CReferenceBaseThreadSafe::Release())
             {
-            CRTP* thiz = static_cast<CRTP*>(this);
+            const CRTP* thiz = static_cast<const CRTP*>(this);
             DELETE_POLICY::Delete(thiz);
             }
         }

@@ -21,19 +21,24 @@ namespace http
 
 TEST(UT_THttpClient, Trivial)
     {
-    CHttpClient& httpclient = THttpClientsFactory::Instance().DefaultHttpClient();
-    httpclient.Start();
+    TStrongPointer<CHttpClient> httpclient = THttpClientsFactory::Instance().DefaultHttpClient();
+    httpclient->Start();
     
+    //make this smart pointer
     IHttpRequest* getrequest = new CHttpGet("http://www.google.com");
     THeader header; //("mimetype:image/png");
     getrequest->AddHeader(header);
     
     CFutureCallBack<IHttpResponse>* callback; // = new CLambdaMyCallbackRefCountedThreadSafe();
-    httpclient.Execute(*getrequest, *callback);
+    httpclient->Execute(*getrequest, *callback);
     
     //get->Cancel();
     
-    httpclient.Stop();
+    httpclient->Stop();
+    
+    
+    // DELETED: httpclient
+    
     };
     
 }

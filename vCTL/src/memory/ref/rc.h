@@ -86,6 +86,7 @@ public:
             {
             const CRTP* thiz = static_cast<const CRTP*>(this);
             delete thiz;
+            thiz = 0;
             }
         }
     

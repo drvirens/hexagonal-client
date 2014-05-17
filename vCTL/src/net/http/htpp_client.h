@@ -27,15 +27,21 @@ class IHttpClient
 public:
     void Start()
         {
+        T* thiz = static_cast<T*>(this);
+        thiz->Start();
         }
         
     void Stop()
         {
+        T* thiz = static_cast<T*>(this);
+        thiz->Stop();
         }
     
     void Execute(const IHttpRequest& aHttpRequest,
             CFutureCallBack<IHttpResponse>& aFutureCallBack)
         {
+        T* thiz = static_cast<T*>(this);
+        thiz->Execute(aHttpRequest, aFutureCallBack);
         }
     };
 

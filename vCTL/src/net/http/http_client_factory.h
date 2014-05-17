@@ -10,6 +10,7 @@
 #define __vClientTemplateLib__http_client_factory__
 
 #include "net/http/htpp_client_default.h"
+#include "memory/smart_pointer/strong_pointer.h"
 
 namespace vctl
 {
@@ -23,7 +24,7 @@ class THttpClientsFactory
 public:
     static THttpClientsFactory& Instance();
     
-    CHttpClient& DefaultHttpClient();
+    TStrongPointer<CHttpClient> DefaultHttpClient();
     };
 
 } //namespace http

@@ -19,23 +19,13 @@ namespace net
 namespace http
 {
 
-class CHttpClientCURL
+class CHttpClientCURL : public IHttpClient<CHttpClientCURL>
     {
 public:
-    void Start()
-        {
-        
-        }
-        
-    void Stop()
-        {
-        
-        }
-    
+    void Start();
+    void Stop();
     void Execute(const IHttpRequest& aHttpRequest,
-            CFutureCallBack<IHttpResponse>& aFutureCallBack)
-        {
-        }
+            CFutureCallBack<IHttpResponse>& aFutureCallBack);
 
 private:
     

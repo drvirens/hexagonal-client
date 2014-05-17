@@ -11,6 +11,7 @@
 
 #include "net/http/htpp_client.h"
 #include "net/http/curl/htpp_client_curl.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -19,7 +20,7 @@ namespace net
 namespace http
 {
 
-class CHttpClient
+class CHttpClient : public CReferenceThreadSafe<CHttpClient>
     {
 public:
     void Start()
