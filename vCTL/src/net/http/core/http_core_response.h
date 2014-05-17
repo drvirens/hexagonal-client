@@ -19,12 +19,15 @@ namespace net
 namespace http
 {
 
+class TStatusLine;
+
 class IHttpResponse : public IHttpMessage
     {
 public:
     virtual ~IHttpResponse() {}
     
-    virtual void StatusLine() const = 0;
+    virtual void StatusLine(TStatusLine& aStatusLine) = 0;
+    virtual void SetStatusLine(const TStatusLine& aStatusLine) = 0;
     
     //from IHttpMessage
     virtual TProtocolVersion Version() const = 0;

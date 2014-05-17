@@ -9,7 +9,7 @@
 #ifndef __vClientTemplateLib__http_client_factory__
 #define __vClientTemplateLib__http_client_factory__
 
-#include "net/http/htpp_client.h"
+#include "net/http/htpp_client_default.h"
 
 namespace vctl
 {

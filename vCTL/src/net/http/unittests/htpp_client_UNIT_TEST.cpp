@@ -10,9 +10,7 @@
 
 #include "net/http/http_client_factory.h"
 #include "net/http/http_method_get.h"
-#include "net/http/async/http_future_callback.h"
 #include "net/http/core/http_core_header.h"
-
 
 namespace vctl
 {
@@ -33,7 +31,7 @@ TEST(UT_THttpClient, Trivial)
     CFutureCallBack<IHttpResponse>* callback; // = new CLambdaMyCallbackRefCountedThreadSafe();
     httpclient.Execute(*getrequest, *callback);
     
-    get->Cancel();
+    //get->Cancel();
     
     httpclient.Stop();
     };

@@ -1,18 +1,16 @@
 //
-//  htpp_client.h
+//  htpp_client_default.h
 //  vClientTemplateLib
 //
 //  Created by Virendra Shakya on 5/16/14.
 //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
 //
 
-#ifndef __vClientTemplateLib__htpp_client__
-#define __vClientTemplateLib__htpp_client__
+#ifndef __vClientTemplateLib__htpp_client_default__
+#define __vClientTemplateLib__htpp_client_default__
 
-#include "net/http/http_method_get.h"
-#include "net/http/core/http_core_request.h"
-#include "net/http/core/http_core_response.h"
-#include "net/http/async/http_future_callback.h"
+#include "net/http/htpp_client.h"
+#include "net/http/curl/htpp_client_curl.h"
 
 namespace vctl
 {
@@ -21,26 +19,31 @@ namespace net
 namespace http
 {
 
-template <class T>
-class IHttpClient
+class CHttpClient
     {
 public:
     void Start()
         {
+        iHttpClient.Start();
         }
         
     void Stop()
         {
+        iHttpClient.Stop();
         }
     
     void Execute(const IHttpRequest& aHttpRequest,
             CFutureCallBack<IHttpResponse>& aFutureCallBack)
         {
         }
+
+private:
+    IHttpClient<CHttpClientCURL> iHttpClient;
     };
 
 } //namespace http
 } //namespace net
 } //namespace vctl
 
-#endif /* defined(__vClientTemplateLib__htpp_client__) */
+
+#endif /* defined(__vClientTemplateLib__htpp_client_default__) */

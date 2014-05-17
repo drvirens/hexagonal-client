@@ -10,6 +10,8 @@
 #define __vClientTemplateLib__http_core_statusline__
 
 #include <string>
+#include "net/http/core/http_core_protocol_version.h"
+#include "net/http/core/http_core_status.h"
 
 namespace vctl
 {
@@ -18,20 +20,19 @@ namespace net
 namespace http
 {
 
-typedef unsigned char TVersion;
-
-class TProtocolVersion
+class TStatusLine
     {
 public:
-    TProtocolVersion(std::string& aProtocolName, TVersion aMajor, TVersion aMinor);
-    const std::string& ProtocolName() const;
-    TVersion Major() const;
-    TVersion Minor() const;
+    TStatusLine(const TProtocolVersion& aProtocolVersion, const EHttpStatusCode& aStatusCode, std::string& aReasonPhrase);
+    
+    const TProtocolVersion& ProtocolVersion() const;
+    EHttpStatusCode StatusCode() const;
+    const std::string& ReasonPhrase() const;
     
 private:
-    std::string iProtocolName;
-    TVersion iMajor;
-    TVersion iMinor;
+    TProtocolVersion iProtocolVersion;
+    EHttpStatusCode iStatusCode;
+    std::string iReasonPhrase;
     };
 
 } //namespace http

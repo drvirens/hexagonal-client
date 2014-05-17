@@ -21,6 +21,9 @@
 		DB263B631926EAAF005417AA /* http_core_method_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B611926EAAF005417AA /* http_core_method_type.cpp */; };
 		DB263B661927108C005417AA /* http_core_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B641927108C005417AA /* http_core_response.cpp */; };
 		DB263B6919271286005417AA /* http_core_statusline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6719271286005417AA /* http_core_statusline.cpp */; };
+		DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6A192715B6005417AA /* http_core_status.cpp */; };
+		DB263B6F19271CF2005417AA /* htpp_client_default.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6D19271CF2005417AA /* htpp_client_default.cpp */; };
+		DB263B7319271E9A005417AA /* htpp_client_curl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7119271E9A005417AA /* htpp_client_curl.cpp */; };
 		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
 		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
 		DB67F17619062BC3007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17519062BC3007567A9 /* Foundation.framework */; };
@@ -131,6 +134,12 @@
 		DB263B651927108C005417AA /* http_core_response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_response.h; sourceTree = "<group>"; };
 		DB263B6719271286005417AA /* http_core_statusline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_statusline.cpp; sourceTree = "<group>"; };
 		DB263B6819271286005417AA /* http_core_statusline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_statusline.h; sourceTree = "<group>"; };
+		DB263B6A192715B6005417AA /* http_core_status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_status.cpp; sourceTree = "<group>"; };
+		DB263B6B192715B6005417AA /* http_core_status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_status.h; sourceTree = "<group>"; };
+		DB263B6D19271CF2005417AA /* htpp_client_default.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = htpp_client_default.cpp; sourceTree = "<group>"; };
+		DB263B6E19271CF2005417AA /* htpp_client_default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htpp_client_default.h; sourceTree = "<group>"; };
+		DB263B7119271E9A005417AA /* htpp_client_curl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = htpp_client_curl.cpp; sourceTree = "<group>"; };
+		DB263B7219271E9A005417AA /* htpp_client_curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htpp_client_curl.h; sourceTree = "<group>"; };
 		DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
 		DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
 		DB31E76C19117EA3009A6CF6 /* CMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
@@ -395,6 +404,7 @@
 		DB262FF319268DC7005417AA /* http */ = {
 			isa = PBXGroup;
 			children = (
+				DB263B7019271E7D005417AA /* curl */,
 				DB2636CA1926A1E9005417AA /* async */,
 				DB2636CB1926A1E9005417AA /* core */,
 				DB262FF919268FD7005417AA /* unittests */,
@@ -403,6 +413,8 @@
 				DB2636CD1926A232005417AA /* http_client_factory.h */,
 				DB263B4C1926A44D005417AA /* http_method_get.cpp */,
 				DB263B4D1926A44D005417AA /* http_method_get.h */,
+				DB263B6D19271CF2005417AA /* htpp_client_default.cpp */,
+				DB263B6E19271CF2005417AA /* htpp_client_default.h */,
 			);
 			path = http;
 			sourceTree = "<group>";
@@ -443,8 +455,19 @@
 				DB263B651927108C005417AA /* http_core_response.h */,
 				DB263B6719271286005417AA /* http_core_statusline.cpp */,
 				DB263B6819271286005417AA /* http_core_statusline.h */,
+				DB263B6A192715B6005417AA /* http_core_status.cpp */,
+				DB263B6B192715B6005417AA /* http_core_status.h */,
 			);
 			path = core;
+			sourceTree = "<group>";
+		};
+		DB263B7019271E7D005417AA /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				DB263B7119271E9A005417AA /* htpp_client_curl.cpp */,
+				DB263B7219271E9A005417AA /* htpp_client_curl.h */,
+			);
+			path = curl;
 			sourceTree = "<group>";
 		};
 		DB67F16919062BC3007567A9 = {
@@ -1299,6 +1322,8 @@
 				DB67F24319062FFA007567A9 /* gtest-test-part.cc in Sources */,
 				DB67F24119062FFA007567A9 /* gtest-port.cc in Sources */,
 				DB262FFC19268FE8005417AA /* htpp_client_UNIT_TEST.cpp in Sources */,
+				DB263B6F19271CF2005417AA /* htpp_client_default.cpp in Sources */,
+				DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */,
 				DB263B5A1926D400005417AA /* http_future_callback.cpp in Sources */,
 				DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */,
 				DB6ADBA4191C9B4A0098E92C /* thread_platform_optional_IOS.mm in Sources */,
@@ -1341,6 +1366,7 @@
 				DB8042F119213D3C00190CBE /* macrologger.cpp in Sources */,
 				DB6ADB95191C9B4A0098E92C /* event_dispatcher.cpp in Sources */,
 				DB6ADB9B191C9B4A0098E92C /* condition_variable.cpp in Sources */,
+				DB263B7319271E9A005417AA /* htpp_client_curl.cpp in Sources */,
 				DB8042EF1920B61D00190CBE /* semaphore_impl_DARWIN.cpp in Sources */,
 				DB6ADBA9191C9B4A0098E92C /* thread_loopless.cpp in Sources */,
 				DB6ADB96191C9B4A0098E92C /* event_dispatcher_UNIT_TEST.cpp in Sources */,

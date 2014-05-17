@@ -24,6 +24,7 @@ class TProtocolVersion
     {
 public:
     TProtocolVersion(std::string& aProtocolName, TVersion aMajor, TVersion aMinor);
+    
     const std::string& ProtocolName() const;
     TVersion Major() const;
     TVersion Minor() const;
