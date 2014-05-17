@@ -15,7 +15,7 @@
 namespace vbase
 {
 
-class CLambda : public vctl::CReferenceBaseThreadSafe
+class CLambda : private vctl::CReferenceThreadSafe<CLambda>
     {
 public:
     virtual ~CLambda() {}

@@ -63,11 +63,11 @@ class TDefaultDeletionPolicy
 public:
     static void Delete(const POINTER_TYPE* aThis)
         {
-        delete aThis;
+        delete aThis; aThis = 0;
         }
     };
 
-template <class CRTP, typename DELETE_POLICY>
+template <class CRTP, typename DELETE_POLICY = TDefaultDeletionPolicy<CRTP> >
 class CReferenceThreadSafe
     : public CReferenceBaseThreadSafe
     , private TNonCopyable< CReferenceThreadSafe<CRTP, DELETE_POLICY> >
