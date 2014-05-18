@@ -19,21 +19,20 @@ namespace http
 namespace curl
 {
 
-void THttpCurl::Execute(const IHttpRequest& aHttpRequest,
+THttpCurl::THttpCurl(IHttpRequest& aHttpRequest,
     CFutureCallBack<IHttpResponse>& aFutureCallBack)
-    {
-    }
-
-THttpCurl::THttpCurl()
     : iCurl(0)
+    , iHttpRequest(aHttpRequest)
+    , iFutureCallBack(aFutureCallBack)
     {
+    iCurlErrorBuffer[0] = 0;
+    Construct();
     }
 
 bool THttpCurl::Construct()
     {
     if( iCurl )
         {
-        //already initialized
         return true;
         }
     
@@ -47,9 +46,32 @@ bool THttpCurl::Construct()
     return true;
     }
     
+void THttpCurl::Execute()
+    {
+    
+    struct curl_slist* curlheaders = 0;
+    
+    SetupHttpHeaders();
+    
+        {
+        CURLcode curlRet;
+        curlRet = curl_easy_perform(iCurl);
+        }
+        
+    ResetCurl();
+        
+    if(curlheaders)
+        {
+        curl_slist_free_all(curlheaders);
+        }
+    
+    }
+    
 bool THttpCurl::EasySetUp()
     {
     bool r = true;
+    CURLcode curlRet;
+    
     iCurl = curl_easy_init();
     if( !iCurl )
         {
@@ -57,7 +79,7 @@ bool THttpCurl::EasySetUp()
         return r;
         }
         
-    CURLcode curlRet = curl_easy_setopt(iCurl, CURLOPT_HEADERFUNCTION, &THttpCurl::ResponseHeaderCB);
+    curlRet = curl_easy_setopt(iCurl, CURLOPT_HEADERFUNCTION, &THttpCurl::ResponseHeaderCB);
     r = r && !curlRet;
     
     curlRet = curl_easy_setopt(iCurl, CURLOPT_WRITEHEADER, this);
@@ -81,9 +103,81 @@ bool THttpCurl::EasySetUp()
         return r;
         }
         
+    r = EasySetupSSL();
+    if(false == r)
+        {
+        LOG_ERROR << "SSL setup error for CURL so return";
+        return r;
+        }
+
+    curlRet = curl_easy_setopt(iCurl, CURLOPT_NOSIGNAL, 1L);
+    r = r && !curlRet;
+    
+    r = EasySetupTimeouts();
+    if(false == r)
+        {
+        LOG_ERROR << "Timeout setup error for CURL so return";
+        }
+    
+    return r;
+    }
+    
+bool THttpCurl::EasySetupSSL()
+    {
+    bool r = true;
+    CURLcode curlRet;
+    
+    IRequestConfig& requestconfig = iHttpRequest.GetConfig();
+    if(requestconfig.IsSSLVerificationDisabled())
+        {
+        curl_easy_setopt(iCurl, CURLOPT_SSL_VERIFYPEER, false);
+        }
+    else
+        {
+        std::string cacertspath = requestconfig.CertificatesPath();
+        if(cacertspath.empty())
+            {
+            r = false;
+            LOG_ERROR << "SSL verification is enabled but Certification path is empty";
+            return r;
+            }
+        
+        curlRet = curl_easy_setopt(iCurl, CURLOPT_CAINFO, cacertspath.c_str());
+        if( !curlRet )
+            {
+            r = false;
+            LOG_ERROR << "SSL error in setting ca certs path from " << cacertspath;
+            return r;
+            }
+        }
+    return r;
+    }
+    
+bool THttpCurl::EasySetupTimeouts()
+    {
+    bool r = true;
+    CURLcode curlRet;
+    
+    IRequestConfig& requestconfig = iHttpRequest.GetConfig();
+    
+    long connecttimeout = requestconfig.ConnectTimeout();
+    long dnscachetimeout = requestconfig.DnsCacheTimeout();
+    long maxredirects = requestconfig.MaxRedirects();
+    long followlocation = requestconfig.FollowLocation();
     
     
-    
+    curlRet = curl_easy_setopt(iCurl, CURLOPT_CONNECTTIMEOUT, connecttimeout);
+    r = r && !curlRet;
+
+    curlRet = curl_easy_setopt(iCurl, CURLOPT_DNS_CACHE_TIMEOUT, dnscachetimeout);
+    r = r && !curlRet;
+
+    curlRet = curl_easy_setopt(iCurl, CURLOPT_MAXREDIRS, maxredirects);
+    r = r && !curlRet;
+
+    curlRet = curl_easy_setopt(iCurl, CURLOPT_FOLLOWLOCATION, followlocation);
+    r = r && !curlRet;
+
     return r;
     }
     

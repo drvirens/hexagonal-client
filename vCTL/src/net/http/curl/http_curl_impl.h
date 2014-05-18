@@ -27,21 +27,27 @@ namespace curl
 class THttpCurl
     {
 public:
-    void Execute(const IHttpRequest& aHttpRequest,
-        CFutureCallBack<IHttpResponse>& aFutureCallBack);
+    void Execute();
         
-    THttpCurl();
+    THttpCurl(IHttpRequest& aHttpRequest,
+        CFutureCallBack<IHttpResponse>& aFutureCallBack);
+    
     ~THttpCurl();
     
 private:
     bool Construct();
     bool EasySetUp();
+    bool EasySetupSSL();
+    bool EasySetupTimeouts();
+    
     static size_t ResponseHeaderCB(void* aData, size_t aSizeInBytes, size_t aCount, void* aInstance);
     static size_t ResponseBodyCB  (void* aData, size_t aSizeInBytes, size_t aCount, void* aInstance);
         
 private:
     CURL* iCurl;
     char iCurlErrorBuffer[CURL_ERROR_SIZE];
+    IHttpRequest& iHttpRequest;
+    CFutureCallBack<IHttpResponse>& iFutureCallBack;
     };
 
 } //namespace curl
