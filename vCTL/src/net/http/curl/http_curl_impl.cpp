@@ -73,6 +73,13 @@ void THttpCurl::Execute()
 bool THttpCurl::SetupHttpHeaders(struct curl_slist*& aList)
     {
     bool r = false;
+    TStrongPointer<THttpHeadersMap> headers = iHttpRequest.GetAllHeaders();
+    THttpHeadersMapIterator iterator = headers->Iterator();
+    
+    for(iterator.begin(); iterator; iterator)
+        {
+        }
+    
     return r;
     }
     
