@@ -20,6 +20,7 @@ namespace http
 {
 
 class TStatusLine;
+class IHttpEntity;
 
 class IHttpResponse : public IHttpMessage
     {
@@ -33,6 +34,9 @@ public:
     virtual TProtocolVersion Version() const = 0;
     virtual void AddHeader(const THeader& aHeader) = 0;
     virtual void RemoveHeader(const THeader& aHeader) = 0;
+    
+    virtual IHttpEntity* HttpEntity() const = 0;
+    virtual void SetHttpEntity(IHttpEntity* aHttpEntity) = 0;
 
     };
 

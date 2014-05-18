@@ -25,6 +25,4 @@ public:
 } //namespace net
 } //namespace vctl
 
-
-
 #endif /* defined(__vClientTemplateLib__http_core_header__) */

@@ -19,6 +19,8 @@ namespace net
 namespace http
 {
 
+class IHttpEntity;
+
 class IHttpRequest : public IHttpMessage
     {
 public:
@@ -27,6 +29,7 @@ public:
     virtual void Cancel() = 0;
     virtual bool IsCancelled() const = 0;
     virtual EHttpMethodType HttpMethod() const = 0;
+    virtual IHttpEntity* HttpEntity() const = 0;
     
     //from IHttpMessage
     virtual TProtocolVersion Version() const = 0;

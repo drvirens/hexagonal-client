@@ -23,8 +23,13 @@
 		DB263B6919271286005417AA /* http_core_statusline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6719271286005417AA /* http_core_statusline.cpp */; };
 		DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6A192715B6005417AA /* http_core_status.cpp */; };
 		DB263B6F19271CF2005417AA /* htpp_client_default.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6D19271CF2005417AA /* htpp_client_default.cpp */; };
-		DB263B7319271E9A005417AA /* htpp_client_curl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7119271E9A005417AA /* htpp_client_curl.cpp */; };
+		DB263B7319271E9A005417AA /* http_client_curl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7119271E9A005417AA /* http_client_curl.cpp */; };
 		DB263B76192746A4005417AA /* http_core_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B74192746A4005417AA /* http_core_entity.cpp */; };
+		DB263B78192838E9005417AA /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB263B77192838E9005417AA /* libcurl.a */; };
+		DB263B7A192838F0005417AA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB263B79192838F0005417AA /* libz.dylib */; };
+		DB263B7D1928397A005417AA /* http_curl_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7B1928397A005417AA /* http_curl_impl.cpp */; };
+		DB263B80192857B3005417AA /* http_core_request_line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7E192857B3005417AA /* http_core_request_line.cpp */; };
+		DB263B8319285B1F005417AA /* http_core_header_group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B8119285B1F005417AA /* http_core_header_group.cpp */; };
 		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
 		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
 		DB67F17619062BC3007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17519062BC3007567A9 /* Foundation.framework */; };
@@ -139,10 +144,27 @@
 		DB263B6B192715B6005417AA /* http_core_status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_status.h; sourceTree = "<group>"; };
 		DB263B6D19271CF2005417AA /* htpp_client_default.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = htpp_client_default.cpp; sourceTree = "<group>"; };
 		DB263B6E19271CF2005417AA /* htpp_client_default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htpp_client_default.h; sourceTree = "<group>"; };
-		DB263B7119271E9A005417AA /* htpp_client_curl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = htpp_client_curl.cpp; sourceTree = "<group>"; };
-		DB263B7219271E9A005417AA /* htpp_client_curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htpp_client_curl.h; sourceTree = "<group>"; };
+		DB263B7119271E9A005417AA /* http_client_curl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_client_curl.cpp; sourceTree = "<group>"; };
+		DB263B7219271E9A005417AA /* http_client_curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_client_curl.h; sourceTree = "<group>"; };
 		DB263B74192746A4005417AA /* http_core_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_entity.cpp; sourceTree = "<group>"; };
 		DB263B75192746A4005417AA /* http_core_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_entity.h; sourceTree = "<group>"; };
+		DB263B77192838E9005417AA /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../../libs/iOS/curl/libcurl.a; sourceTree = "<group>"; };
+		DB263B79192838F0005417AA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DB263B7B1928397A005417AA /* http_curl_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_curl_impl.cpp; sourceTree = "<group>"; };
+		DB263B7C1928397A005417AA /* http_curl_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_curl_impl.h; sourceTree = "<group>"; };
+		DB263B7E192857B3005417AA /* http_core_request_line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_request_line.cpp; sourceTree = "<group>"; };
+		DB263B7F192857B3005417AA /* http_core_request_line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_request_line.h; sourceTree = "<group>"; };
+		DB263B8119285B1F005417AA /* http_core_header_group.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_header_group.cpp; sourceTree = "<group>"; };
+		DB263B8219285B1F005417AA /* http_core_header_group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_header_group.h; sourceTree = "<group>"; };
+		DB263B8619286DE5005417AA /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
+		DB263B8719286DE5005417AA /* curlbuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
+		DB263B8819286DE5005417AA /* curlrules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
+		DB263B8919286DE5005417AA /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
+		DB263B8A19286DE5005417AA /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
+		DB263B8B19286DE5005417AA /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
+		DB263B8C19286DE5005417AA /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
+		DB263B8D19286DE5005417AA /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
+		DB263B8E19286DE5005417AA /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
 		DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
 		DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
 		DB31E76C19117EA3009A6CF6 /* CMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
@@ -163,15 +185,6 @@
 		DB67F1A219062BC3007567A9 /* vClientTemplateLibTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vClientTemplateLibTests-Info.plist"; sourceTree = "<group>"; };
 		DB67F1A419062BC3007567A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB67F1A619062BC3007567A9 /* vClientTemplateLibTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vClientTemplateLibTests.m; sourceTree = "<group>"; };
-		DB67F1B519062FFA007567A9 /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
-		DB67F1B619062FFA007567A9 /* curlbuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
-		DB67F1B719062FFA007567A9 /* curlrules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
-		DB67F1B819062FFA007567A9 /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
-		DB67F1B919062FFA007567A9 /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
-		DB67F1BA19062FFA007567A9 /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
-		DB67F1BB19062FFA007567A9 /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
-		DB67F1BC19062FFA007567A9 /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
-		DB67F1BD19062FFA007567A9 /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
 		DB67F1BF19062FFA007567A9 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		DB67F1CC19062FFA007567A9 /* gtest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gtest.h; sourceTree = "<group>"; };
 		DB67F1DF19062FFA007567A9 /* gtest-death-test.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "gtest-death-test.cc"; sourceTree = "<group>"; };
@@ -365,6 +378,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB263B7A192838F0005417AA /* libz.dylib in Frameworks */,
+				DB263B78192838E9005417AA /* libcurl.a in Frameworks */,
 				DB8042ED1920B34400190CBE /* Security.framework in Frameworks */,
 				DB8041481920B03100190CBE /* MobileCoreServices.framework in Frameworks */,
 				DB8041461920AFBF00190CBE /* CoreFoundation.framework in Frameworks */,
@@ -462,6 +477,10 @@
 				DB263B6B192715B6005417AA /* http_core_status.h */,
 				DB263B74192746A4005417AA /* http_core_entity.cpp */,
 				DB263B75192746A4005417AA /* http_core_entity.h */,
+				DB263B7E192857B3005417AA /* http_core_request_line.cpp */,
+				DB263B7F192857B3005417AA /* http_core_request_line.h */,
+				DB263B8119285B1F005417AA /* http_core_header_group.cpp */,
+				DB263B8219285B1F005417AA /* http_core_header_group.h */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -469,8 +488,34 @@
 		DB263B7019271E7D005417AA /* curl */ = {
 			isa = PBXGroup;
 			children = (
-				DB263B7119271E9A005417AA /* htpp_client_curl.cpp */,
-				DB263B7219271E9A005417AA /* htpp_client_curl.h */,
+				DB263B7119271E9A005417AA /* http_client_curl.cpp */,
+				DB263B7219271E9A005417AA /* http_client_curl.h */,
+				DB263B7B1928397A005417AA /* http_curl_impl.cpp */,
+				DB263B7C1928397A005417AA /* http_curl_impl.h */,
+			);
+			path = curl;
+			sourceTree = "<group>";
+		};
+		DB263B8419286DE4005417AA /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				DB263B8519286DE5005417AA /* curl */,
+			);
+			path = curl;
+			sourceTree = "<group>";
+		};
+		DB263B8519286DE5005417AA /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				DB263B8619286DE5005417AA /* curl.h */,
+				DB263B8719286DE5005417AA /* curlbuild.h */,
+				DB263B8819286DE5005417AA /* curlrules.h */,
+				DB263B8919286DE5005417AA /* curlver.h */,
+				DB263B8A19286DE5005417AA /* easy.h */,
+				DB263B8B19286DE5005417AA /* mprintf.h */,
+				DB263B8C19286DE5005417AA /* multi.h */,
+				DB263B8D19286DE5005417AA /* stdcheaders.h */,
+				DB263B8E19286DE5005417AA /* typecheck-gcc.h */,
 			);
 			path = curl;
 			sourceTree = "<group>";
@@ -498,6 +543,8 @@
 		DB67F17419062BC3007567A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB263B79192838F0005417AA /* libz.dylib */,
+				DB263B77192838E9005417AA /* libcurl.a */,
 				DB8042EC1920B34400190CBE /* Security.framework */,
 				DB8041471920B03100190CBE /* MobileCoreServices.framework */,
 				DB8041451920AFBF00190CBE /* CoreFoundation.framework */,
@@ -575,44 +622,12 @@
 		DB67F1B119062FFA007567A9 /* 3p */ = {
 			isa = PBXGroup;
 			children = (
-				DB67F1B219062FFA007567A9 /* curl */,
+				DB263B8419286DE4005417AA /* curl */,
 				DB67F1BE19062FFA007567A9 /* flurry */,
 				DB67F1C019062FFA007567A9 /* google */,
 				DB67F1E819062FFA007567A9 /* openssl */,
 			);
 			path = 3p;
-			sourceTree = "<group>";
-		};
-		DB67F1B219062FFA007567A9 /* curl */ = {
-			isa = PBXGroup;
-			children = (
-				DB67F1B319062FFA007567A9 /* curl_works */,
-			);
-			path = curl;
-			sourceTree = "<group>";
-		};
-		DB67F1B319062FFA007567A9 /* curl_works */ = {
-			isa = PBXGroup;
-			children = (
-				DB67F1B419062FFA007567A9 /* curl */,
-			);
-			path = curl_works;
-			sourceTree = "<group>";
-		};
-		DB67F1B419062FFA007567A9 /* curl */ = {
-			isa = PBXGroup;
-			children = (
-				DB67F1B519062FFA007567A9 /* curl.h */,
-				DB67F1B619062FFA007567A9 /* curlbuild.h */,
-				DB67F1B719062FFA007567A9 /* curlrules.h */,
-				DB67F1B819062FFA007567A9 /* curlver.h */,
-				DB67F1B919062FFA007567A9 /* easy.h */,
-				DB67F1BA19062FFA007567A9 /* mprintf.h */,
-				DB67F1BB19062FFA007567A9 /* multi.h */,
-				DB67F1BC19062FFA007567A9 /* stdcheaders.h */,
-				DB67F1BD19062FFA007567A9 /* typecheck-gcc.h */,
-			);
-			path = curl;
 			sourceTree = "<group>";
 		};
 		DB67F1BE19062FFA007567A9 /* flurry */ = {
@@ -1314,6 +1329,7 @@
 				DB6ADBBA191C9C480098E92C /* log_UNIT_TEST.cpp in Sources */,
 				DB263B5D1926E814005417AA /* http_core_header.cpp in Sources */,
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
+				DB263B7D1928397A005417AA /* http_curl_impl.cpp in Sources */,
 				DB262DE319248260005417AA /* log_logger.cpp in Sources */,
 				DB6ADB9E191C9B4A0098E92C /* lock_impl_POSIX.cpp in Sources */,
 				DB6ADBB8191C9C480098E92C /* log.cpp in Sources */,
@@ -1329,6 +1345,7 @@
 				DB262FFC19268FE8005417AA /* htpp_client_UNIT_TEST.cpp in Sources */,
 				DB263B6F19271CF2005417AA /* htpp_client_default.cpp in Sources */,
 				DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */,
+				DB263B80192857B3005417AA /* http_core_request_line.cpp in Sources */,
 				DB263B5A1926D400005417AA /* http_future_callback.cpp in Sources */,
 				DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */,
 				DB6ADBA4191C9B4A0098E92C /* thread_platform_optional_IOS.mm in Sources */,
@@ -1348,6 +1365,7 @@
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
 				DB263B76192746A4005417AA /* http_core_entity.cpp in Sources */,
 				DB6ADBAC191C9B4A0098E92C /* thread_platform_UNIT_TEST.cpp in Sources */,
+				DB263B8319285B1F005417AA /* http_core_header_group.cpp in Sources */,
 				DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */,
 				DB6ADF52191F35C30098E92C /* atomic_count.cpp in Sources */,
 				DB6ADF54191F35C30098E92C /* rc_thread_safe.cpp in Sources */,
@@ -1372,7 +1390,7 @@
 				DB8042F119213D3C00190CBE /* macrologger.cpp in Sources */,
 				DB6ADB95191C9B4A0098E92C /* event_dispatcher.cpp in Sources */,
 				DB6ADB9B191C9B4A0098E92C /* condition_variable.cpp in Sources */,
-				DB263B7319271E9A005417AA /* htpp_client_curl.cpp in Sources */,
+				DB263B7319271E9A005417AA /* http_client_curl.cpp in Sources */,
 				DB8042EF1920B61D00190CBE /* semaphore_impl_DARWIN.cpp in Sources */,
 				DB6ADBA9191C9B4A0098E92C /* thread_loopless.cpp in Sources */,
 				DB6ADB96191C9B4A0098E92C /* event_dispatcher_UNIT_TEST.cpp in Sources */,
@@ -1528,12 +1546,16 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/vshakya/hexagonal-client/vCTL/libs/iOS/curl",
+				);
 				OTHER_CFLAGS = (
 					"-DENABLE_LOGGING",
 					"-DTHREADSAFE_LOGGING",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\" \"$(SRCROOT)/../../../src/3p/curl\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1553,8 +1575,12 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/vshakya/hexagonal-client/vCTL/libs/iOS/curl",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\" \"$(SRCROOT)/../../../src/3p/curl\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
