@@ -30,6 +30,7 @@
 		DB263B7D1928397A005417AA /* http_curl_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7B1928397A005417AA /* http_curl_impl.cpp */; };
 		DB263B80192857B3005417AA /* http_core_request_line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7E192857B3005417AA /* http_core_request_line.cpp */; };
 		DB263B8319285B1F005417AA /* http_core_header_group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B8119285B1F005417AA /* http_core_header_group.cpp */; };
+		DB263B9219288FF7005417AA /* http_config_request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B9019288FF7005417AA /* http_config_request.cpp */; };
 		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
 		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
 		DB67F17619062BC3007567A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB67F17519062BC3007567A9 /* Foundation.framework */; };
@@ -165,6 +166,8 @@
 		DB263B8C19286DE5005417AA /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
 		DB263B8D19286DE5005417AA /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
 		DB263B8E19286DE5005417AA /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
+		DB263B9019288FF7005417AA /* http_config_request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_config_request.cpp; sourceTree = "<group>"; };
+		DB263B9119288FF7005417AA /* http_config_request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_config_request.h; sourceTree = "<group>"; };
 		DB31E76A19117EA3009A6CF6 /* CDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
 		DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDetailViewController.mm; sourceTree = "<group>"; };
 		DB31E76C19117EA3009A6CF6 /* CMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
@@ -422,6 +425,7 @@
 		DB262FF319268DC7005417AA /* http */ = {
 			isa = PBXGroup;
 			children = (
+				DB263B8F19288FE0005417AA /* config */,
 				DB263B7019271E7D005417AA /* curl */,
 				DB2636CA1926A1E9005417AA /* async */,
 				DB2636CB1926A1E9005417AA /* core */,
@@ -518,6 +522,15 @@
 				DB263B8E19286DE5005417AA /* typecheck-gcc.h */,
 			);
 			path = curl;
+			sourceTree = "<group>";
+		};
+		DB263B8F19288FE0005417AA /* config */ = {
+			isa = PBXGroup;
+			children = (
+				DB263B9019288FF7005417AA /* http_config_request.cpp */,
+				DB263B9119288FF7005417AA /* http_config_request.h */,
+			);
+			path = config;
 			sourceTree = "<group>";
 		};
 		DB67F16919062BC3007567A9 = {
@@ -1371,6 +1384,7 @@
 				DB6ADF54191F35C30098E92C /* rc_thread_safe.cpp in Sources */,
 				DB263B511926C16A005417AA /* http_core_protocol_version.cpp in Sources */,
 				DB80413A1920715D00190CBE /* semaphore_UNIT_TEST.cpp in Sources */,
+				DB263B9219288FF7005417AA /* http_config_request.cpp in Sources */,
 				DB6ADF53191F35C30098E92C /* atomic_UNIT_TEST.cpp in Sources */,
 				DB67F24219062FFA007567A9 /* gtest-printers.cc in Sources */,
 				DB6ADBAD191C9B4A0098E92C /* thread_un_safe_UNIT_TEST.cpp in Sources */,

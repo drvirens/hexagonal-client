@@ -10,6 +10,7 @@
 #define __vClientTemplateLib__http_curl_impl__
 
 #include "curl/curl.h"
+#include "base/thread/thread_un_safe.h"
 
 namespace vctl
 {
@@ -24,7 +25,11 @@ class IHttpResponse;
 namespace curl
 {
 
-class THttpCurl
+class THttpCurl : private vbase::TNotThreadSafe
+    //
+    // This is thread-unsafe class so use it on the same
+    // thread where you are going to create it
+    //
     {
 public:
     void Execute();
@@ -39,9 +44,13 @@ private:
     bool EasySetUp();
     bool EasySetupSSL();
     bool EasySetupTimeouts();
+    void ResetCurl();
+    bool SetupHttpHeaders(struct curl_slist*& aList);
     
-    static size_t ResponseHeaderCB(void* aData, size_t aSizeInBytes, size_t aCount, void* aInstance);
-    static size_t ResponseBodyCB  (void* aData, size_t aSizeInBytes, size_t aCount, void* aInstance);
+    static size_t ResponseHeaderCB(void* aData, size_t aSizeInBytes,
+        size_t aCount, void* aInstance);
+    static size_t ResponseBodyCB  (void* aData, size_t aSizeInBytes,
+        size_t aCount, void* aInstance);
         
 private:
     CURL* iCurl;

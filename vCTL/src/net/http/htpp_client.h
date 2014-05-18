@@ -37,7 +37,7 @@ public:
         thiz->Stop();
         }
     
-    void Execute(const IHttpRequest& aHttpRequest,
+    void Execute(IHttpRequest& aHttpRequest,
             CFutureCallBack<IHttpResponse>& aFutureCallBack)
         {
         T* thiz = static_cast<T*>(this);

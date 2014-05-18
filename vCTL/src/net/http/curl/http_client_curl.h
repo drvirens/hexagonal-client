@@ -24,7 +24,7 @@ class CHttpClientCURL : public IHttpClient<CHttpClientCURL>
 public:
     void Start();
     void Stop();
-    void Execute(const IHttpRequest& aHttpRequest,
+    void Execute(IHttpRequest& aHttpRequest,
             CFutureCallBack<IHttpResponse>& aFutureCallBack);
 
 private:

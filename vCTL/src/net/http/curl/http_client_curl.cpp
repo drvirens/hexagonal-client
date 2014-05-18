@@ -24,12 +24,12 @@ void CHttpClientCURL::Stop()
     {
     }
     
-void CHttpClientCURL::Execute(const IHttpRequest& aHttpRequest,
+void CHttpClientCURL::Execute(IHttpRequest& aHttpRequest,
         CFutureCallBack<IHttpResponse>& aFutureCallBack)
     {
     //todo: put this on a threadpool to execute
-    curl::THttpCurl curl;
-    curl.Execute(aHttpRequest, aFutureCallBack);
+    curl::THttpCurl curl(aHttpRequest, aFutureCallBack);
+    curl.Execute();
     }
     
 

@@ -18,7 +18,7 @@ namespace net
 namespace http
 {
 
-class THeaderGroup : private vbase::TThreadUnSafe<THeaderGroup>
+class THeaderGroup : private vbase::TNotThreadSafe
     {
 public:
     };

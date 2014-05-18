@@ -20,6 +20,7 @@ namespace http
 {
 
 class IHttpEntity;
+class TRequestConfig;
 
 class IHttpRequest : public IHttpMessage
     {
@@ -30,6 +31,8 @@ public:
     virtual bool IsCancelled() const = 0;
     virtual EHttpMethodType HttpMethod() const = 0;
     virtual IHttpEntity* HttpEntity() const = 0;
+    
+    virtual TRequestConfig& GetConfig() const = 0;
     
     //from IHttpMessage
     virtual TProtocolVersion Version() const = 0;

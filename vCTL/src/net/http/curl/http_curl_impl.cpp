@@ -8,6 +8,7 @@
 
 #include "net/http/curl/http_curl_impl.h"
 #include "net/http/core/http_core_request.h"
+#include "net/http/config/http_config_request.h"
 #include "logging/log_logger.h"
 
 namespace vctl
@@ -48,14 +49,16 @@ bool THttpCurl::Construct()
     
 void THttpCurl::Execute()
     {
-    
+    bool r = false;
     struct curl_slist* curlheaders = 0;
     
-    SetupHttpHeaders();
-    
+    r = SetupHttpHeaders(curlheaders);
+    if(r)
         {
         CURLcode curlRet;
         curlRet = curl_easy_perform(iCurl);
+        
+        //do something with response
         }
         
     ResetCurl();
@@ -65,6 +68,26 @@ void THttpCurl::Execute()
         curl_slist_free_all(curlheaders);
         }
     
+    }
+    
+bool THttpCurl::SetupHttpHeaders(struct curl_slist*& aList)
+    {
+    bool r = false;
+    return r;
+    }
+    
+void THttpCurl::ResetCurl()
+    {
+    curl_easy_setopt(iCurl, CURLOPT_HTTPGET, false);
+    curl_easy_setopt(iCurl, CURLOPT_POST, false);
+    curl_easy_setopt(iCurl, CURLOPT_PUT, false);
+    curl_easy_setopt(iCurl, CURLOPT_UPLOAD, false);
+    curl_easy_setopt(iCurl, CURLOPT_NOBODY, false);
+    curl_easy_setopt(iCurl, CURLOPT_CUSTOMREQUEST, 0);
+    curl_easy_setopt(iCurl, CURLOPT_POSTFIELDSIZE, -1);
+    curl_easy_setopt(iCurl, CURLOPT_READFUNCTION, 0);
+    curl_easy_setopt(iCurl, CURLOPT_HTTPHEADER, 0);
+    curl_easy_setopt(iCurl, CURLOPT_TIMEOUT_MS, 0L);
     }
     
 bool THttpCurl::EasySetUp()
@@ -127,7 +150,7 @@ bool THttpCurl::EasySetupSSL()
     bool r = true;
     CURLcode curlRet;
     
-    IRequestConfig& requestconfig = iHttpRequest.GetConfig();
+    TRequestConfig& requestconfig = iHttpRequest.GetConfig();
     if(requestconfig.IsSSLVerificationDisabled())
         {
         curl_easy_setopt(iCurl, CURLOPT_SSL_VERIFYPEER, false);
@@ -158,7 +181,7 @@ bool THttpCurl::EasySetupTimeouts()
     bool r = true;
     CURLcode curlRet;
     
-    IRequestConfig& requestconfig = iHttpRequest.GetConfig();
+    TRequestConfig& requestconfig = iHttpRequest.GetConfig();
     
     long connecttimeout = requestconfig.ConnectTimeout();
     long dnscachetimeout = requestconfig.DnsCacheTimeout();
