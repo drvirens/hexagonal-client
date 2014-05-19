@@ -18,13 +18,14 @@ namespace vbase
 class CLambda : private vctl::CReferenceThreadSafe<CLambda>
     {
 public:
-    virtual ~CLambda() {}
     void Run()
         {
         DoRun();
         }
-private:
+protected:
     virtual void DoRun() = 0;
+    virtual ~CLambda() {}
+    friend class vctl::CReferenceThreadSafe<CLambda>;
     };
 
     

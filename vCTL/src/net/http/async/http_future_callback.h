@@ -9,7 +9,9 @@
 #ifndef __vClientTemplateLib__http_future_callback__
 #define __vClientTemplateLib__http_future_callback__
 
-#include "base/lambda/lambda.h"
+//#include "base/lambda/lambda.h"
+#include "memory/smart_pointer/strong_pointer.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -18,16 +20,20 @@ namespace net
 namespace http
 {
 
-template <class T>
-class CFutureCallBack : public vbase::CLambda
+//TODO: Make T as strong pointer
+template < class HTTP_RESPONSE >
+class IFutureCallBack : public vctl::CReferenceThreadSafe<IFutureCallBack <HTTP_RESPONSE> >
     {
 public:
     virtual void Failed(int aError) = 0;
-    virtual void Succeeded(T& aResponse) = 0;
+    //HTTP_RESPONSE will be in a strong-pointer
+    
+    virtual void Succeeded(vctl::TStrongPointer<HTTP_RESPONSE> aResponse) = 0;
     virtual void Cancelled() = 0;
     
 protected:
-    virtual void DoRun();
+    virtual ~IFutureCallBack() {}
+    friend class vctl::CReferenceThreadSafe<IFutureCallBack>;
     };
 
 } //namespace http

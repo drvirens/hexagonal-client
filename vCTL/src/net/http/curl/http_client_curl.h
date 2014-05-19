@@ -19,16 +19,25 @@ namespace net
 namespace http
 {
 
-class CHttpClientCURL : public IHttpClient<CHttpClientCURL>
+template <class HTTP_RESPONSE>
+class CHttpClientCURL : public IHttpClient<HTTP_RESPONSE>
     {
-public:
-    void Start();
-    void Stop();
-    void Execute(IHttpRequest& aHttpRequest,
-            CFutureCallBack<IHttpResponse>& aFutureCallBack);
-
+protected:
+    virtual void Start()
+        {
+        }
+        
+    virtual void Stop()
+        {
+        }
+        
 private:
-    
+    virtual void Execute(vctl::TStrongPointer<CHttpContext> aHttpContext,
+        vctl::TStrongPointer<IHttpRequest> aHttpRequest,
+        vctl::TStrongPointer< IFutureCallBack< HTTP_RESPONSE > > aFutureCallBack)
+        {
+        //hookup with THttpCurl
+        }
     };
 
 } //namespace http

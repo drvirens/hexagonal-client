@@ -13,17 +13,13 @@
 		DB2636CE1926A232005417AA /* http_client_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB2636CC1926A232005417AA /* http_client_factory.cpp */; };
 		DB263B4E1926A44D005417AA /* http_method_get.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B4C1926A44D005417AA /* http_method_get.cpp */; };
 		DB263B511926C16A005417AA /* http_core_protocol_version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B4F1926C16A005417AA /* http_core_protocol_version.cpp */; };
-		DB263B541926C18E005417AA /* http_core_message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B521926C18E005417AA /* http_core_message.cpp */; };
 		DB263B571926C24C005417AA /* http_core_name_value_pair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B551926C24C005417AA /* http_core_name_value_pair.cpp */; };
 		DB263B5A1926D400005417AA /* http_future_callback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B581926D400005417AA /* http_future_callback.cpp */; };
 		DB263B5D1926E814005417AA /* http_core_header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B5B1926E814005417AA /* http_core_header.cpp */; };
-		DB263B601926E8EE005417AA /* http_core_request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B5E1926E8EE005417AA /* http_core_request.cpp */; };
 		DB263B631926EAAF005417AA /* http_core_method_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B611926EAAF005417AA /* http_core_method_type.cpp */; };
 		DB263B661927108C005417AA /* http_core_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B641927108C005417AA /* http_core_response.cpp */; };
 		DB263B6919271286005417AA /* http_core_statusline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6719271286005417AA /* http_core_statusline.cpp */; };
 		DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6A192715B6005417AA /* http_core_status.cpp */; };
-		DB263B6F19271CF2005417AA /* htpp_client_default.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6D19271CF2005417AA /* htpp_client_default.cpp */; };
-		DB263B7319271E9A005417AA /* http_client_curl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7119271E9A005417AA /* http_client_curl.cpp */; };
 		DB263B76192746A4005417AA /* http_core_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B74192746A4005417AA /* http_core_entity.cpp */; };
 		DB263B78192838E9005417AA /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB263B77192838E9005417AA /* libcurl.a */; };
 		DB263B7A192838F0005417AA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB263B79192838F0005417AA /* libz.dylib */; };
@@ -102,6 +98,7 @@
 		DB8053A2192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB8053A0192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp */; };
 		DB8053A8192166CB00190CBE /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8053A4192166CB00190CBE /* Main_iPad.storyboard */; };
 		DB8053A9192166CB00190CBE /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8053A6192166CB00190CBE /* Main_iPhone.storyboard */; };
+		DBB1E2641929B0A000898FBC /* http_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB1E2621929B0A000898FBC /* http_context.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +122,6 @@
 		DB263B4D1926A44D005417AA /* http_method_get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_method_get.h; sourceTree = "<group>"; };
 		DB263B4F1926C16A005417AA /* http_core_protocol_version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_protocol_version.cpp; sourceTree = "<group>"; };
 		DB263B501926C16A005417AA /* http_core_protocol_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_protocol_version.h; sourceTree = "<group>"; };
-		DB263B521926C18E005417AA /* http_core_message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_message.cpp; sourceTree = "<group>"; };
 		DB263B531926C18E005417AA /* http_core_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_message.h; sourceTree = "<group>"; };
 		DB263B551926C24C005417AA /* http_core_name_value_pair.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_name_value_pair.cpp; sourceTree = "<group>"; };
 		DB263B561926C24C005417AA /* http_core_name_value_pair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_name_value_pair.h; sourceTree = "<group>"; };
@@ -133,7 +129,6 @@
 		DB263B591926D400005417AA /* http_future_callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_future_callback.h; sourceTree = "<group>"; };
 		DB263B5B1926E814005417AA /* http_core_header.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_header.cpp; sourceTree = "<group>"; };
 		DB263B5C1926E814005417AA /* http_core_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_header.h; sourceTree = "<group>"; };
-		DB263B5E1926E8EE005417AA /* http_core_request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_request.cpp; sourceTree = "<group>"; };
 		DB263B5F1926E8EE005417AA /* http_core_request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_request.h; sourceTree = "<group>"; };
 		DB263B611926EAAF005417AA /* http_core_method_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_method_type.cpp; sourceTree = "<group>"; };
 		DB263B621926EAAF005417AA /* http_core_method_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_method_type.h; sourceTree = "<group>"; };
@@ -143,9 +138,6 @@
 		DB263B6819271286005417AA /* http_core_statusline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_statusline.h; sourceTree = "<group>"; };
 		DB263B6A192715B6005417AA /* http_core_status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_status.cpp; sourceTree = "<group>"; };
 		DB263B6B192715B6005417AA /* http_core_status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_status.h; sourceTree = "<group>"; };
-		DB263B6D19271CF2005417AA /* htpp_client_default.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = htpp_client_default.cpp; sourceTree = "<group>"; };
-		DB263B6E19271CF2005417AA /* htpp_client_default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htpp_client_default.h; sourceTree = "<group>"; };
-		DB263B7119271E9A005417AA /* http_client_curl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_client_curl.cpp; sourceTree = "<group>"; };
 		DB263B7219271E9A005417AA /* http_client_curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_client_curl.h; sourceTree = "<group>"; };
 		DB263B74192746A4005417AA /* http_core_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_entity.cpp; sourceTree = "<group>"; };
 		DB263B75192746A4005417AA /* http_core_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_entity.h; sourceTree = "<group>"; };
@@ -374,6 +366,8 @@
 		DB8053A31921618000190CBE /* semaphore_value.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = semaphore_value.h; sourceTree = "<group>"; };
 		DB8053A5192166CB00190CBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		DB8053A7192166CB00190CBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		DBB1E2621929B0A000898FBC /* http_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_context.cpp; sourceTree = "<group>"; };
+		DBB1E2631929B0A000898FBC /* http_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_context.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,6 +419,7 @@
 		DB262FF319268DC7005417AA /* http */ = {
 			isa = PBXGroup;
 			children = (
+				DBB1E2611929B08C00898FBC /* context */,
 				DB263B8F19288FE0005417AA /* config */,
 				DB263B7019271E7D005417AA /* curl */,
 				DB2636CA1926A1E9005417AA /* async */,
@@ -435,8 +430,6 @@
 				DB2636CD1926A232005417AA /* http_client_factory.h */,
 				DB263B4C1926A44D005417AA /* http_method_get.cpp */,
 				DB263B4D1926A44D005417AA /* http_method_get.h */,
-				DB263B6D19271CF2005417AA /* htpp_client_default.cpp */,
-				DB263B6E19271CF2005417AA /* htpp_client_default.h */,
 			);
 			path = http;
 			sourceTree = "<group>";
@@ -463,13 +456,11 @@
 			children = (
 				DB263B4F1926C16A005417AA /* http_core_protocol_version.cpp */,
 				DB263B501926C16A005417AA /* http_core_protocol_version.h */,
-				DB263B521926C18E005417AA /* http_core_message.cpp */,
 				DB263B531926C18E005417AA /* http_core_message.h */,
 				DB263B551926C24C005417AA /* http_core_name_value_pair.cpp */,
 				DB263B561926C24C005417AA /* http_core_name_value_pair.h */,
 				DB263B5B1926E814005417AA /* http_core_header.cpp */,
 				DB263B5C1926E814005417AA /* http_core_header.h */,
-				DB263B5E1926E8EE005417AA /* http_core_request.cpp */,
 				DB263B5F1926E8EE005417AA /* http_core_request.h */,
 				DB263B611926EAAF005417AA /* http_core_method_type.cpp */,
 				DB263B621926EAAF005417AA /* http_core_method_type.h */,
@@ -492,7 +483,6 @@
 		DB263B7019271E7D005417AA /* curl */ = {
 			isa = PBXGroup;
 			children = (
-				DB263B7119271E9A005417AA /* http_client_curl.cpp */,
 				DB263B7219271E9A005417AA /* http_client_curl.h */,
 				DB263B7B1928397A005417AA /* http_curl_impl.cpp */,
 				DB263B7C1928397A005417AA /* http_curl_impl.h */,
@@ -1240,6 +1230,15 @@
 			path = unittests;
 			sourceTree = "<group>";
 		};
+		DBB1E2611929B08C00898FBC /* context */ = {
+			isa = PBXGroup;
+			children = (
+				DBB1E2621929B0A000898FBC /* http_context.cpp */,
+				DBB1E2631929B0A000898FBC /* http_context.h */,
+			);
+			path = context;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1351,12 +1350,11 @@
 				DB263B4E1926A44D005417AA /* http_method_get.cpp in Sources */,
 				DB67F2D319089E50007567A9 /* build_utils.cc in Sources */,
 				DB6ADBA1191C9B4A0098E92C /* task_pending_queue.cpp in Sources */,
-				DB263B541926C18E005417AA /* http_core_message.cpp in Sources */,
 				DB67F24019062FFA007567A9 /* gtest-filepath.cc in Sources */,
 				DB67F24319062FFA007567A9 /* gtest-test-part.cc in Sources */,
+				DBB1E2641929B0A000898FBC /* http_context.cpp in Sources */,
 				DB67F24119062FFA007567A9 /* gtest-port.cc in Sources */,
 				DB262FFC19268FE8005417AA /* htpp_client_UNIT_TEST.cpp in Sources */,
-				DB263B6F19271CF2005417AA /* htpp_client_default.cpp in Sources */,
 				DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */,
 				DB263B80192857B3005417AA /* http_core_request_line.cpp in Sources */,
 				DB263B5A1926D400005417AA /* http_future_callback.cpp in Sources */,
@@ -1404,7 +1402,6 @@
 				DB8042F119213D3C00190CBE /* macrologger.cpp in Sources */,
 				DB6ADB95191C9B4A0098E92C /* event_dispatcher.cpp in Sources */,
 				DB6ADB9B191C9B4A0098E92C /* condition_variable.cpp in Sources */,
-				DB263B7319271E9A005417AA /* http_client_curl.cpp in Sources */,
 				DB8042EF1920B61D00190CBE /* semaphore_impl_DARWIN.cpp in Sources */,
 				DB6ADBA9191C9B4A0098E92C /* thread_loopless.cpp in Sources */,
 				DB6ADB96191C9B4A0098E92C /* event_dispatcher_UNIT_TEST.cpp in Sources */,
@@ -1412,7 +1409,6 @@
 				DB8053A2192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp in Sources */,
 				DB6ADB9C191C9B4A0098E92C /* condition_variable_impl_POSIX.cpp in Sources */,
 				DB2636CE1926A232005417AA /* http_client_factory.cpp in Sources */,
-				DB263B601926E8EE005417AA /* http_core_request.cpp in Sources */,
 				DB6ADB97191C9B4A0098E92C /* run_loop_cocoa_DARWIN.mm in Sources */,
 				DB263B571926C24C005417AA /* http_core_name_value_pair.cpp in Sources */,
 				DB6ADF51191F35C30098E92C /* atomic.cpp in Sources */,

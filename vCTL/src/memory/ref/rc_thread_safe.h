@@ -57,13 +57,17 @@ private:
     
     
 // -----------
+template <class CRTP, typename DELETE_POLICY>
+class CReferenceThreadSafe;
+
 template <class POINTER_TYPE>
 class TDefaultDeletionPolicy
     {
 public:
     static void Delete(const POINTER_TYPE* aThis)
         {
-        delete aThis; aThis = 0;
+//        delete aThis; aThis = 0;
+        CReferenceThreadSafe<POINTER_TYPE, TDefaultDeletionPolicy<POINTER_TYPE> >::Delete(aThis);
         }
     };
 
@@ -72,6 +76,8 @@ class CReferenceThreadSafe
     : public CReferenceBaseThreadSafe
     , private TNonCopyable< CReferenceThreadSafe<CRTP, DELETE_POLICY> >
     {
+friend class TDefaultDeletionPolicy<CRTP>;
+
 public:
     CReferenceThreadSafe() {}
     
@@ -90,6 +96,11 @@ public:
         }
         
 protected:
+    static void Delete(const CRTP* aThis)
+        {
+        delete aThis; aThis = 0;
+        }
+        
     ~CReferenceThreadSafe() {}
     };
 

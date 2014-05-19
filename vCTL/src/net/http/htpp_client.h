@@ -13,6 +13,7 @@
 #include "net/http/core/http_core_request.h"
 #include "net/http/core/http_core_response.h"
 #include "net/http/async/http_future_callback.h"
+#include "memory/smart_pointer/strong_pointer.h"
 
 namespace vctl
 {
@@ -21,29 +22,25 @@ namespace net
 namespace http
 {
 
-template <class T>
+class CHttpContext;
+
+template <class HTTP_RESPONSE>
 class IHttpClient
     {
 public:
-    void Start()
-        {
-        T* thiz = static_cast<T*>(this);
-        thiz->Start();
-        }
-        
-    void Stop()
-        {
-        T* thiz = static_cast<T*>(this);
-        thiz->Stop();
-        }
+    virtual ~IHttpClient() {}
+    virtual void Start() = 0;
+    virtual void Stop() = 0;
     
-    void Execute(IHttpRequest& aHttpRequest,
-            CFutureCallBack<IHttpResponse>& aFutureCallBack)
-        {
-        T* thiz = static_cast<T*>(this);
-        thiz->Execute(aHttpRequest, aFutureCallBack);
-        }
-    };
+    //
+    //aHttpRequest: user allocates it AND transfers ownership of aHttpRequest to http-module
+    //aFutureCallBack: user allocates it AND transfers ownership to http-module.
+    //
+    virtual void Execute(vctl::TStrongPointer<CHttpContext> aHttpContext,
+        vctl::TStrongPointer<IHttpRequest> aHttpRequest,
+        vctl::TStrongPointer< IFutureCallBack< HTTP_RESPONSE > > aFutureCallBack) = 0;
+     };
+
 
 } //namespace http
 } //namespace net
