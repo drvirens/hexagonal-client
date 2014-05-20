@@ -14,16 +14,11 @@
 		DB263B4E1926A44D005417AA /* http_method_get.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B4C1926A44D005417AA /* http_method_get.cpp */; };
 		DB263B511926C16A005417AA /* http_core_protocol_version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B4F1926C16A005417AA /* http_core_protocol_version.cpp */; };
 		DB263B571926C24C005417AA /* http_core_name_value_pair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B551926C24C005417AA /* http_core_name_value_pair.cpp */; };
-		DB263B5A1926D400005417AA /* http_future_callback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B581926D400005417AA /* http_future_callback.cpp */; };
 		DB263B5D1926E814005417AA /* http_core_header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B5B1926E814005417AA /* http_core_header.cpp */; };
-		DB263B631926EAAF005417AA /* http_core_method_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B611926EAAF005417AA /* http_core_method_type.cpp */; };
-		DB263B661927108C005417AA /* http_core_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B641927108C005417AA /* http_core_response.cpp */; };
 		DB263B6919271286005417AA /* http_core_statusline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6719271286005417AA /* http_core_statusline.cpp */; };
 		DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B6A192715B6005417AA /* http_core_status.cpp */; };
-		DB263B76192746A4005417AA /* http_core_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B74192746A4005417AA /* http_core_entity.cpp */; };
 		DB263B78192838E9005417AA /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB263B77192838E9005417AA /* libcurl.a */; };
 		DB263B7A192838F0005417AA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB263B79192838F0005417AA /* libz.dylib */; };
-		DB263B7D1928397A005417AA /* http_curl_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7B1928397A005417AA /* http_curl_impl.cpp */; };
 		DB263B80192857B3005417AA /* http_core_request_line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7E192857B3005417AA /* http_core_request_line.cpp */; };
 		DB263B8319285B1F005417AA /* http_core_header_group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B8119285B1F005417AA /* http_core_header_group.cpp */; };
 		DB263B9219288FF7005417AA /* http_config_request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B9019288FF7005417AA /* http_config_request.cpp */; };
@@ -99,6 +94,7 @@
 		DB8053A8192166CB00190CBE /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8053A4192166CB00190CBE /* Main_iPad.storyboard */; };
 		DB8053A9192166CB00190CBE /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8053A6192166CB00190CBE /* Main_iPhone.storyboard */; };
 		DBB1E2641929B0A000898FBC /* http_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB1E2621929B0A000898FBC /* http_context.cpp */; };
+		DBFF4A3D192ADF33001679F6 /* http_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A3B192ADF33001679F6 /* http_manager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,26 +121,19 @@
 		DB263B531926C18E005417AA /* http_core_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_message.h; sourceTree = "<group>"; };
 		DB263B551926C24C005417AA /* http_core_name_value_pair.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_name_value_pair.cpp; sourceTree = "<group>"; };
 		DB263B561926C24C005417AA /* http_core_name_value_pair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_name_value_pair.h; sourceTree = "<group>"; };
-		DB263B581926D400005417AA /* http_future_callback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_future_callback.cpp; sourceTree = "<group>"; };
 		DB263B591926D400005417AA /* http_future_callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_future_callback.h; sourceTree = "<group>"; };
 		DB263B5B1926E814005417AA /* http_core_header.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_header.cpp; sourceTree = "<group>"; };
 		DB263B5C1926E814005417AA /* http_core_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_header.h; sourceTree = "<group>"; };
 		DB263B5F1926E8EE005417AA /* http_core_request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_request.h; sourceTree = "<group>"; };
-		DB263B611926EAAF005417AA /* http_core_method_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_method_type.cpp; sourceTree = "<group>"; };
 		DB263B621926EAAF005417AA /* http_core_method_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_method_type.h; sourceTree = "<group>"; };
-		DB263B641927108C005417AA /* http_core_response.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_response.cpp; sourceTree = "<group>"; };
 		DB263B651927108C005417AA /* http_core_response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_response.h; sourceTree = "<group>"; };
 		DB263B6719271286005417AA /* http_core_statusline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_statusline.cpp; sourceTree = "<group>"; };
 		DB263B6819271286005417AA /* http_core_statusline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_statusline.h; sourceTree = "<group>"; };
 		DB263B6A192715B6005417AA /* http_core_status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_status.cpp; sourceTree = "<group>"; };
 		DB263B6B192715B6005417AA /* http_core_status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_status.h; sourceTree = "<group>"; };
-		DB263B7219271E9A005417AA /* http_client_curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_client_curl.h; sourceTree = "<group>"; };
-		DB263B74192746A4005417AA /* http_core_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_entity.cpp; sourceTree = "<group>"; };
 		DB263B75192746A4005417AA /* http_core_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_entity.h; sourceTree = "<group>"; };
 		DB263B77192838E9005417AA /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../../libs/iOS/curl/libcurl.a; sourceTree = "<group>"; };
 		DB263B79192838F0005417AA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		DB263B7B1928397A005417AA /* http_curl_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_curl_impl.cpp; sourceTree = "<group>"; };
-		DB263B7C1928397A005417AA /* http_curl_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_curl_impl.h; sourceTree = "<group>"; };
 		DB263B7E192857B3005417AA /* http_core_request_line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_request_line.cpp; sourceTree = "<group>"; };
 		DB263B7F192857B3005417AA /* http_core_request_line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_request_line.h; sourceTree = "<group>"; };
 		DB263B8119285B1F005417AA /* http_core_header_group.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_header_group.cpp; sourceTree = "<group>"; };
@@ -368,6 +357,10 @@
 		DB8053A7192166CB00190CBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		DBB1E2621929B0A000898FBC /* http_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_context.cpp; sourceTree = "<group>"; };
 		DBB1E2631929B0A000898FBC /* http_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_context.h; sourceTree = "<group>"; };
+		DBFF4A34192AD803001679F6 /* http_core_request_execute_chain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_request_execute_chain.h; sourceTree = "<group>"; };
+		DBFF4A39192ADB0E001679F6 /* http_client_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_client_impl.h; sourceTree = "<group>"; };
+		DBFF4A3B192ADF33001679F6 /* http_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_manager.cpp; sourceTree = "<group>"; };
+		DBFF4A3C192ADF33001679F6 /* http_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_manager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,9 +412,9 @@
 		DB262FF319268DC7005417AA /* http */ = {
 			isa = PBXGroup;
 			children = (
+				DBFF4A36192ADAEF001679F6 /* detail */,
 				DBB1E2611929B08C00898FBC /* context */,
 				DB263B8F19288FE0005417AA /* config */,
-				DB263B7019271E7D005417AA /* curl */,
 				DB2636CA1926A1E9005417AA /* async */,
 				DB2636CB1926A1E9005417AA /* core */,
 				DB262FF919268FD7005417AA /* unittests */,
@@ -445,7 +438,6 @@
 		DB2636CA1926A1E9005417AA /* async */ = {
 			isa = PBXGroup;
 			children = (
-				DB263B581926D400005417AA /* http_future_callback.cpp */,
 				DB263B591926D400005417AA /* http_future_callback.h */,
 			);
 			path = async;
@@ -462,32 +454,20 @@
 				DB263B5B1926E814005417AA /* http_core_header.cpp */,
 				DB263B5C1926E814005417AA /* http_core_header.h */,
 				DB263B5F1926E8EE005417AA /* http_core_request.h */,
-				DB263B611926EAAF005417AA /* http_core_method_type.cpp */,
 				DB263B621926EAAF005417AA /* http_core_method_type.h */,
-				DB263B641927108C005417AA /* http_core_response.cpp */,
 				DB263B651927108C005417AA /* http_core_response.h */,
 				DB263B6719271286005417AA /* http_core_statusline.cpp */,
 				DB263B6819271286005417AA /* http_core_statusline.h */,
 				DB263B6A192715B6005417AA /* http_core_status.cpp */,
 				DB263B6B192715B6005417AA /* http_core_status.h */,
-				DB263B74192746A4005417AA /* http_core_entity.cpp */,
 				DB263B75192746A4005417AA /* http_core_entity.h */,
 				DB263B7E192857B3005417AA /* http_core_request_line.cpp */,
 				DB263B7F192857B3005417AA /* http_core_request_line.h */,
 				DB263B8119285B1F005417AA /* http_core_header_group.cpp */,
 				DB263B8219285B1F005417AA /* http_core_header_group.h */,
+				DBFF4A34192AD803001679F6 /* http_core_request_execute_chain.h */,
 			);
 			path = core;
-			sourceTree = "<group>";
-		};
-		DB263B7019271E7D005417AA /* curl */ = {
-			isa = PBXGroup;
-			children = (
-				DB263B7219271E9A005417AA /* http_client_curl.h */,
-				DB263B7B1928397A005417AA /* http_curl_impl.cpp */,
-				DB263B7C1928397A005417AA /* http_curl_impl.h */,
-			);
-			path = curl;
 			sourceTree = "<group>";
 		};
 		DB263B8419286DE4005417AA /* curl */ = {
@@ -1239,6 +1219,16 @@
 			path = context;
 			sourceTree = "<group>";
 		};
+		DBFF4A36192ADAEF001679F6 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				DBFF4A39192ADB0E001679F6 /* http_client_impl.h */,
+				DBFF4A3B192ADF33001679F6 /* http_manager.cpp */,
+				DBFF4A3C192ADF33001679F6 /* http_manager.h */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1341,7 +1331,6 @@
 				DB6ADBBA191C9C480098E92C /* log_UNIT_TEST.cpp in Sources */,
 				DB263B5D1926E814005417AA /* http_core_header.cpp in Sources */,
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
-				DB263B7D1928397A005417AA /* http_curl_impl.cpp in Sources */,
 				DB262DE319248260005417AA /* log_logger.cpp in Sources */,
 				DB6ADB9E191C9B4A0098E92C /* lock_impl_POSIX.cpp in Sources */,
 				DB6ADBB8191C9C480098E92C /* log.cpp in Sources */,
@@ -1357,7 +1346,6 @@
 				DB262FFC19268FE8005417AA /* htpp_client_UNIT_TEST.cpp in Sources */,
 				DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */,
 				DB263B80192857B3005417AA /* http_core_request_line.cpp in Sources */,
-				DB263B5A1926D400005417AA /* http_future_callback.cpp in Sources */,
 				DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */,
 				DB6ADBA4191C9B4A0098E92C /* thread_platform_optional_IOS.mm in Sources */,
 				DB6ADB9D191C9B4A0098E92C /* lock.cpp in Sources */,
@@ -1365,16 +1353,14 @@
 				DB6ADB9F191C9B4A0098E92C /* lock_UNIT_TEST.cpp in Sources */,
 				DB6ADBA0191C9B4A0098E92C /* task.cpp in Sources */,
 				DB6ADBA6191C9B4A0098E92C /* thread_platform_POSIX.cpp in Sources */,
+				DBFF4A3D192ADF33001679F6 /* http_manager.cpp in Sources */,
 				DB6ADB9A191C9B4A0098E92C /* run_loop_cocoa_darwin_UNIT_TEST.mm in Sources */,
-				DB263B661927108C005417AA /* http_core_response.cpp in Sources */,
-				DB263B631926EAAF005417AA /* http_core_method_type.cpp in Sources */,
 				DB6ADBA8191C9B4A0098E92C /* thread_loopful.cpp in Sources */,
 				DB262DCC192444E8005417AA /* lambda_UNIT_TEST.cpp in Sources */,
 				DB6ADBA2191C9B4A0098E92C /* task_pending_queue_UNIT_TEST.cpp in Sources */,
 				DB6ADBA3191C9B4A0098E92C /* thread_platform_IOS.mm in Sources */,
 				DB6ADBB9191C9C480098E92C /* log_output.cpp in Sources */,
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
-				DB263B76192746A4005417AA /* http_core_entity.cpp in Sources */,
 				DB6ADBAC191C9B4A0098E92C /* thread_platform_UNIT_TEST.cpp in Sources */,
 				DB263B8319285B1F005417AA /* http_core_header_group.cpp in Sources */,
 				DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */,

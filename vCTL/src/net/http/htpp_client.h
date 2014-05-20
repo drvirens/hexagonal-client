@@ -9,11 +9,9 @@
 #ifndef __vClientTemplateLib__htpp_client__
 #define __vClientTemplateLib__htpp_client__
 
-#include "net/http/http_method_get.h"
 #include "net/http/core/http_core_request.h"
 #include "net/http/core/http_core_response.h"
 #include "net/http/async/http_future_callback.h"
-#include "memory/smart_pointer/strong_pointer.h"
 
 namespace vctl
 {
@@ -24,8 +22,7 @@ namespace http
 
 class CHttpContext;
 
-template <class HTTP_RESPONSE>
-class IHttpClient
+class IHttpClient //TODO: make this thread-unsafe
     {
 public:
     virtual ~IHttpClient() {}
@@ -36,12 +33,19 @@ public:
     //aHttpRequest: user allocates it AND transfers ownership of aHttpRequest to http-module
     //aFutureCallBack: user allocates it AND transfers ownership to http-module.
     //
-    virtual void Execute(vctl::TStrongPointer<CHttpContext> aHttpContext,
-        vctl::TStrongPointer<IHttpRequest> aHttpRequest,
-        vctl::TStrongPointer< IFutureCallBack< HTTP_RESPONSE > > aFutureCallBack) = 0;
+    void Execute(CHttpContext* aHttpContext,
+        IHttpRequest* aHttpRequest,
+        IFutureCallBack* aFutureCallBack)
+        {
+        DoExecute(aHttpContext, aHttpRequest, aFutureCallBack);
+        }
+        
+protected:
+    virtual void DoExecute(CHttpContext* aHttpContext,
+        IHttpRequest* aHttpRequest,
+        IFutureCallBack* aFutureCallBack) = 0;
      };
-
-
+    
 } //namespace http
 } //namespace net
 } //namespace vctl

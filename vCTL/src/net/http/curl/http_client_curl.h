@@ -32,11 +32,16 @@ protected:
         }
         
 private:
-    virtual void Execute(vctl::TStrongPointer<CHttpContext> aHttpContext,
-        vctl::TStrongPointer<IHttpRequest> aHttpRequest,
-        vctl::TStrongPointer< IFutureCallBack< HTTP_RESPONSE > > aFutureCallBack)
+//    virtual void Execute(vctl::TStrongPointer<CHttpContext> aHttpContext,
+//        vctl::TStrongPointer<IHttpRequest> aHttpRequest,
+//        vctl::TStrongPointer< IFutureCallBack< HTTP_RESPONSE > > aFutureCallBack)
+//        {
+//        //hookup with THttpCurl
+//        }
+    virtual void Execute(CHttpContext* aHttpContext,
+        IHttpRequest* aHttpRequest,
+        const IFutureCallBack< HTTP_RESPONSE >& aFutureCallBack)
         {
-        //hookup with THttpCurl
         }
     };
 

@@ -6,4 +6,37 @@
 //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
 //
 
-#include "http_core_protocol_version.h"
+#include "net/http/core/http_core_protocol_version.h"
+
+
+namespace vctl
+{
+namespace net
+{
+namespace http
+{
+TProtocolVersion::TProtocolVersion(std::string& aProtocolName, TVersion aMajor, TVersion aMinor)
+    : iProtocolName(aProtocolName)
+    , iMajor(aMajor)
+    , iMinor(aMinor)
+    {
+    }
+
+const std::string& TProtocolVersion::ProtocolName() const
+    {
+    return iProtocolName;
+    }
+    
+TVersion TProtocolVersion::Major() const
+    {
+    return iMajor;
+    }
+    
+TVersion TProtocolVersion::Minor() const
+    {
+    return iMinor;
+    }
+
+} //namespace http
+} //namespace net
+} //namespace vctl

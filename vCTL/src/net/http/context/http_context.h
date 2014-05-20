@@ -21,7 +21,7 @@ namespace http
 class CHttpContext : public vctl::CReferenceThreadSafe<CHttpContext>
     {
 private:
-    virtual ~CHttpContext(); //purposefully private so others cant delete it accidentally
+    virtual ~CHttpContext() {} //purposefully private so others cant delete it accidentally
     
     friend class vctl::CReferenceThreadSafe<CHttpContext>; //allow it to delete us
     };

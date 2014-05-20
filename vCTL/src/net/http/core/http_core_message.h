@@ -10,7 +10,8 @@
 #define __vClientTemplateLib__http_core_message__
 
 #include "net/http/core/http_core_protocol_version.h"
-#include "memory/smart_pointer/strong_pointer.h"
+//#include "memory/smart_pointer/strong_pointer.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -22,15 +23,17 @@ namespace http
 class THeader;
 class THttpHeadersMap;
 
-class IHttpMessage
+class IHttpMessage : public vctl::CReferenceThreadSafe<IHttpMessage>
     {
 public:
-    virtual ~IHttpMessage() {}
-    
     virtual TProtocolVersion Version() const = 0;
     virtual void AddHeader(const THeader& aHeader) = 0;
     virtual void RemoveHeader(const THeader& aHeader) = 0;
-    virtual vctl::TStrongPointer<THttpHeadersMap> GetAllHeaders() const = 0;
+    virtual THttpHeadersMap* GetAllHeaders() const = 0;
+    
+protected:
+    virtual ~IHttpMessage() {}
+    friend class vctl::CReferenceThreadSafe<IHttpMessage>;
     };
 
 } //namespace http

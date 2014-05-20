@@ -24,8 +24,7 @@ class THttpClientsFactory
 public:
     static THttpClientsFactory& Instance();
     
-    template <class RESPONSE_HANDLER>
-    vctl::TStrongPointer< IHttpClient<RESPONSE_HANDLER > > DefaultHttpClient();
+    IHttpClient* DefaultHttpClient();
     };
 
 } //namespace http
