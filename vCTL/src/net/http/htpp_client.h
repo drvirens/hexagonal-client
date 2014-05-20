@@ -22,7 +22,7 @@ namespace http
 
 class CHttpContext;
 
-class IHttpClient //TODO: make this thread-unsafe
+class IHttpClient 
     {
 public:
     virtual ~IHttpClient() {}
@@ -33,7 +33,7 @@ public:
     //aHttpRequest: user allocates it AND transfers ownership of aHttpRequest to http-module
     //aFutureCallBack: user allocates it AND transfers ownership to http-module.
     //
-    void Execute(CHttpContext* aHttpContext,
+    void Execute(CHttpContext* aHttpContext, //TODO: remove this. server will create it internally
         IHttpRequest* aHttpRequest,
         IFutureCallBack* aFutureCallBack)
         {

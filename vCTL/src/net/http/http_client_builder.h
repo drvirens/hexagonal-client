@@ -19,10 +19,10 @@ namespace net
 namespace http
 {
 
-class THttpClientsFactory
+class THttpClientBuilder
     {
 public:
-    static THttpClientsFactory& Instance();
+    static THttpClientBuilder& Instance();
     
     IHttpClient* DefaultHttpClient();
     };

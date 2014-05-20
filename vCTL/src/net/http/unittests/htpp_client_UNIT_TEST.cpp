@@ -10,7 +10,7 @@
 
 #include "memory/ref/rc_thread_safe.h"
 
-#include "net/http/http_client_factory.h"
+#include "net/http/http_client_builder.h"
 #include "net/http/http_method_get.h"
 #include "net/http/core/http_core_header.h"
 #include "net/http/context/http_context.h"
@@ -177,7 +177,7 @@ TEST(UT_THttpClient, Trivial)
     
     IHttpClient* httpclient = new MyMockHttpClient();
     
-//    THttpClientsFactory factory = THttpClientsFactory::Instance();    
+//    THttpClientBuilder factory = THttpClientBuilder::Instance();    
 //    httpclient = factory.DefaultHttpClient<MyHttpResponseObject>();
     
     httpclient->Start();

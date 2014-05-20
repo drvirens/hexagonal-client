@@ -23,19 +23,30 @@ namespace http
 {
 
 class CHttpContext;
+class CHttpServer;
 
 class CHttpManager : private vbase::TNotThreadSafe
+    //
+    //all the functions of this class must be executed on SAME thread
+    //generally the http-module will schedule an http request
+    //on one of the worker threads
+    //
     {
 public:
-    virtual ~CHttpManager() {}
+    static CHttpManager* New();
+    
+    virtual ~CHttpManager();
     
     void Execute(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
         IFutureCallBack* aFutureCallBack);
     
 private:
-//todo: use smart pointer here
-    IHttpRequestExecuteChain* iHttpRequestExecuteChain;
+    CHttpManager();
+    void Construct();
+    
+private:
+    CHttpServer* iHttpServer;
     };
 
 } //namespace http

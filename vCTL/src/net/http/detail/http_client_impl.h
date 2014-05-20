@@ -18,8 +18,7 @@ namespace net
 namespace http
 {
 
-template <class HTTP_RESPONSE>
-class CHttpClientImpl : public IHttpClient<HTTP_RESPONSE>
+class CHttpClientImpl : public IHttpClient
     {
 protected:
     virtual void Start();
@@ -34,21 +33,21 @@ private:
     
     };
     
-void CHttpClientImpl<HTTP_RESPONSE>::Start()
+void CHttpClientImpl::Start()
     {
     }
     
-void CHttpClientImpl<HTTP_RESPONSE>::Stop()
+void CHttpClientImpl::Stop()
     {
     }
     
-void CHttpClientImpl<HTTP_RESPONSE>::DoExecute(CHttpContext* aHttpContext,
+void CHttpClientImpl::DoExecute(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
         IFutureCallBack* aFutureCallBack)
     {
     //transfer all the execution machinery on a different thread
     //get a thread from thread pool and execute on it
-    
+    //Post the lambda in threadworkerpool queue and signal the queue
     }
 
 } //namespace http
