@@ -23,6 +23,8 @@ class IHttpResponse;
 class IConnectionReuseStrategy : private vbase::TNotThreadSafe
     {
 public:
+    virtual ~IConnectionReuseStrategy() {}
+    
     virtual bool KeepAlive(const IHttpResponse& aResponse, const CHttpContext& aContext) = 0;
     };
 

@@ -23,6 +23,8 @@ class IHttpResponse;
 class IConnectionBackoffStrategy : private vbase::TNotThreadSafe
     {
 public:
+    virtual ~IConnectionBackoffStrategy() {}
+    
     //we received this response...should we backoff?
     //touch the res
     virtual bool ShouldBackOff(const IHttpResponse& aResponse) = 0;

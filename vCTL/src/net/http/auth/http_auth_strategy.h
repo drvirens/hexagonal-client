@@ -23,6 +23,8 @@ class IHttpResponse;
 class IAuthenticationStrategy : private vbase::TNotThreadSafe
     {
 public:
+    virtual ~IAuthenticationStrategy() {}
+    
     virtual bool IsAuthRequested() = 0;
     virtual void GetChallenges() = 0;
     virtual void ChooseChallenge() = 0;

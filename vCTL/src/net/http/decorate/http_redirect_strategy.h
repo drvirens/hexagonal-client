@@ -23,6 +23,8 @@ class IHttpResponse;
 class IRedirectStrategy : private vbase::TNotThreadSafe
     {
 public:
+    virtual ~IRedirectStrategy() {}
+    
     virtual bool CanRedirect(IHttpResponse& aResponse,
                             IHttpRequest& aRequest,
                             IHttpContext& aContext) = 0;

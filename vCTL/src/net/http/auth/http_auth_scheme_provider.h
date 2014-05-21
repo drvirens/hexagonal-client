@@ -23,7 +23,7 @@ class IAuthScheme;
 class IAuthSchemeProvider : private vbase::TNotThreadSafe
     {
 public:
-    virtual ~IRetryHandler() {}
+    virtual ~IAuthSchemeProvider() {}
     virtual IAuthScheme* Create(IHttpContext& aContext) = 0;
     };
 

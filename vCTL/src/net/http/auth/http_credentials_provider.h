@@ -24,8 +24,8 @@ class ICredentials;
 class ICredentialsProvider : private vbase::TNotThreadSafe
     {
 public:
-    //we received this response...should we backoff?
-    //touch the res
+    virtual ~ICredentialsProvider() {}
+    
     virtual void SetCredentials(const TAuthScope& aAuthScope, const ICredentials& aCredentials) = 0;
     virtual const ICredentials& Credentials(const TAuthScope& aAuthScope) const = 0;
     virtual void Clear() = 0;
