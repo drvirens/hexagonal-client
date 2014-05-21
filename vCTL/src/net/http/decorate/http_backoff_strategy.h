@@ -9,7 +9,7 @@
 #ifndef __vClientTemplateLib__http_backoff_strategy__
 #define __vClientTemplateLib__http_backoff_strategy__
 
-#include "memory/ref/rc_thread_safe.h"
+#include "base/thread/thread_un_safe.h"
 
 namespace vctl
 {
@@ -20,8 +20,7 @@ namespace http
 
 class IHttpResponse;
 
-class IConnectionBackoffStrategy
-    : private vctl::CReferenceThreadSafe<IConnectionBackoffStrategy>
+class IConnectionBackoffStrategy : private vbase::TNotThreadSafe
     {
 public:
     //we received this response...should we backoff?

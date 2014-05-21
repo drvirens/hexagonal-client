@@ -9,7 +9,7 @@
 #ifndef vClientTemplateLib_http_auth_strategy_h
 #define vClientTemplateLib_http_auth_strategy_h
 
-#include "memory/ref/rc_thread_safe.h"
+#include "base/thread/thread_un_safe.h"
 
 namespace vctl
 {
@@ -20,7 +20,7 @@ namespace http
 
 class IHttpResponse;
 
-class IAuthenticationStrategy : private vctl::CReferenceThreadSafe<IAuthenticationStrategy>
+class IAuthenticationStrategy : private vbase::TNotThreadSafe
     {
 public:
     virtual bool IsAuthRequested() = 0;

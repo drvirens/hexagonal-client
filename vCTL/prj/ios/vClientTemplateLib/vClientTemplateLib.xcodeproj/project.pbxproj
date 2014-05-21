@@ -368,10 +368,14 @@
 		DBFF4A49192C2DE5001679F6 /* http_backoff_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_backoff_strategy.h; sourceTree = "<group>"; };
 		DBFF4A4A192C2DE5001679F6 /* http_core_request_execute_chain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_request_execute_chain.h; sourceTree = "<group>"; };
 		DBFF4A4C192C2E05001679F6 /* http_connection_reuse_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_connection_reuse_strategy.h; sourceTree = "<group>"; };
-		DBFF4A4E192C2EE6001679F6 /* http_auth_strategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_auth_strategy.h; sourceTree = "<group>"; };
 		DBFF4A4F192C3063001679F6 /* http_core_uri.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_uri.cpp; sourceTree = "<group>"; };
 		DBFF4A50192C3063001679F6 /* http_core_uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_uri.h; sourceTree = "<group>"; };
 		DBFF4A52192C31A0001679F6 /* http_redirect_strategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_redirect_strategy.h; sourceTree = "<group>"; };
+		DBFF4A53192C718F001679F6 /* http_retry_handler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_retry_handler.h; sourceTree = "<group>"; };
+		DBFF4A54192C7376001679F6 /* http_service_unavailable_retry_strategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_service_unavailable_retry_strategy.h; sourceTree = "<group>"; };
+		DBFF4A57192C76E5001679F6 /* http_auth_scheme_provider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_auth_scheme_provider.h; sourceTree = "<group>"; };
+		DBFF4A58192C8294001679F6 /* http_auth_scheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_auth_scheme.h; sourceTree = "<group>"; };
+		DBFF4A59192C8294001679F6 /* http_auth_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_auth_strategy.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +427,7 @@
 		DB262FF319268DC7005417AA /* http */ = {
 			isa = PBXGroup;
 			children = (
+				DBFF4A55192C75B6001679F6 /* auth */,
 				DBFF4A48192C2DE5001679F6 /* decorate */,
 				DBFF4A36192ADAEF001679F6 /* detail */,
 				DBB1E2611929B08C00898FBC /* context */,
@@ -1251,10 +1256,21 @@
 				DBFF4A49192C2DE5001679F6 /* http_backoff_strategy.h */,
 				DBFF4A4A192C2DE5001679F6 /* http_core_request_execute_chain.h */,
 				DBFF4A4C192C2E05001679F6 /* http_connection_reuse_strategy.h */,
-				DBFF4A4E192C2EE6001679F6 /* http_auth_strategy.h */,
 				DBFF4A52192C31A0001679F6 /* http_redirect_strategy.h */,
+				DBFF4A53192C718F001679F6 /* http_retry_handler.h */,
+				DBFF4A54192C7376001679F6 /* http_service_unavailable_retry_strategy.h */,
 			);
 			path = decorate;
+			sourceTree = "<group>";
+		};
+		DBFF4A55192C75B6001679F6 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				DBFF4A58192C8294001679F6 /* http_auth_scheme.h */,
+				DBFF4A59192C8294001679F6 /* http_auth_strategy.h */,
+				DBFF4A57192C76E5001679F6 /* http_auth_scheme_provider.h */,
+			);
+			path = auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
