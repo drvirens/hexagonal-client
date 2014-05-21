@@ -19,7 +19,7 @@ namespace http
 {
 namespace detail
 {
-
+//todo : this must be concrete subclass of chain
 class IHttpActualSenderReceiver : private vbase::TNotThreadSafe
     //
     //actual interface to send/recv http traffic

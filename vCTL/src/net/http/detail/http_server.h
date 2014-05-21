@@ -11,6 +11,7 @@
 
 #include <string>
 #include "base/thread/thread_un_safe.h"
+#include "net/http/config/http_config_request.h"
 
 namespace vctl
 {
@@ -22,6 +23,17 @@ namespace detail
 {
 
 class IHttpActualSenderReceiver;
+class IConnectionReuseStrategy;
+class IConnectionKeepAliveStrategy;
+class IAuthenticationStrategy;
+class IHttpHooks;
+class IRetryHandler;
+class IRedirectStrategy;
+class IConnectionBackoffStrategy;
+class IServiceUnavailableRetryStrategy;
+class IAuthSchemeProvider;
+class ICredentialsProvider;
+class THttpHeadersMap;
 
 class CHttpServer : private vbase::TNotThreadSafe
     //
@@ -31,20 +43,21 @@ class CHttpServer : private vbase::TNotThreadSafe
 public:
     
 private:
-    IHttpActualSenderReceiver* iHttp;
+    IHttpActualSenderReceiver* iHttpActualSenderReceiver;
+    
     IConnectionReuseStrategy* iConnReuseStrategy;
     IConnectionKeepAliveStrategy* iConnKeepAliveStrategy;
     IAuthenticationStrategy* iAuthStrategy;
     IHttpHooks* iHttpHooks; //class that contains both both in-hook and out-hook
     IRetryHandler* iRetryHandler;
     IRedirectStrategy* iRedirectStrategy;
-    IBackoffStrategy* iBackoffStrategy;
+    IConnectionBackoffStrategy* iBackoffStrategy;
     IServiceUnavailableRetryStrategy* iServiceUnavailableRetryStrategy;
     IAuthSchemeProvider* iAuthSchemeProvider;
     ICredentialsProvider* iCredentialsProvider;
     
     std::string iUserAgent;
-    THeadersMap* iDefaultHeaders;
+    THttpHeadersMap* iDefaultHeaders;
     TRequestConfig iRequestConfig;
     
     bool iIsRedirectHandlingDisabled;
