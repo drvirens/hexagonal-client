@@ -376,6 +376,9 @@
 		DBFF4A57192C76E5001679F6 /* http_auth_scheme_provider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_auth_scheme_provider.h; sourceTree = "<group>"; };
 		DBFF4A58192C8294001679F6 /* http_auth_scheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_auth_scheme.h; sourceTree = "<group>"; };
 		DBFF4A59192C8294001679F6 /* http_auth_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_auth_strategy.h; sourceTree = "<group>"; };
+		DBFF4A5A192C86EB001679F6 /* http_credentials_provider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_credentials_provider.h; sourceTree = "<group>"; };
+		DBFF4A5B192C8843001679F6 /* http_credentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_credentials.h; sourceTree = "<group>"; };
+		DBFF4A5C192C8956001679F6 /* http_auth_scope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_auth_scope.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1269,6 +1272,9 @@
 				DBFF4A58192C8294001679F6 /* http_auth_scheme.h */,
 				DBFF4A59192C8294001679F6 /* http_auth_strategy.h */,
 				DBFF4A57192C76E5001679F6 /* http_auth_scheme_provider.h */,
+				DBFF4A5A192C86EB001679F6 /* http_credentials_provider.h */,
+				DBFF4A5B192C8843001679F6 /* http_credentials.h */,
+				DBFF4A5C192C8956001679F6 /* http_auth_scope.h */,
 			);
 			path = auth;
 			sourceTree = "<group>";
