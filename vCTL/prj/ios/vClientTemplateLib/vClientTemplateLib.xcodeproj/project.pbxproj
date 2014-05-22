@@ -95,6 +95,12 @@
 		DB8053A9192166CB00190CBE /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8053A6192166CB00190CBE /* Main_iPhone.storyboard */; };
 		DBB1E2641929B0A000898FBC /* http_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB1E2621929B0A000898FBC /* http_context.cpp */; };
 		DBB85B12192D769300CBCFC0 /* http_server_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B10192D769300CBCFC0 /* http_server_builder.cpp */; };
+		DBB85B16192DA78A00CBCFC0 /* http_executor_backoff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B14192DA78A00CBCFC0 /* http_executor_backoff.cpp */; };
+		DBB85B19192DA7B100CBCFC0 /* http_executor_redirect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B17192DA7B100CBCFC0 /* http_executor_redirect.cpp */; };
+		DBB85B1C192DA7F300CBCFC0 /* http_executor_retry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B1A192DA7F300CBCFC0 /* http_executor_retry.cpp */; };
+		DBB85B1F192DA80C00CBCFC0 /* http_executor_retry_service_unavailable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B1D192DA80C00CBCFC0 /* http_executor_retry_service_unavailable.cpp */; };
+		DBB85B22192DA83700CBCFC0 /* http_executor_boss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B20192DA83700CBCFC0 /* http_executor_boss.cpp */; };
+		DBB85B25192DA86B00CBCFC0 /* http_executor_hooks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B23192DA86B00CBCFC0 /* http_executor_hooks.cpp */; };
 		DBFF4A3D192ADF33001679F6 /* http_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A3B192ADF33001679F6 /* http_manager.cpp */; };
 		DBFF4A40192B313F001679F6 /* http_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A3E192B313F001679F6 /* http_server.cpp */; };
 		DBFF4A51192C3063001679F6 /* http_core_uri.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A4F192C3063001679F6 /* http_core_uri.cpp */; };
@@ -362,6 +368,18 @@
 		DBB1E2631929B0A000898FBC /* http_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_context.h; sourceTree = "<group>"; };
 		DBB85B10192D769300CBCFC0 /* http_server_builder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_server_builder.cpp; sourceTree = "<group>"; };
 		DBB85B11192D769300CBCFC0 /* http_server_builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_server_builder.h; sourceTree = "<group>"; };
+		DBB85B14192DA78A00CBCFC0 /* http_executor_backoff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_backoff.cpp; sourceTree = "<group>"; };
+		DBB85B15192DA78A00CBCFC0 /* http_executor_backoff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_backoff.h; sourceTree = "<group>"; };
+		DBB85B17192DA7B100CBCFC0 /* http_executor_redirect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_redirect.cpp; sourceTree = "<group>"; };
+		DBB85B18192DA7B100CBCFC0 /* http_executor_redirect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_redirect.h; sourceTree = "<group>"; };
+		DBB85B1A192DA7F300CBCFC0 /* http_executor_retry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_retry.cpp; sourceTree = "<group>"; };
+		DBB85B1B192DA7F300CBCFC0 /* http_executor_retry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_retry.h; sourceTree = "<group>"; };
+		DBB85B1D192DA80C00CBCFC0 /* http_executor_retry_service_unavailable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_retry_service_unavailable.cpp; sourceTree = "<group>"; };
+		DBB85B1E192DA80C00CBCFC0 /* http_executor_retry_service_unavailable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_retry_service_unavailable.h; sourceTree = "<group>"; };
+		DBB85B20192DA83700CBCFC0 /* http_executor_boss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_boss.cpp; sourceTree = "<group>"; };
+		DBB85B21192DA83700CBCFC0 /* http_executor_boss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_boss.h; sourceTree = "<group>"; };
+		DBB85B23192DA86B00CBCFC0 /* http_executor_hooks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_hooks.cpp; sourceTree = "<group>"; };
+		DBB85B24192DA86B00CBCFC0 /* http_executor_hooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_hooks.h; sourceTree = "<group>"; };
 		DBFF4A39192ADB0E001679F6 /* http_client_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_client_impl.h; sourceTree = "<group>"; };
 		DBFF4A3B192ADF33001679F6 /* http_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_manager.cpp; sourceTree = "<group>"; };
 		DBFF4A3C192ADF33001679F6 /* http_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_manager.h; sourceTree = "<group>"; };
@@ -1246,6 +1264,18 @@
 		DBB85B13192D89DD00CBCFC0 /* chain */ = {
 			isa = PBXGroup;
 			children = (
+				DBB85B14192DA78A00CBCFC0 /* http_executor_backoff.cpp */,
+				DBB85B15192DA78A00CBCFC0 /* http_executor_backoff.h */,
+				DBB85B17192DA7B100CBCFC0 /* http_executor_redirect.cpp */,
+				DBB85B18192DA7B100CBCFC0 /* http_executor_redirect.h */,
+				DBB85B1A192DA7F300CBCFC0 /* http_executor_retry.cpp */,
+				DBB85B1B192DA7F300CBCFC0 /* http_executor_retry.h */,
+				DBB85B1D192DA80C00CBCFC0 /* http_executor_retry_service_unavailable.cpp */,
+				DBB85B1E192DA80C00CBCFC0 /* http_executor_retry_service_unavailable.h */,
+				DBB85B20192DA83700CBCFC0 /* http_executor_boss.cpp */,
+				DBB85B21192DA83700CBCFC0 /* http_executor_boss.h */,
+				DBB85B23192DA86B00CBCFC0 /* http_executor_hooks.cpp */,
+				DBB85B24192DA86B00CBCFC0 /* http_executor_hooks.h */,
 			);
 			path = chain;
 			sourceTree = "<group>";
@@ -1396,6 +1426,7 @@
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
 				DB262DE319248260005417AA /* log_logger.cpp in Sources */,
 				DB6ADB9E191C9B4A0098E92C /* lock_impl_POSIX.cpp in Sources */,
+				DBB85B22192DA83700CBCFC0 /* http_executor_boss.cpp in Sources */,
 				DB6ADBB8191C9C480098E92C /* log.cpp in Sources */,
 				DB6ADF50191F35C30098E92C /* atomic_impl.cpp in Sources */,
 				DB67F24419062FFA007567A9 /* gtest-typed-test.cc in Sources */,
@@ -1417,6 +1448,8 @@
 				DB6ADBA0191C9B4A0098E92C /* task.cpp in Sources */,
 				DB6ADBA6191C9B4A0098E92C /* thread_platform_POSIX.cpp in Sources */,
 				DBFF4A3D192ADF33001679F6 /* http_manager.cpp in Sources */,
+				DBB85B19192DA7B100CBCFC0 /* http_executor_redirect.cpp in Sources */,
+				DBB85B16192DA78A00CBCFC0 /* http_executor_backoff.cpp in Sources */,
 				DB6ADB9A191C9B4A0098E92C /* run_loop_cocoa_darwin_UNIT_TEST.mm in Sources */,
 				DB6ADBA8191C9B4A0098E92C /* thread_loopful.cpp in Sources */,
 				DB262DCC192444E8005417AA /* lambda_UNIT_TEST.cpp in Sources */,
@@ -1448,6 +1481,8 @@
 				DB6ADB99191C9B4A0098E92C /* run_loop_factory.cpp in Sources */,
 				DB6ADBA5191C9B4A0098E92C /* thread_bootstrap_params.cpp in Sources */,
 				DB263B6919271286005417AA /* http_core_statusline.cpp in Sources */,
+				DBB85B1C192DA7F300CBCFC0 /* http_executor_retry.cpp in Sources */,
+				DBB85B25192DA86B00CBCFC0 /* http_executor_hooks.cpp in Sources */,
 				DB6ADF56191F35C30098E92C /* strong_pointer_UNIT_TEST.cpp in Sources */,
 				DBFF4A51192C3063001679F6 /* http_core_uri.cpp in Sources */,
 				DB8042F119213D3C00190CBE /* macrologger.cpp in Sources */,
@@ -1460,6 +1495,7 @@
 				DB80413F192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp in Sources */,
 				DB8053A2192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp in Sources */,
 				DB6ADB9C191C9B4A0098E92C /* condition_variable_impl_POSIX.cpp in Sources */,
+				DBB85B1F192DA80C00CBCFC0 /* http_executor_retry_service_unavailable.cpp in Sources */,
 				DB2636CE1926A232005417AA /* http_client_builder.cpp in Sources */,
 				DB6ADB97191C9B4A0098E92C /* run_loop_cocoa_DARWIN.mm in Sources */,
 				DB263B571926C24C005417AA /* http_core_name_value_pair.cpp in Sources */,
