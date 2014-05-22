@@ -8,7 +8,7 @@
 
 #include "net/http/detail/http_server_builder.h"
 #include "net/http/detail/http_server.h"
-#include "net/http/detail/chain/http_executor_interface.h"
+#include "net/http/exec_chain/http_executor_interface.h"
 
 namespace vctl
 {
@@ -132,15 +132,41 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
             }
         }
     
-    IHttpRequestExecutionChain* strongExecutorChain =
-        CHttpRequestExecutorBoss::New();
-    
-    
-    CHttpServer* server = CHttpServer::New(iIHttpActualSenderReceiver,
+    IHttpRequestExecutionChain* bossexecutor =
+        CHttpRequestExecutorBoss::New(iIHttpActualSenderReceiver,
                                           iIConnectionReuseStrategy,
                                           iIConnectionKeepAliveStrategy,
-                                          iIAuthenticationStrategy
-                                          );
+                                          iIAuthenticationStrategy);
+
+    if(!iIHttpHooks.Get())
+        {
+        iIHttpHooks = CDefaultHttpHooks::New();
+        
+        if(iTHttpHeadersMap.Get()) //we have some default headers hooks set by clients
+            {
+            iIHttpHooks->Add(iTHttpHeadersMap);
+            }
+            
+        IHttpHookOutgoingPacket* content = CHttpHookOutgoingContent::New();
+        iIHttpHooks->Add(content); //transfers ownership
+        
+        IHttpHookOutgoingPacket* targethost = CHttpHookOutgoingTargetHost::New();
+        iIHttpHooks->Add(targethost);
+        
+        IHttpHookOutgoingPacket* useragent = CHttpHookOutgoingUserAgent::New();
+        iIHttpHooks->Add(useragent);
+        
+        //todo:
+        //accept-encoding
+        //auth-cache
+        }
+        
+        //create chaining based on Chain-of-responsibility
+    CHooksExecutor* hooks = CHooksExecutor::New(bossexecutor);
+    
+    
+    
+    CHttpServer* server = CHttpServer::New();
     return server;
     }
  

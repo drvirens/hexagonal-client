@@ -29,6 +29,7 @@ public:
     virtual TProtocolVersion Version() const = 0;
     virtual void AddHeader(const THeader& aHeader) = 0;
     virtual void RemoveHeader(const THeader& aHeader) = 0;
+    virtual bool HasHeader(const std::string& aHeaderName) const = 0;
     virtual THttpHeadersMap* GetAllHeaders() const = 0;
     
 protected:

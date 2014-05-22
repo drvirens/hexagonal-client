@@ -9,6 +9,6 @@
 #ifndef __vClientTemplateLib__http_executor_hooks__
 #define __vClientTemplateLib__http_executor_hooks__
 
-#include <iostream>
+class CHooksExecutor;
 
 #endif /* defined(__vClientTemplateLib__http_executor_hooks__) */
