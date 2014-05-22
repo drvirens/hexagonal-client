@@ -19,7 +19,7 @@ namespace http
 {
 namespace detail
 {
-//todo : this must be concrete subclass of chain
+//todo : this must be concrete subclass of actual http send-recv e.g. curl
 class IHttpActualSenderReceiver : private vctl::CReferenceThreadSafe<IHttpActualSenderReceiver>
     //
     //actual interface to send/recv http traffic

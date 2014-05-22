@@ -8,6 +8,7 @@
 
 #include "net/http/detail/http_server_builder.h"
 #include "net/http/detail/http_server.h"
+#include "net/http/detail/chain/http_executor_interface.h"
 
 namespace vctl
 {
@@ -24,67 +25,122 @@ THttpServerBuilder::THttpServerBuilder()
 
 THttpServerBuilder& THttpServerBuilder::SetHttpActualSenderReceiver(vctl::TStrongPointer<IHttpActualSenderReceiver> aIHttpActualSenderReceiver)
     {
+    iIHttpActualSenderReceiver = aIHttpActualSenderReceiver;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetConnectionReuseStrategy(vctl::TStrongPointer<IConnectionReuseStrategy> aIConnectionReuseStrategy)
     {
+    iIConnectionReuseStrategy = aIConnectionReuseStrategy;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetConnectionKeepAliveStrategy(vctl::TStrongPointer<IConnectionKeepAliveStrategy> aIConnectionKeepAliveStrategy)
     {
+    iIConnectionKeepAliveStrategy = aIConnectionKeepAliveStrategy;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetAuthenticationStrategy(vctl::TStrongPointer<IAuthenticationStrategy> aIAuthenticationStrategy)
     {
+    iIAuthenticationStrategy = aIAuthenticationStrategy;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetHttpHooks(vctl::TStrongPointer<IHttpHooks> aIHttpHooks)
     {
+    iIHttpHooks = aIHttpHooks;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetRetryHandler(vctl::TStrongPointer<IRetryHandler> aIRetryHandler)
     {
+    iIRetryHandler = aIRetryHandler;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetRedirectStrategy(vctl::TStrongPointer<IRedirectStrategy> aIRedirectStrategy)
     {
+    iIRedirectStrategy = aIRedirectStrategy;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetConnectionBackoffStrategy(vctl::TStrongPointer<IConnectionBackoffStrategy> aIConnectionBackoffStrategy)
     {
+    iIConnectionBackoffStrategy = aIConnectionBackoffStrategy;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetServiceUnavailableRetryStrategy(vctl::TStrongPointer<IServiceUnavailableRetryStrategy> aIServiceUnavailableRetryStrategy)
     {
+    iIServiceUnavailableRetryStrategy = aIServiceUnavailableRetryStrategy;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetAuthSchemeProvider(vctl::TStrongPointer<IAuthSchemeProvider> aIAuthSchemeProvider)
     {
+    iIAuthSchemeProvider = aIAuthSchemeProvider;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetCredentialsProvider(vctl::TStrongPointer<ICredentialsProvider> aICredentialsProvider)
     {
+    iICredentialsProvider = aICredentialsProvider;
     return *this;
     }
     
 THttpServerBuilder& THttpServerBuilder::SetDefaultHttpHeaders(vctl::TStrongPointer<THttpHeadersMap> aTHttpHeadersMap)
     {
+    iTHttpHeadersMap = aTHttpHeadersMap;
     return *this;
     }
     
 vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
     {
-    CHttpServer* server = CHttpServer::New();
+    if(!iIHttpActualSenderReceiver.Get())
+        {
+        iIHttpActualSenderReceiver = CCurlHttpActualSenderReceiver::New();
+        }
+        
+    if(!iIConnectionReuseStrategy.Get())
+        {
+        if(iGeneralHttpConfig.IsKeepAliveEnabled())
+            {
+            iIConnectionReuseStrategy = CDefaultConnectionReuseStrategy::New();
+            }
+        else
+            {
+            iIConnectionReuseStrategy = CNopeConnectionReuseStrategy::New();
+            }
+        }
+        
+    if(!iIConnectionKeepAliveStrategy.Get())
+        {
+        iIConnectionKeepAliveStrategy = CDefaultConnectionKeepAliveStrategy::New();
+        }
+        
+    if(!iIAuthenticationStrategy.Get())
+        {
+        if(iGeneralHttpConfig.IsAuthenticaionNeeded())
+            {
+            //todo: read auth details from config and create auth class accordingly
+            //iIAuthenticationStrategy = CAuthenticationStrategy();
+            }
+        else
+            {
+            iIAuthenticationStrategy = CNopeAuthenticationStrategy::New();
+            }
+        }
+    
+    IHttpRequestExecutionChain* strongExecutorChain =
+        CHttpRequestExecutorBoss::New();
+    
+    
+    CHttpServer* server = CHttpServer::New(iIHttpActualSenderReceiver,
+                                          iIConnectionReuseStrategy,
+                                          iIConnectionKeepAliveStrategy,
+                                          iIAuthenticationStrategy
+                                          );
     return server;
     }
  

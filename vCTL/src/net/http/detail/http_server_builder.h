@@ -11,6 +11,7 @@
 
 #include "base/thread/thread_un_safe.h"
 #include "memory/smart_pointer/strong_pointer.h"
+#include "net/http/config/http_config_general.h"
 
 namespace vctl
 {
@@ -59,6 +60,21 @@ public:
     vctl::TStrongPointer<CHttpServer> Build();
     
 protected:
+	vctl::TStrongPointer<IHttpActualSenderReceiver> iIHttpActualSenderReceiver;
+    vctl::TStrongPointer<IConnectionReuseStrategy> iIConnectionReuseStrategy;
+    vctl::TStrongPointer<IConnectionKeepAliveStrategy> iIConnectionKeepAliveStrategy;
+    vctl::TStrongPointer<IAuthenticationStrategy> iIAuthenticationStrategy;
+    vctl::TStrongPointer<IHttpHooks> iIHttpHooks;
+    vctl::TStrongPointer<IRetryHandler> iIRetryHandler;
+    vctl::TStrongPointer<IRedirectStrategy> iIRedirectStrategy;
+    vctl::TStrongPointer<IConnectionBackoffStrategy> iIConnectionBackoffStrategy;
+    vctl::TStrongPointer<IServiceUnavailableRetryStrategy> iIServiceUnavailableRetryStrategy;
+    vctl::TStrongPointer<IAuthSchemeProvider> iIAuthSchemeProvider;
+    vctl::TStrongPointer<ICredentialsProvider> iICredentialsProvider;
+    vctl::TStrongPointer<THttpHeadersMap> iTHttpHeadersMap;
+    
+    TGeneralHttpConfig iGeneralHttpConfig;
+        
     };
 
 } //namespace detail

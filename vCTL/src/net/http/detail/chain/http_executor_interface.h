@@ -26,16 +26,16 @@ namespace http
 class CHttpContext;
 
 
-class IHttpRequestExecutionChain : private vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>
+class IHttpRequestExecutionChain //: private vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>
     {
 public:
     virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
         IFutureCallBack* aFutureCallBack) = 0;
         
-protected:
+//protected:
     virtual ~IHttpRequestExecutionChain() {}
-    friend class vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>;
+//    friend class vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>;
     };
 
 } //namespace http
