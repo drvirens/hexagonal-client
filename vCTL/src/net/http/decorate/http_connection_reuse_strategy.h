@@ -9,7 +9,7 @@
 #ifndef __vClientTemplateLib__http_connection_reuse_strategy__
 #define __vClientTemplateLib__http_connection_reuse_strategy__
 
-#include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -20,12 +20,14 @@ namespace http
 
 class IHttpResponse;
 
-class IConnectionReuseStrategy : private vbase::TNotThreadSafe
+class IConnectionReuseStrategy : public vctl::CReferenceThreadSafe<IConnectionReuseStrategy>
     {
 public:
-    virtual ~IConnectionReuseStrategy() {}
-    
     virtual bool KeepAlive(const IHttpResponse& aResponse, const CHttpContext& aContext) = 0;
+    
+protected:
+    virtual ~IConnectionReuseStrategy() {}
+    friend class vctl::CReferenceThreadSafe<IConnectionReuseStrategy>;
     };
 
 } //namespace http

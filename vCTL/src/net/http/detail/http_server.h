@@ -11,6 +11,7 @@
 
 #include <string>
 #include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 #include "net/http/config/http_config_request.h"
 
 namespace vctl
@@ -19,8 +20,7 @@ namespace net
 {
 namespace http
 {
-namespace detail
-{
+
 
 class IHttpActualSenderReceiver;
 class IConnectionReuseStrategy;
@@ -35,12 +35,20 @@ class IAuthSchemeProvider;
 class ICredentialsProvider;
 class THttpHeadersMap;
 
-class CHttpServer : private vbase::TNotThreadSafe
-    //
-    //this guy executes entirely on given single thread
-    //
+
+namespace detail
+{
+
+class CHttpServer : public vctl::CReferenceThreadSafe<CHttpServer>
     {
 public:
+    static CHttpServer* New();
+    
+protected:
+    CHttpServer();
+    void Construct();
+    virtual ~CHttpServer();
+    friend class vctl::CReferenceThreadSafe<CHttpServer>;
     
 private:
     IHttpActualSenderReceiver* iHttpActualSenderReceiver;

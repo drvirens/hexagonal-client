@@ -9,7 +9,7 @@
 #ifndef vClientTemplateLib_http_credentials_provider_h
 #define vClientTemplateLib_http_credentials_provider_h
 
-#include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -21,14 +21,16 @@ namespace http
 class TAuthScope;
 class ICredentials;
 
-class ICredentialsProvider : private vbase::TNotThreadSafe
+class ICredentialsProvider : private vctl::CReferenceThreadSafe<ICredentialsProvider>
     {
 public:
-    virtual ~ICredentialsProvider() {}
-    
     virtual void SetCredentials(const TAuthScope& aAuthScope, const ICredentials& aCredentials) = 0;
     virtual const ICredentials& Credentials(const TAuthScope& aAuthScope) const = 0;
     virtual void Clear() = 0;
+    
+protected:
+    virtual ~ICredentialsProvider() {}
+    friend class vctl::CReferenceThreadSafe<ICredentialsProvider>;
     };
 
 } //namespace http

@@ -13,7 +13,8 @@
 #include "net/http/core/http_core_request.h"
 #include "net/http/core/http_core_response.h"
 #include "net/http/async/http_future_callback.h"
-#include "net/http/core/http_core_request_execute_chain.h"
+#include "net/http/decorate/http_core_request_execute_chain.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -25,7 +26,7 @@ namespace http
 class CHttpContext;
 class CHttpServer;
 
-class CHttpManager : private vbase::TNotThreadSafe
+class CHttpManager //: private vctl::CReferenceThreadSafe<CHttpManager>
     //
     //all the functions of this class must be executed on SAME thread
     //generally the http-module will schedule an http request

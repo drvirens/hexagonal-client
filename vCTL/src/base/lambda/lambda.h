@@ -10,7 +10,7 @@
 #define vClientTemplateLib_lambda_h
 
 #include "memory/ref/rc_thread_safe.h"
-#include "memory/ref/rc.h"
+//#include "memory/ref/rc.h"
 
 namespace vbase
 {

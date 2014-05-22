@@ -16,14 +16,14 @@ namespace net
 namespace http
 {
 
-THttpClientBuilder& THttpClientBuilder::Instance()
-    {
-    }
-    
-IHttpClient* THttpClientBuilder::DefaultHttpClient()
-    {
-    //return CHttpClientImpl
-    }
+//THttpClientBuilder& THttpClientBuilder::Instance()
+//    {
+//    }
+//    
+//IHttpClient* THttpClientBuilder::DefaultHttpClient()
+//    {
+//    //return CHttpClientImpl
+//    }
 
 } //namespace http
 } //namespace net

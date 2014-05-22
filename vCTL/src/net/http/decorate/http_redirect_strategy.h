@@ -9,7 +9,7 @@
 #ifndef vClientTemplateLib_http_redirect_strategy_h
 #define vClientTemplateLib_http_redirect_strategy_h
 
-#include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -20,11 +20,9 @@ namespace http
 class IHttpContext;
 class IHttpResponse;
 
-class IRedirectStrategy : private vbase::TNotThreadSafe
+class IRedirectStrategy : private vctl::CReferenceThreadSafe<IRedirectStrategy>
     {
 public:
-    virtual ~IRedirectStrategy() {}
-    
     virtual bool CanRedirect(IHttpResponse& aResponse,
                             IHttpRequest& aRequest,
                             IHttpContext& aContext) = 0;
@@ -33,6 +31,10 @@ public:
                             IHttpRequest& aRequest,
                             IHttpContext& aContext,
                             IHttpRequest*& aRedirectTo) = 0;
+        
+protected:
+    virtual ~IRedirectStrategy() {}
+    friend class vctl::CReferenceThreadSafe<IRedirectStrategy>;
     };
 
 } //namespace http

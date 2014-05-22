@@ -9,7 +9,7 @@
 #ifndef __vClientTemplateLib__http_backoff_strategy__
 #define __vClientTemplateLib__http_backoff_strategy__
 
-#include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -20,14 +20,14 @@ namespace http
 
 class IHttpResponse;
 
-class IConnectionBackoffStrategy : private vbase::TNotThreadSafe
+class IConnectionBackoffStrategy : private vctl::CReferenceThreadSafe<IConnectionBackoffStrategy>
     {
 public:
-    virtual ~IConnectionBackoffStrategy() {}
-    
-    //we received this response...should we backoff?
-    //touch the res
     virtual bool ShouldBackOff(const IHttpResponse& aResponse) = 0;
+    
+protected:
+    virtual ~IConnectionBackoffStrategy() {}
+    friend class vctl::CReferenceThreadSafe<IConnectionBackoffStrategy>;
     };
 
 } //namespace http

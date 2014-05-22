@@ -19,7 +19,7 @@ namespace net
 namespace http
 {
 
-class THttpClientBuilder
+class THttpClientBuilder //thread unsafe
     {
 public:
     static THttpClientBuilder& Instance();

@@ -94,6 +94,7 @@
 		DB8053A8192166CB00190CBE /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8053A4192166CB00190CBE /* Main_iPad.storyboard */; };
 		DB8053A9192166CB00190CBE /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8053A6192166CB00190CBE /* Main_iPhone.storyboard */; };
 		DBB1E2641929B0A000898FBC /* http_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB1E2621929B0A000898FBC /* http_context.cpp */; };
+		DBB85B12192D769300CBCFC0 /* http_server_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B10192D769300CBCFC0 /* http_server_builder.cpp */; };
 		DBFF4A3D192ADF33001679F6 /* http_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A3B192ADF33001679F6 /* http_manager.cpp */; };
 		DBFF4A40192B313F001679F6 /* http_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A3E192B313F001679F6 /* http_server.cpp */; };
 		DBFF4A51192C3063001679F6 /* http_core_uri.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A4F192C3063001679F6 /* http_core_uri.cpp */; };
@@ -359,6 +360,8 @@
 		DB8053A7192166CB00190CBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		DBB1E2621929B0A000898FBC /* http_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_context.cpp; sourceTree = "<group>"; };
 		DBB1E2631929B0A000898FBC /* http_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_context.h; sourceTree = "<group>"; };
+		DBB85B10192D769300CBCFC0 /* http_server_builder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_server_builder.cpp; sourceTree = "<group>"; };
+		DBB85B11192D769300CBCFC0 /* http_server_builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_server_builder.h; sourceTree = "<group>"; };
 		DBFF4A39192ADB0E001679F6 /* http_client_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_client_impl.h; sourceTree = "<group>"; };
 		DBFF4A3B192ADF33001679F6 /* http_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_manager.cpp; sourceTree = "<group>"; };
 		DBFF4A3C192ADF33001679F6 /* http_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_manager.h; sourceTree = "<group>"; };
@@ -1240,15 +1243,25 @@
 			path = context;
 			sourceTree = "<group>";
 		};
+		DBB85B13192D89DD00CBCFC0 /* chain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = chain;
+			sourceTree = "<group>";
+		};
 		DBFF4A36192ADAEF001679F6 /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				DBB85B13192D89DD00CBCFC0 /* chain */,
 				DBFF4A39192ADB0E001679F6 /* http_client_impl.h */,
 				DBFF4A3B192ADF33001679F6 /* http_manager.cpp */,
 				DBFF4A3C192ADF33001679F6 /* http_manager.h */,
 				DBFF4A3E192B313F001679F6 /* http_server.cpp */,
 				DBFF4A3F192B313F001679F6 /* http_server.h */,
 				DBFF4A42192B341A001679F6 /* http_actual.h */,
+				DBB85B10192D769300CBCFC0 /* http_server_builder.cpp */,
+				DBB85B11192D769300CBCFC0 /* http_server_builder.h */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -1430,6 +1443,7 @@
 				DB8041331920557700190CBE /* semaphore.cpp in Sources */,
 				DB8041411920917E00190CBE /* rendezvous_simple.cpp in Sources */,
 				DB6ADB98191C9B4A0098E92C /* run_loop_DARWIN.mm in Sources */,
+				DBB85B12192D769300CBCFC0 /* http_server_builder.cpp in Sources */,
 				DB67F24519062FFA007567A9 /* gtest.cc in Sources */,
 				DB6ADB99191C9B4A0098E92C /* run_loop_factory.cpp in Sources */,
 				DB6ADBA5191C9B4A0098E92C /* thread_bootstrap_params.cpp in Sources */,

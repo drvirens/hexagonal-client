@@ -31,13 +31,13 @@ protected:
         ASSERT(true == iIsCommitingSuicide);
         }
 
-    void Retain() const
+    void DoRetain() const
         {
         ASSERT(false == iIsCommitingSuicide);
         TAtomicCount_IncrementByOne(&iCount);
         }
 
-    bool Release() const
+    bool DoRelease() const
         {
         ASSERT(false == iIsCommitingSuicide);
         ASSERT(false == TAtomicCount_IsZero(&iCount));
@@ -83,12 +83,12 @@ public:
     
     void Retain() const
         {
-        CReferenceBaseThreadSafe::Retain();
+        CReferenceBaseThreadSafe::DoRetain();
         }
         
     void Release() const
         {
-        if(CReferenceBaseThreadSafe::Release())
+        if(CReferenceBaseThreadSafe::DoRelease())
             {
             const CRTP* thiz = static_cast<const CRTP*>(this);
             DELETE_POLICY::Delete(thiz);

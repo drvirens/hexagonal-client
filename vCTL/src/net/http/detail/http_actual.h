@@ -9,7 +9,7 @@
 #ifndef __vClientTemplateLib__http_actual__
 #define __vClientTemplateLib__http_actual__
 
-#include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -20,7 +20,7 @@ namespace http
 namespace detail
 {
 //todo : this must be concrete subclass of chain
-class IHttpActualSenderReceiver : private vbase::TNotThreadSafe
+class IHttpActualSenderReceiver : private vctl::CReferenceThreadSafe<IHttpActualSenderReceiver>
     //
     //actual interface to send/recv http traffic
     //first phase will have cross-platform impl using CURL
@@ -33,7 +33,9 @@ public:
     virtual void PreProcess() = 0;
     virtual void PostProcess() = 0;
     
-private:
+protected:
+    virtual ~IHttpActualSenderReceiver();
+    friend class vctl::CReferenceThreadSafe<IHttpActualSenderReceiver>;
     
     };
 

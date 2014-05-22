@@ -10,7 +10,7 @@
 #define vClientTemplateLib_http_credentials_h
 
 #include <string>
-#include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -21,13 +21,15 @@ namespace http
 
 typedef std::string CryptoString;
 
-class ICredentials //: private vbase::TNotThreadSafe
+class ICredentials : private vctl::CReferenceThreadSafe<ICredentials>
     {
 public:
-    //we received this response...should we backoff?
-    //touch the res
     virtual const std::string& UserName() const = 0;
     virtual const CryptoString& Password() const = 0;
+    
+protected:
+    virtual ~ICredentials() {}
+    friend class vctl::CReferenceThreadSafe<ICredentials>;
     };
 
 } //namespace http

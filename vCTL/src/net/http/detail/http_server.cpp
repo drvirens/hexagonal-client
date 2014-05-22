@@ -7,3 +7,40 @@
 //
 
 #include "http_server.h"
+
+namespace vctl
+{
+namespace net
+{
+namespace http
+{
+namespace detail
+{
+
+CHttpServer* CHttpServer::New()
+    {
+    CHttpServer* obj = new CHttpServer();
+    if( obj )
+        {
+        obj->Construct();
+        }
+    return obj;
+    }
+    
+CHttpServer::CHttpServer()
+    {
+    }
+    
+void CHttpServer::Construct()
+    {
+    }
+    
+CHttpServer::~CHttpServer()
+    {
+    }
+
+
+} //namespace detail
+} //namespace http
+} //namespace net
+} //namespace vctl

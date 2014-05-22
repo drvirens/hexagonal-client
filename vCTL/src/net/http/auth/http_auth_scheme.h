@@ -9,7 +9,7 @@
 #ifndef vClientTemplateLib_IAuthScheme_h
 #define vClientTemplateLib_IAuthScheme_h
 
-#include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -19,11 +19,14 @@ namespace http
 {
 class IHttpContext;
 
-class IAuthScheme
+class IAuthScheme : private vctl::CReferenceThreadSafe<IAuthScheme>
     {
 public:
-    virtual ~IAuthScheme() {}
     virtual const std::string& AuthSchemeName() = 0;
+    
+protected:
+    virtual ~IAuthScheme() {}
+    friend class vctl::CReferenceThreadSafe<IAuthScheme>;
     };
 
 } //namespace http

@@ -10,7 +10,7 @@
 #define vClientTemplateLib_http_auth_scope_h
 
 #include <string>
-#include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -23,7 +23,7 @@ class TAuthScope //: private vbase::TNotThreadSafe
     {
 public:
 
-private:
+protected:
     std::string iScheme;
     std::string iRealm;
     std::string iHost;

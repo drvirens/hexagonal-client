@@ -9,7 +9,7 @@
 #ifndef vClientTemplateLib_http_service_unavailable_retry_strategy_h
 #define vClientTemplateLib_http_service_unavailable_retry_strategy_h
 
-#include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -20,12 +20,15 @@ namespace http
 class IHttpContext;
 class IHttpResponse;
 
-class IServiceUnavailableRetryStrategy : private vbase::TNotThreadSafe
+class IServiceUnavailableRetryStrategy : private vctl::CReferenceThreadSafe<IServiceUnavailableRetryStrategy>
     {
 public:
-    virtual ~IServiceUnavailableRetryStrategy() {}
     virtual bool ShouldRetry(const IHttpResponse& aHttpResponse, int aAttemptedRetries, IHttpContext& aContext) = 0;
     virtual long RetryInterval() const = 0;
+    
+protected:
+    virtual ~IServiceUnavailableRetryStrategy() {}
+    friend class vctl::CReferenceThreadSafe<IServiceUnavailableRetryStrategy>;
     };
 
 } //namespace http

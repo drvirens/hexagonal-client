@@ -10,13 +10,17 @@
 
 #include "memory/ref/rc_thread_safe.h"
 
-#include "net/http/http_client_builder.h"
+#include "net/http/async/http_future_callback.h"
 #include "net/http/http_method_get.h"
 #include "net/http/core/http_core_header.h"
 #include "net/http/context/http_context.h"
 #include "net/http/core/http_core_entity.h"
 #include "net/http/config/http_config_request.h"
 #include "net/http/core/http_core_protocol_version.h"
+#include "net/http/detail/http_server.h"
+#include "net/http/detail/http_server_builder.h"
+#include "net/http/decorate/http_connection_reuse_strategy.h"
+#include "net/http/htpp_client.h"
 
 namespace vctl
 {
@@ -174,22 +178,13 @@ public:
 
 TEST(UT_THttpClient, Trivial)
     {
-    
     IHttpClient* httpclient = new MyMockHttpClient();
-    
-//    THttpClientBuilder factory = THttpClientBuilder::Instance();    
-//    httpclient = factory.DefaultHttpClient<MyHttpResponseObject>();
     
     httpclient->Start();
     
     IHttpRequest* getrequest = new MyMockHttpRequest();
-    THeader header; //("mimetype:image/png");
+    THeader header;
     getrequest->AddHeader(header);
-    
-//    IFutureCallBack< MyHttpResponseObject >* callback = 0;
-//    callback = new MyHttpResponseHandler<MyHttpResponseObject>();
-    
-    //IFutureCallBack<MyHttpResponseObject> cb;
     
     MyHttpResponseHandler* myhttpresphandler = new MyHttpResponseHandler();
     
@@ -197,13 +192,33 @@ TEST(UT_THttpClient, Trivial)
     
     httpclient->Execute(context, getrequest, myhttpresphandler);
     
-    //get->Cancel();
-    
     EXPECT_EQ(myhttpresphandler->Status(), 200);
     
     httpclient->Stop();
-     
     };
+    
+//
+// mocked IConnectionReuseStrategy
+//
+class MyIConnectionReuseStrategy : public IConnectionReuseStrategy
+    {
+public:
+    virtual bool KeepAlive(const IHttpResponse& aResponse, const CHttpContext& aContext)
+        {
+        return true;
+        }
+    };
+    
+TEST(UT_THttpClient, CreateServerTrivial)
+    {
+    //every worker should create like below
+    detail::THttpServerBuilder builder;
+    IConnectionReuseStrategy* reusestrategy = new MyIConnectionReuseStrategy();
+    builder.SetConnectionReuseStrategy(reusestrategy);
+    vctl::TStrongPointer<detail::CHttpServer> server = builder.Build();
+    
+    EXPECT_TRUE(server.Get() != 0);
+    }
     
 }
 }

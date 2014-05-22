@@ -14,7 +14,7 @@
 #include "net/http/core/http_core_response.h"
 #include "net/http/async/http_future_callback.h"
 #include "base/thread/thread_un_safe.h"
-
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -26,15 +26,17 @@ namespace http
 class CHttpContext;
 
 
-class IHttpRequestExecuteChain
+class IHttpRequestExecutionChain : private vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>
     {
 public:
-    virtual ~IHttpRequestExecuteChain() {}
-
     virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
         IFutureCallBack* aFutureCallBack) = 0;
-     };
+        
+protected:
+    virtual ~IHttpRequestExecutionChain() {}
+    friend class vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>;
+    };
 
 } //namespace http
 } //namespace net
