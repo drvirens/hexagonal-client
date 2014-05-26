@@ -22,13 +22,24 @@
 
 #if defined(V_PLATFORM_ANDROID)
     #error for android do we need any other things like thread_platform_optional_IOS.h?
-#elif defined(V_PLATFORM_IOS)
+
+#elif defined(V_PLATFORM_DARWIN)
+
+#if defined(V_PLATFORM_IOS)
 
     #include "base/thread/detail/ios/thread_platform_optional_IOS.h"
     typedef IOSThreadOptionalImpl PosixOptionalImpl;
 
+#else //V_PLATFORM_IOS
+
+    #include "base/thread/detail/mac/thread_platform_optional_MAC.h"
+    typedef MacThreadOptionalImpl PosixOptionalImpl;
+
+#endif
+
 #else
     #error Define optional thread interface
+
 #endif
 
 

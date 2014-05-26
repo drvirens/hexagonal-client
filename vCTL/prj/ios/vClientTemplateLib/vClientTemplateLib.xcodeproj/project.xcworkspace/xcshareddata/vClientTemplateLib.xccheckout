@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FADCEAAD-2982-4916-B497-7442728B1501</string>
+	<key>IDESourceControlProjectName</key>
+	<string>vClientTemplateLib</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C2571AE9-D8DC-429C-AC93-1B0C2D8E5FE5</key>
+		<string>https://github.com/drvirens/hexagonal-client.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>vCTL/prj/ios/vClientTemplateLib/vClientTemplateLib.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C2571AE9-D8DC-429C-AC93-1B0C2D8E5FE5</key>
+		<string>../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/drvirens/hexagonal-client.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C2571AE9-D8DC-429C-AC93-1B0C2D8E5FE5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C2571AE9-D8DC-429C-AC93-1B0C2D8E5FE5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hexagonal-client</string>
+		</dict>
+	</array>
+</dict>
+</plist>
