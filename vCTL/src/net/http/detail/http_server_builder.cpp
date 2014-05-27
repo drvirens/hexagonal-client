@@ -9,7 +9,7 @@
 #include "net/http/detail/http_server_builder.h"
 #include "net/http/detail/http_server.h"
 #include "net/http/exec_chain/http_executor_interface.h"
-
+#include "net/http/exec_chain/http_executor_boss.h"
 
 namespace vctl
 {
@@ -117,7 +117,8 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
         
     if(!iIConnectionKeepAliveStrategy.Get())
         {
-        iIConnectionKeepAliveStrategy = CDefaultConnectionKeepAliveStrategy::New();
+        //TODO:
+        //iIConnectionKeepAliveStrategy = CDefaultConnectionKeepAliveStrategy::New();
         }
         
     if(!iIAuthenticationStrategy.Get())

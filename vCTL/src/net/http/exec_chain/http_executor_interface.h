@@ -9,7 +9,6 @@
 #ifndef __vClientTemplateLib__http_core_request_chain__
 #define __vClientTemplateLib__http_core_request_chain__
 
-
 #include "net/http/core/http_core_request.h"
 #include "net/http/core/http_core_response.h"
 #include "net/http/async/http_future_callback.h"
