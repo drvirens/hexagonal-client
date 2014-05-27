@@ -19,7 +19,7 @@ namespace http
 {
 class IHttpContext;
 
-class IRetryHandler : private vctl::CReferenceThreadSafe<IRetryHandler>
+class IRetryHandler : public vctl::CReferenceThreadSafe<IRetryHandler>
     {
 public:
     virtual bool Retry(EHttpStatusCode aPreviousError, int aAttemptedRetries, IHttpContext& aContext) = 0;

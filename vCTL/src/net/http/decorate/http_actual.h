@@ -17,17 +17,22 @@ namespace net
 {
 namespace http
 {
+
+class CHttpContext;
+class IHttpRequest;
+
 namespace detail
 {
 //todo : this must be concrete subclass of actual http send-recv e.g. curl
-class IHttpActualSenderReceiver : private vctl::CReferenceThreadSafe<IHttpActualSenderReceiver>
+class IHttpActualSenderReceiver : public vctl::CReferenceThreadSafe<IHttpActualSenderReceiver>
     //
     //actual interface to send/recv http traffic
     //first phase will have cross-platform impl using CURL
     //
     {
 public:
-    virtual void DoSend() = 0;
+    virtual void DoSend(CHttpContext* aHttpContext, //TODO: remove this. server will create it internally
+        IHttpRequest* aHttpRequest) = 0;
     virtual void DoReceive() = 0;
     virtual void Execute() = 0;
     virtual void PreProcess() = 0;

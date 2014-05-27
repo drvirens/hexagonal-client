@@ -174,6 +174,10 @@ public:
         {
         return 0;
         }
+    bool HasHeader(const std::string& aHeaderName) const
+        {
+        return false;
+        }
     };
 
 TEST(UT_THttpClient, Trivial)

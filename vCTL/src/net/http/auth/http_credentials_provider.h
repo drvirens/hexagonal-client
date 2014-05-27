@@ -21,7 +21,7 @@ namespace http
 class TAuthScope;
 class ICredentials;
 
-class ICredentialsProvider : private vctl::CReferenceThreadSafe<ICredentialsProvider>
+class ICredentialsProvider : public vctl::CReferenceThreadSafe<ICredentialsProvider>
     {
 public:
     virtual void SetCredentials(const TAuthScope& aAuthScope, const ICredentials& aCredentials) = 0;

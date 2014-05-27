@@ -10,6 +10,7 @@
 #include "net/http/detail/http_server.h"
 #include "net/http/exec_chain/http_executor_interface.h"
 
+
 namespace vctl
 {
 namespace net
@@ -23,11 +24,11 @@ THttpServerBuilder::THttpServerBuilder()
     {
     }
 
-THttpServerBuilder& THttpServerBuilder::SetHttpActualSenderReceiver(vctl::TStrongPointer<IHttpActualSenderReceiver> aIHttpActualSenderReceiver)
-    {
-    iIHttpActualSenderReceiver = aIHttpActualSenderReceiver;
-    return *this;
-    }
+//THttpServerBuilder& THttpServerBuilder::SetHttpActualSenderReceiver(vctl::TStrongPointer<IHttpActualSenderReceiver> aIHttpActualSenderReceiver)
+//    {
+//    iIHttpActualSenderReceiver = aIHttpActualSenderReceiver;
+//    return *this;
+//    }
     
 THttpServerBuilder& THttpServerBuilder::SetConnectionReuseStrategy(vctl::TStrongPointer<IConnectionReuseStrategy> aIConnectionReuseStrategy)
     {

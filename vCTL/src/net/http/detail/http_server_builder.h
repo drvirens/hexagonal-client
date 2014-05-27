@@ -12,7 +12,17 @@
 #include "base/thread/thread_un_safe.h"
 #include "memory/smart_pointer/strong_pointer.h"
 #include "net/http/config/http_config_general.h"
+#include "net/http/decorate/http_actual.h"
 
+#include "net/http/decorate/impl/http_actual_CURL.h"
+#include "net/http/decorate/impl/http_connection_reuse_strategy_default.h"
+#include "net/http/decorate/impl/http_connection_reuse_strategy_nope.h"
+#include "net/http/auth/impl/http_auth_strategy_nope.h"
+#include "net/http/hooks/impl/http_hook_out_content.h"
+#include "net/http/hooks/impl/http_hook_out_useragent.h"
+#include "net/http/hooks/impl/http_hook_out_targethost.h"
+#include "net/http/hooks/http_hooks.h"
+#include "net/http/hooks/http_hook_out.h"
 namespace vctl
 {
 namespace net
@@ -20,11 +30,11 @@ namespace net
 namespace http
 {
 
-class IHttpActualSenderReceiver;
-class IConnectionReuseStrategy;
+//class IHttpActualSenderReceiver;
+//class IConnectionReuseStrategy;
 class IConnectionKeepAliveStrategy;
-class IAuthenticationStrategy;
-class IHttpHooks;
+//class IAuthenticationStrategy;
+//class IHttpHooks;
 class IRetryHandler;
 class IRedirectStrategy;
 class IConnectionBackoffStrategy;
@@ -44,7 +54,7 @@ class THttpServerBuilder : private vbase::TNotThreadSafe
 public:
     THttpServerBuilder();
     
-    THttpServerBuilder& SetHttpActualSenderReceiver(vctl::TStrongPointer<IHttpActualSenderReceiver> aIHttpActualSenderReceiver);
+    //THttpServerBuilder& SetHttpActualSenderReceiver(vctl::TStrongPointer<IHttpActualSenderReceiver> aIHttpActualSenderReceiver);
     THttpServerBuilder& SetConnectionReuseStrategy(vctl::TStrongPointer<IConnectionReuseStrategy> aIConnectionReuseStrategy);
     THttpServerBuilder& SetConnectionKeepAliveStrategy(vctl::TStrongPointer<IConnectionKeepAliveStrategy> aIConnectionKeepAliveStrategy);
     THttpServerBuilder& SetAuthenticationStrategy(vctl::TStrongPointer<IAuthenticationStrategy> aIAuthenticationStrategy);

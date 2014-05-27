@@ -25,7 +25,7 @@ namespace http
 class CHttpContext;
 class CHttpServer;
 
-class CHttpManager //: private vctl::CReferenceThreadSafe<CHttpManager>
+class CHttpManager //: public vctl::CReferenceThreadSafe<CHttpManager>
     //
     //all the functions of this class must be executed on SAME thread
     //generally the http-module will schedule an http request

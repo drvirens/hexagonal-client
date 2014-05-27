@@ -26,7 +26,7 @@ namespace http
 class CHttpContext;
 
 
-class IHttpRequestExecutionChain //: private vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>
+class IHttpRequestExecutionChain //: public vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>
     {
 public:
     virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,

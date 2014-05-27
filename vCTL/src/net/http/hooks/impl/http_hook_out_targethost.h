@@ -21,10 +21,13 @@ namespace http
 class CHttpHookOutgoingTargetHost : public IHttpHookOutgoingPacket
     {
 public:
+    static CHttpHookOutgoingTargetHost* New();
     virtual bool ProcessPacketHeader(IHttpRequest& aHttpRequest);
     
 protected:
     virtual ~CHttpHookOutgoingTargetHost();
+    CHttpHookOutgoingTargetHost();
+    void Construct();
         
     //friend class vctl::CReferenceThreadSafe<IHttpHookOutgoingPacket>;
     };

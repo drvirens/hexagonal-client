@@ -20,7 +20,7 @@ namespace http
 
 class IHttpResponse;
 
-class IConnectionBackoffStrategy : private vctl::CReferenceThreadSafe<IConnectionBackoffStrategy>
+class IConnectionBackoffStrategy : public vctl::CReferenceThreadSafe<IConnectionBackoffStrategy>
     {
 public:
     virtual bool ShouldBackOff(const IHttpResponse& aResponse) = 0;

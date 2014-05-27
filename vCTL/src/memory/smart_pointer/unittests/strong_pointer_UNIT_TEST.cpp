@@ -26,6 +26,12 @@ public:
         {
         }
     };
+    
+class MyDerivedFoo : public Foo
+    {
+public:
+    int iTest;
+    };
 
 TEST(UT_StrongPointer, Trivial)
     {
@@ -33,6 +39,10 @@ TEST(UT_StrongPointer, Trivial)
     f->iValue = 69;
     
     EXPECT_EQ(69, f->GetValue());
+    
+    TStrongPointer<MyDerivedFoo> derfoo = new MyDerivedFoo();
+    TStrongPointer<Foo> polymorphic;
+    polymorphic = new MyDerivedFoo();
     }
     
 TEST(UT_StrongPointer, ConversionOperatorTest)

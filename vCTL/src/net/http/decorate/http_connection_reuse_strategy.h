@@ -19,11 +19,12 @@ namespace http
 {
 
 class IHttpResponse;
+class CHttpContext;
 
 class IConnectionReuseStrategy : public vctl::CReferenceThreadSafe<IConnectionReuseStrategy>
     {
 public:
-    virtual bool KeepAlive(const IHttpResponse& aResponse, const CHttpContext& aContext) = 0;
+    virtual bool KeepAlive(const IHttpResponse& aResponse, CHttpContext& aContext) = 0;
     
 protected:
     virtual ~IConnectionReuseStrategy() {}

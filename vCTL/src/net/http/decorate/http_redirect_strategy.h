@@ -20,7 +20,7 @@ namespace http
 class IHttpContext;
 class IHttpResponse;
 
-class IRedirectStrategy : private vctl::CReferenceThreadSafe<IRedirectStrategy>
+class IRedirectStrategy : public vctl::CReferenceThreadSafe<IRedirectStrategy>
     {
 public:
     virtual bool CanRedirect(IHttpResponse& aResponse,

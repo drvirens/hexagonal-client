@@ -10,6 +10,7 @@
 #define __vClientTemplateLib__http_hooks__
 
 #include "memory/ref/rc_thread_safe.h"
+#include "memory/smart_pointer/strong_pointer.h"
 
 namespace vctl
 {
@@ -18,14 +19,21 @@ namespace net
 namespace http
 {
 
-class IHttpHooks : private vctl::CReferenceThreadSafe<IHttpHooks>
+class IHttpHookOutgoingPacket;
+
+class IHttpHooks : public vctl::CReferenceThreadSafe<IHttpHooks>
     //
     // incoming pakcet = http response coming from remote server
     // for client apps, this hooks is generally not needed
     //
     {
+public:
+        //transfers ownership
+    virtual void Add(vctl::TStrongPointer<IHttpHookOutgoingPacket> aHook) = 0;
+
 protected:
     virtual ~IHttpHooks() {}
+    
         
     friend class vctl::CReferenceThreadSafe<IHttpHooks>;
     };
