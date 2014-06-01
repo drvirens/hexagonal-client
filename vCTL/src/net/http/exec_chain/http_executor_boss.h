@@ -9,7 +9,13 @@
 #ifndef __vClientTemplateLib__http_executor_boss__
 #define __vClientTemplateLib__http_executor_boss__
 
+#include "memory/smart_pointer/strong_pointer.h"
 #include "net/http/exec_chain/http_executor_interface.h"
+
+#include "net/http/decorate/http_actual.h"
+#include "net/http/decorate/http_connection_reuse_strategy.h"
+#include "net/http/decorate/http_connection_keep_alive_strategy.h"
+#include "net/http/auth/http_auth_strategy.h"
 
 namespace vctl
 {
@@ -21,11 +27,14 @@ namespace http
 class CHttpRequestExecutorBoss : public IHttpRequestExecutionChain
     {
 public:
-    static CHttpRequestExecutorBoss*New();
+    static CHttpRequestExecutorBoss* New(vctl::TStrongPointer<detail::IHttpActualSenderReceiver> aIHttpActualSenderReceiver,
+                             vctl::TStrongPointer<IConnectionReuseStrategy> aIConnectionReuseStrategy,
+                             vctl::TStrongPointer<IConnectionKeepAliveStrategy> aIConnectionKeepAliveStrategy,
+                             vctl::TStrongPointer<IAuthenticationStrategy> aIAuthenticationStrategy);
     
     virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
-        IFutureCallBack* aFutureCallBack) = 0;
+        IFutureCallBack* aFutureCallBack);
         
 protected:
     virtual ~CHttpRequestExecutorBoss();

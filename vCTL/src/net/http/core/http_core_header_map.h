@@ -1,5 +1,5 @@
 //
-//  http_core_header_group.h
+//  http_core_header_map.h
 //  vClientTemplateLib
 //
 //  Created by Virendra Shakya on 5/17/14.
@@ -10,6 +10,7 @@
 #define __vClientTemplateLib__http_core_header_group__
 
 #include "base/thread/thread_un_safe.h"
+#include "memory/ref/rc_thread_safe.h"
 
 namespace vctl
 {
@@ -18,9 +19,17 @@ namespace net
 namespace http
 {
 
-class THeaderGroup : private vbase::TNotThreadSafe
+//class THeaderGroup : private vbase::TNotThreadSafe
+//    {
+//public:
+//    };
+    
+    //must be thread safe
+class CHttpHeadersMap : public vctl::CReferenceThreadSafe<CHttpHeadersMap>
     {
-public:
+protected:
+    virtual ~CHttpHeadersMap();
+    friend class vctl::CReferenceThreadSafe<CHttpHeadersMap>;
     };
 
 } //namespace http

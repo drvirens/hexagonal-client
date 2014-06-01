@@ -12,12 +12,24 @@
 #include "base/thread/thread_un_safe.h"
 #include "memory/smart_pointer/strong_pointer.h"
 #include "net/http/config/http_config_general.h"
+#include "net/http/core/http_core_header_map.h"
+
 #include "net/http/decorate/http_actual.h"
+#include "net/http/decorate/http_retry_handler.h"
+#include "net/http/decorate/http_connection_keep_alive_strategy.h"
+#include "net/http/decorate/http_redirect_strategy.h"
+#include "net/http/decorate/http_backoff_strategy.h"
+#include "net/http/decorate/http_service_unavailable_retry_strategy.h"
 
 #include "net/http/decorate/impl/http_actual_CURL.h"
 #include "net/http/decorate/impl/http_connection_reuse_strategy_default.h"
 #include "net/http/decorate/impl/http_connection_reuse_strategy_nope.h"
+#include "net/http/decorate/impl/http_default_connection_keep_alive_strategy.h"
+
+#include "net/http/auth/http_auth_scheme_provider.h"
+#include "net/http/auth/http_credentials_provider.h"
 #include "net/http/auth/impl/http_auth_strategy_nope.h"
+
 #include "net/http/hooks/impl/http_hook_out_content.h"
 #include "net/http/hooks/impl/http_hook_out_useragent.h"
 #include "net/http/hooks/impl/http_hook_out_targethost.h"
@@ -31,21 +43,6 @@ namespace net
 {
 namespace http
 {
-
-//class IHttpActualSenderReceiver;
-//class IConnectionReuseStrategy;
-class IConnectionKeepAliveStrategy;
-//class IAuthenticationStrategy;
-//class IHttpHooks;
-class IRetryHandler;
-class IRedirectStrategy;
-class IConnectionBackoffStrategy;
-class IServiceUnavailableRetryStrategy;
-class IAuthSchemeProvider;
-class ICredentialsProvider;
-class THttpHeadersMap;
-
-
 namespace detail
 {
 
@@ -55,6 +52,7 @@ class THttpServerBuilder : private vbase::TNotThreadSafe
     {
 public:
     THttpServerBuilder();
+    ~THttpServerBuilder();
     
     //THttpServerBuilder& SetHttpActualSenderReceiver(vctl::TStrongPointer<IHttpActualSenderReceiver> aIHttpActualSenderReceiver);
     THttpServerBuilder& SetConnectionReuseStrategy(vctl::TStrongPointer<IConnectionReuseStrategy> aIConnectionReuseStrategy);
@@ -67,7 +65,7 @@ public:
     THttpServerBuilder& SetServiceUnavailableRetryStrategy(vctl::TStrongPointer<IServiceUnavailableRetryStrategy> aIServiceUnavailableRetryStrategy);
     THttpServerBuilder& SetAuthSchemeProvider(vctl::TStrongPointer<IAuthSchemeProvider> aIAuthSchemeProvider);
     THttpServerBuilder& SetCredentialsProvider(vctl::TStrongPointer<ICredentialsProvider> aICredentialsProvider);
-    THttpServerBuilder& SetDefaultHttpHeaders(vctl::TStrongPointer<THttpHeadersMap> aTHttpHeadersMap);
+    THttpServerBuilder& SetDefaultHttpHeaders(vctl::TStrongPointer<CHttpHeadersMap> aCHttpHeadersMap);
     
     vctl::TStrongPointer<CHttpServer> Build();
     
@@ -83,10 +81,9 @@ protected:
     vctl::TStrongPointer<IServiceUnavailableRetryStrategy> iIServiceUnavailableRetryStrategy;
     vctl::TStrongPointer<IAuthSchemeProvider> iIAuthSchemeProvider;
     vctl::TStrongPointer<ICredentialsProvider> iICredentialsProvider;
-    vctl::TStrongPointer<THttpHeadersMap> iTHttpHeadersMap;
+    vctl::TStrongPointer<CHttpHeadersMap> iCHttpHeadersMap;
     
     TGeneralHttpConfig iGeneralHttpConfig;
-        
     };
 
 } //namespace detail

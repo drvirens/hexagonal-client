@@ -23,7 +23,7 @@ class IHttpRequest;
 
 namespace detail
 {
-//todo : this must be concrete subclass of actual http send-recv e.g. curl
+
 class IHttpActualSenderReceiver : public vctl::CReferenceThreadSafe<IHttpActualSenderReceiver>
     //
     //actual interface to send/recv http traffic
@@ -39,7 +39,7 @@ public:
     virtual void PostProcess() = 0;
     
 protected:
-    virtual ~IHttpActualSenderReceiver();
+    virtual ~IHttpActualSenderReceiver() {}
     friend class vctl::CReferenceThreadSafe<IHttpActualSenderReceiver>;
     
     };

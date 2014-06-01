@@ -19,7 +19,6 @@ namespace http
 {
 namespace detail
 {
-//todo : this must be concrete subclass of actual http send-recv e.g. curl
 class CCurlHttpActualSenderReceiver : public IHttpActualSenderReceiver 
     //
     //actual interface to send/recv http traffic

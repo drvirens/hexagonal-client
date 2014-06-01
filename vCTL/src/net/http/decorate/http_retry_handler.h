@@ -10,6 +10,7 @@
 #define vClientTemplateLib_http_retry_handler_h
 
 #include "memory/ref/rc_thread_safe.h"
+#include "net/http/core/http_core_status.h"
 
 namespace vctl
 {

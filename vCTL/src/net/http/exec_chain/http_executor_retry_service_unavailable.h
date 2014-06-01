@@ -9,6 +9,33 @@
 #ifndef __vClientTemplateLib__http_executor_retry_service_unavailable__
 #define __vClientTemplateLib__http_executor_retry_service_unavailable__
 
-#include <iostream>
+#include "net/http/exec_chain/http_executor_interface.h"
+
+namespace vctl
+{
+namespace net
+{
+namespace http
+{
+
+class CRetryServiceUnavailableExecutor : public IHttpRequestExecutionChain
+    {
+public:
+    static CRetryServiceUnavailableExecutor* New();
+    
+    virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
+        IHttpRequest* aHttpRequest,
+        IFutureCallBack* aFutureCallBack);
+        
+protected:
+    virtual ~CRetryServiceUnavailableExecutor();
+    void Construct();
+    CRetryServiceUnavailableExecutor();
+    
+    };
+
+} //namespace http
+} //namespace net
+} //namespace vctl
 
 #endif /* defined(__vClientTemplateLib__http_executor_retry_service_unavailable__) */

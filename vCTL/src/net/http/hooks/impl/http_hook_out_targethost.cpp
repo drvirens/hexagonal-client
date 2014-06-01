@@ -6,4 +6,43 @@
 //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
 //
 
-#include "http_hook_out_targethost.h"
+#include "net/http/hooks/impl/http_hook_out_targethost.h"
+
+namespace vctl
+{
+namespace net
+{
+namespace http
+{
+
+CHttpHookOutgoingTargetHost* CHttpHookOutgoingTargetHost::New()
+    {
+    CHttpHookOutgoingTargetHost* obj = new CHttpHookOutgoingTargetHost();
+    if( obj )
+        {
+        obj->Construct();
+        }
+    return obj;
+    }
+    
+bool CHttpHookOutgoingTargetHost::ProcessPacketHeader(IHttpRequest& aHttpRequest)
+    {
+    return false;
+    }
+    
+CHttpHookOutgoingTargetHost::~CHttpHookOutgoingTargetHost()
+    {
+    }
+    
+CHttpHookOutgoingTargetHost::CHttpHookOutgoingTargetHost()
+    {
+    }
+    
+void CHttpHookOutgoingTargetHost::Construct()
+    {
+    }
+    
+
+} //namespace http
+} //namespace net
+} //namespace vctl

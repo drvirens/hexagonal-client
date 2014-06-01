@@ -24,6 +24,16 @@ bool TGeneralHttpConfig::IsAuthenticaionNeeded() const
     {
     return false;
     }
+    
+bool TGeneralHttpConfig::IsAutomaticRetriesEnabled() const
+    {
+    return false;
+    }
+    
+bool TGeneralHttpConfig::IsRedirectEnabled() const
+    {
+    return false;
+    }
 
 } //namespace http
 } //namespace net

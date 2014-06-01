@@ -19,6 +19,7 @@ namespace net
 namespace http
 {
 class IAuthScheme;
+class IHttpContext;
 
 class IAuthSchemeProvider : public vctl::CReferenceThreadSafe<IAuthSchemeProvider>
     {

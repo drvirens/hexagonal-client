@@ -9,7 +9,6 @@
 #ifndef __vClientTemplateLib__http_connection_reuse_strategy_nope__
 #define __vClientTemplateLib__http_connection_reuse_strategy_nope__
 
-
 #include "net/http/decorate/http_connection_reuse_strategy.h"
 
 namespace vctl

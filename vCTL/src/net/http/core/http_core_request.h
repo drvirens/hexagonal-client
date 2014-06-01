@@ -38,7 +38,7 @@ public:
     virtual TProtocolVersion Version() const = 0;
     virtual void AddHeader(const THeader& aHeader) = 0;
     virtual void RemoveHeader(const THeader& aHeader) = 0;
-    virtual THttpHeadersMap* GetAllHeaders() const = 0;
+    virtual CHttpHeadersMap* GetAllHeaders() const = 0;
 
     };
 

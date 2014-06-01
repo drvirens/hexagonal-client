@@ -66,7 +66,6 @@ class TDefaultDeletionPolicy
 public:
     static void Delete(const POINTER_TYPE* aThis)
         {
-//        delete aThis; aThis = 0;
         CReferenceThreadSafe<POINTER_TYPE, TDefaultDeletionPolicy<POINTER_TYPE> >::Delete(aThis);
         }
     };

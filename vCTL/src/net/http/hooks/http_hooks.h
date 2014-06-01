@@ -11,6 +11,7 @@
 
 #include "memory/ref/rc_thread_safe.h"
 #include "memory/smart_pointer/strong_pointer.h"
+#include "net/http/hooks/http_hook_out.h"
 
 namespace vctl
 {
@@ -19,7 +20,7 @@ namespace net
 namespace http
 {
 
-class IHttpHookOutgoingPacket;
+//class IHttpHookOutgoingPacket;
 
 class IHttpHooks : public vctl::CReferenceThreadSafe<IHttpHooks>
     //
@@ -33,8 +34,6 @@ public:
 
 protected:
     virtual ~IHttpHooks() {}
-    
-        
     friend class vctl::CReferenceThreadSafe<IHttpHooks>;
     };
 

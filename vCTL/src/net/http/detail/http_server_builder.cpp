@@ -8,8 +8,15 @@
 
 #include "net/http/detail/http_server_builder.h"
 #include "net/http/detail/http_server.h"
+
 #include "net/http/exec_chain/http_executor_interface.h"
 #include "net/http/exec_chain/http_executor_boss.h"
+#include "net/http/exec_chain/http_executor_hooks.h"
+
+#include "net/http/hooks/impl/http_hooks_default.h"
+#include "net/http/hooks/impl/http_hook_out_defaultheaders.h"
+#include "net/http/decorate/impl/http_default_retry_handler.h"
+#include "net/http/exec_chain/http_executor_retry.h"
 
 namespace vctl
 {
@@ -22,6 +29,11 @@ namespace detail
 
 THttpServerBuilder::THttpServerBuilder()
     {
+    }
+
+THttpServerBuilder::~THttpServerBuilder()
+    {
+    LOG_INFO << "Destructor for THttpServerBuilder called";
     }
 
 //THttpServerBuilder& THttpServerBuilder::SetHttpActualSenderReceiver(vctl::TStrongPointer<IHttpActualSenderReceiver> aIHttpActualSenderReceiver)
@@ -90,9 +102,9 @@ THttpServerBuilder& THttpServerBuilder::SetCredentialsProvider(vctl::TStrongPoin
     return *this;
     }
     
-THttpServerBuilder& THttpServerBuilder::SetDefaultHttpHeaders(vctl::TStrongPointer<THttpHeadersMap> aTHttpHeadersMap)
+THttpServerBuilder& THttpServerBuilder::SetDefaultHttpHeaders(vctl::TStrongPointer<CHttpHeadersMap> aCHttpHeadersMap)
     {
-    iTHttpHeadersMap = aTHttpHeadersMap;
+    iCHttpHeadersMap = aCHttpHeadersMap;
     return *this;
     }
     
@@ -117,8 +129,7 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
         
     if(!iIConnectionKeepAliveStrategy.Get())
         {
-        //TODO:
-        //iIConnectionKeepAliveStrategy = CDefaultConnectionKeepAliveStrategy::New();
+        iIConnectionKeepAliveStrategy = CDefaultConnectionKeepAliveStrategy::New();
         }
         
     if(!iIAuthenticationStrategy.Get())
@@ -134,7 +145,7 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
             }
         }
     
-    IHttpRequestExecutionChain* bossexecutor =
+    IHttpRequestExecutionChain* executorchain =
         CHttpRequestExecutorBoss::New(iIHttpActualSenderReceiver,
                                           iIConnectionReuseStrategy,
                                           iIConnectionKeepAliveStrategy,
@@ -144,10 +155,8 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
         {
         iIHttpHooks = CDefaultHttpHooks::New();
         
-        if(iTHttpHeadersMap.Get()) //we have some default headers hooks set by clients
-            {
-            iIHttpHooks->Add(iTHttpHeadersMap);
-            }
+        IHttpHookOutgoingPacket* defaultheaders = CHttpHookOutgoingDefaultHeaders::New(iCHttpHeadersMap);
+        iIHttpHooks->Add(defaultheaders);
             
         IHttpHookOutgoingPacket* content = CHttpHookOutgoingContent::New();
         iIHttpHooks->Add(content); //transfers ownership
@@ -164,12 +173,48 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
         }
         
         //create chaining based on Chain-of-responsibility
-    CHooksExecutor* hooks = CHooksExecutor::New(bossexecutor);
+        //TODO: CHeck if chain is created correctly
+    executorchain = CHooksExecutor::New(executorchain, iIHttpHooks);
     
+    if(iGeneralHttpConfig.IsAutomaticRetriesEnabled())
+        {
+        if(!iIRetryHandler)
+            {
+            iIRetryHandler = CDefaultRetryHandler::New();
+            }
+        executorchain = CRetryExecutor::New(executorchain, iIRetryHandler);
+        }
+        
+    if(iGeneralHttpConfig.IsRedirectEnabled())
+        {
+        //TODO: Enable redirection executor
+        }
+        
+    if(iIServiceUnavailableRetryStrategy)
+        {
+        //TODO: Enable service unavailable executor
+        }
     
+    //TODO: backoff strategy
     
-    CHttpServer* server = CHttpServer::New();
-    return server;
+    //TODO: Create AuthSchemeProvider registry here
+    if(!iIAuthSchemeProvider.Get())
+        {
+        LOG_INFO << "----> No AuthSceme Provider provided. this will not authorize any http requests ";
+        }
+    
+    //TODO: create default ICredentialsProvider?
+    if( !iICredentialsProvider )
+        {
+        }
+    
+    CHttpServer* server = CHttpServer::New(executorchain,
+                                           iICredentialsProvider,
+                                           iIAuthSchemeProvider
+                                           );
+    vctl::TStrongPointer<detail::CHttpServer> retserver;
+    retserver = server;
+    return retserver;
     }
  
 } //namespace detail

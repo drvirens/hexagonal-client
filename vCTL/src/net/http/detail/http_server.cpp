@@ -27,7 +27,30 @@ CHttpServer* CHttpServer::New()
     return obj;
     }
     
+CHttpServer* CHttpServer::New(IHttpRequestExecutionChain* aIHttpRequestExecutionChain,
+                            ICredentialsProvider* aICredentialsProvider,
+                            IAuthSchemeProvider* aIAuthSchemeProvider)
+    {
+    CHttpServer* obj = new CHttpServer(aIHttpRequestExecutionChain,
+                                aICredentialsProvider,
+                                aIAuthSchemeProvider);
+    if( obj )
+        {
+        obj->Construct();
+        }
+    return obj;
+    }
+    
 CHttpServer::CHttpServer()
+    {
+    }
+    
+CHttpServer::CHttpServer(IHttpRequestExecutionChain* aIHttpRequestExecutionChain,
+                            ICredentialsProvider* aICredentialsProvider,
+                            IAuthSchemeProvider* aIAuthSchemeProvider)
+    : iIAuthSchemeProvider(aIAuthSchemeProvider)
+    , iICredentialsProvider(aICredentialsProvider)
+    , iIHttpRequestExecutionChain(aIHttpRequestExecutionChain)
     {
     }
     

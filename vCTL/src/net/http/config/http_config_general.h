@@ -23,6 +23,8 @@ class TGeneralHttpConfig
 public:
     bool IsKeepAliveEnabled() const;
     bool IsAuthenticaionNeeded() const;
+    bool IsAutomaticRetriesEnabled() const;
+    bool IsRedirectEnabled() const;
     };
 
 } //namespace http
