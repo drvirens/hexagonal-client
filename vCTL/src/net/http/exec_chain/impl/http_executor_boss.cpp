@@ -20,7 +20,10 @@ CHttpRequestExecutorBoss* CHttpRequestExecutorBoss::New(vctl::TStrongPointer<det
              vctl::TStrongPointer<IConnectionKeepAliveStrategy> aIConnectionKeepAliveStrategy,
              vctl::TStrongPointer<IAuthenticationStrategy> aIAuthenticationStrategy)
     {
-    CHttpRequestExecutorBoss* obj = new CHttpRequestExecutorBoss();
+    CHttpRequestExecutorBoss* obj = new CHttpRequestExecutorBoss(aIHttpActualSenderReceiver,
+                                                    aIConnectionReuseStrategy,
+                                                    aIConnectionKeepAliveStrategy,
+                                                    aIAuthenticationStrategy);
     if( obj )
         {
         obj->Construct();
@@ -42,7 +45,14 @@ void CHttpRequestExecutorBoss::Construct()
     {
     }
     
-CHttpRequestExecutorBoss::CHttpRequestExecutorBoss()
+CHttpRequestExecutorBoss::CHttpRequestExecutorBoss(vctl::TStrongPointer<detail::IHttpActualSenderReceiver> aIHttpActualSenderReceiver,
+                             vctl::TStrongPointer<IConnectionReuseStrategy> aIConnectionReuseStrategy,
+                             vctl::TStrongPointer<IConnectionKeepAliveStrategy> aIConnectionKeepAliveStrategy,
+                             vctl::TStrongPointer<IAuthenticationStrategy> aIAuthenticationStrategy)
+    : iIHttpActualSenderReceiver(aIHttpActualSenderReceiver)
+    , iIConnectionReuseStrategy(aIConnectionReuseStrategy)
+    , iIConnectionKeepAliveStrategy(aIConnectionKeepAliveStrategy)
+    , iIAuthenticationStrategy(aIAuthenticationStrategy)
     {
     }
     

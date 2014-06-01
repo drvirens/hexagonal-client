@@ -9,7 +9,9 @@
 #ifndef __vClientTemplateLib__http_hooks_default__
 #define __vClientTemplateLib__http_hooks_default__
 
+#include <list>
 #include "net/http/hooks/http_hooks.h"
+#include "base/synchronize/lock.h"
 
 namespace vctl
 {
@@ -30,6 +32,8 @@ protected:
     void Construct();
 
 private:
+    vbase::TLock iLock; //protects access to iHooksList
+    std::list< vctl::TStrongPointer<IHttpHookOutgoingPacket> > iHooksList;
     };
 
 } //namespace http

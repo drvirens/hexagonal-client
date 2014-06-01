@@ -39,7 +39,16 @@ public:
 protected:
     virtual ~CHttpRequestExecutorBoss();
     void Construct();
-    CHttpRequestExecutorBoss();
+    CHttpRequestExecutorBoss(vctl::TStrongPointer<detail::IHttpActualSenderReceiver> aIHttpActualSenderReceiver,
+                             vctl::TStrongPointer<IConnectionReuseStrategy> aIConnectionReuseStrategy,
+                             vctl::TStrongPointer<IConnectionKeepAliveStrategy> aIConnectionKeepAliveStrategy,
+                             vctl::TStrongPointer<IAuthenticationStrategy> aIAuthenticationStrategy);
+    
+private:
+    vctl::TStrongPointer<detail::IHttpActualSenderReceiver> iIHttpActualSenderReceiver;
+    vctl::TStrongPointer<IConnectionReuseStrategy> iIConnectionReuseStrategy;
+    vctl::TStrongPointer<IConnectionKeepAliveStrategy> iIConnectionKeepAliveStrategy;
+    vctl::TStrongPointer<IAuthenticationStrategy> iIAuthenticationStrategy;
     
     };
 

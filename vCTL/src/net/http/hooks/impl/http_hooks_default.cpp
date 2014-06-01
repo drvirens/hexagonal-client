@@ -27,11 +27,18 @@ CDefaultHttpHooks* CDefaultHttpHooks::New()
     
 void CDefaultHttpHooks::Add(vctl::TStrongPointer<IHttpHookOutgoingPacket> aHook)
     {
+    vbase::TAutoLock autolock( iLock );
+    iHooksList.push_back(aHook);
     }
    
 
 CDefaultHttpHooks::~CDefaultHttpHooks()
     {
+    vbase::TAutoLock autolock( iLock );
+    while(! iHooksList.empty())
+        {
+        iHooksList.pop_back();
+        }
     }
     
 CDefaultHttpHooks::CDefaultHttpHooks()

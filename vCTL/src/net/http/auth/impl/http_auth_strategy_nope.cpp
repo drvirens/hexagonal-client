@@ -40,6 +40,7 @@ void CNopeAuthenticationStrategy::ChooseChallenge()
     
 CNopeAuthenticationStrategy::~CNopeAuthenticationStrategy()
     {
+    LOG_INFO << "deleting CNopeAuthenticationStrategy instance [%p]" << this;
     }
     
 CNopeAuthenticationStrategy::CNopeAuthenticationStrategy()

@@ -42,7 +42,7 @@ protected:
         ASSERT(false == iIsCommitingSuicide);
         ASSERT(false == TAtomicCount_IsZero(&iCount));
         bool retisnonzero = TAtomicCount_DecrementByOne(&iCount);
-        if(!retisnonzero)
+        if(retisnonzero)
             {
             iIsCommitingSuicide = true;
             }
