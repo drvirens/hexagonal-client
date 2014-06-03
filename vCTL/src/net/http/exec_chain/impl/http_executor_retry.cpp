@@ -17,7 +17,7 @@ namespace http
 
 CRetryExecutor* CRetryExecutor::New(IHttpRequestExecutionChain* aChainLink, IRetryHandler* aIRetryHandler)
     {
-    CRetryExecutor* obj = new CRetryExecutor();
+    CRetryExecutor* obj = new CRetryExecutor(aChainLink, aIRetryHandler);
     if( obj )
         {
         obj->Construct();
@@ -29,6 +29,9 @@ void CRetryExecutor::ExecuteOrPassOn(CHttpContext* aHttpContext,
                         IHttpRequest* aHttpRequest,
                         IFutureCallBack* aFutureCallBack)
     {
+    LOG_INFO << "CRetryExecutor::ExecuteOrPassOn";
+    
+    PassOn(aHttpContext, aHttpRequest, aFutureCallBack);
     }
     
 CRetryExecutor::~CRetryExecutor()
@@ -39,7 +42,9 @@ void CRetryExecutor::Construct()
     {
     }
     
-CRetryExecutor::CRetryExecutor()
+CRetryExecutor::CRetryExecutor(IHttpRequestExecutionChain* aChainLink, IRetryHandler* aIRetryHandler)
+    : IHttpRequestExecutionChain(aChainLink)
+    , iIRetryHandler(aIRetryHandler)
     {
     }
     

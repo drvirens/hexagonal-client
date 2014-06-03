@@ -21,7 +21,7 @@ namespace http
 class CRetryServiceUnavailableExecutor : public IHttpRequestExecutionChain
     {
 public:
-    static CRetryServiceUnavailableExecutor* New();
+    static CRetryServiceUnavailableExecutor* New(IHttpRequestExecutionChain* aChain);
     
     virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
@@ -30,7 +30,7 @@ public:
 protected:
     virtual ~CRetryServiceUnavailableExecutor();
     void Construct();
-    CRetryServiceUnavailableExecutor();
+    CRetryServiceUnavailableExecutor(IHttpRequestExecutionChain* aChain);
     
     };
 

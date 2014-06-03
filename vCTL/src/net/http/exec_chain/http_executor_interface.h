@@ -31,9 +31,36 @@ public:
         IHttpRequest* aHttpRequest,
         IFutureCallBack* aFutureCallBack) = 0;
         
+    void SetSuccessor(IHttpRequestExecutionChain* aSuccessor)
+        {
+        iSuccessor = aSuccessor;
+        }
+        
 protected:
+    explicit IHttpRequestExecutionChain(IHttpRequestExecutionChain* aSuccessor)
+        : iSuccessor(aSuccessor)
+        {}
+    
     virtual ~IHttpRequestExecutionChain() {}
     friend class vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>;
+    
+    IHttpRequestExecutionChain* Successor() const
+        {
+        return iSuccessor;
+        }
+        
+    void PassOn(CHttpContext* aHttpContext,
+                IHttpRequest* aHttpRequest,
+                IFutureCallBack* aFutureCallBack)
+        {
+        if( iSuccessor )
+            {
+            iSuccessor->ExecuteOrPassOn(aHttpContext, aHttpRequest, aFutureCallBack);
+            }
+        }
+    
+private:
+    IHttpRequestExecutionChain* iSuccessor;
     };
 
 } //namespace http

@@ -15,9 +15,9 @@ namespace net
 namespace http
 {
 
- CRedirectExecutor* CRedirectExecutor::New()
+ CRedirectExecutor* CRedirectExecutor::New(IHttpRequestExecutionChain* aChain)
     {
-    CRedirectExecutor* obj = new CRedirectExecutor();
+    CRedirectExecutor* obj = new CRedirectExecutor(aChain);
     if( obj )
         {
         obj->Construct();
@@ -26,9 +26,12 @@ namespace http
     }
     
  void CRedirectExecutor::ExecuteOrPassOn(CHttpContext* aHttpContext,
-    IHttpRequest* aHttpRequest,
-    IFutureCallBack* aFutureCallBack)
+                            IHttpRequest* aHttpRequest,
+                            IFutureCallBack* aFutureCallBack)
     {
+    LOG_INFO << "CRedirectExecutor::ExecuteOrPassOn";
+    
+    PassOn(aHttpContext, aHttpRequest, aFutureCallBack);
     }
     
  CRedirectExecutor::~CRedirectExecutor()
@@ -39,7 +42,8 @@ void CRedirectExecutor::Construct()
     {
     }
     
-CRedirectExecutor::CRedirectExecutor()
+CRedirectExecutor::CRedirectExecutor(IHttpRequestExecutionChain* aChain)
+    : IHttpRequestExecutionChain(aChain)
     {
     }
     

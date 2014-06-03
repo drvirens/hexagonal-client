@@ -17,9 +17,11 @@ namespace http
 namespace detail
 {
 
-void CCurlHttpActualSenderReceiver::DoSend(CHttpContext* aHttpContext, //TODO: remove this. server will create it internally
+void CCurlHttpActualSenderReceiver::DoSend(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest)
     {
+    LOG_INFO << "CCurlHttpActualSenderReceiver::DoSend";
+    
     }
     
 void CCurlHttpActualSenderReceiver::DoReceive()

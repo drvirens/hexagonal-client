@@ -27,7 +27,7 @@ bool TGeneralHttpConfig::IsAuthenticaionNeeded() const
     
 bool TGeneralHttpConfig::IsAutomaticRetriesEnabled() const
     {
-    return false;
+    return true;
     }
     
 bool TGeneralHttpConfig::IsRedirectEnabled() const

@@ -15,9 +15,9 @@ namespace net
 namespace http
 {
 
-CRetryServiceUnavailableExecutor* CRetryServiceUnavailableExecutor::New()
+CRetryServiceUnavailableExecutor* CRetryServiceUnavailableExecutor::New(IHttpRequestExecutionChain* aChain)
     {
-    CRetryServiceUnavailableExecutor* obj = new CRetryServiceUnavailableExecutor();
+    CRetryServiceUnavailableExecutor* obj = new CRetryServiceUnavailableExecutor(aChain);
     if( obj )
         {
         obj->Construct();
@@ -26,9 +26,12 @@ CRetryServiceUnavailableExecutor* CRetryServiceUnavailableExecutor::New()
     }
     
 void CRetryServiceUnavailableExecutor::ExecuteOrPassOn(CHttpContext* aHttpContext,
-    IHttpRequest* aHttpRequest,
-    IFutureCallBack* aFutureCallBack)
+                                    IHttpRequest* aHttpRequest,
+                                    IFutureCallBack* aFutureCallBack)
     {
+    LOG_INFO << "CRetryServiceUnavailableExecutor::ExecuteOrPassOn";
+    
+    PassOn(aHttpContext, aHttpRequest, aFutureCallBack);
     }
     
 CRetryServiceUnavailableExecutor::~CRetryServiceUnavailableExecutor()
@@ -39,7 +42,8 @@ void CRetryServiceUnavailableExecutor::Construct()
     {
     }
     
-CRetryServiceUnavailableExecutor::CRetryServiceUnavailableExecutor()
+CRetryServiceUnavailableExecutor::CRetryServiceUnavailableExecutor(IHttpRequestExecutionChain* aChain)
+    : IHttpRequestExecutionChain(aChain)
     {
     }
     

@@ -10,6 +10,9 @@
 #define __vClientTemplateLib__http_executor_hooks__
 
 #include "net/http/exec_chain/http_executor_interface.h"
+#include "net/http/hooks/http_hooks.h"
+
+#include "memory/smart_pointer/strong_pointer.h"
 
 namespace vctl
 {
@@ -18,13 +21,11 @@ namespace net
 namespace http
 {
 
-class IHttpHooks;
-
 class CHooksExecutor : public IHttpRequestExecutionChain
     {
 public:
     static CHooksExecutor* New(IHttpRequestExecutionChain* aChainNext,
-            IHttpHooks* aIHttpHooks);
+                                IHttpHooks* aIHttpHooks);
     
     virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
@@ -33,8 +34,11 @@ public:
 protected:
     virtual ~CHooksExecutor();
     void Construct();
-    CHooksExecutor();
+    CHooksExecutor(IHttpRequestExecutionChain* aChainNext,
+                                IHttpHooks* aIHttpHooks);
     
+private:
+    vctl::TStrongPointer<IHttpHooks> iIHttpHooks;
     };
 
 } //namespace http

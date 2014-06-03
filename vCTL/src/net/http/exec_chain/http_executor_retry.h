@@ -11,6 +11,7 @@
 
 #include "net/http/exec_chain/http_executor_interface.h"
 #include "net/http/decorate/http_retry_handler.h"
+#include "memory/smart_pointer/strong_pointer.h"
 
 namespace vctl
 {
@@ -31,8 +32,10 @@ public:
 protected:
     virtual ~CRetryExecutor();
     void Construct();
-    CRetryExecutor();
+    CRetryExecutor(IHttpRequestExecutionChain* aChainLink, IRetryHandler* aIRetryHandler);
     
+private:
+    vctl::TStrongPointer<IRetryHandler> iIRetryHandler;
     };
 
 } //namespace http

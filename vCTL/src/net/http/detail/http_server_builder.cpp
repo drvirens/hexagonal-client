@@ -110,6 +110,8 @@ THttpServerBuilder& THttpServerBuilder::SetDefaultHttpHeaders(vctl::TStrongPoint
     
 vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
     {
+    IHttpRequestExecutionChain* retryexecutorchain = 0;
+    
     if(!iIHttpActualSenderReceiver.Get())
         {
         iIHttpActualSenderReceiver = CCurlHttpActualSenderReceiver::New();
@@ -145,12 +147,13 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
             }
         }
     
-    IHttpRequestExecutionChain* executorchain =
+    IHttpRequestExecutionChain* bossexecutorchain =
         CHttpRequestExecutorBoss::New(iIHttpActualSenderReceiver,
                                           iIConnectionReuseStrategy,
                                           iIConnectionKeepAliveStrategy,
                                           iIAuthenticationStrategy);
-
+    
+    
     if(!iIHttpHooks.Get())
         {
         iIHttpHooks = CDefaultHttpHooks::New();
@@ -174,7 +177,7 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
         
         //create chaining based on Chain-of-responsibility
         //TODO: CHeck if chain is created correctly
-    executorchain = CHooksExecutor::New(executorchain, iIHttpHooks);
+    IHttpRequestExecutionChain* hooksexecutorchain = CHooksExecutor::New(bossexecutorchain, iIHttpHooks);
     
     if(iGeneralHttpConfig.IsAutomaticRetriesEnabled())
         {
@@ -182,7 +185,7 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
             {
             iIRetryHandler = CDefaultRetryHandler::New();
             }
-        executorchain = CRetryExecutor::New(executorchain, iIRetryHandler);
+        retryexecutorchain = CRetryExecutor::New(hooksexecutorchain, iIRetryHandler);
         }
         
     if(iGeneralHttpConfig.IsRedirectEnabled())
@@ -208,13 +211,13 @@ vctl::TStrongPointer<CHttpServer> THttpServerBuilder::Build()
         {
         }
     
-    CHttpServer* server = CHttpServer::New(executorchain,
+    CHttpServer* server = CHttpServer::New(retryexecutorchain,
                                            iICredentialsProvider,
                                            iIAuthSchemeProvider
                                            );
-    vctl::TStrongPointer<detail::CHttpServer> retserver;
-    retserver = server;
-    return retserver;
+    //vctl::TStrongPointer<detail::CHttpServer> retserver;
+    //retserver = server;
+    return server;
     }
  
 } //namespace detail

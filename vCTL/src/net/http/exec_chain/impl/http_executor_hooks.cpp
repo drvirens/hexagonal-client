@@ -18,7 +18,7 @@ namespace http
 CHooksExecutor* CHooksExecutor::New(IHttpRequestExecutionChain* aChainNext,
     IHttpHooks* aIHttpHooks)
     {
-    CHooksExecutor* obj = new CHooksExecutor();
+    CHooksExecutor* obj = new CHooksExecutor(aChainNext, aIHttpHooks);
     if( obj )
         {
         obj->Construct();
@@ -27,9 +27,13 @@ CHooksExecutor* CHooksExecutor::New(IHttpRequestExecutionChain* aChainNext,
     }
     
 void CHooksExecutor::ExecuteOrPassOn(CHttpContext* aHttpContext,
-IHttpRequest* aHttpRequest,
-IFutureCallBack* aFutureCallBack)
+                        IHttpRequest* aHttpRequest,
+                        IFutureCallBack* aFutureCallBack)
     {
+    //execute then trigger next in chain
+    LOG_INFO << "CHooksExecutor::ExecuteOrPassOn";
+    
+    PassOn(aHttpContext, aHttpRequest, aFutureCallBack);
     }
     
 CHooksExecutor::~CHooksExecutor()
@@ -40,7 +44,9 @@ void CHooksExecutor::Construct()
     {
     }
     
-CHooksExecutor::CHooksExecutor()
+CHooksExecutor::CHooksExecutor(IHttpRequestExecutionChain* aChainNext,
+                                IHttpHooks* aIHttpHooks)
+    : IHttpRequestExecutionChain(aChainNext)
     {
     }
     

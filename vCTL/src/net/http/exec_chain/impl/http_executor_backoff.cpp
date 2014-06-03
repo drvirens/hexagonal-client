@@ -15,9 +15,9 @@ namespace net
 namespace http
 {
 
-CBackoffExecutor* CBackoffExecutor::New()
+CBackoffExecutor* CBackoffExecutor::New(IHttpRequestExecutionChain* aChain)
     {
-    CBackoffExecutor* obj = new CBackoffExecutor();
+    CBackoffExecutor* obj = new CBackoffExecutor(aChain);
     if( obj )
         {
         obj->Construct();
@@ -26,9 +26,12 @@ CBackoffExecutor* CBackoffExecutor::New()
     }
     
 void CBackoffExecutor::ExecuteOrPassOn(CHttpContext* aHttpContext,
-    IHttpRequest* aHttpRequest,
-    IFutureCallBack* aFutureCallBack)
+                IHttpRequest* aHttpRequest,
+                IFutureCallBack* aFutureCallBack)
     {
+    LOG_INFO << "CBackoffExecutor::ExecuteOrPassOn";
+    
+    PassOn(aHttpContext, aHttpRequest, aFutureCallBack);
     }
     
 CBackoffExecutor::~CBackoffExecutor()
@@ -39,7 +42,8 @@ void CBackoffExecutor::Construct()
     {
     }
     
-CBackoffExecutor::CBackoffExecutor()
+CBackoffExecutor::CBackoffExecutor(IHttpRequestExecutionChain* aChain)
+    : IHttpRequestExecutionChain(aChain)
     {
     }
     

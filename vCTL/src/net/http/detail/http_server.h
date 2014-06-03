@@ -35,6 +35,9 @@ public:
     static CHttpServer* New(IHttpRequestExecutionChain* aIHttpRequestExecutionChain,
                             ICredentialsProvider* aICredentialsProvider,
                             IAuthSchemeProvider* aIAuthSchemeProvider);
+    void Execute(
+        IHttpRequest* aHttpRequest,
+        IFutureCallBack* aFutureCallBack);
     
 protected:
     CHttpServer();

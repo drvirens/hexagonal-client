@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
 //
 
-#include "http_server.h"
+#include "net/http/detail/http_server.h"
+#include "net/http/context/http_context.h"
 
 namespace vctl
 {
@@ -16,6 +17,16 @@ namespace http
 {
 namespace detail
 {
+
+void CHttpServer::Execute(
+        IHttpRequest* aHttpRequest,
+        IFutureCallBack* aFutureCallBack)
+    {
+    //TODO: if config is not setup, set it up for httprequest here
+    //TRequestConfig config = aHttpRequest->GetConfig();
+    CHttpContext* context = new CHttpContext();
+    iIHttpRequestExecutionChain->ExecuteOrPassOn(context, aHttpRequest, aFutureCallBack);
+    }
 
 CHttpServer* CHttpServer::New()
     {

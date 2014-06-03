@@ -35,6 +35,11 @@ void CHttpRequestExecutorBoss::ExecuteOrPassOn(CHttpContext* aHttpContext,
             IHttpRequest* aHttpRequest,
             IFutureCallBack* aFutureCallBack)
     {
+    LOG_INFO << "CHttpRequestExecutorBoss::ExecuteOrPassOn";
+    
+    iIHttpActualSenderReceiver->DoSend(aHttpContext, aHttpRequest);
+    
+    PassOn(aHttpContext, aHttpRequest, aFutureCallBack);
     }
     
 CHttpRequestExecutorBoss::~CHttpRequestExecutorBoss()
@@ -49,7 +54,8 @@ CHttpRequestExecutorBoss::CHttpRequestExecutorBoss(vctl::TStrongPointer<detail::
                              vctl::TStrongPointer<IConnectionReuseStrategy> aIConnectionReuseStrategy,
                              vctl::TStrongPointer<IConnectionKeepAliveStrategy> aIConnectionKeepAliveStrategy,
                              vctl::TStrongPointer<IAuthenticationStrategy> aIAuthenticationStrategy)
-    : iIHttpActualSenderReceiver(aIHttpActualSenderReceiver)
+    : IHttpRequestExecutionChain(NULL) //we are last in chain to execute so set parent as null
+    , iIHttpActualSenderReceiver(aIHttpActualSenderReceiver)
     , iIConnectionReuseStrategy(aIConnectionReuseStrategy)
     , iIConnectionKeepAliveStrategy(aIConnectionKeepAliveStrategy)
     , iIAuthenticationStrategy(aIAuthenticationStrategy)

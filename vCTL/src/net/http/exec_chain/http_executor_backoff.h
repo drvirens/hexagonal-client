@@ -21,7 +21,7 @@ namespace http
 class CBackoffExecutor : public IHttpRequestExecutionChain
     {
 public:
-    static CBackoffExecutor* New();
+    static CBackoffExecutor* New(IHttpRequestExecutionChain* aChain);
     
     virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
@@ -30,7 +30,7 @@ public:
 protected:
     virtual ~CBackoffExecutor();
     void Construct();
-    CBackoffExecutor();
+    CBackoffExecutor(IHttpRequestExecutionChain* aChain);
     
     };
 

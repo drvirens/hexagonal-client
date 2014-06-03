@@ -217,13 +217,16 @@ TEST(UT_THttpClient, CreateServerTrivial)
     {
     //every worker should create like below
     detail::THttpServerBuilder builder;
-    //IConnectionReuseStrategy* reusestrategy = new MyIConnectionReuseStrategy();
-    //builder.SetConnectionReuseStrategy(reusestrategy);
-    //vctl::TStrongPointer<detail::CHttpServer> server = builder.Build();
+    IConnectionReuseStrategy* reusestrategy = new MyIConnectionReuseStrategy();
+    builder.SetConnectionReuseStrategy(reusestrategy);
+    vctl::TStrongPointer<detail::CHttpServer> server = builder.Build();
     
-    builder.Build();
+    EXPECT_TRUE(server.Get() != 0);
     
-    //EXPECT_TRUE(server.Get() != 0);
+    MyHttpResponseHandler* myhttpresphandler = new MyHttpResponseHandler();
+    CHttpContext* context = new CHttpContext();
+    IHttpRequest* getrequest = new MyMockHttpRequest();
+    server->Execute(getrequest, myhttpresphandler);
     }
     
 }

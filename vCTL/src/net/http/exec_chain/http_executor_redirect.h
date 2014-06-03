@@ -21,7 +21,7 @@ namespace http
 class CRedirectExecutor : public IHttpRequestExecutionChain
     {
 public:
-    static CRedirectExecutor* New();
+    static CRedirectExecutor* New(IHttpRequestExecutionChain* aChain);
     
     virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
@@ -30,7 +30,7 @@ public:
 protected:
     virtual ~CRedirectExecutor();
     void Construct();
-    CRedirectExecutor();
+    CRedirectExecutor(IHttpRequestExecutionChain* aChain);
     
     };
 
