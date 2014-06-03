@@ -10,6 +10,8 @@
 #include "net/http/core/http_core_response.h"
 #include "net/http/core/http_core_request.h"
 #include "net/http/config/http_config_request.h"
+#include "net/http/core/http_core_header_map.h"
+#include "net/http/core/http_core_header.h"
 #include "curl/curl.h"
 
 namespace vctl
@@ -24,6 +26,7 @@ namespace detail
 class TCurlExecutor
     {
 public:
+    TCurlExecutor();
     IHttpResponse* Send(IHttpRequest* aHttpRequest);
     ~TCurlExecutor();
     
@@ -40,6 +43,11 @@ private:
     CURL* iCurl;
     };
 
+TCurlExecutor::TCurlExecutor()
+    : iCurl(0)
+    {
+    }
+    
 IHttpResponse* TCurlExecutor::Send(IHttpRequest* aHttpRequest)
     {
     IHttpResponse* response = 0;
@@ -59,7 +67,7 @@ int TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_sl
     bool ssldisabled = config.IsSSLVerificationDisabled();
     
     int ret = InitCurl(ssldisabled);
-    if( !ret )
+    if( ret )
         {
         return ret;
         }
@@ -73,8 +81,8 @@ int TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_sl
     int headerssize = headers->Size();
     for(int i = 0; i < headerssize; i++)
         {
-        THeader h = headers->GetHeader(i);
-        *aCurlList = curl_slist_append(*aCurlList, h.Describe());
+        THeader* h = headers->GetHeader(i);
+        *aCurlList = curl_slist_append(*aCurlList, h->Describe().c_str());
         }
     
     return ret;
@@ -94,7 +102,7 @@ int TCurlExecutor::InitCurl(bool aDisableSsl)
         return e;
         }
     e = InitCurlOptions(aDisableSsl);
-    if( !e )
+    if( e )
         {
         curl_easy_cleanup(iCurl);
         iCurl = 0;
@@ -127,7 +135,7 @@ int TCurlExecutor::InitCurlOptions(bool aDisableSsl)
     curlerr = curl_easy_setopt( iCurl, CURLOPT_ERRORBUFFER, iCurlErrorBuffer);
     e = e && !curlerr;
     
-    if(!e)
+    if(e)
         {
         return 1; //error
         }
@@ -166,6 +174,15 @@ int TCurlExecutor::InitCurlOptions(bool aDisableSsl)
 size_t TCurlExecutor::CurlHeaderCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance)
     {
     return 0;
+    }
+    
+size_t TCurlExecutor::CurlBodyCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance)
+    {
+    return 0;
+    }
+
+TCurlExecutor::~TCurlExecutor()
+    {
     }
     
 // ------------------------

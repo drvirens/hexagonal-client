@@ -19,6 +19,8 @@ namespace net
 namespace http
 {
 
+class THeader;
+
 //class THeaderGroup : private vbase::TNotThreadSafe
 //    {
 //public:
@@ -27,6 +29,10 @@ namespace http
     //must be thread safe
 class CHttpHeadersMap : public vctl::CReferenceThreadSafe<CHttpHeadersMap>
     {
+public:
+    int Size() const;
+    THeader* GetHeader(int aIndex);
+    
 protected:
     virtual ~CHttpHeadersMap();
     friend class vctl::CReferenceThreadSafe<CHttpHeadersMap>;

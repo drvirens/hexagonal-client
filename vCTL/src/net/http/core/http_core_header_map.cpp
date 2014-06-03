@@ -7,3 +7,33 @@
 //
 
 #include "net/http/core/http_core_header_map.h"
+#include "net/http/core/http_core_header.h"
+
+namespace vctl
+{
+namespace net
+{
+namespace http
+{
+
+int CHttpHeadersMap::Size() const
+    {
+    return 6;
+    }
+    
+THeader* CHttpHeadersMap::GetHeader(int aIndex)
+    {
+    THeader h;
+    return &h;
+    }
+    
+
+CHttpHeadersMap::~CHttpHeadersMap()
+    {
+    }
+    
+
+
+} //namespace http
+} //namespace net
+} //namespace vctl
