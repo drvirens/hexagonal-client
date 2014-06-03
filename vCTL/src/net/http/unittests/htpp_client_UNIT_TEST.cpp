@@ -153,10 +153,10 @@ public:
         return new MyMockIHttpEntity();
         }
         
-    virtual TRequestConfig& GetConfig() const
+    virtual void GetConfig(TRequestConfig& aTRequestConfig) const
         {
         TRequestConfig rconfig;
-        return rconfig;
+        aTRequestConfig = rconfig;
         }
     virtual TProtocolVersion Version() const
         {

@@ -32,7 +32,7 @@ public:
     virtual EHttpMethodType HttpMethod() const = 0;
     virtual IHttpEntity* HttpEntity() const = 0;
     
-    virtual TRequestConfig& GetConfig() const = 0;
+    virtual void GetConfig(TRequestConfig& aTRequestConfig) const = 0;
     
     //from IHttpMessage
     virtual TProtocolVersion Version() const = 0;
