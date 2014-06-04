@@ -11,7 +11,7 @@
 
 
 #include <string>
-#include "base/synchronize/lock.h"
+
 #include "net/http/core/http_core_request.h"
 #include "memory/smart_pointer/strong_pointer.h"
 
@@ -39,13 +39,13 @@ public:
     virtual TProtocolVersion Version() const;
     virtual void AddHeader(const THeader& aHeader);
     virtual void RemoveHeader(const THeader& aHeader);
+    virtual bool HasHeader(const std::string& aHeaderName) const;
     virtual vctl::TStrongPointer<CHttpHeadersMap> GetAllHeaders() const;
 
 private:
     TProtocolVersion iProtocolVersion;
     bool iIsCancelledTag;
     
-    vbase::TLock iLock; //protects access to iHttpHeadersMap
     vctl::TStrongPointer<CHttpHeadersMap> iHttpHeadersMap;
     };
 

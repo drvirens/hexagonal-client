@@ -54,13 +54,17 @@ TProtocolVersion CHttpRequestBase::Version() const
     
 void CHttpRequestBase::AddHeader(const THeader& aHeader)
     {
-    vbase::TAutoLock guard(iLock);
     iHttpHeadersMap->Add( aHeader );
     }
     
 void CHttpRequestBase::RemoveHeader(const THeader& aHeader)
     {
-    vbase::TAutoLock guard(iLock);
+    
+    }
+    
+bool CHttpRequestBase::HasHeader(const std::string& aHeaderName) const
+    {
+    return false;
     }
     
 vctl::TStrongPointer<CHttpHeadersMap> CHttpRequestBase::GetAllHeaders() const

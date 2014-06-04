@@ -130,6 +130,7 @@
 /* Begin PBXFileReference section */
 		B639A02F193EAF1600387653 /* http_request_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_request_base.cpp; sourceTree = "<group>"; };
 		B639A030193EAF1600387653 /* http_request_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_request_base.h; sourceTree = "<group>"; };
+		B639A034193EBA3400387653 /* map_thread_safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = map_thread_safe.h; sourceTree = "<group>"; };
 		B659AE831938175C00F9B484 /* http_hooks_default.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_hooks_default.cpp; sourceTree = "<group>"; };
 		B659AE841938175C00F9B484 /* http_hooks_default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_hooks_default.h; sourceTree = "<group>"; };
 		B659AE871938226600F9B484 /* http_connection_keep_alive_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_connection_keep_alive_strategy.h; sourceTree = "<group>"; };
@@ -469,6 +470,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B639A032193EBA0700387653 /* collect */ = {
+			isa = PBXGroup;
+			children = (
+				B639A034193EBA3400387653 /* map_thread_safe.h */,
+			);
+			path = collect;
+			sourceTree = "<group>";
+		};
 		B6F59220193467E2001DE11B /* impl */ = {
 			isa = PBXGroup;
 			children = (
@@ -901,6 +910,7 @@
 		DB6ADB3F191C9B4A0098E92C /* base */ = {
 			isa = PBXGroup;
 			children = (
+				B639A032193EBA0700387653 /* collect */,
 				DB6ADB40191C9B4A0098E92C /* error_handler.h */,
 				DB6ADB41191C9B4A0098E92C /* eventdispatcher */,
 				DB6ADB49191C9B4A0098E92C /* lambda */,

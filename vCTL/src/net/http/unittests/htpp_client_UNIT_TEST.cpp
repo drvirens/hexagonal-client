@@ -21,6 +21,7 @@
 #include "net/http/detail/http_server_builder.h"
 #include "net/http/decorate/http_connection_reuse_strategy.h"
 #include "net/http/htpp_client.h"
+#include "net/http/detail/http_request_base.h"
 
 namespace vctl
 {
@@ -229,6 +230,31 @@ TEST(UT_THttpClient, CreateServerTrivial)
     MyHttpResponseHandler* myhttpresphandler = new MyHttpResponseHandler();
     CHttpContext* context = new CHttpContext();
     IHttpRequest* getrequest = new MyMockHttpRequest();
+    server->Execute(getrequest, myhttpresphandler);
+    }
+    
+// -----
+class MyCHttpRequest : public CHttpRequestBase
+    {
+public:
+    explicit MyCHttpRequest(const std::string& aUri)
+        : CHttpRequestBase(aUri)
+        {}
+        
+    virtual EHttpMethodType HttpMethod() const
+        {
+        return kHttpMethodGet;
+        }
+    };
+    
+TEST(UT_THttpClient, CurlTrivial)
+    {
+    detail::THttpServerBuilder builder;
+    vctl::TStrongPointer<detail::CHttpServer> server = builder.Build();
+    EXPECT_TRUE(server.Get() != 0);
+    MyHttpResponseHandler* myhttpresphandler = new MyHttpResponseHandler();
+    std::string url = "http://www.googlecom";
+    IHttpRequest* getrequest = new MyCHttpRequest(url);
     server->Execute(getrequest, myhttpresphandler);
     }
     

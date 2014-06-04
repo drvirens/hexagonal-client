@@ -18,13 +18,24 @@ namespace http
 
 int CHttpHeadersMap::Size() const
     {
-    return 6;
+    return iMap.Size();
     }
     
-THeader* CHttpHeadersMap::GetHeader(int aIndex)
+void CHttpHeadersMap::Add(const THeader& aHeader)
     {
-    THeader h;
-    return &h;
+    iMap.Add(iHeaderId, aHeader);
+    
+    iHeaderId++; //TODO: this needs to be atomic increment
+    }
+    
+bool CHttpHeadersMap::GetHeader(int aIndex, THeader& aHeaderReturn)
+    {
+    if( iMap.Size() <= 0 )
+        {
+        return false;
+        }
+    aHeaderReturn = iMap.Get(aIndex);
+    return true;
     }
     
 
@@ -47,6 +58,7 @@ void CHttpHeadersMap::Construct()
     }
     
 CHttpHeadersMap::CHttpHeadersMap()
+    : iHeaderId(0)
     {
     }
     

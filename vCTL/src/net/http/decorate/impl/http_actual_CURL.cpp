@@ -81,8 +81,12 @@ int TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_sl
     int headerssize = headers->Size();
     for(int i = 0; i < headerssize; i++)
         {
-        THeader* h = headers->GetHeader(i);
-        *aCurlList = curl_slist_append(*aCurlList, h->Describe().c_str());
+        THeader h;
+        bool r = headers->GetHeader(i, h);
+        if(r)
+            {
+            *aCurlList = curl_slist_append(*aCurlList, h.Describe().c_str());
+            }
         }
     
     return ret;

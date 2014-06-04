@@ -9,8 +9,10 @@
 #ifndef __vClientTemplateLib__http_core_header_group__
 #define __vClientTemplateLib__http_core_header_group__
 
+#include <string>
 #include "base/thread/thread_un_safe.h"
 #include "memory/ref/rc_thread_safe.h"
+#include "base/collect/map_thread_safe.h"
 
 namespace vctl
 {
@@ -26,8 +28,11 @@ class CHttpHeadersMap : public vctl::CReferenceThreadSafe<CHttpHeadersMap>
     {
 public:
     static CHttpHeadersMap* New();
+    
+    void Add(const THeader& aHeader);
+    
     int Size() const;
-    THeader* GetHeader(int aIndex);
+    bool GetHeader(int aIndex, THeader& aHeaderReturn);
     
 protected:
     void Construct();
@@ -35,6 +40,10 @@ protected:
     
     virtual ~CHttpHeadersMap();
     friend class vctl::CReferenceThreadSafe<CHttpHeadersMap>;
+    
+private:
+    vbase::CMapThreadSafe<int, THeader> iMap;
+    int iHeaderId;
     };
 
 } //namespace http
