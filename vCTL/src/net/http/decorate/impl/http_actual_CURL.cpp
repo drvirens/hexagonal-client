@@ -72,7 +72,7 @@ int TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_sl
         return ret;
         }
         
-    CHttpHeadersMap* headers = aHttpRequest->GetAllHeaders();
+    vctl::TStrongPointer<CHttpHeadersMap> headers = aHttpRequest->GetAllHeaders();
     if( !headers )
         {
         return 1; //error

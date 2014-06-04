@@ -25,15 +25,9 @@ public:
     virtual ~CHttpGet();
     explicit CHttpGet(const std::string& aUri);
     
-    virtual void Cancel();
-    virtual bool IsCancelled() const;
     virtual EHttpMethodType HttpMethod() const;
+    virtual IHttpEntity* HttpEntity() const;
     
-    //from IHttpMessage
-    virtual TProtocolVersion Version() const;
-    virtual void AddHeader(const THeader& aHeader);
-    virtual void RemoveHeader(const THeader& aHeader);
-
     };
 
 } //namespace http

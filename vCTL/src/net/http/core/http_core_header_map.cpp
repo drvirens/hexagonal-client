@@ -32,7 +32,24 @@ CHttpHeadersMap::~CHttpHeadersMap()
     {
     }
     
-
+CHttpHeadersMap* CHttpHeadersMap::New()
+    {
+    CHttpHeadersMap* obj = new CHttpHeadersMap();
+    if( obj )
+        {
+        obj->Construct();
+        }
+    return obj;
+    }
+    
+void CHttpHeadersMap::Construct()
+    {
+    }
+    
+CHttpHeadersMap::CHttpHeadersMap()
+    {
+    }
+    
 
 } //namespace http
 } //namespace net

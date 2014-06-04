@@ -20,20 +20,19 @@ namespace http
 {
 
 class THeader;
-
-//class THeaderGroup : private vbase::TNotThreadSafe
-//    {
-//public:
-//    };
     
     //must be thread safe
 class CHttpHeadersMap : public vctl::CReferenceThreadSafe<CHttpHeadersMap>
     {
 public:
+    static CHttpHeadersMap* New();
     int Size() const;
     THeader* GetHeader(int aIndex);
     
 protected:
+    void Construct();
+    CHttpHeadersMap();
+    
     virtual ~CHttpHeadersMap();
     friend class vctl::CReferenceThreadSafe<CHttpHeadersMap>;
     };

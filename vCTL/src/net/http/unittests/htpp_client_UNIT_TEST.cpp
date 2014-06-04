@@ -170,14 +170,17 @@ public:
     virtual void RemoveHeader(const THeader& aHeader)
         {
         }
-    virtual CHttpHeadersMap* GetAllHeaders() const
+    virtual vctl::TStrongPointer<CHttpHeadersMap> GetAllHeaders() const
         {
-        return 0;
+        CHttpHeadersMap* headers = CHttpHeadersMap::New();
+        return headers;
         }
     bool HasHeader(const std::string& aHeaderName) const
         {
         return false;
         }
+private:
+    CHttpHeadersMap* iHeaders;
     };
 
 TEST(UT_THttpClient, Trivial)

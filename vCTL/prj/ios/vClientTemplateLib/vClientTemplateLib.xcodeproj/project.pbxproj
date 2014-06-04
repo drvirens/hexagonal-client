@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B639A031193EAF1600387653 /* http_request_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B639A02F193EAF1600387653 /* http_request_base.cpp */; };
 		B659AE851938175C00F9B484 /* http_hooks_default.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE831938175C00F9B484 /* http_hooks_default.cpp */; };
 		B659AE8B1938246C00F9B484 /* http_default_connection_keep_alive_strategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE891938246C00F9B484 /* http_default_connection_keep_alive_strategy.cpp */; };
 		B659AE8E19382C0A00F9B484 /* http_hook_out_defaultheaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE8C19382C0A00F9B484 /* http_hook_out_defaultheaders.cpp */; };
@@ -127,6 +128,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B639A02F193EAF1600387653 /* http_request_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_request_base.cpp; sourceTree = "<group>"; };
+		B639A030193EAF1600387653 /* http_request_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_request_base.h; sourceTree = "<group>"; };
 		B659AE831938175C00F9B484 /* http_hooks_default.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_hooks_default.cpp; sourceTree = "<group>"; };
 		B659AE841938175C00F9B484 /* http_hooks_default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_hooks_default.h; sourceTree = "<group>"; };
 		B659AE871938226600F9B484 /* http_connection_keep_alive_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_connection_keep_alive_strategy.h; sourceTree = "<group>"; };
@@ -1387,6 +1390,8 @@
 				DBFF4A3F192B313F001679F6 /* http_server.h */,
 				DBB85B10192D769300CBCFC0 /* http_server_builder.cpp */,
 				DBB85B11192D769300CBCFC0 /* http_server_builder.h */,
+				B639A02F193EAF1600387653 /* http_request_base.cpp */,
+				B639A030193EAF1600387653 /* http_request_base.h */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -1597,6 +1602,7 @@
 				DB6ADB9B191C9B4A0098E92C /* condition_variable.cpp in Sources */,
 				DBFF4A40192B313F001679F6 /* http_server.cpp in Sources */,
 				DB8042EF1920B61D00190CBE /* semaphore_impl_DARWIN.cpp in Sources */,
+				B639A031193EAF1600387653 /* http_request_base.cpp in Sources */,
 				B6F5922D193473BC001DE11B /* http_auth_strategy_nope.cpp in Sources */,
 				DB6ADBA9191C9B4A0098E92C /* thread_loopless.cpp in Sources */,
 				DB6ADB96191C9B4A0098E92C /* event_dispatcher_UNIT_TEST.cpp in Sources */,
