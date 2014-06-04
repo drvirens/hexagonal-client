@@ -64,7 +64,7 @@ IHttpResponse* TCurlExecutor::Send(IHttpRequest* aHttpRequest)
     CURLcode code = curl_easy_perform(iCurl);
     if( code )
         {
-        LOG_INFO << "CURL success";
+        LOG_ERROR << "CURL error";
         }
         
     if( curlheaders )
@@ -149,7 +149,7 @@ bool TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_s
         return false;
         }
     
-    std::string url = "http://gay-torrents.net"; //TODO
+    std::string url = "http://www.google.com"; //TODO
     if( curl_easy_setopt(iCurl, CURLOPT_URL, url.c_str()) )
         {
         return false;
@@ -187,6 +187,10 @@ int TCurlExecutor::InitCurlOptions(bool aDisableSsl)
     int e = 0; //success
     int curlerr;
     
+#if defined ENABLE_HTTP_VERBOSE_LOGGING
+    curlerr = curl_easy_setopt( iCurl, CURLOPT_VERBOSE, true);
+    e = e && !curlerr;
+#endif
     curlerr = curl_easy_setopt( iCurl, CURLOPT_HEADERFUNCTION, &TCurlExecutor::CurlHeaderCallback);
     e = e && !curlerr;
     
@@ -251,6 +255,7 @@ size_t TCurlExecutor::CurlHeaderCallback(void* aData, size_t aSize, size_t aNmem
 size_t TCurlExecutor::CurlBodyCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance)
     {
     size_t datalen = aSize * aNmemb;
+    std::string str(static_cast < const char*>(aData), datalen);
     return datalen;
     }
     

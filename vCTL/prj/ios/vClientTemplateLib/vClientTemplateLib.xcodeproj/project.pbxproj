@@ -1775,6 +1775,7 @@
 				OTHER_CFLAGS = (
 					"-DENABLE_LOGGING",
 					"-DTHREADSAFE_LOGGING",
+					"-DENABLE_HTTP_VERBOSE_LOGGING",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\" \"$(SRCROOT)/../../../src/3p/curl\"";
