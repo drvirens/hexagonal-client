@@ -253,8 +253,11 @@ TEST(UT_THttpClient, CurlTrivial)
     vctl::TStrongPointer<detail::CHttpServer> server = builder.Build();
     EXPECT_TRUE(server.Get() != 0);
     MyHttpResponseHandler* myhttpresphandler = new MyHttpResponseHandler();
+    
     std::string url = "http://www.googlecom";
     IHttpRequest* getrequest = new MyCHttpRequest(url);
+    THeader header;
+    getrequest->AddHeader(header);
     server->Execute(getrequest, myhttpresphandler);
     }
     

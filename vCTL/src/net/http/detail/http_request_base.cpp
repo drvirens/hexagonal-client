@@ -24,6 +24,7 @@ CHttpRequestBase::~CHttpRequestBase()
 CHttpRequestBase::CHttpRequestBase(const std::string& aUri)
     : iProtocolVersion()
     , iIsCancelledTag(false)
+    , iHttpHeadersMap(0)
     {
     }
     
@@ -54,6 +55,10 @@ TProtocolVersion CHttpRequestBase::Version() const
     
 void CHttpRequestBase::AddHeader(const THeader& aHeader)
     {
+    if( !iHttpHeadersMap.Get() )
+        {
+        iHttpHeadersMap = CHttpHeadersMap::New();
+        }
     iHttpHeadersMap->Add( aHeader );
     }
     

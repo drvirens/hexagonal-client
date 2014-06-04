@@ -31,12 +31,13 @@ public:
     ~TCurlExecutor();
     
 private:
-    int PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_slist** aCurlList);
+    bool PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_slist** aCurlList);
     int InitCurl(bool aDisableSsl);
     int InitCurlOptions(bool aDisableSsl);
     
     static size_t CurlHeaderCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance);
     static size_t CurlBodyCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance);
+    static size_t CurlRequestContentCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance);
     
 private:
     char iCurlErrorBuffer[CURL_ERROR_SIZE];
@@ -54,12 +55,27 @@ IHttpResponse* TCurlExecutor::Send(IHttpRequest* aHttpRequest)
     iCurlErrorBuffer[0] = 0;
     
     struct curl_slist* curlheaders = 0;
-    PrepareCurlRequest(aHttpRequest, &curlheaders);
+    bool r = PrepareCurlRequest(aHttpRequest, &curlheaders);
+    if( !r )
+        {
+        return response;
+        }
+        
+    CURLcode code = curl_easy_perform(iCurl);
+    if( code )
+        {
+        LOG_INFO << "CURL success";
+        }
+        
+    if( curlheaders )
+        {
+        curl_slist_free_all(curlheaders);
+        }
     
     return response;
     }
     
-int TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_slist** aCurlList)
+bool TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_slist** aCurlList)
     {
     TRequestConfig config;
     aHttpRequest->GetConfig(config);
@@ -69,13 +85,13 @@ int TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_sl
     int ret = InitCurl(ssldisabled);
     if( ret )
         {
-        return ret;
+        return false;
         }
         
     vctl::TStrongPointer<CHttpHeadersMap> headers = aHttpRequest->GetAllHeaders();
     if( !headers )
         {
-        return 1; //error
+        return false;
         }
         
     int headerssize = headers->Size();
@@ -88,8 +104,58 @@ int TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_sl
             *aCurlList = curl_slist_append(*aCurlList, h.Describe().c_str());
             }
         }
+        
+    bool ok = true;
     
-    return ret;
+    EHttpMethodType method = aHttpRequest->HttpMethod();
+    switch( method )
+        {
+        case kHttpMethodGet:
+            {
+            ok = ok && !curl_easy_setopt(iCurl, CURLOPT_HTTPGET, true);
+            } break;
+        case kHttpMethodPost:
+            {
+            ok = ok && !curl_easy_setopt(iCurl, CURLOPT_POST, true);
+            } break;
+        default:
+            {
+            LOG_ERROR << "No http method is set :(";
+            } break;
+        } //end switch
+        
+    if( !ok )
+        {
+        return false;
+        }
+        
+    IHttpEntity* entity = aHttpRequest->HttpEntity();
+    if( entity )
+        {
+        ok = ok && !curl_easy_setopt(iCurl, CURLOPT_READFUNCTION, &TCurlExecutor::CurlRequestContentCallback);
+        long long numbytes = 0; //entity->GetTotalBytes();
+        if( numbytes )
+            {
+            ok = ok && !curl_easy_setopt(iCurl, CURLOPT_POSTFIELDSIZE, numbytes);
+            if( !ok )
+                {
+                return false;
+                }
+            }
+        }
+        
+    if( curl_easy_setopt(iCurl, CURLOPT_HTTPHEADER, *aCurlList) )
+        {
+        return false;
+        }
+    
+    std::string url = "http://gay-torrents.net"; //TODO
+    if( curl_easy_setopt(iCurl, CURLOPT_URL, url.c_str()) )
+        {
+        return false;
+        }
+    
+    return true;
     }
     
 int TCurlExecutor::InitCurl(bool aDisableSsl)
@@ -121,13 +187,13 @@ int TCurlExecutor::InitCurlOptions(bool aDisableSsl)
     int e = 0; //success
     int curlerr;
     
-    curlerr = curl_easy_setopt( iCurl, CURLOPT_HEADERFUNCTION, CurlHeaderCallback);
+    curlerr = curl_easy_setopt( iCurl, CURLOPT_HEADERFUNCTION, &TCurlExecutor::CurlHeaderCallback);
     e = e && !curlerr;
     
     curlerr = curl_easy_setopt( iCurl, CURLOPT_WRITEHEADER, this);
     e = e && !curlerr;
     
-    curlerr = curl_easy_setopt( iCurl, CURLOPT_WRITEFUNCTION, CurlBodyCallback);
+    curlerr = curl_easy_setopt( iCurl, CURLOPT_WRITEFUNCTION, &TCurlExecutor::CurlBodyCallback);
     e = e && !curlerr;
     
     curlerr = curl_easy_setopt( iCurl, CURLOPT_WRITEDATA, this);
@@ -177,12 +243,21 @@ int TCurlExecutor::InitCurlOptions(bool aDisableSsl)
     
 size_t TCurlExecutor::CurlHeaderCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance)
     {
-    return 0;
+    size_t datalen = aSize * aNmemb;
+    std::string str(static_cast < const char*>(aData), datalen);
+    return datalen;
     }
     
 size_t TCurlExecutor::CurlBodyCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance)
     {
-    return 0;
+    size_t datalen = aSize * aNmemb;
+    return datalen;
+    }
+    
+size_t TCurlExecutor::CurlRequestContentCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance)
+    {
+    size_t datalen = aSize * aNmemb;
+    return datalen;
     }
 
 TCurlExecutor::~TCurlExecutor()
