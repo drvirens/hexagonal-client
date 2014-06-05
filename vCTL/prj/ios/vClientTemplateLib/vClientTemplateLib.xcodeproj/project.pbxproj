@@ -786,9 +786,9 @@
 		DB67F1DD19062FFA007567A9 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				DB67F24719063818007567A9 /* gtest-internal-inl.h */,
 				DB67F1DF19062FFA007567A9 /* gtest-death-test.cc */,
 				DB67F1E019062FFA007567A9 /* gtest-filepath.cc */,
+				DB67F24719063818007567A9 /* gtest-internal-inl.h */,
 				DB67F1E219062FFA007567A9 /* gtest-port.cc */,
 				DB67F1E319062FFA007567A9 /* gtest-printers.cc */,
 				DB67F1E419062FFA007567A9 /* gtest-test-part.cc */,

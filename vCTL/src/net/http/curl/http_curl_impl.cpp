@@ -157,7 +157,8 @@ bool THttpCurl::EasySetupSSL()
     bool r = true;
     CURLcode curlRet;
     
-    TRequestConfig& requestconfig = iHttpRequest.GetConfig();
+    TRequestConfig requestconfig;
+    iHttpRequest.GetConfig(requestconfig);
     if(requestconfig.IsSSLVerificationDisabled())
         {
         curl_easy_setopt(iCurl, CURLOPT_SSL_VERIFYPEER, false);
