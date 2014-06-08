@@ -28,6 +28,8 @@ public:
     virtual ~CHttpRequestBase();
     explicit CHttpRequestBase(const std::string& aUri);
     
+    virtual std::string GetUrl() const;
+    
     virtual void Cancel();
     virtual bool IsCancelled() const;
     virtual EHttpMethodType HttpMethod() const = 0;
@@ -43,6 +45,7 @@ public:
     virtual vctl::TStrongPointer<CHttpHeadersMap> GetAllHeaders() const;
 
 private:
+    std::string iUrl;
     TProtocolVersion iProtocolVersion;
     bool iIsCancelledTag;
     

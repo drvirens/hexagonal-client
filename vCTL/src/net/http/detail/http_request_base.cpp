@@ -17,6 +17,11 @@ namespace http
 
 static const char* kHttp = "http";
 
+std::string CHttpRequestBase::GetUrl() const
+    {
+    return iUrl;
+    }
+
 CHttpRequestBase::~CHttpRequestBase()
     {
     }

@@ -11,7 +11,7 @@
 #include "memory/ref/rc_thread_safe.h"
 
 #include "net/http/async/http_future_callback.h"
-#include "net/http/http_method_get.h"
+
 #include "net/http/core/http_core_header.h"
 #include "net/http/context/http_context.h"
 #include "net/http/core/http_core_entity.h"
@@ -137,7 +137,11 @@ class MyMockHttpRequest : public IHttpRequest
     {
 public:
     virtual ~MyMockHttpRequest() {}
-    
+    virtual std::string GetUrl() const
+        {
+        std::string url = "www.google.com";
+        return url;
+        }
     virtual void Cancel()
         {
         }

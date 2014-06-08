@@ -27,6 +27,8 @@ class IHttpRequest : public IHttpMessage
 public:
     virtual ~IHttpRequest() {}
     
+    virtual std::string GetUrl() const = 0;
+    
     virtual void Cancel() = 0;
     virtual bool IsCancelled() const = 0;
     virtual EHttpMethodType HttpMethod() const = 0;

@@ -43,7 +43,7 @@ void CHttpClientImpl::DoExecute(CHttpContext* aHttpContext,
         
     //MyHttpResponseHandler* myhttpresphandler = new MyHttpResponseHandler();
     
-    std::string url = "http://www.google.com";
+//    std::string url = "http://www.google.com";
 //    IHttpRequest* getrequest = new MyCHttpRequest(url);
 //    THeader header;
 //    aHttpRequest->AddHeader(header);

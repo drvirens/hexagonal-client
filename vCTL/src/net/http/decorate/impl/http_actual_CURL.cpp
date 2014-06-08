@@ -149,7 +149,8 @@ bool TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_s
         return false;
         }
     
-    std::string url = "http://www.google.com"; //TODO
+    std::string url = aHttpRequest->GetUrl();
+    
     if( curl_easy_setopt(iCurl, CURLOPT_URL, url.c_str()) )
         {
         return false;
