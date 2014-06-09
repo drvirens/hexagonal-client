@@ -157,6 +157,7 @@ public:
         {
         return new MyMockIHttpEntity();
         }
+    virtual void SetHttpEntity(IHttpEntity* aIHttpEntity) {}
         
     virtual void GetConfig(TRequestConfig& aTRequestConfig) const
         {
