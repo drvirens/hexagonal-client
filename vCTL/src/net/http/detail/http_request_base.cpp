@@ -43,12 +43,6 @@ bool CHttpRequestBase::IsCancelled() const
     return iIsCancelledTag;
     }
     
-IHttpEntity* CHttpRequestBase::HttpEntity() const
-    {
-    IHttpEntity* entity = 0;
-    return entity;
-    }
-    
 void CHttpRequestBase::GetConfig(TRequestConfig& aTRequestConfig) const
     {
     }

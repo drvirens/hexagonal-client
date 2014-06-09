@@ -29,5 +29,7 @@
 //
 // #define THREADSAFE_LOGGING 1
 
+//OPEN_IN_SAFARI_BROWSER
+
 
 #endif

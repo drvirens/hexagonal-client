@@ -33,7 +33,8 @@ public:
     virtual void Cancel();
     virtual bool IsCancelled() const;
     virtual EHttpMethodType HttpMethod() const = 0;
-    virtual IHttpEntity* HttpEntity() const;
+    virtual IHttpEntity* HttpEntity() const { return 0; }
+    virtual void SetHttpEntity(IHttpEntity* aIHttpEntity) {}
     
     virtual void GetConfig(TRequestConfig& aTRequestConfig) const;
     
