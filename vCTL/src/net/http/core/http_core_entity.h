@@ -19,7 +19,9 @@ namespace net
 namespace http
 {
 
-class IInputStream;
+//class IInputStream;
+typedef char IInputStream;
+
 class IOutputStream;
 
 /**

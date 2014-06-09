@@ -9,8 +9,7 @@
 #ifndef __Discount__http_core_entity_inputstream__
 #define __Discount__http_core_entity_inputstream__
 
-
-#include "net/http/core/http_core_entity.h"
+#include "net/http/detail/http_core_entity_base.h"
 
 namespace vctl
 {
@@ -21,19 +20,21 @@ namespace http
 
 class CHttpEntityInputStream : public CHttpEntityBase
     {
-protected:
-    CHttpEntityInputStream() {}
+public:
+    static CHttpEntityInputStream* New(IInputStream* aInputStream, long long aLen);
     
-    virtual long long ContentLength() const = 0;
-    virtual bool IsRepeatable() const = 0;
-    virtual IInputStream* ReadContents() = 0;
-    virtual void WriteContents(IOutputStream* aOutputStream) = 0;
-    virtual bool IsStreaming() const = 0;
-    
+    virtual long long ContentLength() const;
+    virtual bool IsRepeatable() const;
+    virtual IInputStream* ReadContents();
+    virtual void WriteContents(IOutputStream* aOutputStream);
+    virtual bool IsStreaming() const;
 protected:
-    virtual ~CHttpEntityInputStream() {}
-    
+    virtual ~CHttpEntityInputStream();
+    CHttpEntityInputStream(IInputStream* aInputStream, long long aLen);
+    void Construct(IInputStream* aInputStream, long long aLen);
 protected:
+    IInputStream* iContent;
+    long long iContentLength;
     };
 
 } //namespace http
