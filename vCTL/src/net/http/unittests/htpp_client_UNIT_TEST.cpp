@@ -7,9 +7,7 @@
 //
 
 #include "3p/google/gtest/include/gtest/gtest.h"
-
 #include "memory/ref/rc_thread_safe.h"
-
 #include "net/http/async/http_future_callback.h"
 
 #include "net/http/core/http_core_header.h"
