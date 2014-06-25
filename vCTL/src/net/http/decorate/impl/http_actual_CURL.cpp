@@ -147,6 +147,10 @@ bool TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_s
 #endif
         
         IInputStream* s = entity->ReadContents();
+        if( !s )
+            {
+            return false;
+            }
         std::string fortest(s);
         LOG_INFO << "BODY: " << fortest;
         curl_easy_setopt(iCurl, CURLOPT_POSTFIELDS, s);
