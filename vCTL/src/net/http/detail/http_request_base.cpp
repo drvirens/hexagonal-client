@@ -30,6 +30,7 @@ CHttpRequestBase::CHttpRequestBase(const std::string& aUri)
     : iProtocolVersion()
     , iIsCancelledTag(false)
     , iHttpHeadersMap(0)
+    , iUrl(aUri)
     {
     }
     

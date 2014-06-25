@@ -88,13 +88,13 @@ bool TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_s
         return false;
         }
         
+    int headerssize = 0;
     vctl::TStrongPointer<CHttpHeadersMap> headers = aHttpRequest->GetAllHeaders();
-    if( !headers )
+    if( headers )
         {
-        return false;
+        headerssize = headers->Size();
         }
         
-    int headerssize = headers->Size();
     for(int i = 0; i < headerssize; i++)
         {
         THeader h;
@@ -132,8 +132,10 @@ bool TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_s
     IHttpEntity* entity = aHttpRequest->HttpEntity();
     if( entity )
         {
+        
+#if 0
         ok = ok && !curl_easy_setopt(iCurl, CURLOPT_READFUNCTION, &TCurlExecutor::CurlRequestContentCallback);
-        long long numbytes = 0; //entity->GetTotalBytes();
+        long long numbytes = entity->ContentLength();
         if( numbytes )
             {
             ok = ok && !curl_easy_setopt(iCurl, CURLOPT_POSTFIELDSIZE, numbytes);
@@ -142,6 +144,13 @@ bool TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_s
                 return false;
                 }
             }
+#endif
+        
+        IInputStream* s = entity->ReadContents();
+        std::string fortest(s);
+        LOG_INFO << "BODY: " << fortest;
+        curl_easy_setopt(iCurl, CURLOPT_POSTFIELDS, s);
+        
         }
         
     if( curl_easy_setopt(iCurl, CURLOPT_HTTPHEADER, *aCurlList) )
@@ -150,7 +159,6 @@ bool TCurlExecutor::PrepareCurlRequest(IHttpRequest* aHttpRequest, struct curl_s
         }
     
     std::string url = aHttpRequest->GetUrl();
-    
     if( curl_easy_setopt(iCurl, CURLOPT_URL, url.c_str()) )
         {
         return false;
@@ -254,14 +262,19 @@ size_t TCurlExecutor::CurlHeaderCallback(void* aData, size_t aSize, size_t aNmem
     }
     
 size_t TCurlExecutor::CurlBodyCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance)
-    {
+    { 
     size_t datalen = aSize * aNmemb;
     std::string str(static_cast < const char*>(aData), datalen);
+    
+    LOG_INFO << "RESPONSE: " << str;
+    
     return datalen;
     }
     
 size_t TCurlExecutor::CurlRequestContentCallback(void* aData, size_t aSize, size_t aNmemb, void* aInstance)
     {
+    LOG_INFO << "CurlRequestContentCallback";
+    
     size_t datalen = aSize * aNmemb;
     return datalen;
     }

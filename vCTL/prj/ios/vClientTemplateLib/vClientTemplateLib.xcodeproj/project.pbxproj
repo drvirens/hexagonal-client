@@ -27,7 +27,6 @@
 		DB262DCC192444E8005417AA /* lambda_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB262DCB192444E8005417AA /* lambda_UNIT_TEST.cpp */; };
 		DB262DE319248260005417AA /* log_logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB262DE219248260005417AA /* log_logger.cpp */; };
 		DB262FFC19268FE8005417AA /* htpp_client_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB262FFB19268FE8005417AA /* htpp_client_UNIT_TEST.cpp */; };
-		DB263B4E1926A44D005417AA /* http_method_get.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B4C1926A44D005417AA /* http_method_get.cpp */; };
 		DB263B511926C16A005417AA /* http_core_protocol_version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B4F1926C16A005417AA /* http_core_protocol_version.cpp */; };
 		DB263B571926C24C005417AA /* http_core_name_value_pair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B551926C24C005417AA /* http_core_name_value_pair.cpp */; };
 		DB263B5D1926E814005417AA /* http_core_header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B5B1926E814005417AA /* http_core_header.cpp */; };
@@ -163,8 +162,6 @@
 		DB262DE219248260005417AA /* log_logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_logger.cpp; sourceTree = "<group>"; };
 		DB262FF519268F76005417AA /* htpp_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htpp_client.h; sourceTree = "<group>"; };
 		DB262FFB19268FE8005417AA /* htpp_client_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = htpp_client_UNIT_TEST.cpp; sourceTree = "<group>"; };
-		DB263B4C1926A44D005417AA /* http_method_get.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_method_get.cpp; sourceTree = "<group>"; };
-		DB263B4D1926A44D005417AA /* http_method_get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_method_get.h; sourceTree = "<group>"; };
 		DB263B4F1926C16A005417AA /* http_core_protocol_version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_protocol_version.cpp; sourceTree = "<group>"; };
 		DB263B501926C16A005417AA /* http_core_protocol_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_protocol_version.h; sourceTree = "<group>"; };
 		DB263B531926C18E005417AA /* http_core_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_message.h; sourceTree = "<group>"; };
@@ -551,8 +548,6 @@
 				DB2636CB1926A1E9005417AA /* core */,
 				DB262FF919268FD7005417AA /* unittests */,
 				DB262FF519268F76005417AA /* htpp_client.h */,
-				DB263B4C1926A44D005417AA /* http_method_get.cpp */,
-				DB263B4D1926A44D005417AA /* http_method_get.h */,
 			);
 			path = http;
 			sourceTree = "<group>";
@@ -1551,7 +1546,6 @@
 				DB6ADF50191F35C30098E92C /* atomic_impl.cpp in Sources */,
 				B659AE991938357100F9B484 /* http_executor_retry_service_unavailable.cpp in Sources */,
 				DB67F24419062FFA007567A9 /* gtest-typed-test.cc in Sources */,
-				DB263B4E1926A44D005417AA /* http_method_get.cpp in Sources */,
 				DB67F2D319089E50007567A9 /* build_utils.cc in Sources */,
 				DB6ADBA1191C9B4A0098E92C /* task_pending_queue.cpp in Sources */,
 				B659AE8E19382C0A00F9B484 /* http_hook_out_defaultheaders.cpp in Sources */,
