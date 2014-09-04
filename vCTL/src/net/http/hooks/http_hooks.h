@@ -18,7 +18,7 @@ namespace net
 namespace http
 {
 
-class IHttpHooks : private vctl::CReferenceThreadSafe<IHttpHooks>
+class IHttpHooks : public vctl::CReferenceThreadSafe<IHttpHooks>
     //
     // incoming pakcet = http response coming from remote server
     // for client apps, this hooks is generally not needed

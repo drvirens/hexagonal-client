@@ -18,7 +18,7 @@ namespace net
 namespace http
 {
 
-class CHttpContext : private vctl::CReferenceThreadSafe<CHttpContext>
+class CHttpContext : public vctl::CReferenceThreadSafe<CHttpContext>
     {
 protected:
     virtual ~CHttpContext() {} //purposefully private so others cant delete it accidentally

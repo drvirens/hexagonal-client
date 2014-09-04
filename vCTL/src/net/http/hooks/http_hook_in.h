@@ -20,7 +20,7 @@ namespace http
 
 class IHttpResponse;
 
-class IHttpHookIncomingPacket : private vctl::CReferenceThreadSafe<IHttpHookIncomingPacket>
+class IHttpHookIncomingPacket : public vctl::CReferenceThreadSafe<IHttpHookIncomingPacket>
     //
     // incoming pakcet = http response coming from remote server
     // for client apps, this hooks is generally not needed

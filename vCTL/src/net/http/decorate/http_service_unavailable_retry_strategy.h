@@ -20,7 +20,7 @@ namespace http
 class IHttpContext;
 class IHttpResponse;
 
-class IServiceUnavailableRetryStrategy : private vctl::CReferenceThreadSafe<IServiceUnavailableRetryStrategy>
+class IServiceUnavailableRetryStrategy : public vctl::CReferenceThreadSafe<IServiceUnavailableRetryStrategy>
     {
 public:
     virtual bool ShouldRetry(const IHttpResponse& aHttpResponse, int aAttemptedRetries, IHttpContext& aContext) = 0;

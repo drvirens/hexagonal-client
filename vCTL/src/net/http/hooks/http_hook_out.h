@@ -20,7 +20,7 @@ namespace http
 
 class IHttpRequest;
 
-class IHttpHookOutgoingPacket : private vctl::CReferenceThreadSafe<IHttpHookOutgoingPacket>
+class IHttpHookOutgoingPacket : public vctl::CReferenceThreadSafe<IHttpHookOutgoingPacket>
     //
     // outgoing packet = outgoing http request
     // this hook will add a http request header to outgoing http packet

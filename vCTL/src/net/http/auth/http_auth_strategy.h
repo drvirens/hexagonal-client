@@ -20,7 +20,7 @@ namespace http
 
 class IHttpResponse;
 
-class IAuthenticationStrategy : private vctl::CReferenceThreadSafe<IAuthenticationStrategy>
+class IAuthenticationStrategy : public vctl::CReferenceThreadSafe<IAuthenticationStrategy>
     {
 public:
     virtual bool IsAuthRequested() = 0;

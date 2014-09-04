@@ -21,7 +21,7 @@ namespace http
 
 typedef std::string CryptoString;
 
-class ICredentials : private vctl::CReferenceThreadSafe<ICredentials>
+class ICredentials : public vctl::CReferenceThreadSafe<ICredentials>
     {
 public:
     virtual const std::string& UserName() const = 0;

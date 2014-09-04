@@ -19,7 +19,7 @@ namespace http
 {
 class IHttpContext;
 
-class IAuthScheme : private vctl::CReferenceThreadSafe<IAuthScheme>
+class IAuthScheme : public vctl::CReferenceThreadSafe<IAuthScheme>
     {
 public:
     virtual const std::string& AuthSchemeName() = 0;

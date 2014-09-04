@@ -20,7 +20,7 @@ namespace http
 {
 class IAuthScheme;
 
-class IAuthSchemeProvider : private vctl::CReferenceThreadSafe<IAuthSchemeProvider>
+class IAuthSchemeProvider : public vctl::CReferenceThreadSafe<IAuthSchemeProvider>
     {
 public:
     virtual IAuthScheme* Create(IHttpContext& aContext) = 0;
