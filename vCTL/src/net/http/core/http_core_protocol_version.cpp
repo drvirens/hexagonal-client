@@ -15,6 +15,11 @@ namespace net
 {
 namespace http
 {
+
+TProtocolVersion::TProtocolVersion()
+    {
+    }
+    
 TProtocolVersion::TProtocolVersion(std::string& aProtocolName, TVersion aMajor, TVersion aMinor)
     : iProtocolName(aProtocolName)
     , iMajor(aMajor)

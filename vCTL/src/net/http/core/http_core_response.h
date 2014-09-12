@@ -11,6 +11,7 @@
 
 #include "net/http/core/http_core_message.h"
 #include "net/http/core/http_core_method_type.h"
+#include "net/http/core/http_core_entity.h"
 
 namespace vctl
 {
@@ -20,7 +21,6 @@ namespace http
 {
 
 class TStatusLine;
-class IHttpEntity;
 
 class IHttpResponse : public IHttpMessage
     {

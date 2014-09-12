@@ -11,8 +11,10 @@
 
 #include "build/build_config.h"
 
-#if defined(V_PLATFORM_IOS)
+#if defined(V_PLATFORM_DARWIN)
 #import <CoreFoundation/CoreFoundation.h>
+//#elif defined(V_PLATFORM_IOS)
+//#import <CoreFoundation/CoreFoundation.h>
 #endif
 
 #include "base/runloop/run_loop.h"

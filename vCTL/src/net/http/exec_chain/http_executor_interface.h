@@ -9,7 +9,6 @@
 #ifndef __vClientTemplateLib__http_core_request_chain__
 #define __vClientTemplateLib__http_core_request_chain__
 
-
 #include "net/http/core/http_core_request.h"
 #include "net/http/core/http_core_response.h"
 #include "net/http/async/http_future_callback.h"
@@ -25,17 +24,48 @@ namespace http
 
 class CHttpContext;
 
-
-class IHttpRequestExecutionChain //: public vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>
+//<<<<<<< HEAD
+//
+//class IHttpRequestExecutionChain //: public vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>
+//=======
+class IHttpRequestExecutionChain : public vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>
+//>>>>>>> FETCH_HEAD
     {
 public:
     virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
         IHttpRequest* aHttpRequest,
         IFutureCallBack* aFutureCallBack) = 0;
         
-//protected:
+    void SetSuccessor(IHttpRequestExecutionChain* aSuccessor)
+        {
+        iSuccessor = aSuccessor;
+        }
+        
+protected:
+    explicit IHttpRequestExecutionChain(IHttpRequestExecutionChain* aSuccessor)
+        : iSuccessor(aSuccessor)
+        {}
+    
     virtual ~IHttpRequestExecutionChain() {}
-//    friend class vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>;
+    friend class vctl::CReferenceThreadSafe<IHttpRequestExecutionChain>;
+    
+    IHttpRequestExecutionChain* Successor() const
+        {
+        return iSuccessor;
+        }
+        
+    void PassOn(CHttpContext* aHttpContext,
+                IHttpRequest* aHttpRequest,
+                IFutureCallBack* aFutureCallBack)
+        {
+        if( iSuccessor )
+            {
+            iSuccessor->ExecuteOrPassOn(aHttpContext, aHttpRequest, aFutureCallBack);
+            }
+        }
+    
+private:
+    IHttpRequestExecutionChain* iSuccessor;
     };
 
 } //namespace http

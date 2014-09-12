@@ -9,6 +9,33 @@
 #ifndef __vClientTemplateLib__http_executor_backoff_strategy__
 #define __vClientTemplateLib__http_executor_backoff_strategy__
 
-#include <iostream>
+#include "net/http/exec_chain/http_executor_interface.h"
+
+namespace vctl
+{
+namespace net
+{
+namespace http
+{
+
+class CBackoffExecutor : public IHttpRequestExecutionChain
+    {
+public:
+    static CBackoffExecutor* New(IHttpRequestExecutionChain* aChain);
+    
+    virtual void ExecuteOrPassOn(CHttpContext* aHttpContext,
+        IHttpRequest* aHttpRequest,
+        IFutureCallBack* aFutureCallBack);
+        
+protected:
+    virtual ~CBackoffExecutor();
+    void Construct();
+    CBackoffExecutor(IHttpRequestExecutionChain* aChain);
+    
+    };
+
+} //namespace http
+} //namespace net
+} //namespace vctl
 
 #endif /* defined(__vClientTemplateLib__http_executor_backoff_strategy__) */

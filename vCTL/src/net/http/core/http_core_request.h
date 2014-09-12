@@ -27,18 +27,22 @@ class IHttpRequest : public IHttpMessage
 public:
     virtual ~IHttpRequest() {}
     
+    virtual std::string GetUrl() const = 0;
+    
     virtual void Cancel() = 0;
     virtual bool IsCancelled() const = 0;
     virtual EHttpMethodType HttpMethod() const = 0;
     virtual IHttpEntity* HttpEntity() const = 0;
+    virtual void SetHttpEntity(IHttpEntity* aIHttpEntity) = 0;
     
-    virtual TRequestConfig& GetConfig() const = 0;
+    virtual void GetConfig(TRequestConfig& aTRequestConfig) const = 0;
     
     //from IHttpMessage
     virtual TProtocolVersion Version() const = 0;
     virtual void AddHeader(const THeader& aHeader) = 0;
     virtual void RemoveHeader(const THeader& aHeader) = 0;
-    virtual THttpHeadersMap* GetAllHeaders() const = 0;
+    virtual bool HasHeader(const std::string& aHeaderName) const = 0;
+    virtual vctl::TStrongPointer<CHttpHeadersMap> GetAllHeaders() const = 0;
 
     };
 

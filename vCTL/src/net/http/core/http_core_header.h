@@ -9,6 +9,8 @@
 #ifndef __vClientTemplateLib__http_core_header__
 #define __vClientTemplateLib__http_core_header__
 
+#include <string>
+
 namespace vctl
 {
 namespace net
@@ -19,6 +21,7 @@ namespace http
 class THeader
     {
 public:
+    std::string Describe() const;
     };
 
 } //namespace http

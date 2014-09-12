@@ -7,11 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B639A031193EAF1600387653 /* http_request_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B639A02F193EAF1600387653 /* http_request_base.cpp */; };
+		B639AEDC1944C33600387653 /* http_client_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B639AEDB1944C33600387653 /* http_client_impl.cpp */; };
+		B639AEDE1944C60A00387653 /* htpp_client_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B639AEDD1944C60A00387653 /* htpp_client_factory.cpp */; };
+		B659AE851938175C00F9B484 /* http_hooks_default.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE831938175C00F9B484 /* http_hooks_default.cpp */; };
+		B659AE8B1938246C00F9B484 /* http_default_connection_keep_alive_strategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE891938246C00F9B484 /* http_default_connection_keep_alive_strategy.cpp */; };
+		B659AE8E19382C0A00F9B484 /* http_hook_out_defaultheaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE8C19382C0A00F9B484 /* http_hook_out_defaultheaders.cpp */; };
+		B659AE951938357100F9B484 /* http_executor_backoff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE8F1938357100F9B484 /* http_executor_backoff.cpp */; };
+		B659AE961938357100F9B484 /* http_executor_boss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE901938357100F9B484 /* http_executor_boss.cpp */; };
+		B659AE971938357100F9B484 /* http_executor_hooks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE911938357100F9B484 /* http_executor_hooks.cpp */; };
+		B659AE981938357100F9B484 /* http_executor_redirect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE921938357100F9B484 /* http_executor_redirect.cpp */; };
+		B659AE991938357100F9B484 /* http_executor_retry_service_unavailable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE931938357100F9B484 /* http_executor_retry_service_unavailable.cpp */; };
+		B659AE9A1938357100F9B484 /* http_executor_retry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE941938357100F9B484 /* http_executor_retry.cpp */; };
+		B659AE9D1938A23D00F9B484 /* http_default_retry_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B659AE9B1938A23D00F9B484 /* http_default_retry_handler.cpp */; };
+		B6F59223193468E1001DE11B /* http_actual_CURL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6F59221193468E1001DE11B /* http_actual_CURL.cpp */; };
+		B6F5922619346FDC001DE11B /* http_connection_reuse_strategy_default.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6F5922419346FDC001DE11B /* http_connection_reuse_strategy_default.cpp */; };
+		B6F5922919347266001DE11B /* http_connection_reuse_strategy_nope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6F5922719347266001DE11B /* http_connection_reuse_strategy_nope.cpp */; };
+		B6F5922D193473BC001DE11B /* http_auth_strategy_nope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6F5922B193473BC001DE11B /* http_auth_strategy_nope.cpp */; };
 		DB262DCC192444E8005417AA /* lambda_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB262DCB192444E8005417AA /* lambda_UNIT_TEST.cpp */; };
 		DB262DE319248260005417AA /* log_logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB262DE219248260005417AA /* log_logger.cpp */; };
 		DB262FFC19268FE8005417AA /* htpp_client_UNIT_TEST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB262FFB19268FE8005417AA /* htpp_client_UNIT_TEST.cpp */; };
-		DB2636CE1926A232005417AA /* http_client_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB2636CC1926A232005417AA /* http_client_builder.cpp */; };
-		DB263B4E1926A44D005417AA /* http_method_get.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B4C1926A44D005417AA /* http_method_get.cpp */; };
 		DB263B511926C16A005417AA /* http_core_protocol_version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B4F1926C16A005417AA /* http_core_protocol_version.cpp */; };
 		DB263B571926C24C005417AA /* http_core_name_value_pair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B551926C24C005417AA /* http_core_name_value_pair.cpp */; };
 		DB263B5D1926E814005417AA /* http_core_header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B5B1926E814005417AA /* http_core_header.cpp */; };
@@ -20,7 +35,7 @@
 		DB263B78192838E9005417AA /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB263B77192838E9005417AA /* libcurl.a */; };
 		DB263B7A192838F0005417AA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB263B79192838F0005417AA /* libz.dylib */; };
 		DB263B80192857B3005417AA /* http_core_request_line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B7E192857B3005417AA /* http_core_request_line.cpp */; };
-		DB263B8319285B1F005417AA /* http_core_header_group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B8119285B1F005417AA /* http_core_header_group.cpp */; };
+		DB263B8319285B1F005417AA /* http_core_header_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B8119285B1F005417AA /* http_core_header_map.cpp */; };
 		DB263B9219288FF7005417AA /* http_config_request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB263B9019288FF7005417AA /* http_config_request.cpp */; };
 		DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76B19117EA3009A6CF6 /* CDetailViewController.mm */; };
 		DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB31E76D19117EA3009A6CF6 /* CMasterViewController.mm */; };
@@ -96,19 +111,9 @@
 		DBB1E2641929B0A000898FBC /* http_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB1E2621929B0A000898FBC /* http_context.cpp */; };
 		DBB85B12192D769300CBCFC0 /* http_server_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B10192D769300CBCFC0 /* http_server_builder.cpp */; };
 		DBB85B28192DB1F200CBCFC0 /* http_config_general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B26192DB1F200CBCFC0 /* http_config_general.cpp */; };
-		DBB85B39192DD25C00CBCFC0 /* http_executor_backoff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B2B192DD25C00CBCFC0 /* http_executor_backoff.cpp */; };
-		DBB85B3A192DD25C00CBCFC0 /* http_executor_boss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B2D192DD25C00CBCFC0 /* http_executor_boss.cpp */; };
-		DBB85B3B192DD25C00CBCFC0 /* http_executor_hooks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B2F192DD25C00CBCFC0 /* http_executor_hooks.cpp */; };
-		DBB85B3C192DD25C00CBCFC0 /* http_executor_redirect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B32192DD25C00CBCFC0 /* http_executor_redirect.cpp */; };
-		DBB85B3D192DD25C00CBCFC0 /* http_executor_retry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B34192DD25C00CBCFC0 /* http_executor_retry.cpp */; };
-		DBB85B3E192DD25C00CBCFC0 /* http_executor_retry_service_unavailable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B36192DD25C00CBCFC0 /* http_executor_retry_service_unavailable.cpp */; };
-		DBB85B41192DD43600CBCFC0 /* http_hook_out.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B3F192DD43600CBCFC0 /* http_hook_out.cpp */; };
-		DBB85B44192DD44E00CBCFC0 /* http_hook_in.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B42192DD44E00CBCFC0 /* http_hook_in.cpp */; };
-		DBB85B47192DD5E800CBCFC0 /* http_hooks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B45192DD5E800CBCFC0 /* http_hooks.cpp */; };
 		DBB85B4B192DD8DE00CBCFC0 /* http_hook_out_content.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B49192DD8DE00CBCFC0 /* http_hook_out_content.cpp */; };
 		DBB85B4E192DD99B00CBCFC0 /* http_hook_out_useragent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B4C192DD99B00CBCFC0 /* http_hook_out_useragent.cpp */; };
 		DBB85B51192DDA4800CBCFC0 /* http_hook_out_targethost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBB85B4F192DDA4800CBCFC0 /* http_hook_out_targethost.cpp */; };
-		DBFF4A3D192ADF33001679F6 /* http_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A3B192ADF33001679F6 /* http_manager.cpp */; };
 		DBFF4A40192B313F001679F6 /* http_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A3E192B313F001679F6 /* http_server.cpp */; };
 		DBFF4A51192C3063001679F6 /* http_core_uri.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBFF4A4F192C3063001679F6 /* http_core_uri.cpp */; };
 /* End PBXBuildFile section */
@@ -124,14 +129,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B639A02F193EAF1600387653 /* http_request_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_request_base.cpp; sourceTree = "<group>"; };
+		B639A030193EAF1600387653 /* http_request_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_request_base.h; sourceTree = "<group>"; };
+		B639A034193EBA3400387653 /* map_thread_safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = map_thread_safe.h; sourceTree = "<group>"; };
+		B639AEDB1944C33600387653 /* http_client_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_client_impl.cpp; sourceTree = "<group>"; };
+		B639AEDD1944C60A00387653 /* htpp_client_factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = htpp_client_factory.cpp; sourceTree = "<group>"; };
+		B659AE831938175C00F9B484 /* http_hooks_default.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_hooks_default.cpp; sourceTree = "<group>"; };
+		B659AE841938175C00F9B484 /* http_hooks_default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_hooks_default.h; sourceTree = "<group>"; };
+		B659AE871938226600F9B484 /* http_connection_keep_alive_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_connection_keep_alive_strategy.h; sourceTree = "<group>"; };
+		B659AE891938246C00F9B484 /* http_default_connection_keep_alive_strategy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_default_connection_keep_alive_strategy.cpp; sourceTree = "<group>"; };
+		B659AE8A1938246C00F9B484 /* http_default_connection_keep_alive_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_default_connection_keep_alive_strategy.h; sourceTree = "<group>"; };
+		B659AE8C19382C0A00F9B484 /* http_hook_out_defaultheaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_hook_out_defaultheaders.cpp; sourceTree = "<group>"; };
+		B659AE8D19382C0A00F9B484 /* http_hook_out_defaultheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_hook_out_defaultheaders.h; sourceTree = "<group>"; };
+		B659AE8F1938357100F9B484 /* http_executor_backoff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_backoff.cpp; sourceTree = "<group>"; };
+		B659AE901938357100F9B484 /* http_executor_boss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_boss.cpp; sourceTree = "<group>"; };
+		B659AE911938357100F9B484 /* http_executor_hooks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_hooks.cpp; sourceTree = "<group>"; };
+		B659AE921938357100F9B484 /* http_executor_redirect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_redirect.cpp; sourceTree = "<group>"; };
+		B659AE931938357100F9B484 /* http_executor_retry_service_unavailable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_retry_service_unavailable.cpp; sourceTree = "<group>"; };
+		B659AE941938357100F9B484 /* http_executor_retry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_retry.cpp; sourceTree = "<group>"; };
+		B659AE9B1938A23D00F9B484 /* http_default_retry_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_default_retry_handler.cpp; sourceTree = "<group>"; };
+		B659AE9C1938A23D00F9B484 /* http_default_retry_handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_default_retry_handler.h; sourceTree = "<group>"; };
+		B6F5921F19346765001DE11B /* http_actual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_actual.h; sourceTree = "<group>"; };
+		B6F59221193468E1001DE11B /* http_actual_CURL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_actual_CURL.cpp; sourceTree = "<group>"; };
+		B6F59222193468E1001DE11B /* http_actual_CURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_actual_CURL.h; sourceTree = "<group>"; };
+		B6F5922419346FDC001DE11B /* http_connection_reuse_strategy_default.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_connection_reuse_strategy_default.cpp; sourceTree = "<group>"; };
+		B6F5922519346FDC001DE11B /* http_connection_reuse_strategy_default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_connection_reuse_strategy_default.h; sourceTree = "<group>"; };
+		B6F5922719347266001DE11B /* http_connection_reuse_strategy_nope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_connection_reuse_strategy_nope.cpp; sourceTree = "<group>"; };
+		B6F5922819347266001DE11B /* http_connection_reuse_strategy_nope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_connection_reuse_strategy_nope.h; sourceTree = "<group>"; };
+		B6F5922B193473BC001DE11B /* http_auth_strategy_nope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_auth_strategy_nope.cpp; sourceTree = "<group>"; };
+		B6F5922C193473BC001DE11B /* http_auth_strategy_nope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_auth_strategy_nope.h; sourceTree = "<group>"; };
 		DB262DCB192444E8005417AA /* lambda_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lambda_UNIT_TEST.cpp; sourceTree = "<group>"; };
 		DB262DE219248260005417AA /* log_logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_logger.cpp; sourceTree = "<group>"; };
 		DB262FF519268F76005417AA /* htpp_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htpp_client.h; sourceTree = "<group>"; };
 		DB262FFB19268FE8005417AA /* htpp_client_UNIT_TEST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = htpp_client_UNIT_TEST.cpp; sourceTree = "<group>"; };
-		DB2636CC1926A232005417AA /* http_client_builder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_client_builder.cpp; sourceTree = "<group>"; };
-		DB2636CD1926A232005417AA /* http_client_builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_client_builder.h; sourceTree = "<group>"; };
-		DB263B4C1926A44D005417AA /* http_method_get.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_method_get.cpp; sourceTree = "<group>"; };
-		DB263B4D1926A44D005417AA /* http_method_get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_method_get.h; sourceTree = "<group>"; };
 		DB263B4F1926C16A005417AA /* http_core_protocol_version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_protocol_version.cpp; sourceTree = "<group>"; };
 		DB263B501926C16A005417AA /* http_core_protocol_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_protocol_version.h; sourceTree = "<group>"; };
 		DB263B531926C18E005417AA /* http_core_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_message.h; sourceTree = "<group>"; };
@@ -152,8 +182,8 @@
 		DB263B79192838F0005417AA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB263B7E192857B3005417AA /* http_core_request_line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_request_line.cpp; sourceTree = "<group>"; };
 		DB263B7F192857B3005417AA /* http_core_request_line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_request_line.h; sourceTree = "<group>"; };
-		DB263B8119285B1F005417AA /* http_core_header_group.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_header_group.cpp; sourceTree = "<group>"; };
-		DB263B8219285B1F005417AA /* http_core_header_group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_header_group.h; sourceTree = "<group>"; };
+		DB263B8119285B1F005417AA /* http_core_header_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_header_map.cpp; sourceTree = "<group>"; };
+		DB263B8219285B1F005417AA /* http_core_header_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_core_header_map.h; sourceTree = "<group>"; };
 		DB263B8619286DE5005417AA /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
 		DB263B8719286DE5005417AA /* curlbuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
 		DB263B8819286DE5005417AA /* curlrules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
@@ -377,24 +407,15 @@
 		DBB85B11192D769300CBCFC0 /* http_server_builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_server_builder.h; sourceTree = "<group>"; };
 		DBB85B26192DB1F200CBCFC0 /* http_config_general.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_config_general.cpp; sourceTree = "<group>"; };
 		DBB85B27192DB1F200CBCFC0 /* http_config_general.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_config_general.h; sourceTree = "<group>"; };
-		DBB85B2B192DD25C00CBCFC0 /* http_executor_backoff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_backoff.cpp; sourceTree = "<group>"; };
 		DBB85B2C192DD25C00CBCFC0 /* http_executor_backoff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_backoff.h; sourceTree = "<group>"; };
-		DBB85B2D192DD25C00CBCFC0 /* http_executor_boss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_boss.cpp; sourceTree = "<group>"; };
 		DBB85B2E192DD25C00CBCFC0 /* http_executor_boss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_boss.h; sourceTree = "<group>"; };
-		DBB85B2F192DD25C00CBCFC0 /* http_executor_hooks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_hooks.cpp; sourceTree = "<group>"; };
 		DBB85B30192DD25C00CBCFC0 /* http_executor_hooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_hooks.h; sourceTree = "<group>"; };
 		DBB85B31192DD25C00CBCFC0 /* http_executor_interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_interface.h; sourceTree = "<group>"; };
-		DBB85B32192DD25C00CBCFC0 /* http_executor_redirect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_redirect.cpp; sourceTree = "<group>"; };
 		DBB85B33192DD25C00CBCFC0 /* http_executor_redirect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_redirect.h; sourceTree = "<group>"; };
-		DBB85B34192DD25C00CBCFC0 /* http_executor_retry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_retry.cpp; sourceTree = "<group>"; };
 		DBB85B35192DD25C00CBCFC0 /* http_executor_retry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_retry.h; sourceTree = "<group>"; };
-		DBB85B36192DD25C00CBCFC0 /* http_executor_retry_service_unavailable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_executor_retry_service_unavailable.cpp; sourceTree = "<group>"; };
 		DBB85B37192DD25C00CBCFC0 /* http_executor_retry_service_unavailable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_executor_retry_service_unavailable.h; sourceTree = "<group>"; };
-		DBB85B3F192DD43600CBCFC0 /* http_hook_out.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_hook_out.cpp; sourceTree = "<group>"; };
 		DBB85B40192DD43600CBCFC0 /* http_hook_out.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_hook_out.h; sourceTree = "<group>"; };
-		DBB85B42192DD44E00CBCFC0 /* http_hook_in.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_hook_in.cpp; sourceTree = "<group>"; };
 		DBB85B43192DD44E00CBCFC0 /* http_hook_in.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_hook_in.h; sourceTree = "<group>"; };
-		DBB85B45192DD5E800CBCFC0 /* http_hooks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_hooks.cpp; sourceTree = "<group>"; };
 		DBB85B46192DD5E800CBCFC0 /* http_hooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_hooks.h; sourceTree = "<group>"; };
 		DBB85B49192DD8DE00CBCFC0 /* http_hook_out_content.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_hook_out_content.cpp; sourceTree = "<group>"; };
 		DBB85B4A192DD8DE00CBCFC0 /* http_hook_out_content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_hook_out_content.h; sourceTree = "<group>"; };
@@ -403,11 +424,8 @@
 		DBB85B4F192DDA4800CBCFC0 /* http_hook_out_targethost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_hook_out_targethost.cpp; sourceTree = "<group>"; };
 		DBB85B50192DDA4800CBCFC0 /* http_hook_out_targethost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_hook_out_targethost.h; sourceTree = "<group>"; };
 		DBFF4A39192ADB0E001679F6 /* http_client_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_client_impl.h; sourceTree = "<group>"; };
-		DBFF4A3B192ADF33001679F6 /* http_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_manager.cpp; sourceTree = "<group>"; };
-		DBFF4A3C192ADF33001679F6 /* http_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_manager.h; sourceTree = "<group>"; };
 		DBFF4A3E192B313F001679F6 /* http_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_server.cpp; sourceTree = "<group>"; };
 		DBFF4A3F192B313F001679F6 /* http_server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_server.h; sourceTree = "<group>"; };
-		DBFF4A42192B341A001679F6 /* http_actual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_actual.h; sourceTree = "<group>"; };
 		DBFF4A49192C2DE5001679F6 /* http_backoff_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_backoff_strategy.h; sourceTree = "<group>"; };
 		DBFF4A4C192C2E05001679F6 /* http_connection_reuse_strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_connection_reuse_strategy.h; sourceTree = "<group>"; };
 		DBFF4A4F192C3063001679F6 /* http_core_uri.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_core_uri.cpp; sourceTree = "<group>"; };
@@ -453,6 +471,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B639A032193EBA0700387653 /* collect */ = {
+			isa = PBXGroup;
+			children = (
+				B639A034193EBA3400387653 /* map_thread_safe.h */,
+			);
+			path = collect;
+			sourceTree = "<group>";
+		};
+		B6F59220193467E2001DE11B /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				B6F59221193468E1001DE11B /* http_actual_CURL.cpp */,
+				B6F59222193468E1001DE11B /* http_actual_CURL.h */,
+				B6F5922419346FDC001DE11B /* http_connection_reuse_strategy_default.cpp */,
+				B6F5922519346FDC001DE11B /* http_connection_reuse_strategy_default.h */,
+				B6F5922719347266001DE11B /* http_connection_reuse_strategy_nope.cpp */,
+				B6F5922819347266001DE11B /* http_connection_reuse_strategy_nope.h */,
+				B659AE891938246C00F9B484 /* http_default_connection_keep_alive_strategy.cpp */,
+				B659AE8A1938246C00F9B484 /* http_default_connection_keep_alive_strategy.h */,
+				B659AE9B1938A23D00F9B484 /* http_default_retry_handler.cpp */,
+				B659AE9C1938A23D00F9B484 /* http_default_retry_handler.h */,
+			);
+			path = impl;
+			sourceTree = "<group>";
+		};
+		B6F5922A19347389001DE11B /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				B6F5922B193473BC001DE11B /* http_auth_strategy_nope.cpp */,
+				B6F5922C193473BC001DE11B /* http_auth_strategy_nope.h */,
+			);
+			path = impl;
+			sourceTree = "<group>";
+		};
+		B6F5922E19347C4D001DE11B /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				B659AE8F1938357100F9B484 /* http_executor_backoff.cpp */,
+				B659AE901938357100F9B484 /* http_executor_boss.cpp */,
+				B659AE911938357100F9B484 /* http_executor_hooks.cpp */,
+				B659AE921938357100F9B484 /* http_executor_redirect.cpp */,
+				B659AE931938357100F9B484 /* http_executor_retry_service_unavailable.cpp */,
+				B659AE941938357100F9B484 /* http_executor_retry.cpp */,
+			);
+			path = impl;
+			sourceTree = "<group>";
+		};
 		DB262DCA192444C4005417AA /* unittests */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,10 +548,6 @@
 				DB2636CB1926A1E9005417AA /* core */,
 				DB262FF919268FD7005417AA /* unittests */,
 				DB262FF519268F76005417AA /* htpp_client.h */,
-				DB2636CC1926A232005417AA /* http_client_builder.cpp */,
-				DB2636CD1926A232005417AA /* http_client_builder.h */,
-				DB263B4C1926A44D005417AA /* http_method_get.cpp */,
-				DB263B4D1926A44D005417AA /* http_method_get.h */,
 			);
 			path = http;
 			sourceTree = "<group>";
@@ -527,8 +588,8 @@
 				DB263B75192746A4005417AA /* http_core_entity.h */,
 				DB263B7E192857B3005417AA /* http_core_request_line.cpp */,
 				DB263B7F192857B3005417AA /* http_core_request_line.h */,
-				DB263B8119285B1F005417AA /* http_core_header_group.cpp */,
-				DB263B8219285B1F005417AA /* http_core_header_group.h */,
+				DB263B8119285B1F005417AA /* http_core_header_map.cpp */,
+				DB263B8219285B1F005417AA /* http_core_header_map.h */,
 				DBFF4A4F192C3063001679F6 /* http_core_uri.cpp */,
 				DBFF4A50192C3063001679F6 /* http_core_uri.h */,
 			);
@@ -724,9 +785,9 @@
 		DB67F1DD19062FFA007567A9 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				DB67F24719063818007567A9 /* gtest-internal-inl.h */,
 				DB67F1DF19062FFA007567A9 /* gtest-death-test.cc */,
 				DB67F1E019062FFA007567A9 /* gtest-filepath.cc */,
+				DB67F24719063818007567A9 /* gtest-internal-inl.h */,
 				DB67F1E219062FFA007567A9 /* gtest-port.cc */,
 				DB67F1E319062FFA007567A9 /* gtest-printers.cc */,
 				DB67F1E419062FFA007567A9 /* gtest-test-part.cc */,
@@ -848,6 +909,7 @@
 		DB6ADB3F191C9B4A0098E92C /* base */ = {
 			isa = PBXGroup;
 			children = (
+				B639A032193EBA0700387653 /* collect */,
 				DB6ADB40191C9B4A0098E92C /* error_handler.h */,
 				DB6ADB41191C9B4A0098E92C /* eventdispatcher */,
 				DB6ADB49191C9B4A0098E92C /* lambda */,
@@ -1289,18 +1351,13 @@
 		DBB85B2A192DD25C00CBCFC0 /* exec_chain */ = {
 			isa = PBXGroup;
 			children = (
-				DBB85B2B192DD25C00CBCFC0 /* http_executor_backoff.cpp */,
+				B6F5922E19347C4D001DE11B /* impl */,
 				DBB85B2C192DD25C00CBCFC0 /* http_executor_backoff.h */,
-				DBB85B2D192DD25C00CBCFC0 /* http_executor_boss.cpp */,
 				DBB85B2E192DD25C00CBCFC0 /* http_executor_boss.h */,
-				DBB85B2F192DD25C00CBCFC0 /* http_executor_hooks.cpp */,
 				DBB85B30192DD25C00CBCFC0 /* http_executor_hooks.h */,
 				DBB85B31192DD25C00CBCFC0 /* http_executor_interface.h */,
-				DBB85B32192DD25C00CBCFC0 /* http_executor_redirect.cpp */,
 				DBB85B33192DD25C00CBCFC0 /* http_executor_redirect.h */,
-				DBB85B34192DD25C00CBCFC0 /* http_executor_retry.cpp */,
 				DBB85B35192DD25C00CBCFC0 /* http_executor_retry.h */,
-				DBB85B36192DD25C00CBCFC0 /* http_executor_retry_service_unavailable.cpp */,
 				DBB85B37192DD25C00CBCFC0 /* http_executor_retry_service_unavailable.h */,
 			);
 			path = exec_chain;
@@ -1310,11 +1367,8 @@
 			isa = PBXGroup;
 			children = (
 				DBB85B48192DD69100CBCFC0 /* impl */,
-				DBB85B3F192DD43600CBCFC0 /* http_hook_out.cpp */,
 				DBB85B40192DD43600CBCFC0 /* http_hook_out.h */,
-				DBB85B42192DD44E00CBCFC0 /* http_hook_in.cpp */,
 				DBB85B43192DD44E00CBCFC0 /* http_hook_in.h */,
-				DBB85B45192DD5E800CBCFC0 /* http_hooks.cpp */,
 				DBB85B46192DD5E800CBCFC0 /* http_hooks.h */,
 			);
 			path = hooks;
@@ -1329,6 +1383,10 @@
 				DBB85B4D192DD99B00CBCFC0 /* http_hook_out_useragent.h */,
 				DBB85B4F192DDA4800CBCFC0 /* http_hook_out_targethost.cpp */,
 				DBB85B50192DDA4800CBCFC0 /* http_hook_out_targethost.h */,
+				B659AE831938175C00F9B484 /* http_hooks_default.cpp */,
+				B659AE841938175C00F9B484 /* http_hooks_default.h */,
+				B659AE8C19382C0A00F9B484 /* http_hook_out_defaultheaders.cpp */,
+				B659AE8D19382C0A00F9B484 /* http_hook_out_defaultheaders.h */,
 			);
 			path = impl;
 			sourceTree = "<group>";
@@ -1337,13 +1395,14 @@
 			isa = PBXGroup;
 			children = (
 				DBFF4A39192ADB0E001679F6 /* http_client_impl.h */,
-				DBFF4A3B192ADF33001679F6 /* http_manager.cpp */,
-				DBFF4A3C192ADF33001679F6 /* http_manager.h */,
+				B639AEDB1944C33600387653 /* http_client_impl.cpp */,
 				DBFF4A3E192B313F001679F6 /* http_server.cpp */,
 				DBFF4A3F192B313F001679F6 /* http_server.h */,
-				DBFF4A42192B341A001679F6 /* http_actual.h */,
 				DBB85B10192D769300CBCFC0 /* http_server_builder.cpp */,
 				DBB85B11192D769300CBCFC0 /* http_server_builder.h */,
+				B639A02F193EAF1600387653 /* http_request_base.cpp */,
+				B639A030193EAF1600387653 /* http_request_base.h */,
+				B639AEDD1944C60A00387653 /* htpp_client_factory.cpp */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -1351,11 +1410,14 @@
 		DBFF4A48192C2DE5001679F6 /* decorate */ = {
 			isa = PBXGroup;
 			children = (
+				B6F59220193467E2001DE11B /* impl */,
+				B6F5921F19346765001DE11B /* http_actual.h */,
 				DBFF4A49192C2DE5001679F6 /* http_backoff_strategy.h */,
 				DBFF4A4C192C2E05001679F6 /* http_connection_reuse_strategy.h */,
 				DBFF4A52192C31A0001679F6 /* http_redirect_strategy.h */,
 				DBFF4A53192C718F001679F6 /* http_retry_handler.h */,
 				DBFF4A54192C7376001679F6 /* http_service_unavailable_retry_strategy.h */,
+				B659AE871938226600F9B484 /* http_connection_keep_alive_strategy.h */,
 			);
 			path = decorate;
 			sourceTree = "<group>";
@@ -1363,6 +1425,7 @@
 		DBFF4A55192C75B6001679F6 /* auth */ = {
 			isa = PBXGroup;
 			children = (
+				B6F5922A19347389001DE11B /* impl */,
 				DBFF4A58192C8294001679F6 /* http_auth_scheme.h */,
 				DBFF4A59192C8294001679F6 /* http_auth_strategy.h */,
 				DBFF4A57192C76E5001679F6 /* http_auth_scheme_provider.h */,
@@ -1473,68 +1536,69 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB6ADBBA191C9C480098E92C /* log_UNIT_TEST.cpp in Sources */,
+				B659AE951938357100F9B484 /* http_executor_backoff.cpp in Sources */,
 				DB263B5D1926E814005417AA /* http_core_header.cpp in Sources */,
-				DBB85B3C192DD25C00CBCFC0 /* http_executor_redirect.cpp in Sources */,
 				DB67F25519074530007567A9 /* unitest_run_all.cpp in Sources */,
 				DB262DE319248260005417AA /* log_logger.cpp in Sources */,
 				DB6ADB9E191C9B4A0098E92C /* lock_impl_POSIX.cpp in Sources */,
 				DB6ADBB8191C9C480098E92C /* log.cpp in Sources */,
 				DBB85B4E192DD99B00CBCFC0 /* http_hook_out_useragent.cpp in Sources */,
 				DB6ADF50191F35C30098E92C /* atomic_impl.cpp in Sources */,
+				B659AE991938357100F9B484 /* http_executor_retry_service_unavailable.cpp in Sources */,
 				DB67F24419062FFA007567A9 /* gtest-typed-test.cc in Sources */,
-				DB263B4E1926A44D005417AA /* http_method_get.cpp in Sources */,
 				DB67F2D319089E50007567A9 /* build_utils.cc in Sources */,
 				DB6ADBA1191C9B4A0098E92C /* task_pending_queue.cpp in Sources */,
+				B659AE8E19382C0A00F9B484 /* http_hook_out_defaultheaders.cpp in Sources */,
 				DB67F24019062FFA007567A9 /* gtest-filepath.cc in Sources */,
 				DB67F24319062FFA007567A9 /* gtest-test-part.cc in Sources */,
 				DBB1E2641929B0A000898FBC /* http_context.cpp in Sources */,
 				DBB85B4B192DD8DE00CBCFC0 /* http_hook_out_content.cpp in Sources */,
 				DB67F24119062FFA007567A9 /* gtest-port.cc in Sources */,
+				B659AE961938357100F9B484 /* http_executor_boss.cpp in Sources */,
 				DB262FFC19268FE8005417AA /* htpp_client_UNIT_TEST.cpp in Sources */,
+				B659AE9D1938A23D00F9B484 /* http_default_retry_handler.cpp in Sources */,
 				DB263B6C192715B6005417AA /* http_core_status.cpp in Sources */,
 				DB263B80192857B3005417AA /* http_core_request_line.cpp in Sources */,
 				DB31E76E19117EA3009A6CF6 /* CDetailViewController.mm in Sources */,
 				DB6ADBA4191C9B4A0098E92C /* thread_platform_optional_IOS.mm in Sources */,
-				DBB85B44192DD44E00CBCFC0 /* http_hook_in.cpp in Sources */,
 				DB6ADB9D191C9B4A0098E92C /* lock.cpp in Sources */,
-				DBB85B3D192DD25C00CBCFC0 /* http_executor_retry.cpp in Sources */,
 				DB6ADBAB191C9B4A0098E92C /* thread_loopless_UNIT_TEST.cpp in Sources */,
 				DB6ADB9F191C9B4A0098E92C /* lock_UNIT_TEST.cpp in Sources */,
 				DB6ADBA0191C9B4A0098E92C /* task.cpp in Sources */,
 				DB6ADBA6191C9B4A0098E92C /* thread_platform_POSIX.cpp in Sources */,
-				DBFF4A3D192ADF33001679F6 /* http_manager.cpp in Sources */,
 				DB6ADB9A191C9B4A0098E92C /* run_loop_cocoa_darwin_UNIT_TEST.mm in Sources */,
 				DB6ADBA8191C9B4A0098E92C /* thread_loopful.cpp in Sources */,
 				DB262DCC192444E8005417AA /* lambda_UNIT_TEST.cpp in Sources */,
 				DB6ADBA2191C9B4A0098E92C /* task_pending_queue_UNIT_TEST.cpp in Sources */,
-				DBB85B3B192DD25C00CBCFC0 /* http_executor_hooks.cpp in Sources */,
 				DB6ADBA3191C9B4A0098E92C /* thread_platform_IOS.mm in Sources */,
-				DBB85B3E192DD25C00CBCFC0 /* http_executor_retry_service_unavailable.cpp in Sources */,
 				DB6ADBB9191C9C480098E92C /* log_output.cpp in Sources */,
 				DB67F18619062BC3007567A9 /* CAppDelegate.mm in Sources */,
 				DB6ADBAC191C9B4A0098E92C /* thread_platform_UNIT_TEST.cpp in Sources */,
-				DB263B8319285B1F005417AA /* http_core_header_group.cpp in Sources */,
+				DB263B8319285B1F005417AA /* http_core_header_map.cpp in Sources */,
 				DBB85B51192DDA4800CBCFC0 /* http_hook_out_targethost.cpp in Sources */,
-				DBB85B3A192DD25C00CBCFC0 /* http_executor_boss.cpp in Sources */,
 				DB31E76F19117EA3009A6CF6 /* CMasterViewController.mm in Sources */,
-				DBB85B39192DD25C00CBCFC0 /* http_executor_backoff.cpp in Sources */,
+				B659AE981938357100F9B484 /* http_executor_redirect.cpp in Sources */,
 				DB6ADF52191F35C30098E92C /* atomic_count.cpp in Sources */,
+				B659AE851938175C00F9B484 /* http_hooks_default.cpp in Sources */,
+				B639AEDC1944C33600387653 /* http_client_impl.cpp in Sources */,
+				B6F5922619346FDC001DE11B /* http_connection_reuse_strategy_default.cpp in Sources */,
 				DB6ADF54191F35C30098E92C /* rc_thread_safe.cpp in Sources */,
 				DB263B511926C16A005417AA /* http_core_protocol_version.cpp in Sources */,
 				DB80413A1920715D00190CBE /* semaphore_UNIT_TEST.cpp in Sources */,
 				DB263B9219288FF7005417AA /* http_config_request.cpp in Sources */,
 				DB6ADF53191F35C30098E92C /* atomic_UNIT_TEST.cpp in Sources */,
+				B659AE8B1938246C00F9B484 /* http_default_connection_keep_alive_strategy.cpp in Sources */,
 				DB67F24219062FFA007567A9 /* gtest-printers.cc in Sources */,
 				DB6ADBAD191C9B4A0098E92C /* thread_un_safe_UNIT_TEST.cpp in Sources */,
+				B659AE9A1938357100F9B484 /* http_executor_retry.cpp in Sources */,
 				DB67F18219062BC3007567A9 /* main.m in Sources */,
 				DB6ADBA7191C9B4A0098E92C /* thread_un_safe_debug.cpp in Sources */,
 				DB67F23F19062FFA007567A9 /* gtest-death-test.cc in Sources */,
 				DB6ADBAA191C9B4A0098E92C /* thread_loopful_UNIT_TEST.cpp in Sources */,
+				B6F59223193468E1001DE11B /* http_actual_CURL.cpp in Sources */,
 				DB6ADF55191F35C30098E92C /* rc_UNIT_TEST.cpp in Sources */,
-				DBB85B47192DD5E800CBCFC0 /* http_hooks.cpp in Sources */,
 				DB8041331920557700190CBE /* semaphore.cpp in Sources */,
 				DB8041411920917E00190CBE /* rendezvous_simple.cpp in Sources */,
-				DBB85B41192DD43600CBCFC0 /* http_hook_out.cpp in Sources */,
 				DB6ADB98191C9B4A0098E92C /* run_loop_DARWIN.mm in Sources */,
 				DBB85B12192D769300CBCFC0 /* http_server_builder.cpp in Sources */,
 				DB67F24519062FFA007567A9 /* gtest.cc in Sources */,
@@ -1542,19 +1606,23 @@
 				DB6ADBA5191C9B4A0098E92C /* thread_bootstrap_params.cpp in Sources */,
 				DB263B6919271286005417AA /* http_core_statusline.cpp in Sources */,
 				DB6ADF56191F35C30098E92C /* strong_pointer_UNIT_TEST.cpp in Sources */,
+				B659AE971938357100F9B484 /* http_executor_hooks.cpp in Sources */,
 				DBFF4A51192C3063001679F6 /* http_core_uri.cpp in Sources */,
 				DB8042F119213D3C00190CBE /* macrologger.cpp in Sources */,
 				DB6ADB95191C9B4A0098E92C /* event_dispatcher.cpp in Sources */,
 				DB6ADB9B191C9B4A0098E92C /* condition_variable.cpp in Sources */,
 				DBFF4A40192B313F001679F6 /* http_server.cpp in Sources */,
 				DB8042EF1920B61D00190CBE /* semaphore_impl_DARWIN.cpp in Sources */,
+				B639A031193EAF1600387653 /* http_request_base.cpp in Sources */,
+				B6F5922D193473BC001DE11B /* http_auth_strategy_nope.cpp in Sources */,
 				DB6ADBA9191C9B4A0098E92C /* thread_loopless.cpp in Sources */,
+				B639AEDE1944C60A00387653 /* htpp_client_factory.cpp in Sources */,
 				DB6ADB96191C9B4A0098E92C /* event_dispatcher_UNIT_TEST.cpp in Sources */,
+				B6F5922919347266001DE11B /* http_connection_reuse_strategy_nope.cpp in Sources */,
 				DB80413F192090C100190CBE /* rendezvous_simple_UNIT_TEST.cpp in Sources */,
 				DB8053A2192158A300190CBE /* semaphore_impl_compatible_POSIX.cpp in Sources */,
 				DB6ADB9C191C9B4A0098E92C /* condition_variable_impl_POSIX.cpp in Sources */,
 				DBB85B28192DB1F200CBCFC0 /* http_config_general.cpp in Sources */,
-				DB2636CE1926A232005417AA /* http_client_builder.cpp in Sources */,
 				DB6ADB97191C9B4A0098E92C /* run_loop_cocoa_DARWIN.mm in Sources */,
 				DB263B571926C24C005417AA /* http_core_name_value_pair.cpp in Sources */,
 				DB6ADF51191F35C30098E92C /* atomic.cpp in Sources */,
@@ -1694,7 +1762,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vClientTemplateLib/vClientTemplateLib-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1704,11 +1772,12 @@
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/vshakya/hexagonal-client/vCTL/libs/iOS/curl",
+					"\"$(SRCROOT)/../../../libs/iOS/curl\"",
 				);
 				OTHER_CFLAGS = (
 					"-DENABLE_LOGGING",
 					"-DTHREADSAFE_LOGGING",
+					"-DENABLE_HTTP_VERBOSE_LOGGING",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\" \"$(SRCROOT)/../../../src/3p/curl\"";
@@ -1723,7 +1792,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vClientTemplateLib/vClientTemplateLib-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1733,7 +1802,7 @@
 				INFOPLIST_FILE = "vClientTemplateLib/vClientTemplateLib-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/vshakya/hexagonal-client/vCTL/libs/iOS/curl",
+					"\"$(SRCROOT)/../../../libs/iOS/curl\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../src/3p/google/gtest/include\" \"$(SRCROOT)/../../../src/3p/google/gtest\" \"$(SRCROOT)/../../../src\" \"$(SRCROOT)/../../../src/3p/curl\"";

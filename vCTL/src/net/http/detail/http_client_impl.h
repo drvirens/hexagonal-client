@@ -10,6 +10,7 @@
 #define __vClientTemplateLib__htpp_client_impl__
 
 #include "net/http/htpp_client.h"
+#include "net/http/detail/http_server_builder.h"
 
 namespace vctl
 {
@@ -20,7 +21,11 @@ namespace http
 
 class CHttpClientImpl : public IHttpClient
     {
+public:
+    static CHttpClientImpl* New();
+    virtual ~CHttpClientImpl();
 protected:
+    
     virtual void Start();
     virtual void Stop();
     
@@ -29,26 +34,13 @@ private:
         IHttpRequest* aHttpRequest,
         IFutureCallBack* aFutureCallBack);
         
+    CHttpClientImpl();
+    void Construct();
+        
 private:
-    
+    detail::THttpServerBuilder iServerBuilder;
     };
-    
-void CHttpClientImpl::Start()
-    {
-    }
-    
-void CHttpClientImpl::Stop()
-    {
-    }
-    
-void CHttpClientImpl::DoExecute(CHttpContext* aHttpContext,
-        IHttpRequest* aHttpRequest,
-        IFutureCallBack* aFutureCallBack)
-    {
-    //transfer all the execution machinery on a different thread
-    //get a thread from thread pool and execute on it
-    //Post the lambda in threadworkerpool queue and signal the queue
-    }
+
 
 } //namespace http
 } //namespace net

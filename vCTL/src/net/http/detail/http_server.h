@@ -12,7 +12,11 @@
 #include <string>
 #include "base/thread/thread_un_safe.h"
 #include "memory/ref/rc_thread_safe.h"
-#include "net/http/config/http_config_request.h"
+#include "memory/smart_pointer/strong_pointer.h"
+
+#include "net/http/exec_chain/http_executor_interface.h"
+#include "net/http/auth/http_auth_scheme_provider.h"
+#include "net/http/auth/http_credentials_provider.h"
 
 namespace vctl
 {
@@ -21,21 +25,6 @@ namespace net
 namespace http
 {
 
-
-class IHttpActualSenderReceiver;
-class IConnectionReuseStrategy;
-class IConnectionKeepAliveStrategy;
-class IAuthenticationStrategy;
-class IHttpHooks;
-class IRetryHandler;
-class IRedirectStrategy;
-class IConnectionBackoffStrategy;
-class IServiceUnavailableRetryStrategy;
-class IAuthSchemeProvider;
-class ICredentialsProvider;
-class THttpHeadersMap;
-
-
 namespace detail
 {
 
@@ -43,36 +32,26 @@ class CHttpServer : public vctl::CReferenceThreadSafe<CHttpServer>
     {
 public:
     static CHttpServer* New();
+    static CHttpServer* New(IHttpRequestExecutionChain* aIHttpRequestExecutionChain,
+                            ICredentialsProvider* aICredentialsProvider,
+                            IAuthSchemeProvider* aIAuthSchemeProvider);
+    void Execute(
+        IHttpRequest* aHttpRequest,
+        IFutureCallBack* aFutureCallBack);
     
 protected:
     CHttpServer();
+    CHttpServer(IHttpRequestExecutionChain* aIHttpRequestExecutionChain,
+                            ICredentialsProvider* aICredentialsProvider,
+                            IAuthSchemeProvider* aIAuthSchemeProvider);
     void Construct();
     virtual ~CHttpServer();
     friend class vctl::CReferenceThreadSafe<CHttpServer>;
     
 private:
-    IHttpActualSenderReceiver* iHttpActualSenderReceiver;
-    
-    IConnectionReuseStrategy* iConnReuseStrategy;
-    IConnectionKeepAliveStrategy* iConnKeepAliveStrategy;
-    IAuthenticationStrategy* iAuthStrategy;
-    IHttpHooks* iHttpHooks; //class that contains both both in-hook and out-hook
-    IRetryHandler* iRetryHandler;
-    IRedirectStrategy* iRedirectStrategy;
-    IConnectionBackoffStrategy* iBackoffStrategy;
-    IServiceUnavailableRetryStrategy* iServiceUnavailableRetryStrategy;
-    IAuthSchemeProvider* iAuthSchemeProvider;
-    ICredentialsProvider* iCredentialsProvider;
-    
-    std::string iUserAgent;
-    THttpHeadersMap* iDefaultHeaders;
-    TRequestConfig iRequestConfig;
-    
-    bool iIsRedirectHandlingDisabled;
-    bool iIsAutoRetryDisabled;
-    bool iIsContentCompressionDisabled;
-    bool iIsCookieDisabled;
-    bool iIsAuthCachingDisabled;
+    vctl::TStrongPointer<IAuthSchemeProvider> iIAuthSchemeProvider;
+    vctl::TStrongPointer<ICredentialsProvider> iICredentialsProvider;
+    vctl::TStrongPointer<IHttpRequestExecutionChain> iIHttpRequestExecutionChain;
     };
 
 } //namespace detail

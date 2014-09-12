@@ -7,11 +7,9 @@
 //
 
 #include "3p/google/gtest/include/gtest/gtest.h"
-
 #include "memory/ref/rc_thread_safe.h"
-
 #include "net/http/async/http_future_callback.h"
-#include "net/http/http_method_get.h"
+
 #include "net/http/core/http_core_header.h"
 #include "net/http/context/http_context.h"
 #include "net/http/core/http_core_entity.h"
@@ -21,6 +19,7 @@
 #include "net/http/detail/http_server_builder.h"
 #include "net/http/decorate/http_connection_reuse_strategy.h"
 #include "net/http/htpp_client.h"
+#include "net/http/detail/http_request_base.h"
 
 namespace vctl
 {
@@ -136,7 +135,11 @@ class MyMockHttpRequest : public IHttpRequest
     {
 public:
     virtual ~MyMockHttpRequest() {}
-    
+    virtual std::string GetUrl() const
+        {
+        std::string url = "www.google.com";
+        return url;
+        }
     virtual void Cancel()
         {
         }
@@ -152,11 +155,12 @@ public:
         {
         return new MyMockIHttpEntity();
         }
+    virtual void SetHttpEntity(IHttpEntity* aIHttpEntity) {}
         
-    virtual TRequestConfig& GetConfig() const
+    virtual void GetConfig(TRequestConfig& aTRequestConfig) const
         {
         TRequestConfig rconfig;
-        return rconfig;
+        aTRequestConfig = rconfig;
         }
     virtual TProtocolVersion Version() const
         {
@@ -170,10 +174,17 @@ public:
     virtual void RemoveHeader(const THeader& aHeader)
         {
         }
-    virtual THttpHeadersMap* GetAllHeaders() const
+    virtual vctl::TStrongPointer<CHttpHeadersMap> GetAllHeaders() const
         {
-        return 0;
+        CHttpHeadersMap* headers = CHttpHeadersMap::New();
+        return headers;
         }
+    bool HasHeader(const std::string& aHeaderName) const
+        {
+        return false;
+        }
+private:
+    CHttpHeadersMap* iHeaders;
     };
 
 TEST(UT_THttpClient, Trivial)
@@ -203,7 +214,7 @@ TEST(UT_THttpClient, Trivial)
 class MyIConnectionReuseStrategy : public IConnectionReuseStrategy
     {
 public:
-    virtual bool KeepAlive(const IHttpResponse& aResponse, const CHttpContext& aContext)
+    virtual bool KeepAlive(const IHttpResponse& aResponse, CHttpContext& aContext)
         {
         return true;
         }
@@ -218,6 +229,39 @@ TEST(UT_THttpClient, CreateServerTrivial)
     vctl::TStrongPointer<detail::CHttpServer> server = builder.Build();
     
     EXPECT_TRUE(server.Get() != 0);
+    
+    MyHttpResponseHandler* myhttpresphandler = new MyHttpResponseHandler();
+    CHttpContext* context = new CHttpContext();
+    IHttpRequest* getrequest = new MyMockHttpRequest();
+    server->Execute(getrequest, myhttpresphandler);
+    }
+    
+// -----
+class MyCHttpRequest : public CHttpRequestBase
+    {
+public:
+    explicit MyCHttpRequest(const std::string& aUri)
+        : CHttpRequestBase(aUri)
+        {}
+        
+    virtual EHttpMethodType HttpMethod() const
+        {
+        return kHttpMethodGet;
+        }
+    };
+    
+TEST(UT_THttpClient, CurlTrivial)
+    {
+    detail::THttpServerBuilder builder;
+    vctl::TStrongPointer<detail::CHttpServer> server = builder.Build();
+    EXPECT_TRUE(server.Get() != 0);
+    MyHttpResponseHandler* myhttpresphandler = new MyHttpResponseHandler();
+    
+    std::string url = "http://www.google.com";
+    IHttpRequest* getrequest = new MyCHttpRequest(url);
+    THeader header;
+    getrequest->AddHeader(header);
+    server->Execute(getrequest, myhttpresphandler);
     }
     
 }

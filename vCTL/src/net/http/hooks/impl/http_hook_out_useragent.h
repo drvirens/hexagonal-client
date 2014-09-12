@@ -21,10 +21,13 @@ namespace http
 class CHttpHookOutgoingUserAgent : public IHttpHookOutgoingPacket
     {
 public:
+    static CHttpHookOutgoingUserAgent* New();
     virtual bool ProcessPacketHeader(IHttpRequest& aHttpRequest);
     
 protected:
     virtual ~CHttpHookOutgoingUserAgent();
+    CHttpHookOutgoingUserAgent();
+    void Construct();
         
     //friend class vctl::CReferenceThreadSafe<IHttpHookOutgoingPacket>;
     };

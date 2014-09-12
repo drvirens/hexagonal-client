@@ -46,6 +46,16 @@ protected:
         IFutureCallBack* aFutureCallBack) = 0;
      };
     
+
+//
+// class HttpClient factory
+//
+class THttpClientFactory
+    {
+public:
+    static IHttpClient* GetDefaultHttpClient();
+    };
+    
 } //namespace http
 } //namespace net
 } //namespace vctl

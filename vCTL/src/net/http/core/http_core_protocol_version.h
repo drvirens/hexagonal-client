@@ -23,6 +23,7 @@ typedef unsigned char TVersion;
 class TProtocolVersion
     {
 public:
+    TProtocolVersion();
     TProtocolVersion(std::string& aProtocolName, TVersion aMajor, TVersion aMinor);
     
     const std::string& ProtocolName() const;

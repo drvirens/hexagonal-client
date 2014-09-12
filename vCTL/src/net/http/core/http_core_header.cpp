@@ -6,4 +6,20 @@
 //  Copyright (c) 2014 Virendra Shakya. All rights reserved.
 //
 
-#include "http_core_header.h"
+#include "net/http/core/http_core_header.h"
+
+
+namespace vctl
+{
+namespace net
+{
+namespace http
+{
+std::string THeader::Describe() const
+    {
+    return "header:value";
+    }
+} //namespace http
+} //namespace net
+} //namespace vctl
+
