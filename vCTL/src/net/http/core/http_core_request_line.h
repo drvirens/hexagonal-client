@@ -20,10 +20,10 @@ namespace net
 namespace http
 {
 
-class TStatusLine
+class TRequestLine
     {
 public:
-    TStatusLine(const TProtocolVersion& aProtocolVersion, const EHttpMethodType& aMethod, std::string& aUri);
+    TRequestLine(const TProtocolVersion& aProtocolVersion, const EHttpMethodType& aMethod, std::string& aUri);
     
     const TProtocolVersion& ProtocolVersion() const;
     EHttpMethodType Method() const;
